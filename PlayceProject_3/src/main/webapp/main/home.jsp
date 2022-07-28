@@ -336,7 +336,7 @@
 	
 
 
-	<div class="section">
+	<div class="section-2">
 		<div class="container">
 			<div class="row mb-5 align-items-center">
 				<div class="col-lg-6">
