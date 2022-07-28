@@ -366,16 +366,6 @@
 				<h3 class="title">9 Air-Cleaning Plants Your Home Needs</h3>
 				<a href="#" class="read-btn">바로가기</a>
 			</div>
-			<div class="box horizontal box5">
-				<div class="genre">Food</div>
-				<h3 class="title">One Month Sugar Detox</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			<div class="box vertical box6">
-				<div class="genre">Photography</div>
-				<h3 class="title">Shooting Minimal Instagram Photos</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
 			</div>
 		</div>
 		</div>
