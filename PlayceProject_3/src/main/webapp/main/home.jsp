@@ -347,23 +347,33 @@
 	
 		<div class="news container">
 			<div class="box vertical box1">
-				<div class="genre">Food</div>
-				<h3 class="title">Wake Up and Smell the Coffee</h3>
+				<div class="genre">실내 체육시설 기획전</div>
+				<h3 class="title">장마 끝, 무더위 시작! 태양을 피하고 싶다면</h3>
 				<a href="#" class="read-btn">바로가기</a>
 			</div>
 			<div class="box horizontal box2">
-				<div class="genre">Architecture</div>
-				<h3 class="title">The Brand New Nasa Office</h3>
+				<div class="genre">회의/세미나실 기회전</div>
+				<h3 class="title">사이드 프로젝트를 위한 공간</h3>
 				<a href="#" class="read-btn">바로가기</a>
 			</div>
 			<div class="box horizontal box3">
-				<div class="genre">Travel</div>
-				<h3 class="title">Edperience the Saharan Sands</h3>
+				<div class="genre">공유 주방 모음</div>
+				<h3 class="title">둘만의 오붓한 시간 키친 데이트 공간</h3>
 				<a href="#" class="read-btn">바로가기</a>
 			</div>
 			<div class="box horizontal box4">
-				<div class="genre">Interior</div>
-				<h3 class="title">9 Air-Cleaning Plants Your Home Needs</h3>
+				<div class="genre">스튜디오 공간 기획전</div>
+				<h3 class="title">화보 속 모델 처럼, 느낌 좋은 스튜디오 모음</h3>
+				<a href="#" class="read-btn">바로가기</a>
+			</div>
+			<div class="box horizontal box5">
+				<div class="genre">글램핑 기획전</div>
+				<h3 class="title">캠핑 분위기 물씬내는 이색 장소들</h3>
+				<a href="#" class="read-btn">바로가기</a>
+			</div>
+			<div class="box horizontal box6">
+				<div class="genre">스터디룸 기획전</div>
+				<h3 class="title">집중력 최고로 올려주는 스터디 장소</h3>
 				<a href="#" class="read-btn">바로가기</a>
 			</div>
 			</div>
@@ -376,7 +386,7 @@
 	<div class="section sec-testimonials">
 		<div class="container">
 			<div class="row mb-5 align-items-center">
-				<div class="col-md-6">
+				<div class="col-lg-6">
 					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">베스트 리뷰</h2>
 					<p class="sub-title">The latest and best lifstyle articles selected by our editorial office.</p>
 				</div>

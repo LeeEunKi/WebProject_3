@@ -10420,12 +10420,26 @@ h1.main-title {
 h3.title {
   font-size: 1.8em;
   margin-top: 10px;
-  max-width: 250px;
+  max-width: 260px;
+  word-spacing:-1px;
+
+}
+.box1 > .title {
+  font-size: 1.8em;
+  margin-top: 10px;
+  max-width: 220px;
+  word-spacing:-1px;
+}
+.box5 > .title {
+  font-size: 1.8em;
+  margin-top: 10px;
+  max-width: 220px;
+  word-spacing:-1px;
 }
 
 .genre {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.6;
 }
 
@@ -10458,11 +10472,11 @@ p.sub-title {
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 200px);
+  grid-template-rows: repeat(3, 200px);
 }
 @media (max-width: 980px) {
   .news {
-    grid-template-rows: repeat(4, 200px);
+    grid-template-rows: repeat(6, 200px);
   }
 }
 
@@ -10568,6 +10582,42 @@ p.sub-title {
   box-shadow: 3px 3px 20px 0px rgba(23, 23, 23, 0.7);
 }
 .box4 .read-btn {
+  color: #2964D9;
+}
+.box5 {
+  grid-column: 1/3;
+  grid-row: 3/3;
+  background-image: url(http://meraktakal.com/codepen/img4.png);
+  box-shadow: 3px 3px 20px 0px rgba(23, 23, 23, 0.25);
+}
+@media (max-width: 980px) {
+  .box5 {
+    grid-column: 1/6;
+    grid-row: 5/6;
+  }
+}
+.box5:hover {
+  box-shadow: 3px 3px 20px 0px rgba(23, 23, 23, 0.7);
+}
+.box5 .read-btn {
+  color: #2964D9;
+}
+.box6 {
+  grid-column: 3/5;
+  grid-row: 3/3;
+  background-image: url(http://meraktakal.com/codepen/img4.png);
+  box-shadow: 3px 3px 20px 0px rgba(23, 23, 23, 0.25);
+}
+@media (max-width: 980px) {
+  .box6 {
+    grid-column: 1/6;
+    grid-row: 6/6;
+  }
+}
+.box6:hover {
+  box-shadow: 3px 3px 20px 0px rgba(23, 23, 23, 0.7);
+}
+.box6 .read-btn {
   color: #2964D9;
 }
 
