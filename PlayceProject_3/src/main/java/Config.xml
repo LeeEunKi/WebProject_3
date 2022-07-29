@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ <!-- 지윤/ TypeAlias는 아직 등록 안했습니다 -->
+	<environments default="development"> <!-- 개발환경 만들기 -->
+		<environment id="development">
+			<transactionManager type="JDBC"/> <!-- AutoCommit을 쓰겠다. -->
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@211.63.89.131:1521:XE"/>
+				<property name="username" value="hr"/>
+				<property name="password" value="happy"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<!-- 지윤/ Mappers는 아직 등록 안했습니다 -->
+	</mappers>
+</configuration>
