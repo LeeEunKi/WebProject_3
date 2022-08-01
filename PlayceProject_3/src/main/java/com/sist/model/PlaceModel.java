@@ -16,5 +16,7 @@ public class PlaceModel {
 		request.setAttribute("main_jsp", "../place/place_list.jsp");
 		return "../main/main.jsp";
 	}
+	
+
 
 }

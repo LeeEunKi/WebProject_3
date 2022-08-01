@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<style type="text/css">
+.background-img{
+	background-repeat : no-repeat;
+    background-size : cover;
+}
+.category-title{
+	margin-top: 20px;
+	max-width: 350px;
+	color: white;
+	font-weight: bold;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -346,39 +359,15 @@
 			</div>
 	
 		<div class="news container">
-			<div class="box vertical box1">
-				<div class="genre">실내 체육시설 기획전</div>
-				<h3 class="title">장마 끝, 무더위 시작! 태양을 피하고 싶다면</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			<div class="box horizontal box2">
-				<div class="genre">회의/세미나실 기회전</div>
-				<h3 class="title">사이드 프로젝트를 위한 공간</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			<div class="box horizontal box3">
-				<div class="genre">공유 주방 모음</div>
-				<h3 class="title">둘만의 오붓한 시간 키친 데이트 공간</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			<div class="box horizontal box4">
-				<div class="genre">스튜디오 공간 기획전</div>
-				<h3 class="title">화보 속 모델 처럼, 느낌 좋은 스튜디오 모음</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			<div class="box horizontal box5">
-				<div class="genre">글램핑 기획전</div>
-				<h3 class="title">캠핑 분위기 물씬내는 이색 장소들</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			<div class="box horizontal box6">
-				<div class="genre">스터디룸 기획전</div>
-				<h3 class="title">집중력 최고로 올려주는 스터디 장소</h3>
-				<a href="#" class="read-btn">바로가기</a>
-			</div>
-			</div>
+		  <c:forEach var="vo" items="${list }" varStatus="s">
+			<a href="#" class="box vertical box${s.index+1 } background-img" style="background-image: url(${vo.poster});">
+				<h3 class="category-title">${vo.title }</h3>
+				<div>${vo.subject }<span style="color: yellow;">&nbsp;${categoryCnt.get(s.index) } 곳</span></div>
+			</a>
+		  </c:forEach>
 		</div>
-		</div>
+	  </div>
+	 </div>
 	</div>
 
 

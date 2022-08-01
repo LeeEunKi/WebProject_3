@@ -6,6 +6,7 @@
    <typeAliases>
      <!-- VO 등록!  -->
      <typeAlias type="com.sist.vo.PlaceVO" alias="PlaceVO"/>
+     <typeAlias type="com.sist.vo.CategoryVO" alias="CategoryVO"/>
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기 -->
 		<environment id="development">
@@ -21,5 +22,6 @@
 	<mappers>
 	  <!-- mapper 등록! -->
       <mapper resource="com/sist/mapper/place-mapper.xml"/>
+      <mapper resource="com/sist/mapper/category-mapper.xml"/>
 	</mappers>
 </configuration>
