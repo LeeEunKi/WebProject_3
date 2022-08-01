@@ -43,7 +43,7 @@
 			<div class="menu-bg-wrap">
 				<div class="site-navigation">
 					<span>
-					<a href="index.html" class="logo m-0 float-start active">P L A Y C E</a>
+					<a href="../main/main.do" class="logo m-0 float-start active">P L A Y C E</a>
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
 						
