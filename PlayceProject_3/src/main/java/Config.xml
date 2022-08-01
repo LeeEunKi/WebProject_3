@@ -3,7 +3,10 @@
  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
  <configuration>
- <!-- 지윤/ TypeAlias는 아직 등록 안했습니다 -->
+   <typeAliases>
+     <!-- VO 등록!  -->
+     <typeAlias type="com.sist.vo.PlaceVO" alias="PlaceVO"/>
+   </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기 -->
 		<environment id="development">
 			<transactionManager type="JDBC"/> <!-- AutoCommit을 쓰겠다. -->
@@ -16,6 +19,7 @@
 		</environment>
 	</environments>
 	<mappers>
-	<!-- 지윤/ Mappers는 아직 등록 안했습니다 -->
+	  <!-- mapper 등록! -->
+      <mapper resource="com/sist/mapper/place-mapper.xml"/>
 	</mappers>
 </configuration>
