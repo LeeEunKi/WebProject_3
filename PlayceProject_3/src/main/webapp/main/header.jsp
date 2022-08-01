@@ -53,18 +53,18 @@
 								<li class="has-children">
 									<a href="#">체육시설</a>
 									<ul class="dropdown">
-										<li><a href="#">실내체육시설</a></li>
-										<li><a href="#">실외 체육시설</a></li>
+										<li><a href="../place/place_list.do?tno=1">실내체육시설</a></li>
+										<li><a href="../place/place_list.do?tno=2">실외 체육시설</a></li>
 									</ul>
 								</li>
-								<li><a href="#">강당/세미나실</a></li>
-								<li><a href="#">레스토랑</a></li>
-								<li><a href="#">공연장</a></li>
-								<li><a href="#">스튜디오</a></li>
-								<li><a href="#">파티룸</a></li>
-								<li><a href="#">글램핑</a></li>
-								<li><a href="#">스터디 카페</a></li>
-								<li><a href="#">갤러리</a></li>
+								<li><a href="../place/place_list.do?tno=3">강당/세미나실</a></li>
+								<li><a href="../place/place_list.do?tno=4">레스토랑</a></li>
+								<li><a href="../place/place_list.do?tno=5">공연장</a></li>
+								<li><a href="../place/place_list.do?tno=6">스튜디오</a></li>
+								<li><a href="../place/place_list.do?tno=7">파티룸</a></li>
+								<li><a href="../place/place_list.do?tno=8">글램핑</a></li>
+								<li><a href="../place/place_list.do?tno=9">스터디 카페</a></li>
+								<li><a href="../place/place_list.do?tno=10">갤러리</a></li>
 							</ul>
 						</li>
 						<li><a href="services.html">사진 리뷰</a></li>
@@ -83,8 +83,6 @@
 	</nav>
 
 	<div class="hero">
-
-
 		<div class="hero-slide">
 			<div class="img overlay" style="background-image: url('../images/hero_bg_3.jpg')"></div>
 			<div class="img overlay" style="background-image: url('../images/hero_bg_2.jpg')"></div>

@@ -26,14 +26,13 @@ public class CategoryDAO {
 	//<select id="categoryData" resultType="CategoryVO" parameterType="int">
 	public static List<CategoryVO> categoryData()
 	{
-		
 		SqlSession session=null;
 		List<CategoryVO> list =null;
 		try {
 			session=ssf.openSession(); // getConnection
 			list=session.selectList("categoryData");
 		}catch(Exception e) {
-			System.out.println("categoryData: error");
+			System.out.println("categoryData(): error");
 			e.printStackTrace();
 		}finally {
 			session.close(); //disConnection
@@ -50,7 +49,7 @@ public class CategoryDAO {
 			session=ssf.openSession(); // getConnection
 			cnts =session.selectList("categoryCount");
 		}catch(Exception e) {
-			System.out.println("categoryData: error");
+			System.out.println("categoryCount(): error");
 			e.printStackTrace();
 		}finally {
 			session.close(); //disConnection
