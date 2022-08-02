@@ -47,12 +47,19 @@
 						    <span class="d-block mb-2 text-black-50">${vo.address }</span>
 						    <div class="specs d-flex mb-4">
 						      <span class="d-block d-flex align-items-center me-3">
-						        <span class="icon-bed me-2"></span>
-						        <span class="caption">${vo.capa }명</span>
+						      	<img src="../images/capa.png" style="width:18px"/>
+						        <span class="caption">&nbsp;${vo.capa }명</span>
 						      </span>
 						      <span class="d-block d-flex align-items-center">
-						        <span class="icon-bath me-2"></span>
-						        <span class="caption">${vo.parking }대</span>
+							      <c:choose>
+								     <c:when test="${vo.parking==0 }">
+								       <img src="../images/noparking.png" style="width:18px"/>
+								     </c:when>
+								     <c:otherwise>
+								       <img src="../images/parking.png" style="width:18px"/>
+								     </c:otherwise>
+								   </c:choose>
+						        <span class="caption">&nbsp;${vo.parking }대</span>
 						      </span>
 						    </div>
 						    <!-- <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>-->
