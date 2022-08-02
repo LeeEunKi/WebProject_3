@@ -28,7 +28,9 @@
 <style type="text/css">
 .background-img{
 	background-repeat : no-repeat;
-    background-size : cover;                                                     
+    background-size : cover;
+   	background : (rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));                                                                 
+   	z-index:1;
 }
 .category-title{
 	margin-top: 20px;
