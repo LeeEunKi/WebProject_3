@@ -7,12 +7,31 @@
   FROM category_3 ORDER BY no ASC
 </select>
 
+<select id="categorySelectedData" resultType="CategoryVO" parameterType="int">
+  SELECT no,title,subject,poster
+  FROM category_3
+  WHERE no=#{cno}
+</select>
+
 <select id="categoryCount" resultType="int"> 
  SELECT COUNT(*)
  FROM place_3
  GROUP BY category_no
  HAVING category_no IS NOT NULL
  ORDER BY category_no ASC
+</select>
+
+<select id="categoryDataList" resultType="PlaceVO" parameterType="hashmap">
+	SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, num
+	FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, rownum as num
+	FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image
+	      FROM place_3 WHERE category_no = #{cno} ORDER BY no ASC))
+	WHERE num BETWEEN #{start} AND #{end}
+</select>
+
+<select id="categoryTotalCount" resultType="int" parameterType="int">
+	SELECT COUNT(*) FROM place_3
+	WHERE category_no=#{cno}
 </select>
 
 </mapper>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -98,7 +97,7 @@
 								       </c:otherwise>
 								      </c:choose>
 						  	         </span>
-								     <span class="d-block mb-2 text-black-50">${rvo.address }</span>
+								 <span class="d-block mb-2 text-black-50">${rvo.address }</span>
 							<div class="specs d-flex mb-4">
 						      <span class="d-block d-flex align-items-center me-3">
 						      	<img src="../images/capa.png" style="width:18px"/>
@@ -145,7 +144,7 @@
 	
 		<div class="news container">
 		  <c:forEach var="vo" items="${list }" varStatus="s">
-			<a href="#" class="box vertical box${s.index+1 } background-img" style="background-image: url(${vo.poster});">
+			<a href="../place/category_list.do?cno=${vo.no }" class="box vertical box${s.index+1 } background-img" style="background-image: url(${vo.poster});">
 				<h3 class="category-title">${vo.title }</h3>
 				<div>${vo.subject }<span style="color: yellow;">&nbsp;${categoryCnt.get(s.index) } 곳</span></div>
 			</a>
