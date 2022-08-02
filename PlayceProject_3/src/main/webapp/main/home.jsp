@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="..layout/fonts/icomoon/style.css">
 <link rel="stylesheet" href="..layout/fonts/flaticon/font/flaticon.css">
@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="..layout/css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
 <style type="text/css">
 .background-img{
 	background-repeat : no-repeat;
@@ -42,6 +42,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+     <div class="hero">
+		<div class="hero-slide">
+			<div class="img overlay" style="background-image: url('../images/hero_bg_3.jpg')"></div>
+			<div class="img overlay" style="background-image: url('../images/hero_bg_2.jpg')"></div>
+			<div class="img overlay" style="background-image: url('../images/hero_bg_1.jpg')"></div>
+		</div>
+	  
+		
  		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center">
@@ -55,6 +63,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="section">
 		<div class="container">
 			<div class="row mb-5 align-items-center">

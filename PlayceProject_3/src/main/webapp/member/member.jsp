@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="hero page-inner overlay" style="background-image: url('images/hero_bg_1.jpg'); height: 50vh;">
+	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 50vh;">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">

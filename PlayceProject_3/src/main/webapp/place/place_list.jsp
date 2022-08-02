@@ -10,25 +10,25 @@
 <title></title>
 </head>
 <body>
-<div class="hero" style="background-image: url('../images/hero_bg_1.jpg');">
+
+	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
-					<h1 class="heading" data-aos="fade-up">${type }</h1>
-
-					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-						<ol class="breadcrumb text-center justify-content-center">
-							<li class="breadcrumb-item "><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active text-white-50" aria-current="page">Properties</li>
-						</ol>
-					</nav>
+					<h1 class="heading_signup" data-aos="fade-up">${type }</h1>
 				</div>
 			</div>
 		</div>
 	</div>
+
 <div class="section section-properties">
-		<div class="container">
+	  <div class="container">
+		  <div class="col-lg-6">
+		     <h2 class="font-weight-bold text-primary heading">0000 카테고리</h2>
+		     <p class="sub-title">검색된 0000개의 장소</p>
+		  </div>
+		 
 			<div class="row">
 			<c:forEach var="vo" items="${list }">
 			<!-- 하나 출력 -->
