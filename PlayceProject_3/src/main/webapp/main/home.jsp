@@ -1,7 +1,8 @@
 <<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,59 +66,71 @@
 		</div>
 	</div>
 	
-	<div class="section">
-		<div class="container">
-			<div class="row mb-5 align-items-center">
-				<div class="col-lg-6">
-					<h2 class="font-weight-bold text-primary heading">오늘의 추천 장소</h2>
-					<p class="sub-title">The latest and best lifstyle articles selected by our editorial office.</p>
-				</div>
-				<div class="col-lg-6 text-lg-end">
-					<p><a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">View all properties</a></p>
-				</div>
+<div class="section">
+	<div class="container">
+		<div class="row mb-5 align-items-center">
+			<div class="col-lg-6">
+				<h2 class="font-weight-bold text-primary heading">오늘의 추천 장소</h2>
+				<p class="sub-title">뜨기 전에 먼저 예약하세요</p>
 			</div>
-			<div class="row">
+		</div>
+		<div class="row">
 				<div class="col-12">
 					<div class="property-slider-wrap">
 						<div class="property-slider">
 						<!-- item -->
-						 <c:forEach var="rvo" items="${rlist }" varStatus="s">
+						 <c:forEach var="rvo" items="${rlist }">
 							<div class="property-item">
 								<a href="property-single.html" class="img">
-									<img src="../images/img_${s.index+1 }.jpg" alt="Image" class="img-fluid">
+									<img src="${rvo.rep_image}" class="img-fluid">
 								</a>
 								<div class="property-content">
+								    <span class="d-block mb-2 text-black-50" style="font-size: 15px;">${rvo.host_name }</span>
 									<div class="price mb-2"><span>${rvo.name }</span></div>
 									<div>
-										<span class="d-block mb-2 text-black-50">${rvo.address }</span>
-										<span class="city d-block mb-3">${rvo.host_name }</span>
-										<div class="specs d-flex mb-4">
-											<span class="d-block d-flex align-items-center me-3">
-												<span class="icon-bed me-2"></span>
-												<span class="caption">2 beds</span>
-											</span>
-											<span class="d-block d-flex align-items-center">
-												<span class="icon-bath me-2"></span>
-												<span class="caption">2 baths</span>
-											</span>
-										</div>
-										<a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-									</div>
-								</div>
-							</div>
-						  </c:forEach>	
+									 <span class="city d-block mb-3">
+						  		      <c:choose>
+								       <c:when test="${rvo.price==0 }">
+								         별도 문의
+								       </c:when>
+								       <c:otherwise>
+								         <fmt:formatNumber type="number" maxFractionDigits="3" value="${rvo.price}" />원
+								       </c:otherwise>
+								      </c:choose>
+						  	         </span>
+								     <span class="d-block mb-2 text-black-50">${rvo.address }</span>
+							<div class="specs d-flex mb-4">
+						      <span class="d-block d-flex align-items-center me-3">
+						      	<img src="../images/capa.png" style="width:18px"/>
+						        <span class="caption">&nbsp;${rvo.capa }명</span>
+						      </span>
+						      <span class="d-block d-flex align-items-center">
+							      <c:choose>
+								    <c:when test="${rvo.parking==0 }">
+								      <img src="../images/noparking.png" style="width:18px"/>
+								    </c:when>
+								    <c:otherwise>
+								      <img src="../images/parking.png" style="width:18px"/>
+								    </c:otherwise>
+								  </c:choose>
+						          <span class="caption">&nbsp;${rvo.parking }대</span>
+						       </span>
+						    </div>
 						</div>
-						<div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
-							<span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
-							<span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
-						</div>
-
 					</div>
 				</div>
-
+			 </c:forEach>	
 			</div>
-		</div>
-	</div>
+			<div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
+				<span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
+				<span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
+			</div>
+
+		  </div>
+	  </div>
+   </div>
+ </div>
+</div>
 
 	
 <!-- 기획전 -->
