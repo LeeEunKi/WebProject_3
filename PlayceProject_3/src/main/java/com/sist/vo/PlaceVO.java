@@ -19,13 +19,13 @@ package com.sist.vo;
  */
 public class PlaceVO {
 	int no,price,capa,parking,category_no,type_no;
-	String name,host_name,address,area,box,content,etc,nnb,img;//img:대표이미지
+	String name,host_name,address,area,box,content,etc,nnb,rep_image;
 	
-	public String getImg() {
-		return img;
+	public String getRep_image() {
+		return rep_image;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setRep_image(String rep_image) {
+		this.rep_image = rep_image;
 	}
 	public int getNo() {
 		return no;

@@ -23,8 +23,8 @@ public class PlaceDAO {
 		}
 	}
 	
+	// 플레이스 목록 데이터 불러오기
 	public static List<PlaceVO> placeListData(Map map){
-		//ssf가 Connection 역할 SqlSession이 PreparedStatement역할 
 		SqlSession session = null; 
 		List<PlaceVO> list = null;
 		try {
@@ -40,15 +40,16 @@ public class PlaceDAO {
 		return list;
 	}
 	
-	public static int placeTotalPage(int tno){
+	//플레이스 총 개수 구하기
+	public static int placeTotalCount(int tno){
 		SqlSession session = null;
 		int total = 0;
 		try {
 			session = ssf.openSession();
-			total = session.selectOne("placeTotalPage",tno);
+			total = session.selectOne("placeTotalCount",tno);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO:placeTotalPage(int) ERROR");
+			System.out.println("PlaceDAO:placeTotalCount(int) ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -56,6 +57,7 @@ public class PlaceDAO {
 		return total;
 	}
 	
+	//플레이스 타입 이름 불러오기
 	public static String placeTypeName(int tno) {
 		SqlSession session = null;
 		String type="";

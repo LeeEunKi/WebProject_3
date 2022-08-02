@@ -2,20 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.place-mapper">
 	<select id="placeListData" resultType="PlaceVO" parameterType="hashmap">
-		SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, img, num
-		FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, img, rownum as num
-		FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, img
-        FROM place_3 
-        LEFT JOIN (select place_no, MAX(image) as img from place_image_3 GROUP by place_no) place_image_3 
-        ON place_3.no=place_image_3.place_no WHERE type_no = #{tno} ORDER BY no ASC))
+		SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, num
+		FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, rownum as num
+		FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image
+        FROM place_3 WHERE type_no = #{tno} ORDER BY no ASC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
-	<select id="placeTotalPage" resultType="int" parameterType="int">
-		SELECT CEIL(COUNT(*)/9.0) FROM place_3
+	<select id="placeTotalCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM place_3
 		WHERE type_no=#{tno}
 	</select>
 	<select id="placeTypeName" resultType="String" parameterType="int">
-		select no, type from place_type_3 WHERE no=#{tno};
+		select type from place_type_3 WHERE no=#{tno}
 	</select>
 	<select id="recommendPlaceList" resultType="PlaceVO">
 	    SELECT S.*

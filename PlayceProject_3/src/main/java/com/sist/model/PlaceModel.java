@@ -31,8 +31,9 @@ public class PlaceModel {
 		map.put("tno", Integer.parseInt(tno));
 		
 		List<PlaceVO> list = PlaceDAO.placeListData(map);
-		int totalPage = PlaceDAO.placeTotalPage(Integer.parseInt(tno));
-//		String type = PlaceDAO.placeTypeName(Integer.parseInt(tno));
+		int totalCount = PlaceDAO.placeTotalCount(Integer.parseInt(tno));
+		String type = PlaceDAO.placeTypeName(Integer.parseInt(tno));
+		int totalPage = (int)Math.ceil((double)totalCount/9.0);
 		
 		//페이지네이션 영역 변수 설정
 		final int BLOCK = 5;
@@ -45,9 +46,10 @@ public class PlaceModel {
 		request.setAttribute("startPage",startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("list", list);
 		request.setAttribute("tno", tno);
-//		request.setAttribute("type", type);
+		request.setAttribute("type", type);
 		request.setAttribute("main_jsp", "../place/place_list.jsp");
 		return "../main/main.jsp";	
 	}
