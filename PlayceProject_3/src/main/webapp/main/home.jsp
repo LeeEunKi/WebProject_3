@@ -28,9 +28,7 @@
 <style type="text/css">
 .background-img{
 	background-repeat : no-repeat;
-    background-size : cover;
-   	background : (rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));                                                                 
-   	z-index:1;
+    background-size : cover;                                                     
 }
 .category-title{
 	margin-top: 20px;
@@ -110,7 +108,6 @@
 	</div>
 
 	
-
 <!-- 기획전 -->
 	<div class="section-2">
 		<div class="container">
