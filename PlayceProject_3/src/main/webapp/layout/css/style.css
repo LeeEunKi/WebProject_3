@@ -10650,15 +10650,6 @@ sign up
 
 */
 
-*,
-*:before,
-*:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-
 #member {
   max-width: 300px;
   margin: 10px auto;
