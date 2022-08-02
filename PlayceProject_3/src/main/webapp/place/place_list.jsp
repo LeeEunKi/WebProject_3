@@ -10,7 +10,6 @@
 <title></title>
 </head>
 <body>
-
 	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
 <!--
 		<div class="container">
