@@ -43,7 +43,16 @@
 						    <span>${vo.name }</span>
 						  </div>
 						  <div>
-						  	<span class="city d-block mb-3"><fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.price}" />원</span>
+						  	<span class="city d-block mb-3">
+						  		 <c:choose>
+								     <c:when test="${vo.price==0 }">
+								       별도 문의
+								     </c:when>
+								     <c:otherwise>
+								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.price}" />원
+								     </c:otherwise>
+								   </c:choose>
+						  	</span>
 						    <span class="d-block mb-2 text-black-50">${vo.address }</span>
 						    <div class="specs d-flex mb-4">
 						      <span class="d-block d-flex align-items-center me-3">
