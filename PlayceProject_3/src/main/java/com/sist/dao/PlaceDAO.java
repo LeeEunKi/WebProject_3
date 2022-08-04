@@ -32,7 +32,7 @@ public class PlaceDAO {
 			list = session.selectList("placeListData",map);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO:placeListData(Map map) ERROR");
+			System.out.println("PlaceDAO : placeListData(Map map) ERROR");
 		}finally {
 			if(session != null)
 				session.close();
@@ -49,7 +49,7 @@ public class PlaceDAO {
 			total = session.selectOne("placeTotalCount",tno);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO:placeTotalCount(int) ERROR");
+			System.out.println("PlaceDAO : placeTotalCount(int) ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -66,7 +66,7 @@ public class PlaceDAO {
 			type = session.selectOne("placeTypeName",tno);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO:placeTypeName(int) ERROR");
+			System.out.println("PlaceDAO : placeTypeName(int) ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -90,5 +90,35 @@ public class PlaceDAO {
 		}
 		return list;
 	}
-	
+	//상세페이지 : 장소 상세정보 불러오기
+	public static PlaceVO placeDetailData(int no) {
+		SqlSession session = null;
+		PlaceVO vo = null;
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("placeDetailData",no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeDetailData(int no) : ERROR");
+		}
+		return vo;
+	}
+	//상세페이지 : 장소 이미지들 불러오기
+	public static List<ImageVO> placeImageData(int no){
+		SqlSession session = null;
+		List<ImageVO> list = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("placeImageData",no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeImageData(int no) : ERROR");
+		}finally {
+			session.close();
+		}
+		for(ImageVO vo:list) {
+			System.out.println(vo.getImage());
+		}
+		return list;
+	}
 }
