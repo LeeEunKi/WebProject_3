@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.PlaceDAO;
-import com.sist.vo.PlaceVO;
+import com.sist.vo.*;
 
 @Controller
 public class PlaceModel {
@@ -52,6 +52,17 @@ public class PlaceModel {
 		request.setAttribute("type", type);
 		request.setAttribute("main_jsp", "../place/place_list.jsp");
 		return "../main/main.jsp";	
+	}
+	@RequestMapping("place/detail.do")
+	public String place_detail(HttpServletRequest request, HttpServletResponse response) {
+		String no = request.getParameter("no");
+		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(no));
+		List<ImageVO> list = PlaceDAO.placeImageData(Integer.parseInt(no));
+		
+		request.setAttribute("pvo", pvo);
+		request.setAttribute("list", list);
+		request.setAttribute("main_jsp","../place/detail.jsp");
+		return "../main/main.jsp";
 	}
 
 }
