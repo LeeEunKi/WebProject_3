@@ -24,46 +24,7 @@ $(function(){
 		}
 	})
 	
-	//삭제
-	/*
-		$('$delBtn')
-		let btn=document.querySelector("delBtn")
-		=> 태그명($(태그명)), 아이디명($(#아이디명)), 클래스명($(.클래스명))
-		인접($(태그명+태그명)), 후손($(태그명 태그명)), 자손(태그명>태그명)
-		
-		이벤트
-		- onclick
-		    $("태그명").click(function(){
-		    	처리내용
-		    })
-		    $("태그명").on("click",function(){
-		    	처리내용
-		    })
-		    
-		- onmouseover : hover와 비슷한 기능
-		
-		- hover
-			$("태그명").hover(function(){
-				
-			})
-			
-		- onchange
-			<select> 에서 많이 사용됨 => 예약(달력)
-			$('태그명').change(function(){
-				
-			})
-			
-		- onkeydown, onkeyup => 채팅(엔터눌렀을때..), 서치바
-		
-		<input value> ==> value ==> val()
-		<td>JQuery</td> ==> $("td").text()
-		<a href="data" class=""><img src="data">
-		$("a").attr("href") $("img").attr("src")
-		            ======= href일수도, class일수도 있으니까 속성명을 꼭 넣어줘야함
-		                     => class 태그에서 가져오고 싶으면 class 넣어주기
-		                     
-		
-	*/
+
 	$('#delBtn').on("click",function(){
 		let pwd=$('#delPwd').val();
 		let no=$(this).attr("data-no");
@@ -72,23 +33,6 @@ $(function(){
 			$("#delPwd").focus();
 			return;
 		}
-		
-		//alert("password:"+pwd+"\n번호"+no)
-		//ajax => 요청, 데이터 받기
-		// 번호 받는지 확인하는 코드 => alert("password:"+pwd+"\n번호"+no)
-		/*
-			type
-			url
-			data
-			success:function(result)
-			{
-				
-			}
-			error:function(ex)
-			{
-				
-			}
-		*/
 		
 		$.ajax({
 			type:'post',
@@ -120,19 +64,23 @@ $(function(){
 </script>
 </head>
 <body>
-<div class="wrapper row3">
-  <div id="breadcrumb" class="clear"> 
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">커뮤니티</a></li>
-      <li><a href="#">상세보기</a></li>
-    </ul>
-  </div>
-</div>
+<%-- 요기는 헤더 --%>
+<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
+<!--
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-9 text-center mt-5">
+					<h1 class="heading_signup" data-aos="fade-up"></h1>
+				</div>
+			</div>
+		</div> -->
+	</div>
 
-<div class="wrapper row3">
-  <main class="container clear"> 
-     <h2 class="seciontitle">내용보기</h2>
+<div class="section section-properties">
+	  <div class="container">
+	   	<div class="two_third first" style="height:600px">
+		  <div class="col-lg-12">
+		  <h2 class="font-weight-bold text-primary heading">게시글 상세보기</h2><br>
        	<div class="two_third first">
        		<table class="table">
        			<tr>
@@ -160,7 +108,7 @@ $(function(){
         			<td colspan="4" class="text-right">
         				<a href="../freeboard/update.do?no=${vo.no }" class="btn btn-xs btn-danger">수정</a>
         				<span class="btn btn-xs btn-info" id="del">삭제</span>
-        				<a href="" class="btn btn-xs btn-warning">목록</a>
+        				<a href="../freeboard/list.do" class="btn btn-xs btn-warning">목록</a>
         			</td>
         		</tr>
         		<tr id="delTr" style="display:none">
@@ -171,9 +119,10 @@ $(function(){
         		</tr>
        		</table>
        	</div>
-   	
-        <div class="one_third">2/3</div>
-  </main>
+       	</div>
+       	</div>
+       	</div>
+       	
 </div>
 </body>
 </html>
