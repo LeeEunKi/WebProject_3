@@ -10,7 +10,7 @@
 <title></title>
 </head>
 <body>
-	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
+	<div class="hero page-inner overlay" style="background-image: url('${type_image}'); height:40vh;">
 <!--
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
@@ -33,14 +33,14 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="property-item mb-30">
 
-						<a href="property-single.html" class="img">
+						<a href="../place/detail.do?no=${vo.no }" class="img">
 							<img src="${vo.rep_image }" alt="Image" class="img-fluid">
 						</a>
 
 						<div class="property-content">
 						  <span class="d-block mb-2 text-black-50" style="font-size: 15px;">${vo.host_name }</span>
 						  <div class="price mb-2">
-						    <span>${vo.name }</span>
+						    <a href="../place/detail.do?no=${vo.no }" class="price mb-2"><span>${vo.name }</span></a>
 						  </div>
 						  <div>
 						  	<span class="city d-block mb-3">
@@ -107,12 +107,12 @@
 			</div>
 		</div>
 	</div>
-    <!-- Preloader 
+<!--     Preloader
     <div id="overlayer"></div>
     <div class="loader">
     	<div class="spinner-border" role="status">
     		<span class="visually-hidden">Loading...</span>
     	</div>
-    </div>-->
+    </div> -->
 </body>
 </html>

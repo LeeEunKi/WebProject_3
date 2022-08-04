@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.place-mapper">
+	<!-- 타입별 장소 목록 불러오기 -->
 	<select id="placeListData" resultType="PlaceVO" parameterType="hashmap">
 		SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, num
 		FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, rownum as num
@@ -8,19 +9,34 @@
         FROM place_3 WHERE type_no = #{tno} ORDER BY no ASC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
+	<!-- 장소 타입별 개수 불러오기 -->
 	<select id="placeTotalCount" resultType="int" parameterType="int">
 		SELECT COUNT(*) FROM place_3
 		WHERE type_no=#{tno}
 	</select>
-	<select id="placeTypeName" resultType="String" parameterType="int">
-		select type from place_type_3 WHERE no=#{tno}
+	<!--  장소 타입명 불러오기 -->
+	<select id="placeTypeData" resultType="CategoryVO" parameterType="int">
+		select type as title, image as poster from place_type_3 WHERE no=#{tno}
 	</select>
+	<!-- 추천장소 랜덤 불러오기 -->
 	<select id="recommendPlaceList" resultType="PlaceVO">
 	    SELECT S.*
 		FROM (SELECT *
 		FROM place_3
 		order by SYS.dbms_random.value) S
 		<![CDATA[WHERE ROWNUM <=9]]>
+	</select>
+	<!-- 상세페이지 : 장소 정보 불러오기 -->
+	<select id="placeDetailData" resultType="PlaceVO" parameterType="int">
+		SELECT no, host_name, price, address, area, box, capa, parking, content, etc, nnb, category_no, type_no, name, rep_image
+		FROM place_3
+		WHERE no = #{no}
+	</select>
+	<!-- 상세페이지 : 장소 이미지 불러오기 -->
+	<select id="placeImageData" resultType="ImageVO" parameterType="int">
+		SELECT place_no, image
+		FROM place_image_3
+		WHERE place_no = #{no}
 	</select>
 </mapper>
 
