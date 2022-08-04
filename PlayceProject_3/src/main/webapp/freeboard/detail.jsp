@@ -71,7 +71,7 @@ $(function(){
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
 					<h1 class="heading_signup" data-aos="fade-up"></h1>
-				</div>
+				</div>>
 			</div>
 		</div> -->
 	</div>

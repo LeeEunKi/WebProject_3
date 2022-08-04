@@ -48,15 +48,7 @@ $(function(){
 		
 		$('#frm').submit();
 	})
-	/*
-	    vuejs 
-	    axios.get('url',{
-	    	params:{
-	    		no:1,
-	    		pwd:'1234'
-	    	}
-	    }).then(result=>{})
-	*/
+
 	$('#pwd').keyup(function(){
 		let pwd=$('#pwd').val();
 		let no=$('#no').val();

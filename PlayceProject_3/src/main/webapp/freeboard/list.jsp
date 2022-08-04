@@ -230,7 +230,7 @@ a.button:hover {
 </head>
 <body>
 
-<%-- 요기는 헤더 --%>
+<%-- 요기는 헤더! --%>
 <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
 <!--
 		<div class="container">
@@ -242,7 +242,7 @@ a.button:hover {
 		</div> -->
 	</div>
 
-<%-- 요기부터 메인 --%>
+<%-- 요기부터 메인! --%>
 <div class="section section-properties">
 	  <div class="container">
 	   	<div class="two_third first" style="height:800px">
