@@ -68,7 +68,7 @@
 							</ul>
 						</li>
 						<li><a href="services.html">사진 리뷰</a></li>
-						<li><a href="about.html">커뮤니티</a></li>
+						<li><a href="../freeboard/list.do">커뮤니티</a></li>
 						<li><a href="index.html">공지사항</a></li>
 						<li><a href="contact.html">로그인/회원가입</a></li>
 					</ul>

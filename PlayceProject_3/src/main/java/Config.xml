@@ -7,6 +7,7 @@
      <!-- VO 등록!  -->
      <typeAlias type="com.sist.vo.PlaceVO" alias="PlaceVO"/>
      <typeAlias type="com.sist.vo.CategoryVO" alias="CategoryVO"/>
+     <typeAlias type="com.sist.vo.FreeBoardVO" alias="FreeBoardVO"/>
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기 -->
 		<environment id="development">
@@ -23,5 +24,6 @@
 	  <!-- mapper 등록! -->
       <mapper resource="com/sist/mapper/place-mapper.xml"/>
       <mapper resource="com/sist/mapper/category-mapper.xml"/>
+      <mapper resource="com/sist/mapper/freeboard-mapper.xml"/>
 	</mappers>
 </configuration>
