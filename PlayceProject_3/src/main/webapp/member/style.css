@@ -236,6 +236,7 @@ html, body {
   visibility: visible;
   -webkit-transition: all 0.3s ease;
 }
+
 .test_btn1{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
