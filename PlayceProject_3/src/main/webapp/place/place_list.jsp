@@ -10,7 +10,7 @@
 <title></title>
 </head>
 <body>
-	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
+	<div class="hero page-inner overlay" style="background-image: url('${type_image}'); height:40vh;">
 <!--
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
@@ -107,12 +107,12 @@
 			</div>
 		</div>
 	</div>
-    <!-- Preloader -->
+<!--     Preloader
     <div id="overlayer"></div>
     <div class="loader">
     	<div class="spinner-border" role="status">
     		<span class="visually-hidden">Loading...</span>
     	</div>
-    </div>
+    </div> -->
 </body>
 </html>

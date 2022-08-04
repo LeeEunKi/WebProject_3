@@ -58,12 +58,12 @@ public class PlaceDAO {
 	}
 	
 	//플레이스 타입 이름 불러오기
-	public static String placeTypeName(int tno) {
+	public static CategoryVO placeTypeData(int tno) {
 		SqlSession session = null;
-		String type="";
+		CategoryVO type = null;
 		try {
 			session = ssf.openSession();
-			type = session.selectOne("placeTypeName",tno);
+			type = session.selectOne("placeTypeData",tno);
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			System.out.println("PlaceDAO : placeTypeName(int) ERROR");

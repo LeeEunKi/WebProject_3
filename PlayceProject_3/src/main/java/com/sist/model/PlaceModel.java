@@ -32,7 +32,10 @@ public class PlaceModel {
 		
 		List<PlaceVO> list = PlaceDAO.placeListData(map);
 		int totalCount = PlaceDAO.placeTotalCount(Integer.parseInt(tno));
-		String type = PlaceDAO.placeTypeName(Integer.parseInt(tno));
+		CategoryVO typedata = PlaceDAO.placeTypeData(Integer.parseInt(tno));
+		String type = typedata.getTitle();
+		String type_image = typedata.getPoster();
+		System.out.println(type_image);
 		int totalPage = (int)Math.ceil((double)totalCount/9.0);
 		
 		//페이지네이션 영역 변수 설정
@@ -50,6 +53,7 @@ public class PlaceModel {
 		request.setAttribute("list", list);
 		request.setAttribute("tno", tno);
 		request.setAttribute("type", type);
+		request.setAttribute("type_image", type_image);
 		request.setAttribute("main_jsp", "../place/place_list.jsp");
 		return "../main/main.jsp";	
 	}
