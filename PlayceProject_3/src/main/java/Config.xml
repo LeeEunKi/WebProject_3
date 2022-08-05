@@ -24,7 +24,7 @@
 		</environment>
 	</environments>
 	<mappers>
-	  <!-- mapper 등록! -->
+	  <!-- mapper 등록!! -->
       <mapper resource="com/sist/mapper/place-mapper.xml"/>
       <mapper resource="com/sist/mapper/category-mapper.xml"/>
       <mapper resource="com/sist/mapper/freeboard-mapper.xml"/>
