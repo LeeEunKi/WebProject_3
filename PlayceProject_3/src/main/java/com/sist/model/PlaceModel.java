@@ -63,8 +63,8 @@ public class PlaceModel {
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(no));
 		List<ImageVO> list = PlaceDAO.placeImageData(Integer.parseInt(no));
 		
-		request.setAttribute("pvo", pvo);
-		request.setAttribute("list", list);
+		request.setAttribute("pvo", pvo); //장소설명
+		request.setAttribute("list", list); //이미지리스트
 		request.setAttribute("main_jsp","../place/detail.jsp");
 		return "../main/main.jsp";
 	}
