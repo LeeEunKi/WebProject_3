@@ -62,18 +62,7 @@ public class MemberModel {
 		String addr2=request.getParameter("addr2");
 		String tel1=request.getParameter("tel1");
 		String tel2=request.getParameter("tel2");
-		String tel="010"+tel1+tel2;
-		
-		System.out.println("id:"+id);
-		System.out.println("pwd:"+pwd);
-		System.out.println("name:"+name);
-		System.out.println("sex:"+sex);
-		System.out.println("email:"+email);
-		System.out.println("post:"+post);
-		System.out.println("addr1:"+addr1);
-		System.out.println("addr2:"+addr2);
-		System.out.println("tel:"+tel);
-
+		String tel="010"+tel1+tel2;		
 		
 		MemberVO vo=new MemberVO();
 		// 데이터베이스 연결
