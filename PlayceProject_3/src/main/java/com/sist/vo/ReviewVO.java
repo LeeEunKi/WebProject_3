@@ -79,5 +79,6 @@ public class ReviewVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	 
 	
 }

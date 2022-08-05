@@ -12,7 +12,6 @@
 	CONSTRAINT review_3_no_pk PRIMARY KEY(no)
 	rcount NUMBER DEFAULT 0
  -->
- 
 <!--  댓글 카운트 -->
 <update id="countIncrement" parameterType="ReviewVO">
    UPDATE REVIEW_3 SET

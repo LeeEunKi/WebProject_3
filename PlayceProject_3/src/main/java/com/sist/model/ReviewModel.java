@@ -65,4 +65,5 @@ public class ReviewModel {
 		
 		return "redirect:../place/detail.do?no="+"???";//여기서 무슨 값으로 넘길지 확인하고 기입
 	}
+	
 }
