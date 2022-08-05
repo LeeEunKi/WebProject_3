@@ -82,9 +82,9 @@
 					</div>
 			   </div>
 			   <div class="col-lg-8">
-				<h2 class="heading text-primary" style="padding-top: 30px;">장소 소개</h2>
+				<h2 class="heading text-primary" style="padding-top: 30px;" id="desc">장소 소개</h2>
 				<p class="meta">${pvo.address }</p>
-				<p class="de-text-black-50" id="desc">${pvo.content }</p>
+				<p class="de-text-black-50" >${pvo.content }</p>
 				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			   </div>
 			   <div class="col-lg-8">
