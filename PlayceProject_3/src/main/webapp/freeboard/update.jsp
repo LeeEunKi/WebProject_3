@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.button {
+border:1x solid white;    
+color:black;   
+width:120;height:70; 
+background-color: white;
+}
+</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -40,15 +48,7 @@ $(function(){
 		
 		$('#frm').submit();
 	})
-	/*
-	    vuejs 
-	    axios.get('url',{
-	    	params:{
-	    		no:1,
-	    		pwd:'1234'
-	    	}
-	    }).then(result=>{})
-	*/
+
 	$('#pwd').keyup(function(){
 		let pwd=$('#pwd').val();
 		let no=$('#no').val();
@@ -77,24 +77,25 @@ $(function(){
 </script>
 </head>
 <body>
-<div class="wrapper row3">
-  <div id="breadcrumb" class="clear"> 
-    <!-- ################################################################################################ -->
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">커뮤니티</a></li>
-      <li><a href="#">수정하기</a></li>
-    </ul>
-    <!-- ################################################################################################ --> 
-  </div>
-</div>
-<!-- ################################################################################################ --> 
-<!-- ################################################################################################ --> 
-<!-- ################################################################################################ -->
-<div class="wrapper row3">
-  <main class="container clear"> 
-    <!-- main body --> 
-    <h2 class="sectiontitle">수정하기(Ajax)</h2>
+
+<%-- 요기는 헤더 --%>
+<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height:40vh;">
+<!--
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-9 text-center mt-5">
+					<h1 class="heading_signup" data-aos="fade-up"></h1>
+				</div>
+			</div>
+		</div> -->
+	</div>
+	
+	
+<div class="section section-properties">
+	  <div class="container">
+	   	<div class="two_third first" style="height:600px">
+		  <div class="col-lg-12">
+		   <h2 class="font-weight-bold text-primary heading">자유게시판</h2><br>
     <div class="two_third first">
      <form method=post action="../freeboard/update_ok.do" id="frm">
       <table class="table">
@@ -108,13 +109,13 @@ $(function(){
         <tr>
           <th width=20% class="text-right">제목</th>
           <td width=80%>
-            <input type=text name=subject size=50 class="input-sm" id="subject" value="${vo.subject }">
+            <input type=text name=subject size=150 class="input-sm" id="subject" value="${vo.subject }">
           </td>
         </tr>
         <tr>
           <th width=20% class="text-right">내용</th>
           <td width=80%>
-            <textarea rows="10" cols="50" name=content id="content">${vo.content }</textarea>
+            <textarea rows="10" cols="150" name=content id="content">${vo.content }</textarea>
           </td>
         </tr>
         <tr>
@@ -126,16 +127,16 @@ $(function(){
         </tr>
         <tr>
           <td colspan="2" class="text-center">
-            <input type=button value="글쓰기" class="btn btn-sm btn-success" id="writeBtn">
-            <input type=button value="취소" class="btn btn-sm btn-info"
+            <input type=button value="글쓰기" class="button" id="writeBtn">
+            <input type=button value="취소" class="button"
               onclick="javascript:history.back()">
           </td>
         </tr>
       </table>
       </form>
-    </div>
-    <div class="one_third">2/3</div>
-   </main>
+  
+</div>
+</div>
 </div>
 </body>
 </html>

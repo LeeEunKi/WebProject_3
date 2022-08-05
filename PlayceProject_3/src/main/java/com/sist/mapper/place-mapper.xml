@@ -15,8 +15,8 @@
 		WHERE type_no=#{tno}
 	</select>
 	<!--  장소 타입명 불러오기 -->
-	<select id="placeTypeName" resultType="String" parameterType="int">
-		select type from place_type_3 WHERE no=#{tno}
+	<select id="placeTypeData" resultType="CategoryVO" parameterType="int">
+		select type as title, image as poster from place_type_3 WHERE no=#{tno}
 	</select>
 	<!-- 추천장소 랜덤 불러오기 -->
 	<select id="recommendPlaceList" resultType="PlaceVO">
