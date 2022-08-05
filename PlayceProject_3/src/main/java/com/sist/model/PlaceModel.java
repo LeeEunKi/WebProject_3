@@ -35,7 +35,6 @@ public class PlaceModel {
 		CategoryVO typedata = PlaceDAO.placeTypeData(Integer.parseInt(tno));
 		String type = typedata.getTitle();
 		String type_image = typedata.getPoster();
-		System.out.println(type_image);
 		int totalPage = (int)Math.ceil((double)totalCount/9.0);
 		
 		//페이지네이션 영역 변수 설정
@@ -63,8 +62,8 @@ public class PlaceModel {
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(no));
 		List<ImageVO> list = PlaceDAO.placeImageData(Integer.parseInt(no));
 		
-		request.setAttribute("pvo", pvo);
-		request.setAttribute("list", list);
+		request.setAttribute("pvo", pvo); //장소설명
+		request.setAttribute("list", list); //이미지리스트
 		request.setAttribute("main_jsp","../place/detail.jsp");
 		return "../main/main.jsp";
 	}
