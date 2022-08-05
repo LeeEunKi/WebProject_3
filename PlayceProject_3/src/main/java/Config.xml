@@ -12,7 +12,7 @@
      <typeAlias type="com.sist.vo.ReviewVO" alias="ReviewVO"/>
      <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
    </typeAliases>
-	<environments default="development"> <!-- 개발환경 만들기 -->
+	<environments default="development"> <!-- 개발환경 만들기. -->
 		<environment id="development">
 			<transactionManager type="JDBC"/> <!-- AutoCommit을 쓰겠다. -->
 			<dataSource type="POOLED">
