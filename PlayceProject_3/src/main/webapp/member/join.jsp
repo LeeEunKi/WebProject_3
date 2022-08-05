@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 50vh;">
@@ -51,8 +53,6 @@
 						  <input type="radio"  value="여성" name="sex"><label  class="sex">여성</label>
 						  <label></label>
 
-						  <label for="name">생년월일:</label>
-						  <input type="date" id="birthday" name="birthday">
 
 						  <label for="name">전화번호:</label>
 						  <input type="text" id="tel" name="tel">
