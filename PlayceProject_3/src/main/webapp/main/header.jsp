@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,9 +35,10 @@ Shadowbox.init({
 })
 
 $(function() {
-	$('.images').css("cursor","pointer")
+	$('.loginImg').css("cursor","pointer")
+	$('.logoutImg').css("cursor","pointer")
 	//login창 쉐도우박스
-	$('.images').click(function() {
+	$('.loginImg').click(function() {
 		Shadowbox.open({
 			content:'../member/login.do',
 			player:'iframe',
@@ -45,6 +47,11 @@ $(function() {
 			height:650
 		})
 	})
+	
+	$('.logoutImg').click(function() {
+		location.href="../member/logout.do";	
+	})
+	
 })
 </script>
 
@@ -67,8 +74,7 @@ $(function() {
 					<span>
 					<a href="../main/main.do" class="logo m-0 float-start active">P L A Y C E</a>
 
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						
+					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">			
 						<li class="has-children">
 							<a href="properties.html">모든 카테고리</a>
 							<ul class="dropdown">
@@ -92,8 +98,12 @@ $(function() {
 						<li><a href="services.html">사진 리뷰</a></li>
 						<li><a href="../freeboard/list.do">커뮤니티</a></li>
 						<li><a href="index.html">공지사항</a></li>
-						
-						<li><a class="images">로그인</a></li>
+						<c:if test="${sessionScope.id == null }">
+						  <li><a class="loginImg">로그인</a></li>
+						</c:if>
+						<c:if test="${sessionScope.id != null }">
+						  <li><a class="logoutImg">로그아웃</a></li>
+						</c:if>  
 					</ul>
 
 					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">

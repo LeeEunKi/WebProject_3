@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.member-mapper">
+<!-- 아이디 중복체크 -->
+<select id="memberIdCheck" resultType="int" parameterType="String">
+ SELECT COUNT(*) FROM member_3
+ WHERE id=#{id}
+</select>
+<!-- 이메일 중복체크 -->
+<select id="memberEmailCheck" resultType="int" parameterType="String">
+ SELECT COUNT(*) FROM member_3
+ WHERE email=#{email}
+</select>
+<!-- 회원가입 -->
+<insert id="memberInsert" parameterType="MemberVO">
+  INSERT INTO member_3(id,pwd,name,sex,email,post,addr1,addr2,tel)
+  VALUES(
+  #{id},
+  #{pwd},
+  #{name},
+  #{sex},
+  #{email},
+  #{post},
+  #{addr1},
+  #{addr2},
+  #{tel}
+  )
+</insert>
 
+<!-- 로그인 처리 -->
+<!-- 아이디 존재여부 확인(0/1) -->
+<select id="memberIdCount" resultType="int" parameterType="string">
+ SELECT COUNT(*)
+ FROM member_3
+ WHERE id=#{id}
+</select>
+<!-- 비밀번호 읽기 -->
+<select id="memberInfoData" resultType="MemberVO" parameterType="string">
+  SELECT pwd,id,name,admin
+  FROM member_3
+  WHERE id=#{id}
+</select>
 
 </mapper>
