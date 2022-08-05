@@ -35,7 +35,6 @@ public class PlaceModel {
 		CategoryVO typedata = PlaceDAO.placeTypeData(Integer.parseInt(tno));
 		String type = typedata.getTitle();
 		String type_image = typedata.getPoster();
-		System.out.println(type_image);
 		int totalPage = (int)Math.ceil((double)totalCount/9.0);
 		
 		//페이지네이션 영역 변수 설정

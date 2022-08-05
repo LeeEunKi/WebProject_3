@@ -116,9 +116,6 @@ public class PlaceDAO {
 		}finally {
 			session.close();
 		}
-		for(ImageVO vo:list) {
-			System.out.println(vo.getImage());
-		}
 		return list;
 	}
 }
