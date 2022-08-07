@@ -11,6 +11,7 @@
      <typeAlias type="com.sist.vo.FreeBoardVO" alias="FreeBoardVO"/>
      <typeAlias type="com.sist.vo.ReviewVO" alias="ReviewVO"/>
      <typeAlias type="com.sist.vo.MemberVO" alias="MemberVO"/>
+     <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기. -->
 		<environment id="development">
@@ -30,5 +31,6 @@
       <mapper resource="com/sist/mapper/freeboard-mapper.xml"/>
       <mapper resource="com/sist/mapper/review-mapper.xml"/>
       <mapper resource="com/sist/mapper/member-mapper.xml"/>
+      <mapper resource="com/sist/mapper/reply-mapper.xml"/>
 	</mappers>
 </configuration>
