@@ -80,7 +80,7 @@
 						<!-- item -->
 						 <c:forEach var="rvo" items="${rlist }">
 							<div class="property-item">
-								<a href="property-single.html" class="img">
+								<a href="../place/detail.do?no=${rvo.no }" class="img">
 									<img src="${rvo.rep_image}" class="img-fluid">
 								</a>
 								<div class="property-content">
