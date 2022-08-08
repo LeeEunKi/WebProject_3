@@ -12,6 +12,7 @@
      <typeAlias type="com.sist.vo.ReviewVO" alias="ReviewVO"/>
      <typeAlias type="com.sist.vo.MemberVO" alias="MemberVO"/>
      <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
+     <typeAlias type="com.sist.vo.AskVO" alias="AskVO"/>
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기. -->
 		<environment id="development">
@@ -32,5 +33,6 @@
       <mapper resource="com/sist/mapper/review-mapper.xml"/>
       <mapper resource="com/sist/mapper/member-mapper.xml"/>
       <mapper resource="com/sist/mapper/reply-mapper.xml"/>
+      <mapper resource="com/sist/mapper/ask-mapper.xml"/>
 	</mappers>
 </configuration>

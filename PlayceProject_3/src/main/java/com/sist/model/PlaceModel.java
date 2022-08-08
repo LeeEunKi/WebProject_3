@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.AskDAO;
 import com.sist.dao.PlaceDAO;
 import com.sist.vo.*;
 
@@ -62,9 +63,28 @@ public class PlaceModel {
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(no));
 		List<ImageVO> list = PlaceDAO.placeImageData(Integer.parseInt(no));
 		
+		//문의게시판 영역 데이터
+		int totalQ = AskDAO.askTotalCount(Integer.parseInt(no));
+		String page = request.getParameter("page");
+		if(page==null)
+			page = "1";
+		int curPage = Integer.parseInt(page);
+		int rowSize = 5;
+		int start = (rowSize*curPage)-(rowSize-1);
+		int end = rowSize*curPage;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("place_no", Integer.parseInt(no));
+		
+		List<AskVO> qList = AskDAO.askListData(map);
+		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트
+		request.setAttribute("qList", qList); //문의리스트
+		request.setAttribute("totalQ", totalQ); //문의 총 개수
 		request.setAttribute("main_jsp","../place/detail.jsp");
+		request.setAttribute("ask_jsp", "../ask/ask_list.jsp");
 		return "../main/main.jsp";
 	}
 

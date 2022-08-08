@@ -196,12 +196,13 @@ if (status === kakao.maps.services.Status.OK) {
 				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 				<h2 class="heading text-primary" style="padding-top: 30px; padding-bottom:30px;" id="desc">장소 정보</h2>
 				<div style="height:10px"></div> <!-- 여백띄우기용 -->
-				<div class="row justify-content-between">
-					<div class="col-lg-8">
 						<table class="descTable">
 							<tr id="descImgs">
-								<td style="width:30%">
+								<td style="width:20%">
 									<img src="../place/images/area.png">
+								</td>
+								<td style="width:20%">
+									<img src="../place/images/box.png">
 								</td>
 								<td style="width:20%">
 									<img src="../place/images/capa.png">
@@ -219,13 +220,15 @@ if (status === kakao.maps.services.Status.OK) {
 								</td>
 							</tr>
 							<tr id="descTitles">
-								<td style="width:30%"><p >면적</p></td>
+								<td style="width:20%"><p >면적</p></td>
+								<td style="width:20%"><p >가로/세로/천정고</p></td>
 								<td style="width:20%"><p>최대수용인원</p></td>
 								<td style="width:20%"><p>주차</p></td>
 								<td style="width:20%"><p>냉난방</p></td>
 							</tr>
 							<tr id="descValues">
-								<td style="width:30%"><p>${pvo.area }<br>${pvo.box }</p></td>
+								<td style="width:20%"><p>${pvo.area }</p></td>
+								<td style="width:20%"><p>${pvo.box }</p></td>
 								<td style="width:20%"><p>${pvo.capa }명까지</p></td>
 								<td style="width:20%">
 									<c:if test="${pvo.parking==0 }">
@@ -238,10 +241,11 @@ if (status === kakao.maps.services.Status.OK) {
 								</td>
 								<td style="width:20%"><p>${pvo.nnb }</p></td>
 							</tr>
+							<tr style="height:30px"></tr>
+							<tr><td colspan="5" style="text-align: left;">${pvo.etc }</td></tr>
 						</table>
 					</div>
-					<div class="col-lg-4">
-						${pvo.etc }
+						
 					</div>
 				</div>
 				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
@@ -255,12 +259,12 @@ if (status === kakao.maps.services.Status.OK) {
 			   </div>
 				<div class="col-lg-8">
 				    <h2 class="heading text-primary"style="padding-top: 30px;" id="review">장소 리뷰&nbsp;&nbsp;<span><h3 class="count">3</h3></span></h2>
-				    <p class="meta">California, United States</p>
+				    <!-- <p class="meta">California, United States</p> -->
 				    
 					   <a href="#"><img src="../images/img_1.jpg" class="img-de-thumbnail"></a>
 					   <a href="#"><img src="../images/img_2.jpg" class="img-de-thumbnail"></a>
 					   <a href="#"><img src="../images/img_3.jpg" class="img-de-thumbnail"></a>
-
+					   
 					<div>
 				  	  	<p class="de-text-reviewer">comsist</p>
 				   	  	<span class="score">★★★★★</span><p class="de-text-date"> 2022.08.04</p>
@@ -281,18 +285,8 @@ if (status === kakao.maps.services.Status.OK) {
 					</div>
 					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			    </div>
-
-				<div class="col-lg-8">
-					<h2 class="heading text-primary"style="padding-top: 30px;" id="ask">문의하기&nbsp;&nbsp;<span><h3 class="count">10</h3></span></h2>
-				    <p class="meta">California, United States</p>
-
-					<div>
-				   		<p class="de-qna-name">comsist</p><p class="de-text-date"> 2022.08.04</p>
-				   		<p class="de-text-desc">Perferendis eligendi reprehenderit, assumenda molestias nisi eius iste reiciendis porro tenetur in, repudiandae amet libero. Doloremque, reprehenderit cupiditate error laudantium qui, esse quam debitis, eum cumque perferendis, illum harum expedita????</p>
-					</div>
-					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-				</div>
-			   
+				<!-- 관리자만 문의 답글달기 보이도록 세팅 -->
+				<jsp:include page="${ask_jsp }"/>
 			   </div>
 			</div>
 		 </div>
