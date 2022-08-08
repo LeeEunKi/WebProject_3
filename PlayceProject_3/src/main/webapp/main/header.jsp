@@ -76,7 +76,7 @@ $(function() {
 
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">			
 						<li class="has-children">
-							<a href="properties.html">모든 카테고리</a>
+							<a href="#">모든 카테고리</a>
 							<ul class="dropdown">
 								<li class="has-children">
 									<a href="#">체육시설</a>
@@ -102,7 +102,15 @@ $(function() {
 						  <li><a class="loginImg">로그인</a></li>
 						</c:if>
 						<c:if test="${sessionScope.id != null }">
-						  <li><a class="logoutImg">로그아웃</a></li>
+						  <li class="has-children">
+						    <a href="#">${sessionScope.name }&nbsp;님</a>
+							<ul class="dropdown">
+								<li class="has-children">
+								<li><a href="../mypage/mypage.do">마이페이지</a></li>
+								<li><a class="logoutImg">로그아웃</a></li>
+							</ul>
+						  </li>						
+					    
 						</c:if>  
 					</ul>
 

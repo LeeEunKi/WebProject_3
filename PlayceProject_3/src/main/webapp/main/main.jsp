@@ -23,6 +23,8 @@
 	<link rel="stylesheet" href="../layout/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css'>
+    <link rel="stylesheet" href="./style.css">
     
 <title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>

@@ -13,8 +13,7 @@ import com.sist.vo.MemberVO;
 public class MemberModel {
 	@RequestMapping("member/login.do")
 	public String member_login(HttpServletRequest request, HttpServletResponse response) {
-		
-		
+				
 		return "../member/login.jsp";
 	}
 	

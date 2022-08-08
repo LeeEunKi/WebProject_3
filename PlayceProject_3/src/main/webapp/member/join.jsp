@@ -267,17 +267,14 @@ body {
 </head>
 <body>
 	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 50vh;">
-
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-9 text-center mt-5">
 					<h2 class="heading_signup" data-aos="fade-up">플레이스에 오신 것을 환영합니다</h2>
-
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<div class="section sec-testimonials">
 		<div class="container">
 			
