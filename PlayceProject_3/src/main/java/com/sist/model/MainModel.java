@@ -26,5 +26,10 @@ public class MainModel {
 		request.setAttribute("main_jsp", "../main/home.jsp");
 		return "../main/main.jsp";
 	}
+	@RequestMapping("main/about.do")
+	public String about_page(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("main_jsp", "../main/about.jsp");
+		return "../main/main.jsp";
+	}
 
 }

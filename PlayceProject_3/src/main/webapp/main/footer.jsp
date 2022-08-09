@@ -13,32 +13,40 @@
 				<div class="col-lg-4">
 					<div class="widget">
 						<h3>Contact</h3>
-						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
+						<address>서울 강남구 테헤란로 132 8층 <br>쌍용교육센터 E반 3조</address>
 						<ul class="list-unstyled links">
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+							<li><a href="tel://82050713164632">+82(0507)-1316-4632</a></li>
 							<li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
 						</ul>
 					</div> <!-- /.widget -->
 				</div> <!-- /.col-lg-4 -->
 				<div class="col-lg-4">
 					<div class="widget">
-						<h3>Sources</h3>
+						<h3>CATEGORIES</h3>
 						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
+								<li><a href="../place/place_list.do?tno=1">실내체육시설</a></li>
+								<li><a href="../place/place_list.do?tno=2">실외 체육시설</a></li>
+								<li><a href="../place/place_list.do?tno=3">강당/세미나실</a></li>
+								<li><a href="../place/place_list.do?tno=4">레스토랑</a></li>
+								<li><a href="../place/place_list.do?tno=5">공연장</a></li>
+<!-- 						<li><a href="#">Services</a></li>
 							<li><a href="#">Vision</a></li>
 							<li><a href="#">Mission</a></li>
 							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
+							<li><a href="#">Privacy</a></li>-->
 						</ul>
 						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
+							<li><a href="../place/place_list.do?tno=6">스튜디오</a></li>
+							<li><a href="../place/place_list.do?tno=7">파티룸</a></li>
+							<li><a href="../place/place_list.do?tno=8">글램핑</a></li>
+							<li><a href="../place/place_list.do?tno=9">스터디 카페</a></li>
+							<li><a href="../place/place_list.do?tno=10">갤러리</a></li>	
+<!-- 							<li><a href="#">Partners</a></li>
 							<li><a href="#">Business</a></li>
 							<li><a href="#">Careers</a></li>
 							<li><a href="#">Blog</a></li>
 							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
+							<li><a href="#">Creative</a></li> -->
 						</ul>
 					</div> <!-- /.widget -->
 				</div> <!-- /.col-lg-4 -->
@@ -46,9 +54,10 @@
 					<div class="widget">
 						<h3>Links</h3>
 						<ul class="list-unstyled links">
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact us</a></li>
+							<li><a href="../main/about.do">서비스 소개</a></li>
+							<li><a href="#">사진 리뷰</a></li>
+							<li><a href="../freeboard/list.do">커뮤니티</a></li>
+							<li><a href="#">공지사항</a></li>
 						</ul>
 
 						<ul class="list-unstyled social">
