@@ -15,12 +15,16 @@
 			
 			<div class="row">
 				<div class="col-lg-6" style="width: 100%;">
-					<form action="../review/review_insert_ok.do" method="post" id="review_insert" name="review_insert">
+					<form action="../review/review_update_ok.do" method="post" id="review_update" name="review_update">
 
-						<h1 style="text-align: center; margin-top: 20px;">리뷰 작성</h1>
+						<h1 style="text-align: center; margin-top: 20px;">리뷰 수정</h1>
 						<legend><span class="number">1</span> 장소는 어떠셨나요?</legend>
 
 
+									  
+						
+						
+						
 						
 							<div class="container">
 								<div class="feedback">

@@ -257,34 +257,8 @@ if (status === kakao.maps.services.Status.OK) {
 				<!-- <p class="text-black-50">자세한 주소는 호스트 승인 후, 메세지로 문의 가능합니다.</p> -->
 				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			   </div>
-				<div class="col-lg-8">
-				    <h2 class="heading text-primary"style="padding-top: 30px;" id="review">장소 리뷰&nbsp;&nbsp;<span><h3 class="count">3</h3></span></h2>
-				    <!-- <p class="meta">California, United States</p> -->
-				    
-					   <a href="#"><img src="../images/img_1.jpg" class="img-de-thumbnail"></a>
-					   <a href="#"><img src="../images/img_2.jpg" class="img-de-thumbnail"></a>
-					   <a href="#"><img src="../images/img_3.jpg" class="img-de-thumbnail"></a>
-					   
-					<div>
-				  	  	<p class="de-text-reviewer">comsist</p>
-				   	  	<span class="score">★★★★★</span><p class="de-text-date"> 2022.08.04</p>
-				  	 	 <p class="de-text-desc">Perferendis eligendi reprehenderit, assumenda molestias nisi eius iste reiciendis porro tenetur in, repudiandae amet libero. Doloremque, reprehenderit cupiditate error laudantium qui, esse quam debitis, eum cumque perferendis, illum harum expedita.</p>
-					</div>
-					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 
-					<div>
-				    	<p class="de-text-reviewer">comsist</p>
-				   		<span class="score">★★★★★</span><p class="de-text-date"> 2022.08.04</p>
-				   		<p class="de-text-desc">Perferendis eligendi reprehenderit, assumenda molestias nisi eius iste reiciendis porro tenetur in, repudiandae amet libero. Doloremque, reprehenderit cupiditate error laudantium qui, esse quam debitis, eum cumque perferendis, illum harum expedita.</p>
-					</div>
-					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-					<div>
-				    	<p class="de-text-reviewer">comsist</p>
-				   		<span class="score">★★★★★</span><p class="de-text-date"> 2022.08.04</p>
-				   		<p class="de-text-desc">Perferendis eligendi reprehenderit, assumenda molestias nisi eius iste reiciendis porro tenetur in, repudiandae amet libero. Doloremque, reprehenderit cupiditate error laudantium qui, esse quam debitis, eum cumque perferendis, illum harum expedita.</p>
-					</div>
-					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-			    </div>
+				<jsp:include page="${review_jsp }"/>
 				<!-- 관리자만 문의 답글달기 보이도록 세팅 -->
 				<jsp:include page="${ask_jsp }"/>
 			   </div>
