@@ -30,7 +30,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="property-item mb-30">
 
-						<a href="property-single.html" class="img">
+						<a href="../place/detail.do?no=${vo.no }" class="img">
 							<img src="${vo.rep_image }" alt="Image" class="img-fluid">
 						</a>
 
