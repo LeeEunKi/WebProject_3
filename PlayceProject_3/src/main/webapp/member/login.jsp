@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - login/signup form animation</title>
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./login.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>

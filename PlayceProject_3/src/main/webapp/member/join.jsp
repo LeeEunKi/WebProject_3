@@ -6,12 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
 
 <link rel="stylesheet" href="../layout/fonts/icomoon/style.css">
 <link rel="stylesheet" href="../layout/fonts/flaticon/font/flaticon.css">
@@ -202,7 +201,7 @@ $(function(){
 </script>
     
 <style>
-body {
+ body {
   min-height: 100vh;
 
   background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
@@ -210,7 +209,7 @@ body {
   background: -moz-linear-gradient(bottom left, #d5e2ed 0%, #062138 100%);
   background: -o-linear-gradient(bottom left, #d5e2ed 0%, #062138 100%);
   background: linear-gradient(to top right, #d5e2ed 0%, #062138 100%);
-}
+} 
 #id,#email{
     background: rgba(255, 255, 255, 0.1);
     border: none;
