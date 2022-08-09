@@ -180,7 +180,7 @@ if (status === kakao.maps.services.Status.OK) {
 					<div class="content-area">
 						<nav class="detail-nav">
 							<ul class="nav-tabs-detail">
-								<li ><a href="#desc" class="n-tab">장소 소개</a></li>
+								<li ><a href="#desc" class="n-tab active">장소 소개</a></li>
 								<li ><a href="#location" class="n-tab">위치</a></li>
 								<li ><a href="#review" class="n-tab">리뷰</a></li>
 								<li class="detail-li"><a href="#ask" class="n-tab">문의</a></li>
