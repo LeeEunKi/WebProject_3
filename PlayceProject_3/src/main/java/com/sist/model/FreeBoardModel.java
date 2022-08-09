@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.FreeBoardDAO;
+import com.sist.dao.ReplyDAO;
 
 import java.util.*;
 import com.sist.vo.*;
@@ -65,16 +66,24 @@ public class FreeBoardModel {
 		FreeBoardDAO.boardInsert(vo);
 		return "redirect:../freeboard/list.do";
 	}
-	@RequestMapping("freeboard/detail.do")
-	public String freeboard_detail(HttpServletRequest request, HttpServletResponse response)
-	{
-		//출력할 데이터를 보낸다
-		String no=request.getParameter("no");
-		FreeBoardVO vo=FreeBoardDAO.boardDetailData(Integer.parseInt(no));
-		request.setAttribute("vo", vo);
-		request.setAttribute("main_jsp", "../freeboard/detail.jsp");
-		return "../main/main.jsp";
-	}
+
+	 @RequestMapping("freeboard/detail.do")
+	   public String freeboard_detail(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   // 출력할 데이터를 보낸다 
+		   String no=request.getParameter("no");
+		   FreeBoardVO vo=FreeBoardDAO.boardDetailData(Integer.parseInt(no));
+		   request.setAttribute("vo", vo);
+		   
+		   // 댓글 읽기 
+		   ReplyVO rvo=new ReplyVO();
+		   rvo.setBno(vo.getNo());
+		   rvo.setType(1);
+		   List<ReplyVO> list=ReplyDAO.replyListData(rvo);
+		   request.setAttribute("list", list);
+		   request.setAttribute("main_jsp", "../freeboard/detail.jsp");
+		   return "../main/main.jsp";
+	   }
 	@RequestMapping("freeboard/update.do")
 	public String freeboard_update(HttpServletRequest request, HttpServletResponse response)
 	{

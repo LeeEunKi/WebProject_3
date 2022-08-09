@@ -13,6 +13,49 @@ color:black;
 width:120;height:70; 
 background-color: white;
 }
+
+.balloon-left {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  width: 1200px;
+  height : auto;
+  color: #555;
+  font-size: 16px;
+  background: #FFF;
+  border: solid 3px #999;
+  
+  box-sizing: border-box;
+}
+
+.balloon-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #FFF;
+  z-index: 2;
+}
+
+.balloon-left:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
+}
+
+.balloon-left p {
+  margin: 0;
+  padding: 0;
+}
+
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -102,7 +145,7 @@ $(function(){
 
 <div class="section section-properties">
 	  <div class="container">
-	   	<div class="two_third first" style="height:1200px">
+	   	<div class="two_third first" style="height:auto">
 		  <div class="col-lg-12">
 		  <h2 class="font-weight-bold text-primary heading">게시글 상세보기</h2><br>
        	<div class="two_third first">
@@ -147,15 +190,17 @@ $(function(){
       <div id="comments">    
         <h2>댓글</h2>
         <ul>
-        <h1>ㅎㅎ</h1>
          <c:forEach var="rvo" items="${list }">
-          <li>
+         
+          
+          <div class="balloon-left">
             <article>
               <header>
                 <figure class="avatar">
+            
                  <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
-                  <span class="btn btn-xs btn-danger up" style="color:black" data-no="${rvo.no }">수정</span>
-                  <a href="../reply/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
+                  <span class="button" style="color:black" data-no="${rvo.no }">수정</span>
+                  <a href="../reply/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="button" style="color:black">삭제</a>
                  </c:if>
                 </figure>
                 
@@ -164,11 +209,15 @@ $(function(){
                 </address>
               </header>
               <div class="comcont">
-              <p><pre style="white-space: pre-wrap; background-color: white; border: none">${rvo.msg }</pre></p>
+              <p><pre style="white-space: pre-wrap; background-color: white;">${rvo.msg }</pre></p>
               </div>
+              
+              
             </article>
             
-          </li>
+             </div>
+       
+         
             <div style="display:none" id="update${rvo.no }" class="updates">
 	            <table class="table">
 		          <tr>
@@ -186,6 +235,7 @@ $(function(){
 		        </table>
 	        </div>
           </c:forEach>
+          
         </ul> 
        </div>
      
