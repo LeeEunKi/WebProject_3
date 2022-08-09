@@ -78,7 +78,6 @@ public class PlaceModel {
 		map.put("end", end);
 		map.put("place_no", Integer.parseInt(no));
 		List<ReviewVO> rList =ReviewDAO.reviewListData(Integer.parseInt(no));
-		System.out.println(rList);
 		int rcount=ReviewDAO.counts(Integer.parseInt(no));
 		List<AskVO> qList = AskDAO.askListData(map);
 		

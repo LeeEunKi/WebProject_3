@@ -55,7 +55,6 @@ public class ReviewDAO {
 		finally {
 			if(session!=null)
 				session.close();
-			System.out.println(list);
 		}
 				
 		return  list;
