@@ -8644,7 +8644,7 @@ textarea.form-control-lg {
   .ms-xl-auto {
     margin-left: auto !important; }
   .p-xl-0 {
-    padding: 0 !important; }
+    padding: 0 !important; } 
   .p-xl-1 {
     padding: 0.25rem !important; }
   .p-xl-2 {
@@ -10677,11 +10677,14 @@ sign up
 
 
 #id,
-#password,
+#pwd,
+#pwd2,
 #birthday,
 #email,
 #name,
-#tel,
+#tel0,
+#tel1,
+#tel2,
 #addr1,
 #addr2,
 #post,
@@ -10698,7 +10701,21 @@ sign up
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  
+}
+#email,
+#id{
+  width: 71%;
+  display: inline-block;
+  margin-right: 5px;
+}
+#tel0,
+#tel1,
+#tel2{
+  width: 32%;
+  display: inline-block;
+  margin-right: 2px;
 }
 
 input[type="radio"]{
@@ -10719,9 +10736,9 @@ select {
 
 
 #addr1{
-  width: 70%;
+  width: 53%;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .addrbtn{
@@ -10731,7 +10748,6 @@ select {
   border-color: transparent;
   border: none !important;
   margin-top: 10px;
-  top: 0;
   position: relative;
   width: 22%;
   padding: 18px 25px 17px 25px;
@@ -10752,6 +10768,7 @@ legend {
 label {
   display: block;
   margin-bottom: 8px;
+  margin-top:20px;
 }
 
 .sex{
@@ -10766,11 +10783,9 @@ label.light {
 }
 #post{
   width: 20%;
-  margin-right: 10px;
+  margin-right: 3px;
 }
-#addr1{
-  width: 50%;
-}
+
 .sex{
   display: inline-block;
   margin-top: 10px;
@@ -11159,5 +11174,56 @@ border-right: none;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 30px;
 }
-  
+ /*
+
+image-review
+
+*/
+.heading_img-rv {
+  color: #fff;
+  font-size: clamp(1.7rem, 2vw, 2.3rem);
+  margin-top: 20px;
+  font-weight: 400;
+}
+.heading2_img-rv {
+  color: #fff;
+  font-size: clamp(0.6rem, 1.1vw, 1.3rem);
+  margin-top: 10px;
+  font-weight: 300;
+  padding-bottom: 40vh; 
+}
+.review-img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.masonry {
+	column-count: 4;
+	column-gap: 16px;
+}
+
+.masonry .mItem {
+  display: inline-block;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+@media (max-width: 1199px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 991px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .masonry {
+    column-count: 1;
+  }
+}
+ 
 

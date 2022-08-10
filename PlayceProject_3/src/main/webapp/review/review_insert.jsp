@@ -20,8 +20,6 @@
 						<h1 style="text-align: center; margin-top: 20px;">리뷰 작성</h1>
 						<legend><span class="number">1</span> 장소는 어떠셨나요?</legend>
 
-
-						
 							<div class="container">
 								<div class="feedback">
 								  <div class="rating">
@@ -130,7 +128,9 @@
 						  <label for="content">고객님의 소중한 이용 후기를 남겨주세요</label>
 						  <textarea id="content" required></textarea>
 						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 20px;"  for="input-img">사진 업로드</label>
-						  <input type="file" id="input-img" style="display: none;"/>		
+						  <input type="file" id="input-img" style="display: none;"/>	
+						  <input type="hidden" name="place_no" value="${place_no }">	
+						  <input type="hidden" name="member_id" value="${member_id }">	
 						
 						<button type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 49%; margin-top: 20px;">확인</button>				  
 						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 49%; margin-top: 20px;" onclick="self.close();">취소</button>				  

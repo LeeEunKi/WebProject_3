@@ -89,4 +89,20 @@ public class AskDAO {
 				 session.close();
 		 }
 	 }
+	//[관리자] 답변해야할 문의글 가져오기
+	//	<select id="admin_askReplyListData" resultType="AskVO">
+	public static List<AskVO> admin_askReplyListData(){
+		List<AskVO> list=null;
+		SqlSession session = null;
+		 try {
+			 session = ssf.openSession();
+			 list=session.selectList("admin_askReplyListData");			
+		 }catch(Exception ex) {
+			 ex.printStackTrace();
+		 }finally {
+			 if(session!=null)
+				 session.close();
+		 }
+		 return list;
+	}
 }

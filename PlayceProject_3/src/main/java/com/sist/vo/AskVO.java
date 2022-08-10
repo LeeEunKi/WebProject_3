@@ -15,6 +15,20 @@ public class AskVO {
 	private int group_id, group_step, group_tab, isReply;
 	private String content, pwd, member_id, dbday; 
 	private Date regdate;
+	private String place_img,place_name;
+	
+	public String getPlace_img() {
+		return place_img;
+	}
+	public void setPlace_img(String place_img) {
+		this.place_img = place_img;
+	}
+	public String getPlace_name() {
+		return place_name;
+	}
+	public void setPlace_name(String place_name) {
+		this.place_name = place_name;
+	}
 	public int getGroup_id() {
 		return group_id;
 	}
