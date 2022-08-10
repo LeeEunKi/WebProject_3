@@ -57,7 +57,7 @@ public class AskModel {
 		List<AskVO> qList = AskDAO.askListData(map);
 		
 		String result = "[";
-		System.out.println("size:"+qList.size());
+//		System.out.println("size:"+qList.size());
 		//JSON형태로 데이터 전송
 		for(int i=0;i<qList.size();i++) {
 			AskVO vo = qList.get(i);
