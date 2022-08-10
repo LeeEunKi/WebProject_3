@@ -1,16 +1,221 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+button {
+    margin: 20px;
+    align:left;
+    float: left;
+}
+
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
+}
+
+.w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+}
+
+.w-btn-green {
+    background-color: #77af9c;
+    color: #d7fff1;
+}
+
+.w-btn-green2 {
+    background-color: #519d9e;
+    color: #9dc8c8;
+}
+
+.w-btn-green-outline {
+    border: 3px solid #77af9c;
+    color: darkgray;
+}
+
+.w-btn-green2-outline {
+    border: 3px solid #519d9e;
+    color: darkgray;
+}
+
+.w-btn-green-outline:hover {
+    background-color: #77af9c;
+    color: #d7fff1;
+}
+
+.w-btn-green2-outline:hover {
+    background-color: #519d9e;
+    color: #9dc8c8;
+}
+
+
+.w-btn-gray {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+
+.w-btn-red {
+    background-color: #ff5f2e;
+    color: #e1eef6;
+
+}
+
+
+.w-btn-gray-outline {
+    border: 3px solid #a3a1a1;
+    color: #6e6e6e;
+}
+
+.w-btn-red-outline {
+    border: 3px solid #ff5f2e;
+    color: #6e6e6e;
+}
+
+
+
+.w-btn-gray-outline:hover {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+
+.w-btn-red-outline:hover {
+    background-color: #ff5f2e;
+    color: #e1eef6;
+}
+
+
+
+.w-btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-outline:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn:active {
+    transform: scale(1.5);
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
+}
+
+.w-btn-gra1 {
+    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+    color: white;
+}
+
+
+
+@keyframes gradient1 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradient2 {
+    0% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+
+.w-btn-neon2:hover::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00ffcb;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
 .button {
 border:1x solid white;    
 color:black;   
-width:120;height:70; 
+width:10px;height:50px; 
 background-color: white;
 }
 
@@ -55,6 +260,60 @@ background-color: white;
   margin: 0;
   padding: 0;
 }
+.find-btn{
+	text-align: center;
+	width: 100%;
+}
+
+hr {
+  color: #2964D9;
+   width : 20%;
+  height : 30px;
+}
+
+button {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+}
+
+button:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+button:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;   
+}
+
+
+
+#test_btn1{
+	margin-right: 5px;
+	display:inline-block;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#test_btn2{
+	margin-left: -3px;
+	display:inline-block;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#btn-group {
+	width: 100%;
+	text-align: center;
+	
+}
+
 
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -147,7 +406,10 @@ $(function(){
 	  <div class="container">
 	   	<div class="two_third first" style="height:auto">
 		  <div class="col-lg-12">
-		  <h2 class="font-weight-bold text-primary heading">게시글 상세보기</h2><br>
+		  <h2 class="font-weight-bold text-primary heading"><b>게시판 상세보기</b></h2>
+		  <hr/>
+		  <br><br>
+		  
        	<div class="two_third first">
        		<table class="table">
        		
@@ -172,23 +434,31 @@ $(function(){
        					<pre style="white-space: pre-wrap; background-color: white; border:none">${vo.content }</pre>
        				</td>
         		</tr>
+        		
         		<tr>
-        			<td colspan="4" class="text-right">
-        				<a href="../freeboard/update.do?no=${vo.no }" class="btn btn-xs btn-danger">수정</a>
-        				<span class="btn btn-xs btn-info" id="del">삭제</span>
-        				<a href="../freeboard/list.do" class="btn btn-xs btn-warning">목록</a>
+        			<td colspan="4" class="text-center">
+        		    	<button class="w-btn w-btn-green" type="button" style=" display: inline-block;" >
+        				<a href="../freeboard/update.do?no=${vo.no }">수정</a>
+        				</button>
+        				<button class="w-btn w-btn-indigo" type="button" style=" display: inline-block;">
+        				<span id="del">삭제</span>
+        				</button>
+        				<button class="w-btn w-btn-gray" type="button" style=" display: inline-block;">
+        				<a href="../freeboard/list.do">목록</a>
+        				</button>
         			</td>
         		</tr>
         		<tr id="delTr" style="display:none">
         			<td colspan="4" class="text-right inline">
-        				<span>비밀번호:</span><input type=password name=pwd size=10 class="input-sm" id="delPwd">
-        				<input type=button value="삭제" class="btn btn-sm btn-danger" id="delBtn" data-no=${vo.no }>
+        				<span style="color: red">  비밀번호를 입력하세요! :  </span><input type=password name=pwd size=10 class="input-sm" id="delPwd">
+        				<input type=button value="삭제" class="w-btn w-btn-red" id="delBtn" data-no=${vo.no }>
         			</td>
         		</tr>
        		</table>
-      
+      	<br>
       <div id="comments">    
-        <h2>댓글</h2>
+        <h2><b>댓글</b></h2>
+        <hr/>
         <ul>
          <c:forEach var="rvo" items="${list }">
          
@@ -196,28 +466,29 @@ $(function(){
           <div class="balloon-left">
             <article>
               <header>
-                <figure class="avatar">
-            
-                 <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
-                  <span class="button" style="color:black" data-no="${rvo.no }">수정</span>
-                  <a href="../reply/reply_delete.do?no=${rvo.no }&bno=${vo.no}" class="button" style="color:black">삭제</a>
-                 </c:if>
-                </figure>
-                
                 <address>
                 By <a href="#">${rvo.name }&nbsp;(${rvo.dbday })</a>
                 </address>
               </header>
               <div class="comcont">
-              <p><pre style="white-space: pre-wrap; background-color: white;">${rvo.msg }</pre></p>
+              <p><pre style="white-space: pre-wrap; background-color: white; font-size: 3">${rvo.msg }</pre></p>
               </div>
-              
-              
+              <figure class="avatar">
+            	
+            	
+                 <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
+                 <div class="btn-group">
+                 <button id="test_btn1">
+                   <span class="up" style="color:black" data-no="${rvo.no }">수정</span>
+                   </button>
+                   <button id="test_btn2">
+                  <a href="../reply/reply_delete.do?no=${rvo.no }&bno=${vo.no}" style="color:black">삭제</a>
+                  </button>
+                  </div>
+                 </c:if>
+                </figure>
             </article>
-            
              </div>
-       
-         
             <div style="display:none" id="update${rvo.no }" class="updates">
 	            <table class="table">
 		          <tr>
@@ -226,7 +497,8 @@ $(function(){
 		               <input type=hidden name=bno value="${vo.no }">
 		               <input type=hidden name=type value="1">
 		               <input type=hidden name=no value="${rvo.no }">
-		               <textarea rows="5" cols="70" name="msg" style="float: left">${rvo.msg }</textarea>
+		               <textarea rows="5" cols="130" name="msg" style="float: left">${rvo.msg }</textarea>
+		               &emsp;
 		               <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
 		                value="댓글수정">
 		              </form>
@@ -238,15 +510,14 @@ $(function(){
           
         </ul> 
        </div>
-     
        <c:if test="${sessionScope.id!=null }">
         <table class="table">
-          <tr>
             <td>
              <form method=post action="../reply/reply_insert.do">
                <input type=hidden name=bno value="${vo.no }">
                <input type=hidden name=type value="1">
-               <textarea rows="5" cols="100" name="msg" style="float: left"></textarea>
+               <textarea rows="5" cols="150" name="msg" style="float: left"></textarea>
+               &emsp;
                <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
                 value="댓글쓰기">
               </form>
