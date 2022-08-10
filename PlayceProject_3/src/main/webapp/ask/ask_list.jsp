@@ -21,7 +21,7 @@ $(function(){
 			i=0;
 		}
 	})
-	//console.log($('#pageno'${i})) 
+	//console.log($('#pageno'${i}))
 	var myArray = [
 			<c:forEach var="qvo" items="${qList}" >
 			            {member_id: "${qvo.member_id}",

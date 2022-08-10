@@ -26,11 +26,9 @@
 	<!-- 문의 답변달기(관리자만 가능) -->
 	<!-- [관리자] 문의글 목록-->
 	<select id="admin_askReplyListData" resultType="AskVO">
-		SELECT askboard_3.no, place_no, askboard_3.content, member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday,
-		rep_image as place_img, name as place_name
-		FROM askboard_3,place_3
-		WHERE isReply!=1 AND group_step!=1 AND place_no = place_3.no
-		ORDER BY askboard_3.no DESC
+		SELECT * FROM askboard_3
+		WHERE isReply!=1 AND group_step!=1
+		ORDER BY no DESC
 	</select>
 	<!-- [관리자] 문의 달기 전 group_id 얻기-->
 	<select id="admin_getGroupId" resultType="int" parameterType="int">
