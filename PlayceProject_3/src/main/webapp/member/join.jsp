@@ -73,6 +73,7 @@ $(function(){
 		}
  		if(idCheck==1 && emailCheck==1 && pwdCheck==1){
  			$('#member').submit();
+ 			alert("회원가입을 축하합니다! 로그인해주세요.");
 		}
 		else if(idCheck==0){
 			alert("ID 중복체크하세요!");
