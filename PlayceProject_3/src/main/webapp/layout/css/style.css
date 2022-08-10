@@ -11174,5 +11174,56 @@ border-right: none;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 30px;
 }
-  
+ /*
+
+image-review
+
+*/
+.heading_img-rv {
+  color: #fff;
+  font-size: clamp(1.7rem, 2vw, 2.3rem);
+  margin-top: 20px;
+  font-weight: 400;
+}
+.heading2_img-rv {
+  color: #fff;
+  font-size: clamp(0.6rem, 1.1vw, 1.3rem);
+  margin-top: 10px;
+  font-weight: 300;
+  padding-bottom: 40vh; 
+}
+.review-img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.masonry {
+	column-count: 4;
+	column-gap: 16px;
+}
+
+.masonry .mItem {
+  display: inline-block;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+@media (max-width: 1199px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 991px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .masonry {
+    column-count: 1;
+  }
+}
+ 
 

@@ -95,7 +95,7 @@ $(function() {
 								<li><a href="../place/place_list.do?tno=10">갤러리</a></li>
 							</ul>
 						</li>
-						<li><a href="services.html">사진 리뷰</a></li>
+						<li><a href="../review/img_review.do">사진 리뷰</a></li>
 						<li><a href="../freeboard/list.do">커뮤니티</a></li>
 						<li><a href="index.html">공지사항</a></li>
 						<c:if test="${sessionScope.id == null }">

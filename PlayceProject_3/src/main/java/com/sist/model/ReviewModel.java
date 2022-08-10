@@ -11,6 +11,13 @@ import com.sist.vo.ReviewVO;
 
 @Controller
 public class ReviewModel {
+	@RequestMapping("review/img_reivew.do")
+	public String img_review(HttpServletRequest request, HttpServletResponse response) {
+		
+		request.setAttribute("main_jsp", "../review/img_review.jsp");
+		return "../main/main.jsp";
+	}
+	
 	@RequestMapping("review/reivew_insert.do")
 	public String review_insert(HttpServletRequest request,HttpServletResponse response)
 	{
