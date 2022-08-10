@@ -106,11 +106,15 @@ $(function() {
 						    <a href="#">${sessionScope.name }&nbsp;님</a>
 							<ul class="dropdown">
 								<li class="has-children">
-								<li><a href="../mypage/mypage.do">마이페이지</a></li>
+								<c:if test="${sessionScope.admin == 'n' }">
+								  <li><a href="../mypage/mypage.do">마이페이지</a></li>
+								</c:if>
+								<c:if test="${sessionScope.admin == 'y' }">
+								  <li><a href="../adminpage/adminpage.do">관리자페이지</a></li>
+								</c:if>
 								<li><a class="logoutImg">로그아웃</a></li>
 							</ul>
-						  </li>						
-					    
+						  </li>											    
 						</c:if>  
 					</ul>
 
