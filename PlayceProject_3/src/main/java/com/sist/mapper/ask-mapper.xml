@@ -3,9 +3,9 @@
 <mapper namespace="com.sist.mapper.ask-mapper">
 	<!-- 장소별 문의 목록 가져오기 -->
 	<select id="askListData" resultType="AskVO" parameterType="hashmap">
-		SELECT no, member_id, content, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, isreply, group_id, group_tab, num
-		FROM (SELECT no, member_id, content, regdate, isreply, group_id, group_tab, rownum as num
-			FROM (SELECT no, member_id, content, regdate, isreply, group_id, group_tab
+		SELECT place_no, no, member_id, content, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, isreply, group_id, group_tab, num
+		FROM (SELECT place_no, no, member_id, content, regdate, isreply, group_id, group_tab, rownum as num
+			FROM (SELECT place_no, no, member_id, content, regdate, isreply, group_id, group_tab
 				FROM askboard_3 WHERE place_no = #{place_no} ORDER BY group_id DESC, group_step ASC ))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
