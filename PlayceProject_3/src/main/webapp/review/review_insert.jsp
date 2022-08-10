@@ -130,7 +130,7 @@
 						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 20px;"  for="input-img">사진 업로드</label>
 						  <input type="file" id="input-img" style="display: none;"/>	
 						  <input type="hidden" name="place_no" value="${place_no }">	
-						  <input type="hidden" name="place_no" value="${member_id }">	
+						  <input type="hidden" name="member_id" value="${member_id }">	
 						
 						<button type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 49%; margin-top: 20px;">확인</button>				  
 						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 49%; margin-top: 20px;" onclick="self.close();">취소</button>				  
