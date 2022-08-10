@@ -79,7 +79,7 @@ $(function(){
 			<button type="button" id="askBtn" style="width: 15%; font-size:10px;">문의 남기기</button>
 			<div id="askForm" style="display:none;">
 			<c:if test="${sessionScope.id==null }">
-				<p class="de-text-desc text-center">로그인 후 이용해 주세요.</p>
+				<p class="de-text-desc text-center">로그인 후 이용해 주세요!</p>
 			</c:if>
 			<c:if test="${sessionScope.id!=null }"> 
 				<form method="post" action="../ask/ask_insert.do">
