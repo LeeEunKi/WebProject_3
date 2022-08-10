@@ -20,7 +20,7 @@
 </update>
 
 <select id="counts" resultType="int" parameterType="int">
- SELECT rcount
+ SELECT COUNT(*)
  FROM review_3
  WHERE place_no=#{place_no}
 </select>
@@ -39,7 +39,8 @@
    <selectKey keyProperty="no" resultType="int" order="BEFORE">
       SELECT NVL(MAX(no)+1,1) AS no FROM REVIEW_3
    </selectKey>
-   INSERT INTO REVIEW_3 VALUES(
+   INSERT INTO REVIEW_3 (no,place_no,member_id,content,score,regdate)
+   VALUES(
 	#{no},
 	#{place_no},
 	#{member_id},

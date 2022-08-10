@@ -11148,23 +11148,11 @@ border-right: none;
   transform: translateY(-500px);
 }
 
-.feedback {
-  max-width: 360px;
-  background-color: #fff;
-  width: 100%;
-  padding: 30px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  
-}
 #content{
   background: rgba(255, 255, 255, 0.1);
   border: none;
   font-size: 16px;
-  height: auto;
+  height: 150px !important;
   margin: 0;
   outline: 0;
   padding: 15px;
@@ -11172,7 +11160,13 @@ border-right: none;
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
+  margin-bottom: 7px;
+}
+#review_insert {
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #fff;
 }
  /*
 
