@@ -258,7 +258,7 @@ $(function(){
 						  <label for="name">전화번호:</label>
 						  <input type="text" id="tel0" value="010"  readonly="readonly">
 						  <input type="text" id="tel1" name="tel1"  maxlength="4"> 
-						  <input type="text" id="tel2" name="tel2"  maxlength="4">
+						  <input type="text" id="tel2" name="tel2"  maxlength="4"> 
 
 						  <label for="name">주소:</label >
 						  <input type="text" id="post" name="post" value="post"  readonly="readonly">
