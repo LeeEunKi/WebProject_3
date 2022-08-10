@@ -199,7 +199,7 @@ $(function(){
 })
 </script>  
 <style>
- body {
+/* body {
   min-height: 100vh;
 
   background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
@@ -207,59 +207,7 @@ $(function(){
   background: -moz-linear-gradient(bottom left, #d5e2ed 0%, #062138 100%);
   background: -o-linear-gradient(bottom left, #d5e2ed 0%, #062138 100%);
   background: linear-gradient(to top right, #d5e2ed 0%, #062138 100%);
-} 
-#id,#email{
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    font-size: 16px;
-    height: 45px;
-    margin: 0;
-    outline: 0;
-    padding: 15px;
-    width: 76%;
-    background-color: #e8eeef;
-    color: #8a97a0;
-    box-shadow: 0 1px 0 rgb(0 0 0 / 3%) inset;
-    margin-bottom: 10px;
-    margin-right: 3px;
-}
-#pwd,#pwd2,#addr2 {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    font-size: 16px;
-    height: 45px;
-    margin: 0;
-    outline: 0;
-    padding: 15px;
-    width: 100%;
-    background-color: #e8eeef;
-    color: #8a97a0;
-    box-shadow: 0 1px 0 rgb(0 0 0 / 3%) inset;
-    margin-bottom: 10px;
-}
-
-#tel1,#tel2,#tel3 {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    font-size: 16px;
-    height: 20px;
-    margin: 0;
-    outline: 0;
-    padding: 15px;
-    width: 100%;
-    background-color: #e8eeef;
-    color: #8a97a0;
-    box-shadow: 0 1px 0 rgb(0 0 0 / 3%) inset;
-    margin-bottom: 10px;
-}
-.btn-detail{
-    padding-top: 7px;
-    padding-bottom: 5px;
-    padding-left: 17px;
-    padding-right: 15px;
-    width: fit-content; 
-    height: fit-content; 
-}
+} */
 </style>
 </head>
 <body>
@@ -283,7 +231,7 @@ $(function(){
 						<fieldset>
 						  <label for="name">아이디:</label>
 						  <input type="text" id="id" name="id" required="required">	
-						  <input type="button" class="btn btn-primary btn-detail" id="idBtn" value="중복체크">			  
+						  <input type="button" class="btn btn-primary" id="idBtn" value="중복체크">			  
 						  <span id="idPrint" style="display:block;"></span>
 						  
 						  <label for="password">비밀번호:</label>
@@ -296,7 +244,7 @@ $(function(){
 
 						  <label for="email">이메일:</label>
 						  <input type="email" id="email" name="email" required="required">
-						  <input type="button" class="btn btn-primary btn-detail" id="emailBtn" value="중복체크">
+						  <input type="button" class="btn btn-primary" id="emailBtn" value="중복체크">
 						  <span id="emailPrint" style="display:block;"></span>
 						  
 						  <label for="name">이름:</label>
@@ -308,14 +256,14 @@ $(function(){
 						  <input type="radio"  value="여자" name="sex">여성
 
 						  <label for="name">전화번호:</label>
-						  <input type="text" id="tel1" value="010" style="width: 20%" readonly="readonly"> &nbsp;-
-						  <input type="text" id="tel1" name="tel1" style="width: 20%" maxlength="4"> &nbsp;-
-						  <input type="text" id="tel2" name="tel2" style="width: 20%" maxlength="4">
+						  <input type="text" id="tel0" value="010"  readonly="readonly">
+						  <input type="text" id="tel1" name="tel1"  maxlength="4"> 
+						  <input type="text" id="tel2" name="tel2"  maxlength="4">
 
 						  <label for="name">주소:</label >
-						  <input type="text" id="post" name="post" value="post" style="width: 20%; margin-bottom: 10px;" readonly="readonly">
-						  <input type="text" id="addr1" name="addr1" style="width: 61%; margin-right: 0px; margin-bottom: 10px;" readonly="readonly" required="required">
-						  <input type="button" id="postBtn" value="검색" class="btn btn-primary btn-detail">
+						  <input type="text" id="post" name="post" value="post"  readonly="readonly">
+						  <input type="text" id="addr1" name="addr1" readonly="readonly" required="required">
+						  <input type="button" id="postBtn" value="검색" class="btn btn-primary">
 						  <span id="addrPrint" style="display:block; color: red;"></span>
 						  <label for="name">상세 주소:</label>
 						  <input type="text" id="addr2" name="addr2">
