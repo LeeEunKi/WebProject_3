@@ -20,7 +20,7 @@ public class AdminPageModel {
 	
 	@RequestMapping("adminpage/askReply.do")
 	   public String adminpage_answer(HttpServletRequest request,HttpServletResponse response) {
-		   List<AskVO> list=AskDAO.admin_askReplyListData();	   
+		   List<AskVO> list=AskDAO.admin_askReplyListData();  
 
 		   request.setAttribute("list", list);
 		   request.setAttribute("admin_jsp", "../adminpage/askReply.jsp");

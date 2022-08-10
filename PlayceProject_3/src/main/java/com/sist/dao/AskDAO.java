@@ -105,4 +105,21 @@ public class AskDAO {
 		 }
 		 return list;
 	}
+	// [관리자] 답변해야할 문의글 총페이지 
+	//<select id="admin_askReplyTotalPage" resultType="int">
+	public static int admin_askReplyTotalPage() {
+		int total=0;
+		SqlSession session = null;
+		 try {
+			 session = ssf.openSession();
+			 total=session.selectOne("admin_askReplyTotalPage");			
+		 }catch(Exception ex) {
+			 ex.printStackTrace();
+		 }finally {
+			 if(session!=null)
+				 session.close();
+		 }
+		 return total;
+	}
+	
 }
