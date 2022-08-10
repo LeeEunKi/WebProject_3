@@ -81,7 +81,7 @@ $(function(){
 			<c:if test="${sessionScope.id==null }">
 				<p class="de-text-desc text-center">로그인 후 이용해 주세요.</p>
 			</c:if>
-			<c:if test="${sessionScope.id!=null }">
+			<c:if test="${sessionScope.id!=null }"> 
 				<form method="post" action="../ask/ask_insert.do">
 					<input type="hidden" name=member_id value="kimjiyun"/>
 					<input type="hidden" name=place_no value="${place_no }"/>
