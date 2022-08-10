@@ -43,7 +43,7 @@
 						    <a href="../place/detail.do?no=${vo.no }" class="price mb-2"><span>${vo.name }</span></a>
 						  </div>
 						  <div>
-						  	<span class="city d-block mb-3">
+						  	<span class="city d-block mb-3"> 
 						  		 <c:choose>
 								     <c:when test="${vo.price==0 }">
 								       별도 문의
