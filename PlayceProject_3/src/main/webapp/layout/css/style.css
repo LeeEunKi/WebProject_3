@@ -9207,6 +9207,7 @@ textarea.form-control-lg {
   position: relative; }
 
 .logo {
+	padding-top:8px;
   font-size: 26px;
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500; }
@@ -9214,9 +9215,7 @@ textarea.form-control-lg {
     color: #fff !important; }
 
 .site-nav {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: 9;
   width: 100%; }
@@ -9669,7 +9668,7 @@ textarea {
 
 .menu-bg-wrap {
   background-color: none;
-  padding: 20px 30px;
+  padding: 30px 30px;
   position: relative;
   float: left;
   width: 100%;

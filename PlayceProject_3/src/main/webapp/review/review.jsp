@@ -45,13 +45,13 @@
 					
 				    </c:forEach>
 				    <c:if test="${sessionScope.id!=null}">
-				    <div class="col-lg-6 text-lg-end" style="float: right; display: inline-block;">
-				    <form method="post" action="../review/review_insert.do">
-				      <input type="hidden" name=member_id value="${sessionScope.id }"/>
-					  <input type="hidden" name=place_no value="${place_no }"/>
-					  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" style="margin-top: 10px;" value="리뷰 남기기"/></p>
-					</form>
-				    </div>
+					    <div class="col-lg-6 text-lg-end" style="float: right; display: inline-block;">
+					    <form method="post" action="../review/review_insert.do">
+					      <input type="hidden" name=member_id value="${sessionScope.id }"/>
+						  <input type="hidden" name=place_no value="${place_no }"/>
+						  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" style="margin-top: 10px;" value="리뷰 남기기"/></p>
+						</form>
+					    </div>
 				    </c:if>
 					<div class="col-lg-8" style="margin-top: 70px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			    </div>
