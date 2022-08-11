@@ -3,11 +3,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function () {
+	$('#pBtn').click(function() {
+		
+			if($('input[name="rating"] ').is(':checked')===false)
+		    {
+				$('#s_result').text("평점을 꼭 매겨주셔야해요!");
+				return false;
+		    }
+			else if($('#content').val()==="")
+		    {
+				$('#content').focus();
+				return false;
+		    }
+		
+	})
 	
-
+	
+})
+</script>
+<title></title>
 </head>
 <body>
     <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 35vh;"></div>
@@ -124,16 +143,19 @@
 								  </div>
 								</div>
 							  </div>
+							  <div class=row>
+							    <h4 id="s_result" class="text-center" style="color: red"></h4>
+							  </div>
 						  <legend><span class="number">2</span> 내용 입력</legend>
 						
 						  <label for="content">고객님의 소중한 이용 후기를 남겨주세요</label>
-						  <textarea id="content" name="content" required style="height: 300px;"></textarea>
+						  <textarea id="content" name="content" style="height: 300px;"></textarea>
 						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 7px;"  for="input-img">사진 업로드</label>
 						  <input type="file" id="input-img" style="display: none;"/>	
 						  <input type="hidden" name=member_id value="${sessionScope.id }"/>
 					  	  <input type="hidden" name=place_no value="${place_no }"/>
 						
-						<button type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 47%; margin-top: 30px;">확인</button>				  
+						<input type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 47%; margin-top: 30px;" value="확인">				  
 						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 47%; margin-top: 30px; float: right;" onclick="#">취소</button>				  
 					  </form>
 				</div>

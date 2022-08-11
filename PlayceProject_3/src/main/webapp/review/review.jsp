@@ -39,7 +39,7 @@
 									★★★★★
 								</c:otherwise>
 							</c:choose>
-						</span><p class="de-text-date">${rvo.dbday }</p>
+						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 				  	 	 <p class="de-text-desc">${rvo.content }</p>
 					</div>
 					
