@@ -9705,12 +9705,13 @@ textarea {
     z-index: 2; }
   .hero .heading {
     color: #fff;
-    font-size: clamp(2.5rem, 3vw, 3.5rem);
+    font-size: clamp(2.5rem, 3vw, 3.5rem)!important;
     margin-top: 10px;
     margin-bottom: 4px;
     font-weight: 700;
     padding-bottom: auto; 
 }
+
 .hero .heading_signup {
   color: #fff;
   font-size: clamp(2.5rem, 3vw, 3.5rem);
