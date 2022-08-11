@@ -77,7 +77,7 @@ $(function(){
 		</div>
 			<div class="row align-items-center py-5">
 			<div class="col-lg-12 text-center">
-			<!-- 페이지네이션 시작 -->
+			<!-- 페이지네이션 시작 --> 
 				<div class="custom-pagination">
 				 <c:if test="${startPage>1 }">
          				<a href="../place/detail.do?no=${place_no }&page=${startPage-1 }">&laquo;</a>

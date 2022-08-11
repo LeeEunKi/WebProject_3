@@ -17,7 +17,7 @@ a{
 <body>
  <h2 class="sectiontitle">문의 사항</h2>
   <table class="table"> 
-    <tr>
+    <tr> 
       <th width="10%" class="text-center">번호</th>
       <th width="30%" class="text-center">문의내용</th>
       <th width="10%" class="text-center">아이디</th>

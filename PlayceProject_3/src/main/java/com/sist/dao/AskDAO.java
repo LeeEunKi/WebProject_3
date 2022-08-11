@@ -119,18 +119,7 @@ public class AskDAO {
 		return vo;
 		
 	}
-	/*
-	 * SELECT group_id FROM askboard_3
-		WHERE no=#{no}
-		
-	 * INSERT INTO askboard_3(no,member_id,content,group_id, group_step, group_tab, place_no)
-		VALUES(#{no},#{member_id},#{content},#{group_id},1,1)
-		
-		UPDATE askboard_3 SET
-		isReply = 1
-		WHERE no=#{no}
-	 */
-	//[관리자] 답변 등록
+	//[관리자] 답변 등록 
 	public static void admin_askInsert(int ask_no, AskVO vo) {
 		 SqlSession session = null;
 		 try {

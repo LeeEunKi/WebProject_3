@@ -64,5 +64,5 @@ public class AskModel {
 		return "../ask/ask_list_data.jsp";
 	}
 	//[유저] 문의글 삭제 --마이페이지에서 삭제처리?
-	
+	 
 }

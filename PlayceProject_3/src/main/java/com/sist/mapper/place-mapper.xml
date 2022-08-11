@@ -25,7 +25,7 @@
 		FROM place_3
 		order by SYS.dbms_random.value) S
 		<![CDATA[WHERE ROWNUM <=9]]>
-	</select>
+	</select> 
 	<!-- 상세페이지 : 장소 정보 불러오기 -->
 	<select id="placeDetailData" resultType="PlaceVO" parameterType="int">
 		SELECT no, host_name, price, address, area, box, capa, parking, content, etc, nnb, category_no, type_no, name, rep_image

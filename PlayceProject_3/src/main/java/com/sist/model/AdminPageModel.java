@@ -10,7 +10,7 @@ import com.sist.vo.*;
 
 
 @Controller
-public class AdminPageModel {
+public class AdminPageModel { 
 	@RequestMapping("adminpage/adminpage.do")
 	public String mypage_main(HttpServletRequest request, HttpServletResponse response) {
 		

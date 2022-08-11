@@ -23,7 +23,6 @@
 		INSERT INTO askboard_3(no,member_id,content,group_id,place_no,place_img, place_name)
 		VALUES(#{no},#{member_id},#{content},(SELECT NVL(MAX(group_id)+1,1) as group_id FROM askboard_3),#{place_no},#{place_img},#{place_name})
 	</insert>
-	<!-- 문의 답변달기(관리자만 가능) -->
 	<!-- [관리자] 문의글 목록-->
 	<select id="admin_askReplyListData" resultType="AskVO" parameterType="hashmap">
 		SELECT no, content, member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, place_img, place_name, place_no, num

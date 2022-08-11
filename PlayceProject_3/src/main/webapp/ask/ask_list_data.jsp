@@ -23,5 +23,5 @@
    			<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 		</div>
    	</c:when>
-	</c:choose>
+	</c:choose> 
 </c:forEach>

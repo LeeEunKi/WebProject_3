@@ -95,7 +95,7 @@ public class PlaceModel {
 		}
 		
 		request.setAttribute("pvo", pvo); //장소설명
-		request.setAttribute("list", list); //이미지리스트
+		request.setAttribute("list", list); //이미지리스트 
 		
 		//문의글영역 요소
 		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함

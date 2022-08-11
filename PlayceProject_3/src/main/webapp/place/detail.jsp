@@ -259,7 +259,6 @@ if (status === kakao.maps.services.Status.OK) {
 			   </div>
 
 				<jsp:include page="${review_jsp }"/>
-				<!-- 관리자만 문의 답글달기 보이도록 세팅 -->
 				<jsp:include page="${ask_jsp }"/>
 			   </div>
 			</div>

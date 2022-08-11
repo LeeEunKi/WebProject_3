@@ -61,7 +61,7 @@
 </div>
 
 <div class="section pt-0">
-	<div class="container">
+	<div class="container"> 
 		<div class="row justify-content-between mb-5">
 				<div class="col-lg-3 side" style="border-right-style: solid;border-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">

@@ -38,7 +38,7 @@
     </div>
     <div style="height:20px"></div>
     <div class="row">
-      <form method="post" action="../adminpage/askReply_insert_ok.do">
+      <form method="post" action="../adminpage/askReply_insert_ok.do"> 
       <table class="table">
         <tr>
           <th width="15%" class="text-right">이름</th>
