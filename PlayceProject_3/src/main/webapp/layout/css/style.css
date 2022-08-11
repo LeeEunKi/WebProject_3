@@ -1201,6 +1201,7 @@ progress {
     flex: 0 0 auto;
     width: 66.66667%; }
   .col-lg-9 {
+  	margin-bottom:20vh;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
@@ -9694,7 +9695,7 @@ textarea {
       top: 0;
       z-index: 1; }
   .hero, .hero > .container > .row {
-    height: 80vh;
+    height: 70vh;
     min-height: 600px; }
   .hero.page-inner, .hero.page-inner > .container > .row {
     height: 70vh;
@@ -9705,7 +9706,8 @@ textarea {
   .hero .heading {
     color: #fff;
     font-size: clamp(2.5rem, 3vw, 3.5rem);
-    margin-top: 50px;
+    margin-top: 10px;
+    margin-bottom: 4px;
     font-weight: 700;
     padding-bottom: auto; 
 }
@@ -9721,6 +9723,7 @@ textarea {
  .hero .heading2 {
     color: #fff;
     font-size: clamp(1.2rem, 1.5vw, 2rem);
+    margin-top: 0;
     margin-bottom: 30px;
     font-weight: 300; 
 }
@@ -9760,7 +9763,7 @@ textarea {
   left: 0;
   right: 0; }
   .hero-slide .img {
-    height: 80vh;
+    height: 70vh;
     min-height: 600px;
     background-size: cover;
     background-repeat: no-repeat;
