@@ -144,10 +144,12 @@ $(function(){
 		idCheck=0;
 		$('#idPrint').text("");
 	})
-		
+
+	
 	$('#emailBtn').click(function() {	
 		let email=$('#email').val();
-		
+		let exptext= /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			
 		if(email.trim()==""){
 			$("#email").focus();
 			$('#emailPrint').text("필수 입력사항 입니다!");
@@ -156,32 +158,39 @@ $(function(){
 		}
 		else
 		{
-			$.ajax({
-				type:'post',
-				url:'../member/email_check.do',
-				data:{"email":email},
-				success:function(result)
-				{			
-					let count=parseInt(result.trim());
-					if(count==1)
-					{
-						$('#emailPrint').text("이미 사용중인 이메일입니다.");
-						$("#emailPrint").css("color", "red");
-						$('#email').val("");
-						$('#email').focus();
+			if(exptext.test(email)==false){
+				$('#emailPrint').text("이메일 형식이 올바르지 않습니다.");
+				$("#emailPrint").css("color", "red");
+				$('#email').focus();
+			}
+			else{
+				$.ajax({
+					type:'post',
+					url:'../member/email_check.do',
+					data:{"email":email},
+					success:function(result)
+					{			
+						let count=parseInt(result.trim());
+						if(count==1)
+						{
+							$('#emailPrint').text("이미 사용중인 이메일입니다.");
+							$("#emailPrint").css("color", "red");
+							$('#email').val("");
+							$('#email').focus();
+						}
+						else{
+							$('#emailPrint').text("사용 가능한 이메일입니다.");
+							$("#emailPrint").css("color", "blue");
+							emailCheck=1;
+						}		
 					}
-					else{
-						$('#emailPrint').text("사용 가능한 이메일입니다.");
-						$("#emailPrint").css("color", "blue");
-						emailCheck=1;
-					}		
-				}
-			 })	
+				 })
+			} 
 		}
 	})
 	
 	// 이메일을 다시 입력하면 emailCheck값 초기화
-	$('#id').keydown(function() {
+	$('#email').keydown(function() {
 		emailCheck=0;
 		$('#emailPrint').text("");
 	})
@@ -196,6 +205,9 @@ $(function(){
 			}
 		}).open()
 	})
+	
+	// 이메일 유효성 검사
+	
 })
 </script>  
 <style>
