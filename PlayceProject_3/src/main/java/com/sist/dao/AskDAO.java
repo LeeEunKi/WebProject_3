@@ -115,7 +115,6 @@ public class AskDAO {
 			if(session!=null)
 				session.close();
 		}
-		System.out.println(vo.getNo());
 		return vo;
 		
 	}

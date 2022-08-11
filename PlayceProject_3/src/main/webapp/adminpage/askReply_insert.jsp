@@ -40,19 +40,19 @@
     <div class="row">
       <form method="post" action="../adminpage/askReply_insert_ok.do"> 
       <table class="table">
-        <tr>
-          <th width="15%" class="text-right">이름</th>
+        <tr class="col-6 mb-3">
+          <th width="15%" style="vertical-align: middle;">이름</th>
           <td width="85%">
-            <input type=text name="name" size="15" class="input-sm" value="${sessionScope.name }">
+            <input type=text name="name" class="form-control" style="width:20%" value="${sessionScope.name }">
             <input type=hidden name="ask_no" value="${ask_no}"> <%-- ask_no 숨기기 --%>
             <input type=hidden name="pno" value="${askVO.place_no}"> <%-- place_no 숨기기 --%>
             <input type=hidden name="member_id" value="${sessionScope.id }"> <%-- member_id 숨기기 --%>
           </td>
         </tr>
         <tr>
-          <th width="15%" class="text-right">답변 내용</th>
+          <th width="15%" style="vertical-align: middle;">답변 내용</th>
           <td width="85%">
-            <textarea rows="10" cols="60" name="replyContent" required></textarea>
+            <textarea rows="10" cols="60" class="form-control" name="replyContent" required></textarea>
           </td>
         </tr>
         <tr>
