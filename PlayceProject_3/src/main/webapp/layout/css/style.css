@@ -10648,15 +10648,19 @@ h1.main-title {
   .box6 .read-btn {
   color: #2964D9;
   }
+  .category-title{
+  font-size: 21px;
+  }
   
-  
-  h3.title{
+  h3 .title{
   color: #fff;
   }
+  
   #subjBtn:hover{
   text-shadow: -1px 0px  rgba(23, 23, 23, 0.3), 0px 1px  rgba(23, 23, 23, 0.3), 1px 0px  rgba(23, 23, 23, 0.3), 0px -1px  rgba(23, 23, 23, 0.3);
   color: #fff !important;
   }
+
   #boxhover:hover{
   text-shadow: -1px 0px  rgba(23, 23, 23, 0.3), 0px 1px  rgba(23, 23, 23, 0.3), 1px 0px  rgba(23, 23, 23, 0.3), 0px -1px  rgba(23, 23, 23, 0.3);
   color: #fff !important;
