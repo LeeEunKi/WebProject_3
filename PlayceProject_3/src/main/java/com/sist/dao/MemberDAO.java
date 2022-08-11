@@ -1,6 +1,7 @@
 package com.sist.dao;
 
-import java.io.Reader;
+import java.io.*;
+import java.util.*;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -105,8 +106,7 @@ public class MemberDAO {
 					//비밀번호 틀린상태
 					vo.setMsg("NOPWD");
 				}
-			}
-			
+			}			
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("isLogin(): error");
@@ -118,4 +118,40 @@ public class MemberDAO {
 		}
 		return vo;
 	}
+	//id/pwd찾기
+	//<select id="memberNameCount" resultType="int" parameterType="string">
+	//<select id="memberGetEmail" resultType="string" parameterType="string">
+ 	//<select id="emailIdFind" resultType="string" parameterType="hashmap">
+	public static String emailIdFind(String name,String email) {
+		String result="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			int nameCount=session.selectOne("memberNameCount",name);
+			if(nameCount==0) {
+				result="회원이 아닌 이름입니다.";
+			}
+			else {
+				String db_email=session.selectOne("memberGetEmail", name);
+				if(db_email.equals(email)) {
+					Map map= new HashMap();
+					map.put("name",name);
+					map.put("email", email);
+					result="아이디: "+session.selectOne("emailIdFind", map); 
+				}
+				else {
+					result="이메일이 틀립니다!";
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("emailIdFind(): 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return result;
+	}
+
+	
 }

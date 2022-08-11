@@ -44,6 +44,7 @@ body > #sb-container {
   /* needed in IE6 where sb-container uses position:absolute */
   height: expression(document.documentElement.clientHeight + 'px');
 }
+
 #sb-container > #sb-overlay {
   /* use for sb-container position:fixed */
   height: 100%;
@@ -125,7 +126,7 @@ body > #sb-container {
   width: 45%;
 }
 #sb-nav a {
-  display: block;
+  display: none;
   float: right;
   height: 16px;
   width: 16px;

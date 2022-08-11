@@ -113,5 +113,16 @@ public class MemberModel {
 		return "redirect:../main/main.do";
 	}
 	
+	// 아이디/비밀번호 찾기
+	@RequestMapping("member/id_find.do")
+	public String member_id_find(HttpServletRequest request,HttpServletResponse response) {
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		String result=MemberDAO.emailIdFind(name, email);
+		
+		request.setAttribute("result", result);
+		return "../member/id_find.jsp";
+	}
+	
 
 }

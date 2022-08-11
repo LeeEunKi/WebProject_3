@@ -30,8 +30,8 @@ $(function() {
 			content:'../member/login.do',
 			player:'iframe',
 			title:'',
-			width:400,
-			height:650
+			width:360,
+			height:552
 		})
 	})
 	
