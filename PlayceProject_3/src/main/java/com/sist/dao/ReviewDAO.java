@@ -38,6 +38,26 @@ public class ReviewDAO {
 		return total;
 	}
 	
+    //<select id="scoreAvg" resultType="double" parameterType="int">
+	public static Double scoreAvg(int place_no)
+	{
+		SqlSession session=null;
+		Double avg=0.0;
+		try {
+			session=ssf.openSession();
+			avg=session.selectOne("scoreAvg", place_no);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("reviewListData(ReviewVO vo) 오류났다 고쳐라");
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		return avg;
+	}
+	
 	
 	//<select id="reviewListData" resultType="ReviewVO" parameterType="no">
 	public static List<ReviewVO> reviewListData(int place_no)

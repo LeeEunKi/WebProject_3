@@ -244,11 +244,8 @@ if (status === kakao.maps.services.Status.OK) {
 							<tr style="height:30px"></tr>
 							<tr><td colspan="5" style="text-align: left;">${pvo.etc }</td></tr>
 						</table>
-					</div>
-						
-					</div>
-				</div>
-				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+				      <div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+			       </div>
 			   </div>
 			   <div class="col-lg-8">
 				<h2 class="heading text-primary" style="padding-top: 30px;" id="location">위치</h2>

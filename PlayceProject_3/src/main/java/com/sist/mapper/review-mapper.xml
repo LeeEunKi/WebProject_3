@@ -12,13 +12,21 @@
 	CONSTRAINT review_3_no_pk PRIMARY KEY(no)
 	rcount NUMBER DEFAULT 0
  -->
-<!--  댓글 카운트 -->
-<update id="countIncrement" parameterType="ReviewVO">
-   UPDATE REVIEW_3 SET
-   rcount=rcount+1
-   WHERE no=#{place_no}
+<!-- 도움돼요 기능 -->
+<update id="likeIncrement" parameterType="ReviewVO">
+   UPDATE REVIEW_LIKE_3 SET
+   likecount=likecount+1
+   WHERE review_3_no=#{no}
 </update>
 
+<!-- 평점 평균 구하기 -->
+<select id="scoreAvg" resultType="double" parameterType="int">
+  SELECT ROUND(AVG(score),1) 
+  FROM review_3
+  WHERE place_no=#{place_no}
+</select>
+
+<!--  댓글 카운트 -->
 <select id="counts" resultType="int" parameterType="int">
  SELECT COUNT(*)
  FROM review_3
