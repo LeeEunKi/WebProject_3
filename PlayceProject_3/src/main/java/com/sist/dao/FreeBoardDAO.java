@@ -219,5 +219,24 @@ public class FreeBoardDAO {
 		 }
 		 return result;
 	 }
+	 public static List<FreeBoardVO> boardSearchData()
+	   {
+		   List<FreeBoardVO> list=null;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("boardSearchData");
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); 
+		   }
+		   return list;
+	   }
 
 }

@@ -12,6 +12,11 @@ color:black;
 width:120;height:70; 
 background-color: white;
 }
+hr {
+  color: #2964D9;
+   width : 20%;
+  height : 30px;
+}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -67,7 +72,8 @@ $(function(){
 	  <div class="container">
 	   	<div class="two_third first" style="height:600px">
      <div class="col-lg-12">
-		   <h2 class="font-weight-bold text-primary heading">글쓰기</h2><br>
+		   <h2 class="font-weight-bold text-primary heading">글쓰기</h2>
+		     <hr/><br><br>
        	<div class="two_third first">
        	<form method=post action="../freeboard/insert_ok.do" id="frm">
        		<table class="table">
