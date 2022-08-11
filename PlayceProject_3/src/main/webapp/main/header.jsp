@@ -30,7 +30,7 @@ $(function() {
 			content:'../member/login.do',
 			player:'iframe',
 			title:'',
-			width:360,
+			width:350,
 			height:552
 		})
 	})
