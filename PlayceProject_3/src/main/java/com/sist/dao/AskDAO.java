@@ -70,16 +70,75 @@ public class AskDAO {
 				session.close();
 		}
 	}
-	
+
+	//[관리자] 답변해야할 문의글 목록 가져오기
+	//	<select id="admin_askReplyListData" resultType="AskVO">
+	public static List<AskVO> admin_askReplyListData(Map map){
+		List<AskVO> list=null;
+		SqlSession session = null;
+		 try {
+			 session = ssf.openSession();
+			 list=session.selectList("admin_askReplyListData",map);			
+		 }catch(Exception ex) {
+			 ex.printStackTrace();
+		 }finally {
+			 if(session!=null)
+				 session.close();
+		 }
+		 return list;
+	}
+	//[관리자] 답변해야할 문의글 개수 가져오기
+	public static int admin_askTotalCount() {
+		int total = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			total = session.selectOne("admin_askTotalCount");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	//[관리자] 답변해야 할 문의글 상세내용 가져오기
+	public static AskVO admin_askDetailData(int no) {
+		AskVO vo = new AskVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("admin_askDetailData",no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		System.out.println(vo.getNo());
+		return vo;
+		
+	}
+	/*
+	 * SELECT group_id FROM askboard_3
+		WHERE no=#{no}
+		
+	 * INSERT INTO askboard_3(no,member_id,content,group_id, group_step, group_tab, place_no)
+		VALUES(#{no},#{member_id},#{content},#{group_id},1,1)
+		
+		UPDATE askboard_3 SET
+		isReply = 1
+		WHERE no=#{no}
+	 */
 	//[관리자] 답변 등록
-	public static void admin_askInsert(int pno, AskVO vo) {
+	public static void admin_askInsert(int ask_no, AskVO vo) {
 		 SqlSession session = null;
 		 try {
 			 session = ssf.openSession();
-			 int gi = session.selectOne("admin_getGroupId",pno);//해당 문의글 group_id 가져오기
+			 int gi = session.selectOne("admin_getGroupId",ask_no);//해당 문의글 group_id 가져오기
 			 vo.setGroup_id(gi);
 			 session.insert("admin_askReplyInsert",vo); //답변 insert
-			 session.update("admin_askReplyIsReply",pno); //질문글 isReply 업데이트
+			 session.update("admin_askReplyIsReply",ask_no); //질문글 isReply 업데이트
 			 session.commit();
 		 }catch(Exception ex) {
 			 session.rollback();
@@ -89,20 +148,4 @@ public class AskDAO {
 				 session.close();
 		 }
 	 }
-	//[관리자] 답변해야할 문의글 가져오기
-	//	<select id="admin_askReplyListData" resultType="AskVO">
-	public static List<AskVO> admin_askReplyListData(){
-		List<AskVO> list=null;
-		SqlSession session = null;
-		 try {
-			 session = ssf.openSession();
-			 list=session.selectList("admin_askReplyListData");			
-		 }catch(Exception ex) {
-			 ex.printStackTrace();
-		 }finally {
-			 if(session!=null)
-				 session.close();
-		 }
-		 return list;
-	}
 }

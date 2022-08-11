@@ -63,7 +63,7 @@
 <div class="section pt-0">
 	<div class="container">
 		<div class="row justify-content-between mb-5">
-				<div class="col-lg-3 side" style="border-right-style: solid;">
+				<div class="col-lg-3 side" style="border-right-style: solid;border-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">게시판 관리</h3>
             			<a href="../adminpage/askReply.do" class="item"><i class="angle right icon"></i>

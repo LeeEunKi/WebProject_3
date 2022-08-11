@@ -94,12 +94,11 @@ public class PlaceModel {
 			endPage = totalPage;
 		}
 		
-		
-		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트
 		
 		//문의글영역 요소
+		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
 		request.setAttribute("qList", qList);
 		request.setAttribute("page", page);
 		request.setAttribute("start", start);
@@ -107,11 +106,12 @@ public class PlaceModel {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("totalQ", totalQ); //문의 총 개수
 		
+		//리뷰 영역 요소
 		request.setAttribute("rList", rList);
 		request.setAttribute("rcount", rcount);
 		
-		request.setAttribute("totalQ", totalQ); //문의 총 개수
 		request.setAttribute("main_jsp","../place/detail.jsp");
 		request.setAttribute("review_jsp", "../review/review.jsp");
 		request.setAttribute("ask_jsp", "../ask/ask_list.jsp");

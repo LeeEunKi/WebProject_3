@@ -3,9 +3,9 @@
 <mapper namespace="com.sist.mapper.ask-mapper">
 	<!-- 장소별 문의 목록 가져오기 -->
 	<select id="askListData" resultType="AskVO" parameterType="hashmap">
-		SELECT place_no, no, member_id, content, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, isreply, group_id, group_tab, num
-		FROM (SELECT place_no, no, member_id, content, regdate, isreply, group_id, group_tab, rownum as num
-			FROM (SELECT place_no, no, member_id, content, regdate, isreply, group_id, group_tab
+		SELECT place_no, no, member_id, content, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, isreply,place_img, group_id, group_tab, num
+		FROM (SELECT place_no, no, member_id, content, regdate, isreply,place_img, group_id, group_tab, rownum as num
+			FROM (SELECT place_no, no, member_id, content, regdate, isreply,place_img, group_id, group_tab
 				FROM askboard_3 WHERE place_no = #{place_no} ORDER BY group_id DESC, group_step ASC ))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
@@ -13,22 +13,34 @@
 	<select id="askCount" resultType="int" parameterType="int">
 		SELECT COUNT(*)
 		FROM askboard_3
-		WHERE place_no=#{place_no}
+		WHERE place_no=#{place_no} AND place_img is not null
 	</select>
 	<!-- 문의 등록하기 -->
 	<insert id="askInsert" parameterType="AskVO">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(no)+1,1) as no FROM askboard_3
 		</selectKey>
-		INSERT INTO askboard_3(no,member_id,content,group_id,place_no)
-		VALUES(#{no},#{member_id},#{content},(SELECT NVL(MAX(group_id)+1,1) as group_id FROM askboard_3),#{place_no})
+		INSERT INTO askboard_3(no,member_id,content,group_id,place_no,place_img, place_name)
+		VALUES(#{no},#{member_id},#{content},(SELECT NVL(MAX(group_id)+1,1) as group_id FROM askboard_3),#{place_no},#{place_img},#{place_name})
 	</insert>
 	<!-- 문의 답변달기(관리자만 가능) -->
 	<!-- [관리자] 문의글 목록-->
-	<select id="admin_askReplyListData" resultType="AskVO">
-		SELECT * FROM askboard_3
-		WHERE isReply!=1 AND group_step!=1
-		ORDER BY no DESC
+	<select id="admin_askReplyListData" resultType="AskVO" parameterType="hashmap">
+		SELECT no, content, member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, place_img, place_name, place_no, num
+		FROM (SELECT no, content, member_id, regdate,place_img, place_name, place_no, rownum as num
+			FROM (SELECT no, content, member_id, regdate,place_img, place_name, place_no
+				FROM askboard_3 WHERE isReply!=1 AND group_step!=1 ORDER BY no DESC))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<!-- [관리자] 문의글 총 개수 가져오기 -->
+	<select id="admin_askTotalCount" resultType="int">
+		SELECT COUNT(*) FROM askboard_3
+	</select>
+	<!-- [관리자] 문의 상세내용 가져오기 -->
+	<select id="admin_askDetailData" resultType="AskVO" parameterType="int">
+		SELECT member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, content, place_img, place_name, place_no
+		FROM askboard_3
+		WHERE no=#{no}
 	</select>
 	<!-- [관리자] 문의 달기 전 group_id 얻기-->
 	<select id="admin_getGroupId" resultType="int" parameterType="int">
@@ -40,8 +52,8 @@
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(no)+1,1) as no FROM askboard_3
 		</selectKey>
-		INSERT INTO askboard_3(no,member_id,content,pwd,group_id, group_step, group_tab)
-		VALUES(#{no},#{member_id},#{content},#{pwd},#{group_id},1,1)
+		INSERT INTO askboard_3(no,member_id,content,group_id, group_step, group_tab, place_no)
+		VALUES(#{no},#{member_id},#{content},#{group_id},1,1,#{place_no})
 	</insert>
 	<!-- [관리자] 문의글 답변 등록 후 isReply 수정 -->
 	<update id="admin_askReplyIsReply" parameterType="int">
