@@ -10477,17 +10477,20 @@ h1.main-title {
   }
   
   .container .heading {
-  font-weight: 400; }
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 5px;
+   }
   @media (max-width: 767.98px) {
   .container .heading {
-  font-size: 36px; }
+  font-size: 28px; }
   }
   
   .col-lg-6 .heading {
   font-weight: 600; }
   @media (max-width: 767.98px) {
   .container .heading {
-  font-size: 36px; }
+  font-size: 28px; }
   }
   
   
@@ -10648,6 +10651,14 @@ h1.main-title {
   
   h3.title{
   color: #fff;
+  }
+  #subjBtn:hover{
+  text-shadow: -1px 0px  rgba(23, 23, 23, 0.3), 0px 1px  rgba(23, 23, 23, 0.3), 1px 0px  rgba(23, 23, 23, 0.3), 0px -1px  rgba(23, 23, 23, 0.3);
+  color: #fff !important;
+  }
+  #boxhover:hover{
+  text-shadow: -1px 0px  rgba(23, 23, 23, 0.3), 0px 1px  rgba(23, 23, 23, 0.3), 1px 0px  rgba(23, 23, 23, 0.3), 0px -1px  rgba(23, 23, 23, 0.3);
+  color: #fff !important;
   }
 /*
 

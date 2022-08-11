@@ -64,7 +64,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row"></div>
+	<div cl></div>
 	
 <div class="section">
 	<div class="container">
@@ -139,20 +139,21 @@
 			<div class="row mb-5 align-items-center">
 				<div class="col-lg-6">
 					<h2 class="font-weight-bold text-primary heading">기획전</h2>
-		    		<p class="sub-title">지금 딱 내가 찾는 공간!</p>
+		    		<p class="sub-title">지금 딱 내가 찾는 공간!</p><br>
 					
 			</div>
-	
+	<div class="row mb-5 align-items-center">
 		<div class="news container">
 		  <c:forEach var="vo" items="${list }" varStatus="s">
-			<a href="../place/category_list.do?cno=${vo.no }" class="box vertical box${s.index+1 } background-img" style="background-image: url(${vo.poster});">
+			<a id="boxhover" href="../place/category_list.do?cno=${vo.no }" class="box vertical box${s.index+1 } background-img" style="background-image: url(${vo.poster});">
 				<h3 class="category-title">${vo.title }</h3>
-				<div>${vo.subject }<span style="color: yellow;">&nbsp;${categoryCnt.get(s.index) } 곳</span></div>
+				<div id="subjBtn">${vo.subject }<span style="color: yellow;">&nbsp;${categoryCnt.get(s.index) } 곳</span></div>
 			</a>
 		  </c:forEach>
 		</div>
 	  </div>
 	 </div>
+	</div>
 	</div>
 
 
