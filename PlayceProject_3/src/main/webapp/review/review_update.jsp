@@ -3,11 +3,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#pBtn').click(function() {
+		let score=$('input[type="radio"]').val();
+		if(score===null)
+		{
+			$('#s_result').text("평점을 꼭 매겨주셔야해요!");
+			return;
+		}
+	})	
+})
+</script>
 	
-
+	<title></title>
 </head>
 <body onload="window.resizeTo(424,687)">
 	<div class="section sec-testimonials">
@@ -128,6 +140,9 @@
 									</div>
 								  </div>
 								</div>
+							  </div>
+							  <div class=row>
+							   <h3 id="s_result" class="text-center" style="color: red"></h3>
 							  </div>
 						  <legend><span class="number">2</span> 내용 입력</legend>
 						

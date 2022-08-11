@@ -41,4 +41,18 @@
   WHERE id=#{id}
 </select>
 
+<!-- 아이디/비밀번호 찾기 -->
+ <select id="memberNameCount" resultType="int" parameterType="string">
+  SELECT COUNT(*) FROM member_3
+  WHERE name=#{name}
+ </select>
+ <select id="memberGetEmail" resultType="string" parameterType="string">
+  SELECT email FROM member_3
+  WHERE name=#{name}
+ </select>
+ <select id="emailIdFind" resultType="string" parameterType="hashmap">
+  SELECT RPAD(SUBSTR(id,1,1),LENGTH(id),'*') FROM member_3
+  WHERE name=#{name} AND email = #{email}
+ </select>
+
 </mapper>

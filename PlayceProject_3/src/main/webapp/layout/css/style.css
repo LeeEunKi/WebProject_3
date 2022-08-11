@@ -1201,6 +1201,7 @@ progress {
     flex: 0 0 auto;
     width: 66.66667%; }
   .col-lg-9 {
+  	margin-bottom:20vh;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
@@ -9207,6 +9208,7 @@ textarea.form-control-lg {
   position: relative; }
 
 .logo {
+	padding-top:8px;
   font-size: 26px;
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500; }
@@ -9214,9 +9216,7 @@ textarea.form-control-lg {
     color: #fff !important; }
 
 .site-nav {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: 9;
   width: 100%; }
@@ -9669,7 +9669,7 @@ textarea {
 
 .menu-bg-wrap {
   background-color: none;
-  padding: 20px 30px;
+  padding: 30px 30px;
   position: relative;
   float: left;
   width: 100%;
@@ -9695,7 +9695,7 @@ textarea {
       top: 0;
       z-index: 1; }
   .hero, .hero > .container > .row {
-    height: 80vh;
+    height: 70vh;
     min-height: 600px; }
   .hero.page-inner, .hero.page-inner > .container > .row {
     height: 70vh;
@@ -9705,11 +9705,13 @@ textarea {
     z-index: 2; }
   .hero .heading {
     color: #fff;
-    font-size: clamp(2.5rem, 3vw, 3.5rem);
-    margin-top: 50px;
+    font-size: clamp(2.5rem, 3vw, 3.5rem)!important;
+    margin-top: 10px;
+    margin-bottom: 4px;
     font-weight: 700;
     padding-bottom: auto; 
 }
+
 .hero .heading_signup {
   color: #fff;
   font-size: clamp(2.5rem, 3vw, 3.5rem);
@@ -9722,6 +9724,7 @@ textarea {
  .hero .heading2 {
     color: #fff;
     font-size: clamp(1.2rem, 1.5vw, 2rem);
+    margin-top: 0;
     margin-bottom: 30px;
     font-weight: 300; 
 }
@@ -9761,7 +9764,7 @@ textarea {
   left: 0;
   right: 0; }
   .hero-slide .img {
-    height: 80vh;
+    height: 70vh;
     min-height: 600px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -10475,17 +10478,20 @@ h1.main-title {
   }
   
   .container .heading {
-  font-weight: 400; }
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 5px;
+   }
   @media (max-width: 767.98px) {
   .container .heading {
-  font-size: 36px; }
+  font-size: 28px; }
   }
   
   .col-lg-6 .heading {
   font-weight: 600; }
   @media (max-width: 767.98px) {
   .container .heading {
-  font-size: 36px; }
+  font-size: 28px; }
   }
   
   
@@ -10642,10 +10648,22 @@ h1.main-title {
   .box6 .read-btn {
   color: #2964D9;
   }
+  .category-title{
+  font-size: 21px;
+  }
   
-  
-  h3.title{
+  h3 .title{
   color: #fff;
+  }
+  
+  #subjBtn:hover{
+  text-shadow: -1px 0px  rgba(23, 23, 23, 0.3), 0px 1px  rgba(23, 23, 23, 0.3), 1px 0px  rgba(23, 23, 23, 0.3), 0px -1px  rgba(23, 23, 23, 0.3);
+  color: #fff !important;
+  }
+
+  #boxhover:hover{
+  text-shadow: -1px 0px  rgba(23, 23, 23, 0.3), 0px 1px  rgba(23, 23, 23, 0.3), 1px 0px  rgba(23, 23, 23, 0.3), 0px -1px  rgba(23, 23, 23, 0.3);
+  color: #fff !important;
   }
 /*
 
@@ -11148,23 +11166,11 @@ border-right: none;
   transform: translateY(-500px);
 }
 
-.feedback {
-  max-width: 360px;
-  background-color: #fff;
-  width: 100%;
-  padding: 30px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  
-}
 #content{
   background: rgba(255, 255, 255, 0.1);
   border: none;
   font-size: 16px;
-  height: auto;
+  height: 150px !important;
   margin: 0;
   outline: 0;
   padding: 15px;
@@ -11172,7 +11178,13 @@ border-right: none;
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
+  margin-bottom: 7px;
+}
+#review_insert {
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #fff;
 }
  /*
 

@@ -12,19 +12,6 @@
 <meta name="description" content="" />
 <meta name="keywords" content="bootstrap, bootstrap5" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="../layout/fonts/icomoon/style.css">
-<link rel="stylesheet" href="../layout/fonts/flaticon/font/flaticon.css">
-
-<link rel="stylesheet" href="../layout/css/tiny-slider.css">
-<link rel="stylesheet" href="../layout/css/aos.css">
-<link rel="stylesheet" href="../layout/css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="stylesheet" href="../member/shadow/css/shadowbox.css">
 <script type="text/javascript" src="../member/shadow/js/shadowbox.js"></script>
@@ -43,8 +30,8 @@ $(function() {
 			content:'../member/login.do',
 			player:'iframe',
 			title:'',
-			width:400,
-			height:650
+			width:360,
+			height:552
 		})
 	})
 	

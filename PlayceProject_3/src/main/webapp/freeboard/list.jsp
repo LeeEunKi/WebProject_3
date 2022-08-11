@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+     List<FreeBoardVO> list=FreeBoardDAO.boardSearchData();
+     request.setAttribute("list", list);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +15,11 @@
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+hr {
+  color: #2964D9;
+   width : 40%;
+  height : 30px;
 }
 section.notice {
   padding: 80px 0;
@@ -227,6 +236,20 @@ a.button:hover {
 	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#fd').keyup(function(){
+		let fd=$('#fd').val();
+		$('#user-table > tbody > tr').hide();
+		let temp=$('#user-table > tbody > tr > td:nth-child(5n+2):contains("'+fd+'")')
+		$(temp).parent().show()
+	})
+	// $('.details').click(function(){})
+	
+})
+
+</script>
 </head>
 <body>
 
@@ -247,14 +270,15 @@ a.button:hover {
 	  <div class="container">
 	   	<div class="two_third first" style="height:800px">
 		  <div class="col-lg-6">
-		   <h2 class="font-weight-bold text-primary heading">자유게시판</h2><br>
+		   <h2 class="font-weight-bold text-primary heading">자유게시판</h2>
+		   <hr/><br><br>
 		<div id="board-search">
        	 <div class="container">
             <div class="search-window">
                 <form action="">
                     <div class="search-wrap">
                         <label for="search" class="blind">공지사항 내용 검색</label>
-                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                        <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="검색어를 입력해주세요.">
                         <button type="submit" class="btn btn-dark">검색</button>
                     </div>
                 </form>
@@ -266,7 +290,8 @@ a.button:hover {
   <!-- board list area -->
     <div id="board-list">
         <div class="container">
-            <table class="table">
+            <table class="table" id="user-table">
+            <thead>
        			<tr>
        				<th width="10%" class="text-center">번호</th>
        				<th width="45%" class="text-center">제목</th>
@@ -274,6 +299,8 @@ a.button:hover {
        				<th width="20%" class="text-center">작성일</th>
        				<th width="10%" class="text-center">조회수</th>
        			</tr>
+       			</thead>
+       			<tbody>
        			<c:forEach var="vo" items="${list }">
        			<tr>
        				<td width="10%" class="text-center">${vo.no }</td>
@@ -288,6 +315,7 @@ a.button:hover {
        				<td width="10%" class="text-center">${vo.hit }</td>
        			</tr>
        			</c:forEach>
+       			</tbody>
        		</table>
        		
    			<table>

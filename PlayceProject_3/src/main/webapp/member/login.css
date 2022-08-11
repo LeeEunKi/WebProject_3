@@ -85,12 +85,12 @@ html, body {
   outline: none;
   box-shadow: none;
   display: block;
-  height: 30px;
+  height: 40px;
   line-height: 30px;
   padding: 8px 15px;
   border-bottom: 1px solid #eee;
   width: 100%;
-  font-size: 12px;
+  font-size: 14px;
 }
 .form-structor .signup .form-holder .input:last-child {
   border-bottom: 0;
@@ -112,6 +112,7 @@ html, body {
   cursor: pointer;
   opacity: 1;
   visibility: visible;
+  height: 40px;
   -webkit-transition: all 0.3s ease;
 }
 .form-structor .signup .submit-btn:hover {
@@ -166,8 +167,9 @@ html, body {
   background-color: #fff;
   border: 1px solid #eee;
   overflow: hidden;
-  margin-top: 50px;
   opacity: 1;
+  margin-top:10px;
+  margin-bottom:30px;
   visibility: visible;
   -webkit-transition: all 0.3s ease;
 }
@@ -181,7 +183,7 @@ html, body {
   padding: 8px 15px;
   border-bottom: 1px solid #eee;
   width: 100%;
-  font-size: 12px;
+  font-size: 14px;
 }
 .form-structor .login .center .form-holder .input:last-child {
   border-bottom: 0;

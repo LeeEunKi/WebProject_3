@@ -18,33 +18,39 @@ public class ReviewModel {
 		return "../main/main.jsp";
 	}
 	
-	@RequestMapping("review/reivew_insert.do")
+	@RequestMapping("review/review_insert.do")
 	public String review_insert(HttpServletRequest request,HttpServletResponse response)
 	{
+		String place_no=request.getParameter("place_no");
+		request.setAttribute("place_no", place_no);
 		request.setAttribute("main_jsp", "../review/review_insert.jsp");
-		return "..main/main.jsp";
+		return "../main/main.jsp";
 	}
 	
 	@RequestMapping("review/review_insert_ok.do")
 	public String review_insert_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
-			request.setCharacterEncoding("UTF_8");
+			request.setCharacterEncoding("UTF-8");
 		} catch (Exception e) {
 			System.out.println("Model => review_insert_ok error");
 			e.printStackTrace();
 		}
 		String place_no=request.getParameter("place_no"); //게시물 번호 참조키 
 		String content=request.getParameter("content");
-		String score=request.getParameter("score");
+		String score=request.getParameter("rating");
 		//String imgname=request.getParameter("imgname"); 이미지 어카냐 진
-		HttpSession session=request.getSession(); // 아이디 얻어와야지
-		String member_id=(String)session.getAttribute("member_id");
-		
+		/*HttpSession session=request.getSession(); 아이디 얻어와야지
+		String member_id=(String)session.getAttribute("member_id");*/
+		String member_id = request.getParameter("member_id");
+		System.out.println(place_no);
+		System.out.println(content);
+		System.out.println(score);
 		ReviewVO vo=new ReviewVO();
 		vo.setContent(content);
 		vo.setScore(Integer.parseInt(score));
 		vo.setMember_id(member_id);
+		vo.setPlace_no(Integer.parseInt(place_no));
 		
 		ReviewDAO.reviewInsert(Integer.parseInt(place_no),vo); //place_no 댓글 갯수 +1
 		

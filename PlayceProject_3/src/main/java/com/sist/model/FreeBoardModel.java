@@ -27,6 +27,7 @@ public class FreeBoardModel {
 		map.put("start", start);
 		map.put("end", end);
 		List<FreeBoardVO> list=FreeBoardDAO.boardListData(map);
+	     
 		int totalpage=FreeBoardDAO.boardTotalPage();
 		
 		request.setAttribute("curpage", curpage);

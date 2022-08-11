@@ -3,13 +3,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function () {
+	$('#pBtn').click(function() {
+		
+			if($('input[name="rating"] ').is(':checked')===false)
+		    {
+				$('#s_result').text("평점을 꼭 매겨주셔야해요!");
+				return false;
+		    }
+			else if($('#content').val()==="")
+		    {
+				$('#content').focus();
+				return false;
+		    }
+		
+	})
 	
-
+	
+})
+</script>
+<title></title>
 </head>
-<body onload="window.resizeTo(424,687)">
+<body>
+    <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 35vh;"></div>
 	<div class="section sec-testimonials">
 		<div class="container">
 			
@@ -23,15 +43,15 @@
 							<div class="container">
 								<div class="feedback">
 								  <div class="rating">
-									<input type="radio" name="rating" id="rating-5">
+									<input type="radio" name="rating" id="rating-5" value="5">
 									<label for="rating-5"></label>
-									<input type="radio" name="rating" id="rating-4">
+									<input type="radio" name="rating" id="rating-4" value="4">
 									<label for="rating-4"></label>
-									<input type="radio" name="rating" id="rating-3">
+									<input type="radio" name="rating" id="rating-3" value="3">
 									<label for="rating-3"></label>
-									<input type="radio" name="rating" id="rating-2">
+									<input type="radio" name="rating" id="rating-2" value="2">
 									<label for="rating-2"></label>
-									<input type="radio" name="rating" id="rating-1">
+									<input type="radio" name="rating" id="rating-1" value="1">
 									<label for="rating-1"></label>
 									<div class="emoji-wrapper">
 									  <div class="emoji">
@@ -123,17 +143,20 @@
 								  </div>
 								</div>
 							  </div>
+							  <div class=row>
+							    <h4 id="s_result" class="text-center" style="color: red"></h4>
+							  </div>
 						  <legend><span class="number">2</span> 내용 입력</legend>
 						
 						  <label for="content">고객님의 소중한 이용 후기를 남겨주세요</label>
-						  <textarea id="content" required></textarea>
-						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 20px;"  for="input-img">사진 업로드</label>
+						  <textarea id="content" name="content" style="height: 300px;"></textarea>
+						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 7px;"  for="input-img">사진 업로드</label>
 						  <input type="file" id="input-img" style="display: none;"/>	
-						  <input type="hidden" name="place_no" value="${place_no }">	
-						  <input type="hidden" name="member_id" value="${member_id }">	
+						  <input type="hidden" name=member_id value="${sessionScope.id }"/>
+					  	  <input type="hidden" name=place_no value="${place_no }"/>
 						
-						<button type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 49%; margin-top: 20px;">확인</button>				  
-						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 49%; margin-top: 20px;" onclick="self.close();">취소</button>				  
+						<input type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 47%; margin-top: 30px;" value="확인">				  
+						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 47%; margin-top: 30px; float: right;" onclick="#">취소</button>				  
 					  </form>
 				</div>
 			</div>
