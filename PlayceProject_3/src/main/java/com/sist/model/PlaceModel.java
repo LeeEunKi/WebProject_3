@@ -69,6 +69,7 @@ public class PlaceModel {
 		//리뷰 영역 데이터
 		List<ReviewVO> rList =ReviewDAO.reviewListData(Integer.parseInt(no));
 		int rcount=ReviewDAO.counts(Integer.parseInt(no));
+		Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
 		
 		//문의게시판 영역 - 데이터
 		int totalQ = AskDAO.askTotalCount(Integer.parseInt(no));
@@ -111,6 +112,7 @@ public class PlaceModel {
 		//리뷰 영역 요소
 		request.setAttribute("rList", rList);
 		request.setAttribute("rcount", rcount);
+		request.setAttribute("avg", avg);
 		
 		request.setAttribute("main_jsp","../place/detail.jsp");
 		request.setAttribute("review_jsp", "../review/review.jsp");
