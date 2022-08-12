@@ -321,10 +321,12 @@ $(function(){
    			<table>
        			<tr>
        				<td>
+       				<c:if test="${sessionScope.id!=null }">
        					<div class="wrap">
 					  		<a href="../freeboard/insert.do" class="button">새글</a>
 							<%--<a href="../main/main.do" class="button">홈</a> --%>
 						</div>
+						</c:if>
        				</td>
   
        				<td class="text-right inline">

@@ -48,7 +48,7 @@
 	</delete>
 	<!-- 동적 쿼리, JOIN, SubQuery -->
 	<select id="boardSearchData" resultType="FreeBoardVO">
-     SELECT no,subject,name,regdate,hit
+     SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
      FROM freeboard_3
 	 ORDER BY no ASC
    </select>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,7 @@ $(function(){
 			$('#name').focus();
 			return;
 		}
-		
+	
 		let subject=$('#subject').val();
 		if(subject.trim()=="")
 		{
@@ -80,13 +82,16 @@ $(function(){
        			<tr>
 	       			<th width=10% class="text-right">이름</th>
 		       			<td width=80%>
-		       				<input type=text name=name size=15 class="input-sm" id="name" style="width:80%; height:50px">
+		       				<form method=post action="../freeboard/freeboard_insert.do">
+		       				<input type=text size=15 class="input-sm" id="name" style="height: 30px" value="${sessionScope.name }">
+		       				</form>
 		       			</td>
 	       			</tr>
        			<tr>
        			<th width=20% class="text-right">제목</th>
 	       			<td width=80%>
-	       				<input type=text name=subject size=50 class="input-sm" id="subject">
+	       				<input type=text name=subject size=50 class="input-sm" id="subject" >
+	       				
 	       			</td>
        			</tr>
        			<tr>

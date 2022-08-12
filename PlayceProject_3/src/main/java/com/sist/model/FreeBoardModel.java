@@ -3,6 +3,7 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -52,11 +53,13 @@ public class FreeBoardModel {
 			request.setCharacterEncoding("UTF-8");
 		}catch(Exception ex) {}
 		
-		String name=request.getParameter("name");
-		System.out.println("name="+name);
+		
 		String subjet=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");
+		HttpSession session=request.getSession();
+		String name=(String)session.getAttribute("name");
+		System.out.println("name="+name);
 		
 		FreeBoardVO vo=new FreeBoardVO();
 		vo.setName(name);
