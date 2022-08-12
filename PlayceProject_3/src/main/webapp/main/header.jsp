@@ -84,7 +84,7 @@ $(function() {
 						</li>
 						<li><a href="../review/img_review.do">사진 리뷰</a></li>
 						<li><a href="../freeboard/list.do">커뮤니티</a></li>
-						<li><a href="index.html">공지사항</a></li>
+						<li><a href="../noticeboard/list.do">공지사항</a></li>
 						<c:if test="${sessionScope.id == null }">
 						  <li><a class="loginImg">로그인</a></li>
 						</c:if>

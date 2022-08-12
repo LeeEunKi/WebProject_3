@@ -13,6 +13,7 @@
      <typeAlias type="com.sist.vo.MemberVO" alias="MemberVO"/>
      <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
      <typeAlias type="com.sist.vo.AskVO" alias="AskVO"/>
+     <typeAlias type="com.sist.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기. -->
 		<environment id="development">
@@ -34,5 +35,6 @@
       <mapper resource="com/sist/mapper/member-mapper.xml"/>
       <mapper resource="com/sist/mapper/reply-mapper.xml"/>
       <mapper resource="com/sist/mapper/ask-mapper.xml"/>
+      <mapper resource="com/sist/mapper/noticeboard-mapper.xml"/>
 	</mappers>
 </configuration>

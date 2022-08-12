@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.noticeboard-mapper">
+	<!-- 목록 : 페이징 select -->
+	<select id="noticeboardListData" resultType="NoticeBoardVO" parameterType="hashmap">
+		 SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
+	    FROM (SELECT no,subject,name,regdate,hit,rcount,rownum as num 
+	    FROM (SELECT /*+ INDEX_DESC(NoticeBoard_3 pf_no_pk)*/ no,subject,name,regdate,hit,rcount 
+	    FROM NoticeBoard_3))
+	    WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id="noticeboardTotalPage" resultType="int">
+		SELECT CEIL(COUNT(*)/10.0) FROM NoticeBoard_3
+	</select>
+	<!-- 값 가져오는법 => map.get("start") -->
+	<!-- 등록 : 시퀀스 selectKey insert -->
+	<insert id="boardInsert" parameterType="NoticeBoardVO">
+		INSERT INTO NoticeBoard_3(no,name,subject,content,pwd)
+		VALUES((SELECT NVL(MAX(no)+1,1)FROM NoticeBoard_3),
+		 #{name},#{subject},#{content},#{pwd}
+		 )
+	</insert>
+	<!-- 값 가져오는법 => vo.getName() -->
+	<!-- 상세보기 update -->
+	<update id="noticehitIncrement" parameterType="int">
+		UPDATE NoticeBoard_3 SET
+		hit=hit+1
+		WHERE no=#{no}
+	</update>
+	<select id="noticeboardDetailData" resultType="NoticeBoardVO" parameterType="int">
+		SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+		FROM NoticeBoard_3
+		WHERE no=#{no}
+	</select>
+	<!-- 수정, 삭제(댓글) delete -->
+	<select id="noticeboardGetPassword" resultType="string" parameterType="int">
+		SELECT pwd FROM NoticeBoard_3
+		WHERE no=#{no}
+	</select>
+	<update id="noticeboardUpdate" parameterType="NoticeBoardVO">
+		UPDATE NoticeBoard_3 SET
+		name=#{name},subject=#{subject},content=#{content}
+		WHERE no=#{no}
+	</update>
+	<delete id="noticeboardDelete" parameterType="int">
+		DELETE FROM NoticeBoard_3
+		WHERE no=#{no}
+	</delete>
+	<!-- 동적 쿼리, JOIN, SubQuery -->
+	<select id="noticeboardSearchData" resultType="NoticeBoardVO">
+     SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+     FROM NoticeBoard_3
+	 ORDER BY no ASC
+   </select>
+</mapper>
