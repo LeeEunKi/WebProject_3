@@ -74,9 +74,9 @@
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">My 활동</h3>
-            			<a class="item"><i class="angle right icon"></i>
+            			<a class="item" href="../mypage/ask_list.do"><i class="angle right icon"></i>
               				문의 내역 </a>
-			            <a class="item"><i class="angle right icon"></i>
+			            <a class="item" href="../mypage/like_list.do"><i class="angle right icon"></i>
 			                찜 목록 </a>
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">

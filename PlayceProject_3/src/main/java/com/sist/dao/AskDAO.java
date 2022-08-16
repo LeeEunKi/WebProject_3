@@ -71,6 +71,56 @@ public class AskDAO {
 		}
 	}
 
+	//[유저] 마이페이지 : 문의글 목록
+	public static List<AskVO> user_askList(Map map){
+		List<AskVO> list = new ArrayList<AskVO>();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("user_askListData", map);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("AskDAO : user_askList() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	//[유저] 마이페이지 : 문의글 총 개수
+	public static int user_askTotalCount(String member_id) {
+		int total = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			total = session.selectOne("user_askTotalCount", member_id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("AskDAO : user_askTotalCount() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	
+	//[유저] 마이페이지 : 문의글 삭제
+	public static void user_askDelete(AskVO vo) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			int group_id = session.selectOne("user_getGroupId",vo);
+			session.delete("user_askDelete",group_id);
+			session.commit();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("AskDAO : user_askDelete() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+
 	//[관리자] 답변해야할 문의글 목록 가져오기
 	//	<select id="admin_askReplyListData" resultType="AskVO">
 	public static List<AskVO> admin_askReplyListData(Map map){

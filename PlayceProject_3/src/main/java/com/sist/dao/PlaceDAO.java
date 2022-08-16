@@ -119,15 +119,16 @@ public class PlaceDAO {
 		return list;
 	}
 	
-	//좋아요 : 장소별 좋아요 개수 가져오기
-	public static int placeLikeCount(PlaceLikeVO vo) {
+	//좋아요 : 장소별 좋아요 개수 가져오기(상세페이지에서 이미 좋아요 한 장소인지 확인)
+	public static int isLikedPlace(PlaceLikeVO vo) {
 		int count = 0;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
-			count = session.selectOne("placeLikeCount",vo);
+			count = session.selectOne("isLikedPlace",vo);
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			System.out.println("PlaceDAO : isLikedPlace() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -144,6 +145,7 @@ public class PlaceDAO {
 			session.commit();
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeLikeInsert() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -159,35 +161,54 @@ public class PlaceDAO {
 			session.commit();
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeLikeDelete() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
 		}
 	}
 	//마이페이지 : 좋아요 한 장소 번호들 가져오기
-	public static List<Integer> placeLikeGetNo(String id) {
+	public static List<Integer> placeLikeGetNo(Map map) {
 		List<Integer> list = null;
 		SqlSession session = ssf.openSession();
 		try {
 			session = ssf.openSession();
-			list = session.selectList("placeLikeGetNo",id);
+			list = session.selectList("placeLikeGetNo",map);
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeLikeGetNo() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
 		}
 		return list;
 	}
+	//마이페이지 : 좋아요 한 장소 총 개수(마이페이지에서 페이지네이션 할 때 사용)
+	public static int placeLikeCount(String member_id) {
+		int count = 0;
+		SqlSession session = ssf.openSession();
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("placeLikeCount",member_id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeLikeCount() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
 	//마이페이지 : 좋아요 목록 출력
-	public static PlaceVO placeLikeListData(int fno){
+	public static PlaceVO placeLikeListData(int place_no){
 		PlaceVO vo = null;
 		SqlSession session = ssf.openSession();
 		try {
 			session = ssf.openSession();
-			vo = session.selectOne("placeLikeListData",fno);
+			vo = session.selectOne("placeLikeListData",place_no);
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			System.out.println("PlaceDAO : placeLikeListData() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();

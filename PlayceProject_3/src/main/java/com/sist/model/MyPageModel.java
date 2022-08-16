@@ -1,12 +1,21 @@
 package com.sist.model;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.AskDAO;
 import com.sist.dao.MemberDAO;
+import com.sist.dao.PlaceDAO;
+import com.sist.vo.AskVO;
 import com.sist.vo.MemberVO;
+import com.sist.vo.PlaceVO;
 
 @Controller
 public class MyPageModel {
@@ -115,6 +124,103 @@ public class MyPageModel {
 		return "redirect:../main/main.do";
 	}
 	
+	//[마이페이지] 좋아요 목록 조회
+	@RequestMapping("mypage/like_list.do")
+	public String place_like_list(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+		//페이지네이션
+		String page = request.getParameter("page");
+		if(page==null)
+			page="1";
+		int curPage = Integer.parseInt(page);
+		int rowSize = 5;
+		int start = (rowSize*curPage)-(rowSize-1);
+		int end = rowSize*curPage;
+		
+		int totalL = PlaceDAO.placeLikeCount(member_id);
+		int totalPage = (int)Math.ceil((double)totalL/5.0);
+		final int BLOCK = 5;
+		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
+		int endPage = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalPage) {
+			endPage = totalPage;
+		}
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("member_id", member_id);
+		List<Integer> list = PlaceDAO.placeLikeGetNo(map);
 
+		List<PlaceVO> pList = new ArrayList<PlaceVO>();
+		for(int pno:list) {
+			PlaceVO vo = PlaceDAO.placeLikeListData(pno);
+			pList.add(vo);
+		}
+		
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("pList", pList);
+		request.setAttribute("mypage_jsp", "../mypage/like_list.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
+		return "../main/main.jsp";
+	}
+	//[마이페이지] 유저가 작성한 문의글 목록
+	@RequestMapping("mypage/ask_list.do")
+	public String mypage_ask_list(HttpServletRequest request, HttpServletResponse response) {
+		String page = request.getParameter("page");
+	    if(page==null)
+	    	page = "1";
+	    HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+	    
+	    //페이지네이션
+		int curPage = Integer.parseInt(page);
+	    int rowSize = 5;
+	    int start = rowSize*curPage-(rowSize-1);
+	    int end = rowSize*curPage;
+	    int totalCount = AskDAO.user_askTotalCount(member_id);
+		int totalPage = (int)Math.ceil((double)totalCount/10.0);
+	    final int BLOCK = 5;
+		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
+		int endPage = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalPage) {
+			endPage = totalPage;
+		}
+	    Map map = new HashMap();
+	    map.put("start", start);
+	    map.put("end", end);
+	    map.put("member_id", member_id);
+		List<AskVO> list = AskDAO.user_askList(map);
+		for(AskVO vo:list) {
+			   String data = vo.getContent();
+			   if(data.length()>20) {
+				   data = data.substring(0,20)+"...";
+				   vo.setContent(data);
+			   }
+		   }
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("startPage",startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("list", list);
+		request.setAttribute("mypage_jsp", "../mypage/ask_list.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
+		return "../main/main.jsp";
+	}
+	//[유저] 문의글 삭제 --마이페이지에서 삭제처리?
+	@RequestMapping("mypage/ask_delete.do")
+	public String mypage_ask_delete(HttpServletRequest request, HttpServletResponse response) {
+		AskVO vo = new AskVO();
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+		String place_no = request.getParameter("place_no");
+		vo.setMember_id(member_id);
+		vo.setPlace_no(Integer.parseInt(place_no));
+		AskDAO.user_askDelete(vo);
+		
+		return "redirect:../mypage/ask_list.do";
+	}
 
 }

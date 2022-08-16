@@ -61,8 +61,26 @@
 		WHERE no=#{no}
 	</update>
 	<!-- [유저] 자기가 올린 문의글 목록 가져오기 -->
-	<select id="user_askListData" parameterType="String">
-		SELECT * FROM askboard_3 
-		WHERE group_id IN(SELECT group_id FROM askboard_3 WHERE member_id=#{member_id})
+	<select id="user_askListData" resultType="AskVO" parameterType="hashmap">
+		SELECT no, content, member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, place_img, place_name, place_no, group_id, isReply, num
+		FROM (SELECT no, content, member_id, regdate,place_img, place_name, place_no, group_id, isReply,rownum as num
+		FROM (SELECT no, content, member_id, regdate,place_img, place_name, place_no, group_id,isReply
+		FROM askboard_3 WHERE member_id=#{member_id}))
+		WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<!-- [유저] 자기가 올린 문의글 개수 -->
+	<select id="user_askTotalCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) as count
+		FROM askboard_3 WHERE member_id=#{member_id}
+	</select>
+	<!-- [유저] 마이페이지:자기가 올린 문의글 삭제 -->
+	<delete id="user_askDelete" parameterType="int">
+		DELETE FROM askboard_3
+		WHERE group_id=#{group_id}
+	</delete>
+	<!-- 삭제할 group_id 가져오기 -->
+	<select id="user_getGroupId" parameterType="AskVO" resultType="int">
+		SELECT group_id FROM askboard_3
+		WHERE member_id=#{member_id} AND place_no=#{place_no}
 	</select>
 </mapper>

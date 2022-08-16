@@ -46,18 +46,27 @@
 		INSERT INTO place_like_3 VALUES(#{place_no},#{member_id},#{no})
 	</insert>
 	<!-- 좋아요 이미 했는지 확인 -->
-	<select id="placeLikeCount" resultType="int" parameterType="PlaceLikeVO">
+	<select id="isLikedPlace" resultType="int" parameterType="PlaceLikeVO">
 		SELECT COUNT(*) FROM place_like_3
 		WHERE place_no=#{place_no} AND member_id=#{member_id}
 	</select>
-	<!-- 좋아요 목록 출력(마이페이지) -->
+	<!-- [마이페이지] 좋아요 목록 출력 -->
 	<select id="placeLikeListData" resultType="PlaceVO" parameterType="int">
 		SELECT * FROM place_3
 		WHERE no=#{place_no} 
 	</select>
-	<select id="placeLikeGetNo" resultType="int" parameterType="String">
-		SELECT place_no FROM place_like_3
-		WHERE member_id = #{member_id}
+	<!-- [마이페이지] 좋아요 개수 -->
+	<select id="placeLikeCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) as count
+		FROM place_like_3
+		WHERE member_id=#{member_id}
+	</select>
+	<!-- [마이페이지] 좋아요 한 장소 번호 리스트 -->
+	<select id="placeLikeGetNo" resultType="int" parameterType="hashmap">
+		SELECT place_no
+		FROM (SELECT place_no, rownum as num 
+		FROM (SELECT place_no FROM place_like_3 WHERE member_id=#{member_id}))
+		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<!-- 좋아요 취소 -->
 	<delete id="placeLikeDelete" parameterType="PlaceLikeVO">

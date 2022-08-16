@@ -96,14 +96,16 @@ public class PlaceModel {
 		
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트 
+		
 		//장소 좋아요
 		PlaceLikeVO lvo = new PlaceLikeVO();
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("id");
 		lvo.setPlace_no(Integer.parseInt(no));
 		lvo.setMember_id(member_id);
-		int lcount = PlaceDAO.placeLikeCount(lvo);
+		int lcount = PlaceDAO.isLikedPlace(lvo);
 		request.setAttribute("lcount", lcount);
+		
 		//문의글영역 요소
 		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
 		request.setAttribute("qList", qList);
@@ -151,22 +153,22 @@ public class PlaceModel {
 		PlaceDAO.placeLikeDelete(vo);
 		return "redirect:../place/detail.do?no="+place_no;
 	}
-	
-	//[마이페이지] 좋아요 목록 조회
-	@RequestMapping("mypage/like_list.do")
-	public String place_like_list(HttpServletRequest request, HttpServletResponse response) {
+	//좋아요 취소 @마이페이지
+	@RequestMapping("mypage/like_cancel.do")
+	public String mypage_like_cancel(HttpServletRequest request, HttpServletResponse response) {
+		String place_no = request.getParameter("no");
+		String page = request.getParameter("page");
+		if(page==null)
+			page="1";
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("id");
-		List<Integer> list = PlaceDAO.placeLikeGetNo(member_id);
-		List<PlaceVO> pList = new ArrayList<PlaceVO>();
-		for(int pno:list) {
-			PlaceVO vo = PlaceDAO.placeLikeListData(pno);
-			pList.add(vo);
-		}
-		request.setAttribute("pList", pList);
-		request.setAttribute("mypage_jsp", "../mypage/like_list.jsp");
-		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
-		return "../main/main.jsp";
+		PlaceLikeVO vo = new PlaceLikeVO();
+		vo.setPlace_no(Integer.parseInt(place_no));
+		vo.setMember_id(member_id);
+		//DB연동!
+		PlaceDAO.placeLikeDelete(vo);
+		return "redirect:../mypage/like_list.do?page="+page;
 	}
+	
 
 }
