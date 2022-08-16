@@ -112,10 +112,17 @@ if (status === kakao.maps.services.Status.OK) {
 						
 						<div class="text">
 							<h3 class="host" style="display: inline;">${pvo.host_name }</h3>
-
-
-							<h2 class="heading text-primary" style="padding-top: 20px; font-weight: 600;">${pvo.name }</h2>
-							<p class="meta" id="addr" style="display: inline;">${pvo.address }</p>&nbsp;&nbsp;<p class="meta" style="display: inline;color: crimson;">♥&nbsp;114</p>
+ 							<c:if test="${sessionScope.id!=null }">
+								<c:if test="${lcount==0 }">
+									<a href="../place/like.do?place_no=${place_no }"><img src="../place/images/like_inactive.png" style="float:right"></a>
+								</c:if>
+								<c:if test="${lcount!=0 }">
+									<a href="../place/like_cancel.do?place_no=${place_no }"><img src="../place/images/like_active.png" style="float:right"></a>
+								</c:if>
+							</c:if> 
+							<h2 class="heading text-primary" style="padding-top: 5px; font-weight: 600;">${pvo.name }</h2>
+							<p class="meta" id="addr" style="display: inline;">${pvo.address }</p>&nbsp;&nbsp;
+							<p class="meta" style="display: inline;color: crimson;">♥&nbsp;114</p>
 							<div></div>
 								<c:choose>
 								     <c:when test="${pvo.price==0 }">

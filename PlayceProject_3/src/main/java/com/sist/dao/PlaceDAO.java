@@ -118,4 +118,80 @@ public class PlaceDAO {
 		}
 		return list;
 	}
+	
+	//좋아요 : 장소별 좋아요 개수 가져오기
+	public static int placeLikeCount(PlaceLikeVO vo) {
+		int count = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("placeLikeCount",vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	
+	//좋아요 : 좋아요
+	public static void placeLikeInsert(PlaceLikeVO vo) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			session.insert("placeLikeInsert",vo);
+			session.commit();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	//좋아요 : 좋아요 취소
+	public static void placeLikeDelete(PlaceLikeVO vo) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			session.insert("placeLikeDelete",vo);
+			session.commit();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	//마이페이지 : 좋아요 한 장소 번호들 가져오기
+	public static List<Integer> placeLikeGetNo(String id) {
+		List<Integer> list = null;
+		SqlSession session = ssf.openSession();
+		try {
+			session = ssf.openSession();
+			list = session.selectList("placeLikeGetNo",id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	//마이페이지 : 좋아요 목록 출력
+	public static PlaceVO placeLikeListData(int fno){
+		PlaceVO vo = null;
+		SqlSession session = ssf.openSession();
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("placeLikeListData",fno);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+	}
 }
