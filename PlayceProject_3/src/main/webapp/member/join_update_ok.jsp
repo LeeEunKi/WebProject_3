@@ -19,9 +19,7 @@
     font-family: Regular, sans-serif;
     letter-spacing: -0.6px;
 }
-.content{
-    margin-left: 15%;
-}
+
 .sub-content{
     padding: 36px 0px 16px;
     color: rgb(185, 185, 185);
@@ -42,8 +40,8 @@
     text-align: center;
 }
 .pwd-box{
-	display: block;
-    width: 364px;
+	display: flex;
+    width: 803px;
     height: 150px;
     margin: 0px auto;
     border: 1px solid rgb(216, 222, 229);
@@ -52,6 +50,37 @@
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
+    flex-direction: column;
+}
+.pwd-box span{
+    margin-right: 8px;
+    color: rgb(94, 94, 94);
+    font-size: 16px;
+    font-family: Regular, sans-serif;
+    letter-spacing: -0.9px;
+    flex-shrink: 0;
+}
+.pwd-box label{
+    display: flex;
+    width: 483px;
+    height: 47px;
+    padding: 0px 20px;
+    border: 1px solid rgb(216, 222, 229);
+    border-radius: 4px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.pwd-box label input{
+    width: 310px !important;
+    color: rgb(35, 35, 35) !important;
+    font-size: 13px !important;
+    font-family: Regular, sans-serif;
+    letter-spacing: -0.4px;
+    margin-bottom: 0px !important;
+    background-color: white !important;
+    padding: 0px !important;
 }
 .pwd-input{
     display: flex;
@@ -65,18 +94,11 @@
     -webkit-box-align: center;
     align-items: center;
 }
-.pwd-input input{
-    width: 70% !important;
-    color: rgb(35, 35, 35);
-    font-size: 16px;
-    font-family: Regular, sans-serif;
-    letter-spacing: -0.4px;
-    display: block;
-}
+
 button{
-    width: 100%;
+    width: 200px;
     height: 47px;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 0px;
 	background: rgb(0, 119, 237);
     color: rgb(255, 255, 255);
@@ -93,16 +115,16 @@ button{
   <div class="title">
    <h2>개인 정보 수정</h2>
   </div> 
-  <div class="content">
+  <div>
     <div class="sub-content">
-     "회원님의 개인 정보를 소중하게 보호하고 있습니다."
+     회원님의 개인 정보를 소중하게 보호하고 있습니다.
      <br>
-     "회원님의 동의 없이 회원정보를 제3자에게 제공하지 않습니다."
+     회원님의 동의 없이 회원정보를 제3자에게 제공하지 않습니다.
     </div>
     <div class="sub-content-2">
-     "고객님의 개인 정보 보호를 위해"
+     고객님의 개인 정보 보호를 위해
      <br>
-     "비밀번호를 입력 후, 이용이 가능합니다."
+     비밀번호를 입력 후, 이용이 가능합니다.
     </div>
     <form method="post" action="../member/join_update_pwdConfirm.do">
     <div class="pwd-box">

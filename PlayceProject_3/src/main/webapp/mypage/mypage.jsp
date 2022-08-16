@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function () {
+	$('#')
+})
+
+</script>
 <style type="text/css">
 .hero{
 	height: 600px !important;
@@ -65,7 +72,7 @@
 				<div class="col-lg-3 side" style="border-right-style: solid;">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">예약 내역</h3>
-            			<a class="active"><i class="angle right icon"></i>
+            			<a class="item"><i class="angle right icon"></i>
               				진행중 </a>
 			            <a class="item"><i class="angle right icon"></i>
 			                완료 </a>
@@ -74,16 +81,16 @@
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">My 활동</h3>
-            			<a class="item" href="../mypage/ask_list.do"><i class="angle right icon"></i>
+            			<a href="../mypage/ask_list.do" class="${page=='asklist'?'active':'item' }"><i class="angle right icon"></i>
               				문의 내역 </a>
-			            <a class="item" href="../mypage/like_list.do"><i class="angle right icon"></i>
+			            <a href="../mypage/like_list.do" class="${page=='likelist'?'active':'item' }"><i class="angle right icon"></i>
 			                찜 목록 </a>
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">회원 정보</h3>
-            			<a href="../member/join_update_ok.do" class="item"><i class="angle right icon"></i>
+            			<a href="../member/join_update_ok.do" class="${page=='update'?'active':'item' }"><i class="angle right icon"></i>
               				개인정보 수정 </a>
-			            <a href="../member/join_delete_ok.do" class="item"><i class="angle right icon"></i>
+			            <a href="../member/join_delete_ok.do" class="${page=='delete'?'active':'item' }"><i class="angle right icon"></i>
 			                회원탈퇴 </a>
           			</div>
 			    </div>

@@ -21,6 +21,8 @@ import com.sist.vo.PlaceVO;
 public class MyPageModel {
 	@RequestMapping("mypage/mypage.do")
 	public String mypage_main(HttpServletRequest request, HttpServletResponse response) {
+		
+		request.setAttribute("page", "update");
 		request.setAttribute("mypage_jsp", "../member/join_update_ok.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
 		return "../main/main.jsp";
@@ -29,6 +31,7 @@ public class MyPageModel {
 	@RequestMapping("member/join_update_ok.do")
 	public String member_join_update_ok(HttpServletRequest request, HttpServletResponse response) {
 		
+		request.setAttribute("page", "update");
 		request.setAttribute("mypage_jsp", "../member/join_update_ok.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
 		return "../main/main.jsp";
@@ -36,6 +39,7 @@ public class MyPageModel {
 	@RequestMapping("member/join_delete_ok.do")
 	public String member_join_delete_ok(HttpServletRequest request, HttpServletResponse response) {
 		
+		request.setAttribute("page", "delete");
 		request.setAttribute("mypage_jsp", "../member/join_delete_ok.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
 		return "../main/main.jsp";
@@ -159,6 +163,7 @@ public class MyPageModel {
 			pList.add(vo);
 		}
 		
+		request.setAttribute("page", "likelist");
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
@@ -201,6 +206,7 @@ public class MyPageModel {
 				   vo.setContent(data);
 			   }
 		   }
+		request.setAttribute("page", "asklist");
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage",startPage);
 		request.setAttribute("endPage", endPage);

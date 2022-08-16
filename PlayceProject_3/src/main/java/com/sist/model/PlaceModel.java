@@ -101,10 +101,12 @@ public class PlaceModel {
 		PlaceLikeVO lvo = new PlaceLikeVO();
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("id");
-		lvo.setPlace_no(Integer.parseInt(no));
-		lvo.setMember_id(member_id);
-		int lcount = PlaceDAO.isLikedPlace(lvo);
-		request.setAttribute("lcount", lcount);
+		if(member_id!=null) {
+			lvo.setPlace_no(Integer.parseInt(no));
+			lvo.setMember_id(member_id);
+			int lcount = PlaceDAO.isLikedPlace(lvo);
+			request.setAttribute("lcount", lcount);
+		}
 		
 		//문의글영역 요소
 		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
