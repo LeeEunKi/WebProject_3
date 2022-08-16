@@ -108,16 +108,38 @@ public class ReviewModel {
 	@RequestMapping("review/review_like.do")
 	public String review_like(HttpServletRequest request, HttpServletResponse response)
 	{
-		String place_no=request.getParameter("place_no");
+		String place_no=request.getParameter("pno");
 		String review_no=request.getParameter("rno");
+		System.out.println(place_no);
+		System.out.println(review_no);
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
+		System.out.println(id);
 		ReviewLikeVO vo=new ReviewLikeVO();
 		vo.setReview_3_no(Integer.parseInt(review_no));
 		vo.setMember_id(id);
-		ReviewDAO.reviewLikeInsert(vo);
 		
-		return "redirect:../place/detail.do?no="+ place_no ;
+		ReviewDAO.reviewLikeInsert(vo);
+
+		return "redirect:../place/detail.do?no="+place_no;
+	}
+	
+	@RequestMapping("review/review_like_delete.do")
+	public String review_like_delete(HttpServletRequest request, HttpServletResponse response)
+	{
+		String place_no=request.getParameter("pno");
+		String review_no=request.getParameter("rno");
+
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+
+		ReviewLikeVO vo=new ReviewLikeVO();
+		vo.setReview_3_no(Integer.parseInt(review_no));
+		vo.setMember_id(id);
+		
+		ReviewDAO.reviewLikeDelete(vo);
+
+		return "redirect:../place/detail.do?no="+place_no;
 	}
 	
 }

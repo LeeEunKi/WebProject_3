@@ -1,10 +1,11 @@
 package com.sist.model;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -69,6 +70,7 @@ public class PlaceModel {
 		List<ReviewVO> rList =ReviewDAO.reviewListData(Integer.parseInt(no));
 		int rcount=ReviewDAO.counts(Integer.parseInt(no));
 		Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
+
 		
 		//문의게시판 영역 - 데이터
 		int totalQ = AskDAO.askTotalCount(Integer.parseInt(no));
@@ -97,17 +99,6 @@ public class PlaceModel {
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트 
 		
-		//장소 좋아요
-		PlaceLikeVO lvo = new PlaceLikeVO();
-		HttpSession session = request.getSession();
-		String member_id = (String)session.getAttribute("id");
-		if(member_id!=null) {
-			lvo.setPlace_no(Integer.parseInt(no));
-			lvo.setMember_id(member_id);
-			int lcount = PlaceDAO.isLikedPlace(lvo);
-			request.setAttribute("lcount", lcount);
-		}
-		
 		//문의글영역 요소
 		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
 		request.setAttribute("qList", qList);
@@ -130,47 +121,5 @@ public class PlaceModel {
 		request.setAttribute("ask_jsp", "../ask/ask_list.jsp");
 		return "../main/main.jsp";
 	}
-	//좋아요!
-	@RequestMapping("place/like.do")
-	public String place_like(HttpServletRequest request, HttpServletResponse response) {
-		String place_no = request.getParameter("place_no");
-		HttpSession session = request.getSession();
-		String member_id = (String)session.getAttribute("id");
-		PlaceLikeVO vo = new PlaceLikeVO();
-		vo.setPlace_no(Integer.parseInt(place_no));
-		vo.setMember_id(member_id);
-		PlaceDAO.placeLikeInsert(vo);
-		return "redirect:../place/detail.do?no="+place_no;
-	}
-	//좋아요 취소!
-	@RequestMapping("place/like_cancel.do")
-	public String place_like_cancel(HttpServletRequest request, HttpServletResponse response) {
-		String place_no = request.getParameter("place_no");
-		HttpSession session = request.getSession();
-		String member_id = (String)session.getAttribute("id");
-		PlaceLikeVO vo = new PlaceLikeVO();
-		vo.setPlace_no(Integer.parseInt(place_no));
-		vo.setMember_id(member_id);
-		//DB연동!
-		PlaceDAO.placeLikeDelete(vo);
-		return "redirect:../place/detail.do?no="+place_no;
-	}
-	//좋아요 취소 @마이페이지
-	@RequestMapping("mypage/like_cancel.do")
-	public String mypage_like_cancel(HttpServletRequest request, HttpServletResponse response) {
-		String place_no = request.getParameter("no");
-		String page = request.getParameter("page");
-		if(page==null)
-			page="1";
-		HttpSession session = request.getSession();
-		String member_id = (String)session.getAttribute("id");
-		PlaceLikeVO vo = new PlaceLikeVO();
-		vo.setPlace_no(Integer.parseInt(place_no));
-		vo.setMember_id(member_id);
-		//DB연동!
-		PlaceDAO.placeLikeDelete(vo);
-		return "redirect:../mypage/like_list.do?page="+page;
-	}
-	
 
 }

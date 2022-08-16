@@ -203,6 +203,7 @@ public class ReviewDAO {
 		try {
 			session=ssf.openSession();
 			session.insert("reviewLikeInsert", vo);
+			session.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -230,7 +231,7 @@ public class ReviewDAO {
 				
 		}
 		return check;
-	}// 이건 있을 필요가 있는지 의문 
+	}
 	
 	//<select id="reviewLikeCount" resultType="int" parameterType="int">
 	public static int reviewLikeCount(int review_no)
@@ -249,6 +250,23 @@ public class ReviewDAO {
 				session.close();
 		}
 		return count;
+	}
+	
+	public static void reviewLikeDelete(ReviewLikeVO vo)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			session.delete("reviewLikeDelete", vo);
+			session.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
 	}
 	
 	

@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function likeCheck() {
+	
+})
+</script>
 </head>
 <body>		
 				<div class="col-lg-8">
@@ -58,14 +64,13 @@
 							</c:choose>
 						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 				  	 	 <p class="de-text-desc">${rvo.content }</p>
-				  	 	 
-					  	 	 <form method="post" action="../review/review_like.do?rno=${rvo.no }&place_no=${rvo.place_no }" style="margin-top: 5px;">
-						  	 	 <p><input type="submit" id="likeBtn" class="btn btn-success text-white py-1 px-4" style="color: #888 !important;" value="도움돼요 ${rLikeCount }">
-						  	 	 
-						  	 	 <input type="hidden" name=member_id value="${sessionScope.id }"/>
-								 <input type="hidden" name=review_no value="${rno }"/>
-					  	 	 </form>
-					  	 
+				  	    <c:if test="${sessionScope.id!=null }">
+
+				  	         <a href="../review/review_like.do?rno=${rvo.no }&pno=${place_no }">도움돼요 <img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 5px; color: #888"></a>
+								<input type="button" value="♥" onclick="likeCheck()"/>${rLikeCount }<br>
+				  	          <!--  <a href="../review/review_like_delete.do?rno=${rvo.no }&pno=${place_no }">도움돼요 <img src="../review/like.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 5px; color: orange;"></a>-->
+
+					  	</c:if>
 					</div>
 					
 				    </c:forEach>
@@ -74,4 +79,3 @@
 			    </div>
 			    
 </body>
-</html>

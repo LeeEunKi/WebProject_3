@@ -2,9 +2,16 @@ package com.sist.vo;
 
 public class ReviewLikeVO {
 	
-	private int no,review_3_no;
+	private int no,review_3_no,like_check;
 	private String member_id;
 	
+	
+	public int getLike_check() {
+		return like_check;
+	}
+	public void setLike_check(int like_check) {
+		this.like_check = like_check;
+	}
 	public int getNo() {
 		return no;
 	}
