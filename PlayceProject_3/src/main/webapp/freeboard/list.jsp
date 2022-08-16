@@ -293,26 +293,28 @@ $(function(){
             <table class="table" id="user-table">
             <thead>
        			<tr>
-       				<th width="10%" class="text-center">번호</th>
-       				<th width="45%" class="text-center">제목</th>
+       				<th width="5%" class="text-center">번호</th>
+       				<th width="35%" class="text-center">제목</th>
        				<th width="15%" class="text-center">이름</th>
-       				<th width="20%" class="text-center">작성일</th>
-       				<th width="10%" class="text-center">조회수</th>
+       				<th width="15%" class="text-center">아이디</th>
+       				<th width="17%" class="text-center">작성일</th>
+       				<th width="13%" class="text-center">조회수</th>
        			</tr>
        			</thead>
        			<tbody>
        			<c:forEach var="vo" items="${list }">
        			<tr>
-       				<td width="10%" class="text-center">${vo.no }</td>
-       				<td width="45%"><a href="../freeboard/detail.do?no=${vo.no }">${vo.subject }</a>
+       				<td width="5%" class="text-center">${vo.no }</td>
+       				<td width="35%"><a href="../freeboard/detail.do?no=${vo.no }">${vo.subject }</a>
        					&nbsp;&nbsp;
        					<c:if test="${vo.rcount>0 }">
        						(${vo.rcount })
        					</c:if>
        				</td>
+       				<td width="15%" class="text-center">${vo.id }</td>
        				<td width="15%" class="text-center">${vo.name }</td>
-       				<td width="20%" class="text-center">${vo.dbday }</td>
-       				<td width="10%" class="text-center">${vo.hit }</td>
+       				<td width="17%" class="text-center">${vo.dbday }</td>
+       				<td width="13%" class="text-center">${vo.hit }</td>
        			</tr>
        			</c:forEach>
        			</tbody>

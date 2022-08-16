@@ -4,7 +4,7 @@ package com.sist.vo;
 import java.util.*;
 public class FreeBoardVO {
 	private int no,hit,rcount;
-	private String name,subject,content,pwd,dbday;
+	private String name,subject,content,pwd,dbday,id;
 	private Date regdate;
 	public int getNo() {
 		return no;
@@ -59,6 +59,12 @@ public class FreeBoardVO {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

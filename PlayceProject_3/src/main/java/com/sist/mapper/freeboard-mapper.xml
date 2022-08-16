@@ -3,9 +3,9 @@
 <mapper namespace="com.sist.mapper.freeboard-mapper">
 	<!-- 목록 : 페이징 select -->
 	<select id="boardListData" resultType="FreeBoardVO" parameterType="hashmap">
-		 SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
-	    FROM (SELECT no,subject,name,regdate,hit,rcount,rownum as num 
-	    FROM (SELECT /*+ INDEX_DESC(freeboard_3 pf_no_pk)*/ no,subject,name,regdate,hit,rcount 
+		 SELECT no,id,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
+	    FROM (SELECT no,id,subject,name,regdate,hit,rcount,rownum as num 
+	    FROM (SELECT /*+ INDEX_DESC(freeboard_3 pf_no_pk)*/ no,id,subject,name,regdate,hit,rcount 
 	    FROM freeboard_3))
 	    WHERE num BETWEEN #{start} AND #{end}
 	</select>
@@ -15,9 +15,9 @@
 	<!-- 값 가져오는법 => map.get("start") -->
 	<!-- 등록 : 시퀀스 selectKey insert -->
 	<insert id="boardInsert" parameterType="FreeBoardVO">
-		INSERT INTO freeboard_3(no,name,subject,content,pwd)
+		INSERT INTO freeboard_3(no,id,name,subject,content,pwd)
 		VALUES((SELECT NVL(MAX(no)+1,1)FROM freeboard_3),
-		 #{name},#{subject},#{content},#{pwd}
+		 #{name},#{id},#{subject},#{content},#{pwd}
 		 )
 	</insert>
 	<!-- 값 가져오는법 => vo.getName() -->
@@ -28,7 +28,7 @@
 		WHERE no=#{no}
 	</update>
 	<select id="boardDetailData" resultType="FreeBoardVO" parameterType="int">
-		SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+		SELECT no,id,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
 		FROM freeboard_3
 		WHERE no=#{no}
 	</select>
@@ -39,7 +39,7 @@
 	</select>
 	<update id="boardUpdate" parameterType="FreeBoardVO">
 		UPDATE freeboard_3 SET
-		name=#{name},subject=#{subject},content=#{content}
+		name=#{name},id=#{id},subject=#{subject},content=#{content}
 		WHERE no=#{no}
 	</update>
 	<delete id="boardDelete" parameterType="int">
@@ -48,7 +48,7 @@
 	</delete>
 	<!-- 동적 쿼리, JOIN, SubQuery -->
 	<select id="boardSearchData" resultType="FreeBoardVO">
-     SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+     SELECT no,id,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
      FROM freeboard_3
 	 ORDER BY no ASC
    </select>

@@ -14,7 +14,7 @@
 	</select>
 	<!-- 값 가져오는법 => map.get("start") -->
 	<!-- 등록 : 시퀀스 selectKey insert -->
-	<insert id="boardInsert" parameterType="NoticeBoardVO">
+	<insert id="noticeboardInsert" parameterType="NoticeBoardVO">
 		INSERT INTO NoticeBoard_3(no,name,subject,content,pwd)
 		VALUES((SELECT NVL(MAX(no)+1,1)FROM NoticeBoard_3),
 		 #{name},#{subject},#{content},#{pwd}

@@ -30,6 +30,13 @@ $(function(){
 			$('#name').focus();
 			return;
 		}
+		
+		let id=$('#id').val();
+		if(id.trim()=="")
+		{
+			$('#id').focus();
+			return;
+		}
 	
 		let subject=$('#subject').val();
 		if(subject.trim()=="")
@@ -72,7 +79,7 @@ $(function(){
 
 <div class="section section-properties" >
 	  <div class="container">
-	   	<div class="two_third first" style="height:600px">
+	   	<div class="two_third first" style="height:auto">
      <div class="col-lg-12">
 		   <h2 class="font-weight-bold text-primary heading">글쓰기</h2>
 		     <hr/><br><br>
@@ -87,6 +94,14 @@ $(function(){
 		       				</form>
 		       			</td>
 	       			</tr>
+	       			<tr>
+	       		<th width=10% class="text-right">아이디</th>
+		       			<td width=80%>
+		       				<form method=post action="../freeboard/freeboard_insert.do">
+		       				<input type=text size=15 class="input-sm" id="id" style="height: 30px" value="${sessionScope.id }">
+		       				</form>
+		       			</td>
+	       		</tr>
        			<tr>
        			<th width=20% class="text-right">제목</th>
 	       			<td width=80%>

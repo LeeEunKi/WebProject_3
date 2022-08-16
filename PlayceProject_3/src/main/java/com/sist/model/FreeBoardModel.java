@@ -59,10 +59,12 @@ public class FreeBoardModel {
 		String pwd=request.getParameter("pwd");
 		HttpSession session=request.getSession();
 		String name=(String)session.getAttribute("name");
+		String id=(String)session.getAttribute("id");
 		System.out.println("name="+name);
 		
 		FreeBoardVO vo=new FreeBoardVO();
 		vo.setName(name);
+		vo.setId(id);
 		vo.setSubject(subjet);
 		vo.setContent(content);
 		vo.setPwd(pwd);
@@ -116,11 +118,13 @@ public class FreeBoardModel {
 		}catch(Exception ex) {}
 		
 		String name=request.getParameter("name");
+		String id=request.getParameter("id");
 		String subjet=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");
 		String no=request.getParameter("no");
 		FreeBoardVO vo=new FreeBoardVO();
+		vo.setId(id);
 		vo.setName(name);
 		vo.setSubject(subjet);
 		vo.setContent(content);

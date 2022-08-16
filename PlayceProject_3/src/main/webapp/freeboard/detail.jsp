@@ -421,13 +421,15 @@ $(function(){
        			</tr>
        			<tr>
        				<th width=20% class="text-center">이름</th>
+       				<td width=30% class="text-center">${vo.id }</td>
+       				<th width=20% class="text-center">아이디</th>
        				<td width=30% class="text-center">${vo.name }</td>
-       				<th width=20% class="text-center">조회수</th>
-       				<td width=30% class="text-center">${vo.hit }</td>
        			</tr>
        			<tr>
        				<th width=20% class="text-center">제목</th>
-       				<td colspan="3">${vo.subject }</td>
+       				<td width=30%>${vo.subject }</td>
+       				<th width=20% class="text-center">조회수</th>
+       				<td width=30% class="text-center">${vo.hit }</td>
        			</tr>
        			<tr>
        				<td colspan="4" height="200" valign="top" class="text-center">
