@@ -105,7 +105,7 @@ public class ReviewModel {
 		return "redirect:../place/detail.do?no="+place_no ;
 	}
 	
-	@RequestMapping("review/review_like.do")
+	/*@RequestMapping("review/review_like.do")
 	public String review_like(HttpServletRequest request, HttpServletResponse response)
 	{
 		String place_no=request.getParameter("place_no");
@@ -118,6 +118,6 @@ public class ReviewModel {
 		ReviewDAO.reviewLikeInsert(vo);
 		
 		return "redirect:../place/detail.do?no="+ place_no ;
-	}
+	}*/
 	
 }
