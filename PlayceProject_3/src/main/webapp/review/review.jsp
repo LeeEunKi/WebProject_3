@@ -58,6 +58,14 @@
 							</c:choose>
 						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 				  	 	 <p class="de-text-desc">${rvo.content }</p>
+				  	 	 
+					  	 	 <form method="post" action="../review/review_like.do?rno=${rvo.no }&place_no=${rvo.place_no }" style="margin-top: 5px;">
+						  	 	 <p><input type="submit" id="likeBtn" class="btn btn-success text-white py-1 px-4" style="color: #888 !important;" value="도움돼요 ${rLikeCount }">
+						  	 	 
+						  	 	 <input type="hidden" name=member_id value="${sessionScope.id }"/>
+								 <input type="hidden" name=review_no value="${rno }"/>
+					  	 	 </form>
+					  	 
 					</div>
 					
 				    </c:forEach>

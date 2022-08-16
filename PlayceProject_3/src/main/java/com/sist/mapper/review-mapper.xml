@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.review-mapper">
+
 <!-- no        NUMBER,
 	content   VARCHAR2(1500)		 CONSTRAINT review_content_nn NOT NULL,
 	regdate   DATE    			 DEFAULT SYSDATE,
@@ -12,32 +13,32 @@
 	CONSTRAINT review_3_no_pk PRIMARY KEY(no)
 	rcount NUMBER DEFAULT 0
  -->
-<!--  
-  도움돼요 
+ 
+ <!-- 도움돼요  -->  
 <insert id="reviewLikeInsert" parameterType="ReviewLikeVO">
   <selectKey keyProperty="no" resultType="int" order="BEFORE">
    SELECT NVL(MAX(no)+1,1) AS no FROM review_like_3
   </selectKey>
    INSERT INTO review_like_3 VALUES(#{no},#{member_id},#{review_3_no})
 </insert>
- 도움돼요 버튼 눌렀는지 확인 
+ <!-- 도움돼요 버튼 눌렀는지 확인  -->
 <select id="reviewLikeCheck" resultType="int" parameterType="ReviewLikeVO">
   SELECT COUNT (*) FROM review_like_3
   WHERE review_3_no=#{review_3_no} AND member_id=#{member_id}
 </select>
- 도움대요 출력 숫자만 
+ <!-- 도움대요 출력 숫자만  -->
 <select id="reviewLikeCount" resultType="int" parameterType="int">
   SELECT COUNT(*) 
   FROM review_like_3
   WHERE review_3_no=#{review_3_no}
 </select>
 
- 도움돼요 취소 
+ <!-- 도움돼요 취소  -->
 <delete id="reviewLikeDelete" parameterType="ReviewLikeVO">
   DELETE FROM review_like_3
   WHERE member_id=#{member_id}
 </delete>
--->
+
 
 <!-- 평점 평균 구하기 -->
 <select id="scoreAvg" resultType="double" parameterType="int">
