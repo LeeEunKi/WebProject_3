@@ -11,7 +11,7 @@
 a{
  color: black;
  font-size: 15px;
-/* } */
+ } 
 </style>
 </head>
 <body>
@@ -39,7 +39,7 @@ a{
     </c:forEach>
   </table>
   <!-- 페이지네이션 시작 -->
-  <div class="custom-pagination" style="text-align:center">
+<div class="custom-pagination" style="text-align:center">
 	<c:if test="${startPage>1 }">
  		<a href="../adminpage/askReply.do?page=${startPage-1 }">&laquo;</a>
   	</c:if>

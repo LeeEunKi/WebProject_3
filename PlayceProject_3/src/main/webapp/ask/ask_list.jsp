@@ -94,7 +94,7 @@ $(function(){
      				<a ${style } class="page-no" value="${i }">${i }</a>
       			</c:forEach>
        				<c:if test="${endPage<totalPage }">
-       					<a href="../place/place_list.do?tno=${tno }&page=${endPage+1 }">&raquo;</a>
+       					<a href="../place/detail.do?no=${place_no }&page=${endPage+1 }">&raquo;</a>
       				</c:if>
 				</div>
 			<!-- 페이지네이션 끝 -->

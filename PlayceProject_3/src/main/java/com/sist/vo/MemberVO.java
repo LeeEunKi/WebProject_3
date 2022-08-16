@@ -17,7 +17,23 @@ package com.sist.vo;
 			CONN              VARCHAR2(1)    
  */
 public class MemberVO {
-	String id,pwd,name,sex,email,post,addr1,addr2,tel,admin,conn,msg;
+	String id,pwd,name,sex,email,post,addr1,addr2,tel,admin,conn,msg,tel1,tel2;
+
+	public String getTel1() {
+		return tel1;
+	}
+
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
+	}
+
+	public String getTel2() {
+		return tel2;
+	}
+
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
 
 	public String getMsg() {
 		return msg;

@@ -123,6 +123,7 @@ public class MemberModel {
 		request.setAttribute("result", result);
 		return "../member/id_find.jsp";
 	}
+
 	
 
 }

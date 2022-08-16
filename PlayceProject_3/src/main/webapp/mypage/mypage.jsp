@@ -56,7 +56,6 @@
 					<hr>
 				</div>
 			</div>
-
 		</div>
 </div>
 
@@ -82,14 +81,14 @@
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">회원 정보</h3>
-            			<a class="item"><i class="angle right icon"></i>
-              				프로필 관리 </a>
-			            <a class="item"><i class="angle right icon"></i>
+            			<a href="../member/join_update_ok.do" class="item"><i class="angle right icon"></i>
+              				개인정보 수정 </a>
+			            <a href="../member/join_delete_ok.do" class="item"><i class="angle right icon"></i>
 			                회원탈퇴 </a>
           			</div>
 			    </div>
 		     	<div class="col-lg-9">
-				   각 페이지 출력
+				   <jsp:include page="${mypage_jsp}"></jsp:include>
 			    </div>
 			    
 		 </div>

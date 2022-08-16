@@ -34,9 +34,9 @@
  FROM member_3
  WHERE id=#{id}
 </select>
-<!-- 비밀번호 읽기 -->
+<!-- 회원정보가져오기 -->
 <select id="memberInfoData" resultType="MemberVO" parameterType="string">
-  SELECT pwd,id,name,admin
+  SELECT *
   FROM member_3
   WHERE id=#{id}
 </select>
@@ -54,5 +54,17 @@
   SELECT RPAD(SUBSTR(id,1,1),LENGTH(id),'*') FROM member_3
   WHERE name=#{name} AND email = #{email}
  </select>
-
+ 
+ <!-- 회원수정 -->
+ <update id="memberUpdate" parameterType="MemberVO">
+   UPDATE member_3 SET
+   email=#{email},addr1=#{addr1},addr2=#{addr2},tel=#{tel}
+   WHERE id=#{id}
+ </update>
+ 
+ <!-- 회원탈퇴 -->
+<delete id="memberDelete" parameterType="string">
+ DELETE FROM member_3
+ WHERE id=#{id}
+</delete>
 </mapper>

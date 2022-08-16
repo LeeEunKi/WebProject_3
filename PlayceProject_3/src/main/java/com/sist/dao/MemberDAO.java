@@ -152,6 +152,57 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
 	
+	// 회원수정 - 회원정보 가져오기
+	//<select id="memberInfoData" resultType="MemberVO" parameterType="string">
+	public static MemberVO memberInfoData(String id) {
+		SqlSession session=null;
+		MemberVO vo=new MemberVO();
+		String pwd="";
+		try {
+			session=ssf.openSession();
+			vo=session.selectOne("memberInfoData", id);
+		} catch (Exception e) {
+			System.out.println("memberInfoData() : 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+	}
+	// 회원수정 - 수정완료
+	// <update id="memberUpdate" parameterType="MemberVO">
+	public static void memberUpdate(MemberVO vo) {
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			session.update("memberUpdate", vo);
+			session.commit();
+				
+		} catch (Exception e) {
+			System.out.println("memberUpdate() : 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	// 회원탈퇴 
+	//<delete id="memberDelete" parameterType="string">
+	public static void memberDelete(String id) {
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			session.delete("memberDelete", id);
+			session.commit();
+				
+		} catch (Exception e) {
+			System.out.println("memberDelete() : 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+	}
 }
