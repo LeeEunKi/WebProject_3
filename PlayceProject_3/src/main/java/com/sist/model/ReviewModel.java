@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.ReviewDAO;
+import com.sist.vo.ReviewLikeVO;
 import com.sist.vo.ReviewVO;
 
 @Controller
@@ -102,6 +103,21 @@ public class ReviewModel {
 		ReviewDAO.reviewUpdate(vo);
 		
 		return "redirect:../place/detail.do?no="+place_no ;
+	}
+	
+	@RequestMapping("review/review_like.do")
+	public String review_like(HttpServletRequest request, HttpServletResponse response)
+	{
+		String place_no=request.getParameter("place_no");
+		String review_no=request.getParameter("rno");
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		ReviewLikeVO vo=new ReviewLikeVO();
+		vo.setReview_3_no(Integer.parseInt(review_no));
+		vo.setMember_id(id);
+		ReviewDAO.reviewLikeInsert(vo);
+		
+		return "redirect:../place/detail.do?no="+ place_no ;
 	}
 	
 }

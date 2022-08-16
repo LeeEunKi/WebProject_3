@@ -20,6 +20,44 @@ public class ReviewDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//<update id="likeIncrement" parameterType="int">
+	public static void likeIncrement(int reviewNo)
+	{
+		SqlSession session=null;;
+		try {
+			session=ssf.openSession();
+			session.update("likeIncrement",reviewNo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	//<select id="likeCount" resultType="int" parameterType="int">
+	public static int likeCount(int reviewNo)
+	{
+		SqlSession session=null;
+		int count=0;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("likeCount",reviewNo);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		
+		return count;
+	}
+	
+	
 	//<select id="counts" resultType="int" parameterType="int">
 	public static int counts(int place_no)
 	{
@@ -79,6 +117,8 @@ public class ReviewDAO {
 				
 		return  list;
 	}
+	
+	
 	//<insert id="reviewInsert" parameterType="ReviewVO">
 	public static void reviewInsert(int place_no, ReviewVO vo)
 	{
@@ -154,6 +194,63 @@ public class ReviewDAO {
 				session.close();
 		}
 	}
+	
+	//리뷰 도움돼요
+	//<insert id="reviewLikeInsert" parameterType="com.sist.vo.ReviewLikeVO">
+	public static void reviewLikeInsert(ReviewLikeVO vo)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			session.insert("reviewLikeInsert", vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	//<select id="reviewLikeCheck" resultType="int" parameterType="com.sist.vo.ReviewLikeVO">
+	public static int reviewLikeCheck(ReviewLikeVO vo)
+	{
+		SqlSession session=null;
+		int check=0;
+		try {
+			session=ssf.openSession();
+			check=session.selectOne("reviewLikeCheck", vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+				
+		}
+		return check;
+	}// 이건 있을 필요가 있는지 의문 
+	
+	//<select id="reviewLikeCount" resultType="int" parameterType="int">
+	public static int reviewLikeCount(int review_no)
+	{
+		SqlSession session=null;
+		int count=0;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("reviewLikeCount", review_no);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	
 	
 	
 }

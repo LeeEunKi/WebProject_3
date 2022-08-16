@@ -6,26 +6,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.star {
+    position: relative;
+    top: -2px;
+}
+.avg {
+	position: relative;
+    top: -4px;
+}
+
+</style>
 </head>
 <body>		
-				<div class="col-lg-8">
-
+			<div class="col-lg-8">
+			   <div class="col-lg-8" style="width:100%; vertical-align: middle;">
 				    <h2 class="heading text-primary" style="padding-top: 30px; display: inline-block;" id="review">장소 리뷰&nbsp;&nbsp;</h2>
-				    <h2 class="count" style="padding-top: 30px; display: inline-block;">${rcount }</h2>
-				    <h2 class="star" style="color: orange;padding-top: 30px; display: inline-block; padding-left: 35px;">★</h2>
+				    <h2 class="count" style="padding-top: 30px;">${rcount }</h2>
+				    <h2 class="star" style="color: orange; display: inline-block; padding-left: 25px;">★</h2>
 				    <c:if test="${avg!=null }">
-				      <h3 class="avg" style="padding-top: 30px;padding-left: 5px; display: inline-block;">${avg }</h3>
+				      <h3 class="avg" style="padding-left: 5px; display: inline-block;">${avg }</h3>
 				    </c:if>
 				    <c:if test="${avg==null }">
 				      <h3 class="avg" style="padding-top: 30px;padding-left: 5px; display: inline-block;">0</h3>
 				    </c:if>
-				    <c:if test="${sessionScope.id!=null}">
-				      <form method="post" action="../review/review_insert.do" style="display: inline-block; margin-top: 50px; float: right;">
-					      <input type="hidden" name=member_id value="${sessionScope.id }"/>
-						  <input type="hidden" name=place_no value="${place_no }"/>
-						  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 남기기"/></p>
-					  </form>
-				    </c:if>
+					  <c:if test="${sessionScope.id!=null}">
+					      <form method="post" action="../review/review_insert.do" style="margin-top: 30px; float: right;">
+						      <input type="hidden" name=member_id value="${sessionScope.id }"/>
+							  <input type="hidden" name=place_no value="${place_no }"/>
+							  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 남기기"/></p>
+						  </form>
+					   </c:if>
+				</div>
 
 				    <!-- <p class="meta">California, United States</p> -->
 				    <div class="row-cols-md-auto"> 
@@ -58,6 +70,14 @@
 							</c:choose>
 						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 				  	 	 <p class="de-text-desc">${rvo.content }</p>
+				  	 	  <c:if test="${sessionScope.Id!=null }">
+					  	 	 <form method="post" action="../review/review_like.do?rno=${rno }&pno=${rvo.palce_no }" style="margin-top: 5px;">
+					  	 	 <p><input type="submit" id="likeBtn" class="btn btn-success text-white py-1 px-4" style="color: #888 !important;">
+					  	 	 <img src="../review/unlike.png" id="rLike" style="width: 6px;height: 6px" class="rounded-circle mt-2"/> ${rLikeCount }<br>
+					  	 	 <input type="hidden" name=member_id value="${sessionScope.id }"/>
+							 <input type="hidden" name=place_no value="${review_no }"/>
+					  	 	 </form>
+					  	  </c:if>
 					</div>
 					
 				    </c:forEach>

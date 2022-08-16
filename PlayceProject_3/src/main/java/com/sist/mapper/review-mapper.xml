@@ -12,12 +12,31 @@
 	CONSTRAINT review_3_no_pk PRIMARY KEY(no)
 	rcount NUMBER DEFAULT 0
  -->
-<!-- 도움돼요 기능 -->
-<update id="likeIncrement" parameterType="ReviewVO">
-   UPDATE REVIEW_LIKE_3 SET
-   likecount=likecount+1
-   WHERE review_3_no=#{no}
-</update>
+
+<!--  도움돼요 -->
+<insert id="reviewLikeInsert" parameterType="ReviewLikeVO">
+  <selectKey keyProperty="no" resultType="int" order="BEFORE">
+   SELECT NVL(MAX(no)+1,1) AS no FROM review_like_3
+  </selectKey>
+   INSERT INTO review_like_3 VALUES(#{no},#{member_id},#{review_3_no})
+</insert>
+<!-- 도움돼요 버튼 눌렀는지 확인 -->
+<select id="reviewLikeCheck" resultType="int" parameterType="ReviewLikeVO">
+  SELECT COUNT (*) FROM review_like_3
+  WHERE review_3_no=#{review_3_no} AND member_id=#{member_id}
+</select>
+<!-- 도움대요 출력 숫자만 -->
+<select id="reviewLikeCount" resultType="int" parameterType="int">
+  SELECT COUNT(*) 
+  FROM review_like_3
+  WHERE review_3_no=#{review_3_no}
+</select>
+
+<!-- 도움돼요 취소 -->
+<delete id="reviewLikeDelete" parameterType="ReviewLikeVO">
+  DELETE FROM review_like_3
+  WHERE member_id=#{member_id}
+</delete>
 
 <!-- 평점 평균 구하기 -->
 <select id="scoreAvg" resultType="double" parameterType="int">
