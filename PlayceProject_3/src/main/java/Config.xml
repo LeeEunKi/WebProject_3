@@ -14,7 +14,7 @@
      <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
      <typeAlias type="com.sist.vo.AskVO" alias="AskVO"/>
      <typeAlias type="com.sist.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
-     <!-- <typeAlias type="com.sist.vo.PlaceLikeVO" alias="PlaceLikeVO"/> -->
+     <!-- <typeAlias type="com.sist.vo.PlaceLikeVO" alias="PlaceLikeVO"/ -->
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기. -->
 		<environment id="development">

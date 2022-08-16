@@ -1,6 +1,7 @@
 package com.sist.vo;
 
 public class ReviewLikeVO {
+	
 	private int no,review_3_no;
 	private String member_id;
 	

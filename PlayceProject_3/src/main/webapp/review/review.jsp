@@ -70,14 +70,14 @@
 							</c:choose>
 						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 				  	 	 <p class="de-text-desc">${rvo.content }</p>
-				  	 	  <c:if test="${sessionScope.Id!=null }">
-					  	 	 <form method="post" action="../review/review_like.do?rno=${rno }&pno=${rvo.palce_no }" style="margin-top: 5px;">
+				  	 	 <!-- <c:if test="${sessionScope.Id!=null }"> --> 
+					  	 	 <form method="post" action="../review/review_like.do?rno=${rno }&pno=${palce_no }" style="margin-top: 5px;">
 					  	 	 <p><input type="submit" id="likeBtn" class="btn btn-success text-white py-1 px-4" style="color: #888 !important;">
 					  	 	 <img src="../review/unlike.png" id="rLike" style="width: 6px;height: 6px" class="rounded-circle mt-2"/> ${rLikeCount }<br>
 					  	 	 <input type="hidden" name=member_id value="${sessionScope.id }"/>
 							 <input type="hidden" name=place_no value="${review_no }"/>
 					  	 	 </form>
-					  	  </c:if>
+					  	 <!--  </c:if> -->
 					</div>
 					
 				    </c:forEach>
