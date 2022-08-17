@@ -44,6 +44,23 @@ if (status === kakao.maps.services.Status.OK) {
     map.setCenter(coords);
 }
 })
+
+ $(function(){
+	$('#reserveBtn').click(function(){
+		let place_no = $(this).attr("place_no");
+		place_no = parseInt(place_no);
+		$('#reserveBtn').hide();
+		$.ajax({
+			type:'post',
+			url:'../reserve/calendar.do',
+			data:{"place_no":place_no},
+			success:function(result){
+				$('#print_reserve').html(result);
+			}
+		})
+	})
+}) 
+
 });
 </script>
 <style type="text/css">
@@ -133,7 +150,7 @@ if (status === kakao.maps.services.Status.OK) {
 								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.price}" />원</p>
 								     </c:otherwise>
 								   </c:choose>
-							<label class="sche">스케줄</label>
+							<%-- <label class="sche">스케줄</label>
 							<label class="meta">시작 날짜 ~ 종료 날짜</label>
 							<input type="date" id="reserveDate" name="reserveDate">
 							<!-- <input type="time" id="reserveTime" name="reserveTime">-->
@@ -171,9 +188,11 @@ if (status === kakao.maps.services.Status.OK) {
 	            					  	 <option value="0">0대</option>
 	            					</optgroup> 
 	          					</select>
-          					</c:if>
-							<button type="submit" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"><a href="../reserve/calendar.do?place_no=${place_no }">예약하기</a></button>
+          					</c:if> --%>
+							<a id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;" 
+							href="../reserve/calendar.do" place_no="${place_no }">예약하기</a>
 						</div>	
+						<div id="print_reserve"></div>
 					</div>
 			</div>
 			

@@ -7,15 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<style type="text/css">
-.container{
-	margin-top:50px;
-}
-.row{
-	margin: 0px auto;
-	width: 300px;
-}
-</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -43,7 +34,6 @@ $(function(){
 </script>
 </head>
 <body>
- <div class="container">
     <%-- <h1 class="text-center">${year }년 ${month }월 ${day }일</h1> --%>
     <label class="sche">스케줄</label>
     <div class="row">
@@ -93,6 +83,5 @@ $(function(){
       <div id="print_time"></div>
       <div id="print_option"></div>
     </div>
-  </div>
 </body>
 </html>
