@@ -38,5 +38,6 @@
       <mapper resource="com/sist/mapper/reply-mapper.xml"/>
       <mapper resource="com/sist/mapper/ask-mapper.xml"/>
       <mapper resource="com/sist/mapper/noticeboard-mapper.xml"/>
+      <mapper resource="com/sist/mapper/place-like-mapper.xml"/>
 	</mappers>
 </configuration>

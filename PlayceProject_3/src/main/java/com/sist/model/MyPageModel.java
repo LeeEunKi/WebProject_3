@@ -13,6 +13,7 @@ import com.sist.controller.RequestMapping;
 import com.sist.dao.AskDAO;
 import com.sist.dao.MemberDAO;
 import com.sist.dao.PlaceDAO;
+import com.sist.dao.PlaceLikeDAO;
 import com.sist.vo.AskVO;
 import com.sist.vo.MemberVO;
 import com.sist.vo.PlaceVO;
@@ -142,7 +143,7 @@ public class MyPageModel {
 		int start = (rowSize*curPage)-(rowSize-1);
 		int end = rowSize*curPage;
 		
-		int totalL = PlaceDAO.placeLikeCount(member_id);
+		int totalL = PlaceLikeDAO.placeLikeCount(member_id);
 		int totalPage = (int)Math.ceil((double)totalL/5.0);
 		final int BLOCK = 5;
 		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
@@ -155,11 +156,11 @@ public class MyPageModel {
 		map.put("start", start);
 		map.put("end", end);
 		map.put("member_id", member_id);
-		List<Integer> list = PlaceDAO.placeLikeGetNo(map);
+		List<Integer> list = PlaceLikeDAO.placeLikeGetNo(map);
 
 		List<PlaceVO> pList = new ArrayList<PlaceVO>();
 		for(int pno:list) {
-			PlaceVO vo = PlaceDAO.placeLikeListData(pno);
+			PlaceVO vo = PlaceLikeDAO.placeLikeListData(pno);
 			pList.add(vo);
 		}
 		

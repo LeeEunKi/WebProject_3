@@ -6,11 +6,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.AskDAO;
 import com.sist.dao.PlaceDAO;
+import com.sist.dao.PlaceLikeDAO;
 import com.sist.dao.ReviewDAO;
 import com.sist.vo.*;
 
@@ -98,6 +100,16 @@ public class PlaceModel {
 		
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트 
+		//장소 좋아요
+		PlaceLikeVO lvo = new PlaceLikeVO();
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+		if(member_id!=null) {
+			lvo.setPlace_no(Integer.parseInt(no));
+			lvo.setMember_id(member_id);
+			int lcount = PlaceLikeDAO.isLikedPlace(lvo);
+			request.setAttribute("lcount", lcount);
+		}
 		
 		//문의글영역 요소
 		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
