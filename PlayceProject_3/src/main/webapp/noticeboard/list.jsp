@@ -2,10 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-     List<FreeBoardVO> list=FreeBoardDAO.boardSearchData();
-     request.setAttribute("list", list);
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -235,17 +232,54 @@ a.button:hover {
 	color: rgba(255, 255, 255, 0.85);
 	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
 }
+
+  .answer {
+    display: none;
+    padding-bottom: 30px;
+  }
+  #faq-title {
+    font-size: 25px;
+  }
+  .faq-content {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .question {
+    font-size: 19px;
+    padding: 30px 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  .question:hover {
+    color: #2962ff;
+  }
+  [id$="-toggle"] {
+    margin-right: 15px;
+  }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#fd').keyup(function(){
-		let fd=$('#fd').val();
-		$('#user-table > tbody > tr').hide();
-		let temp=$('#user-table > tbody > tr > td:nth-child(5n+2):contains("'+fd+'")')
-		$(temp).parent().show()
-	})
+
 	// $('.details').click(function(){})
+	 const items = document.querySelectorAll('.question');
+
+	  function openCloseAnswer() {
+	    const answerId = this.id.replace('que', 'ans');
+
+	    if(document.getElementById(answerId).style.display === 'block') {
+	      document.getElementById(answerId).style.display = 'none';
+	      document.getElementById(this.id + '-toggle').textContent = '+';
+	    } else {
+	      document.getElementById(answerId).style.display = 'block';
+	      document.getElementById(this.id + '-toggle').textContent = '-';
+	    }
+	  }
+
+	  items.forEach(item => item.addEventListener('click', openCloseAnswer));
 	
 })
 
@@ -268,56 +302,39 @@ $(function(){
 <%-- 요기부터 메인! --%>
 <div class="section section-properties">
 	  <div class="container">
-	   	<div class="two_third first" style="height:800px">
+	   	<div class="two_third first" style="height:auto">
 		  <div class="col-lg-6">
 		   <h2 class="font-weight-bold text-primary heading">공지사항</h2>
 		   <hr/><br><br>
-		<div id="board-search">
-       	 <div class="container">
-            <div class="search-window">
-                <form action="">
-                    <div class="search-wrap">
-                        <label for="search" class="blind">공지사항 내용 검색</label>
-                        <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="검색어를 입력해주세요.">
-                        <button type="submit" class="btn btn-dark">검색</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <br><br>
-   
+				
+			    <c:forEach var="vo" items="${list }">
+			<div class="faq-content" style="width:1100px;">
+			  <button class="question" id="que-1"><span id="que-1-toggle">+</span>
+			 
+	       			<tr>
+	       				<td width="10%" class="text-center">${vo.no }</td>
+	       				<td width="45%">${vo.subject }</td>
+	       			</tr>
+			 </button>
+			  <div class="answer" id="ans-1">${vo.content}</div>
+			  
+			</div>
+			</c:forEach>
+			
+
+			<div class="faq-content">
+			  <button class="question" id="que-2"><span id="que-2-toggle">+</span><span>'CSS'란 무엇인가요?</span></button>
+			  <div class="answer" id="ans-2">캐스케이딩 스타일 시트(Cascading Style Sheets)입니다.</div>
+			</div>
+			<div class="faq-content">
+			  <button class="question" id="que-3"><span id="que-3-toggle">+</span><span>'JavaScript'란 무엇인가요?</span></button>
+			  <div class="answer" id="ans-3">자바스크립트는 객체(Object)를 기초로 하는 스크립트 프로그래밍 언어입니다.</div>
+			</div>
+					   
+		   
   <!-- board list area -->
     <div id="board-list">
         <div class="container">
-            <table class="table" id="user-table">
-            <thead>
-       			<tr>
-       				<th width="10%" class="text-center">번호</th>
-       				<th width="45%" class="text-center">제목</th>
-       				<th width="15%" class="text-center">이름</th>
-       				<th width="20%" class="text-center">작성일</th>
-       				<th width="10%" class="text-center">조회수</th>
-       			</tr>
-       			</thead>
-       			<tbody>
-       			<c:forEach var="vo" items="${list }">
-       			<tr>
-       				<td width="10%" class="text-center">${vo.no }</td>
-       				<td width="45%"><a href="../noticeboard/detail.do?no=${vo.no }">${vo.subject }</a>
-       					&nbsp;&nbsp;
-       					<c:if test="${vo.rcount>0 }">
-       						(${vo.rcount })
-       					</c:if>
-       				</td>
-       				<td width="15%" class="text-center">${vo.name }</td>
-       				<td width="20%" class="text-center">${vo.dbday }</td>
-       				<td width="10%" class="text-center">${vo.hit }</td>
-       			</tr>
-       			</c:forEach>
-       			</tbody>
-       		</table>
-       		
    			<table>
        			<tr>
        				<td>
@@ -328,18 +345,15 @@ $(function(){
 						</div>
 						</c:if>
        				</td>
-  
-       				<td class="text-right inline">
+       				<!-- 페이지 나누는 기능 => 공지사항에서는 일단 비활성화 -->
+       				<!-- <td class="text-right inline">
        				    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 	       					<a href="#" class="btn btn-sm btn-success">이전</a>
 	       					${curpage } page / ${totalpage } pages
 	       					<a href="#" class="btn btn-sm btn-success">다음</a>
-       					</td>
+       					</td>  -->
        			</tr>
        		</table>
-       		
-       		
-
         </div>
     </div>
    </div>
