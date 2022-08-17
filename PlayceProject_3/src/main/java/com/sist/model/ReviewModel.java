@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.ReviewDAO;
-import com.sist.vo.ReviewLikeVO;
 import com.sist.vo.ReviewVO;
 
 @Controller
@@ -55,7 +54,7 @@ public class ReviewModel {
 		
 		ReviewDAO.reviewInsert(Integer.parseInt(place_no),vo); //place_no 댓글 갯수 +1
 		
-		return "redirect:../place/detail.do?no="+place_no;
+		return "redirect:../place/detail.do?no="+place_no+"#review";
 	}
 	
 	
@@ -115,14 +114,18 @@ public class ReviewModel {
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
 		System.out.println(id);
-		ReviewLikeVO vo=new ReviewLikeVO();
-		vo.setReview_3_no(Integer.parseInt(review_no));
+		ReviewVO vo=new ReviewVO();
+		vo.setNo(Integer.parseInt(review_no));
 		vo.setMember_id(id);
 		
 		ReviewDAO.reviewLikeInsert(vo);
-
-		return "redirect:../place/detail.do?no="+place_no;
+		
+		
+		return "redirect:../place/detail.do?no="+place_no+"#review";
 	}
+	
+
+	
 	
 	@RequestMapping("review/review_like_delete.do")
 	public String review_like_delete(HttpServletRequest request, HttpServletResponse response)
@@ -133,11 +136,11 @@ public class ReviewModel {
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
 
-		ReviewLikeVO vo=new ReviewLikeVO();
-		vo.setReview_3_no(Integer.parseInt(review_no));
+		ReviewVO vo=new ReviewVO();
+		vo.setNo(Integer.parseInt(review_no));
 		vo.setMember_id(id);
 		
-		ReviewDAO.reviewLikeDelete(vo);
+		ReviewDAO.reviewLikeCancel(vo);
 
 		return "redirect:../place/detail.do?no="+place_no;
 	}

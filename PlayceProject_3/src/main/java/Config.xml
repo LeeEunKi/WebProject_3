@@ -10,7 +10,6 @@
      <typeAlias type="com.sist.vo.CategoryVO" alias="CategoryVO"/>
      <typeAlias type="com.sist.vo.FreeBoardVO" alias="FreeBoardVO"/>
      <typeAlias type="com.sist.vo.ReviewVO" alias="ReviewVO"/>
-     <typeAlias type="com.sist.vo.ReviewLikeVO" alias="ReviewLikeVO"/>
      <typeAlias type="com.sist.vo.MemberVO" alias="MemberVO"/>
      <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
      <typeAlias type="com.sist.vo.AskVO" alias="AskVO"/>

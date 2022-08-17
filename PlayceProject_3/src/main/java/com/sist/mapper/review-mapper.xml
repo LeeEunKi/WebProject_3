@@ -15,27 +15,26 @@
  -->
  
  <!-- 도움돼요  -->  
-<insert id="reviewLikeInsert" parameterType="ReviewLikeVO">
-  <selectKey keyProperty="no" resultType="int" order="BEFORE">
-   SELECT NVL(MAX(no)+1,1) AS no FROM review_like_3
-  </selectKey>
-   INSERT INTO review_like_3 VALUES(#{no},#{review_3_no},#{member_id},1)
-</insert>
+<update id="reviewLikeInsert" parameterType="ReviewVO">
+   UPDATE review_3 SET
+   rcount= rcount + 1
+   WHERE no=#{no} AND member_id=#{member_id}
+</update>
 
 
 
  <!-- 도움대요 출력 숫자만  -->
 <select id="reviewLikeCount" resultType="int" parameterType="int">
-  SELECT COUNT(*) 
-  FROM review_like_3
-  WHERE review_3_no=#{review_3_no}
+  SELECT rcount
+  FROM review_3
+  WHERE no=#{no}
 </select>
 
  <!-- 도움돼요 취소  -->
-<update id="reviewLikeCancel" parameterType="ReviewLikeVO">
-	UPDATE review_like_3 SET
-	SET like_check = 0
-	WHERE review_3_no=#{review_3_no} AND member_id=#{member_id}
+<update id="reviewLikeCancel" parameterType="ReviewVO">
+	UPDATE review_3 SET
+	rcount = rcount - 1
+	WHERE no=#{no} AND member_id=#{member_id}
 </update>
 
 

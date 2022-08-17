@@ -21,42 +21,6 @@ public class ReviewDAO {
 		}
 	}
 	
-	//<update id="likeIncrement" parameterType="int">
-	public static void likeIncrement(int reviewNo)
-	{
-		SqlSession session=null;;
-		try {
-			session=ssf.openSession();
-			session.update("likeIncrement",reviewNo);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		finally {
-			if(session!=null)
-				session.close();
-		}
-	}
-	
-	//<select id="likeCount" resultType="int" parameterType="int">
-	public static int likeCount(int reviewNo)
-	{
-		SqlSession session=null;
-		int count=0;
-		try {
-			session=ssf.openSession();
-			count=session.selectOne("likeCount",reviewNo);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		finally {
-			if(session!=null)
-				session.close();
-		}
-		
-		return count;
-	}
-	
 	
 	//<select id="counts" resultType="int" parameterType="int">
 	public static int counts(int place_no)
@@ -197,12 +161,12 @@ public class ReviewDAO {
 	
 	//리뷰 도움돼요
 	//<insert id="reviewLikeInsert" parameterType="com.sist.vo.ReviewLikeVO">
-	public static void reviewLikeInsert(ReviewLikeVO vo)
+	public static void reviewLikeInsert(ReviewVO vo)
 	{
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			session.insert("reviewLikeInsert", vo);
+			session.update("reviewLikeInsert", vo);
 			session.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -214,7 +178,7 @@ public class ReviewDAO {
 		}
 	}
 	//<select id="reviewLikeCheck" resultType="int" parameterType="com.sist.vo.ReviewLikeVO">
-	public static int reviewLikeCheck(ReviewLikeVO vo)
+	/*public static int reviewLikeCheck(ReviewLikeVO vo)
 	{
 		SqlSession session=null;
 		int check=0;
@@ -231,7 +195,7 @@ public class ReviewDAO {
 				
 		}
 		return check;
-	}
+	}*/
 	
 	//<select id="reviewLikeCount" resultType="int" parameterType="int">
 	public static int reviewLikeCount(int review_no)
@@ -252,12 +216,12 @@ public class ReviewDAO {
 		return count;
 	}
 	
-	public static void reviewLikeDelete(ReviewLikeVO vo)
+	public static void reviewLikeCancel(ReviewVO vo)
 	{
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			session.delete("reviewLikeDelete", vo);
+			session.update("reviewLikeCancel", vo);
 			session.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
