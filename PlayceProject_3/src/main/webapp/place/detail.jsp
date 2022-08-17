@@ -136,8 +136,6 @@ if (status === kakao.maps.services.Status.OK) {
 							<label class="sche">스케줄</label>
 							<label class="meta">시작 날짜 ~ 종료 날짜</label>
 							<input type="date" id="reserveDate" name="reserveDate">
-							<!-- 날짜, 시간, 인원, 주차대수는 form으로 보내주고 reserve.do에서 받아서 미리 채워주고 시작하기 -->
-							<!-- 달력은 아마 직접 만들어야 할 듯 -->
 							<!-- <input type="time" id="reserveTime" name="reserveTime">-->
 							<label class="sche">총 인원</label>
           					<select id="selectCapa" name="user_job">
@@ -174,7 +172,7 @@ if (status === kakao.maps.services.Status.OK) {
 	            					</optgroup> 
 	          					</select>
           					</c:if>
-							<button type="submit" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;">예약하기</button>
+							<button type="submit" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"><a href="../reserve/calendar.do?place_no=${place_no }">예약하기</a></button>
 						</div>	
 					</div>
 			</div>

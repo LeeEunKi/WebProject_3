@@ -1,256 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+ 	$('.times').css("cursor","pointer");
+	$('.times').click(function(){
+		let time = $(this).text();
+		//$(this).css("background-color":"red");
+		let place_no = $('#place_no').val();
+		place_no = parseInt(place_no.trim());
+		console.log(place_no);
+		$.ajax({
+			type:'post',
+			url:'../reserve/option_select.do',
+			data:{"place_no":place_no},
+			success:function(result){
+				$('#print_option').html(result);
+			}
+		})
+	})
+})
+</script>
 </head>
 <body>
-<div class="reserve_time_wrap">
-  <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode" style="padding: 10px;">
-    <ul class="swiper-wrapper time_list" style="transition-duration: 0ms; transform: translate3d(-409px, 0px, 0px);">
-      <li class="swiper-slide able">
-        <span class="time time_half">오전</span>
-        <a class="time_box">
-          <span class="time">0</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">1</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">2</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">3</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">4</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">5</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">6</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">7</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able swiper-slide-prev">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">8</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able swiper-slide-active">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">9</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able swiper-slide-next">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">10</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">11</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <span class="time time_half">오후</span>
-        <a class="time_box">
-          <span class="time">12</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">13</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">14</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">15</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">16</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">17</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">18</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">19</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">20</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">21</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">22</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">23</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <span class="time time_half">익일</span>
-        <a class="time_box">
-          <span class="time">0</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">1</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">2</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">3</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">4</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">5</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">6</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">7</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">8</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-      <li class="swiper-slide able">
-        <!-- -->
-        <a class="time_box">
-          <span class="time">9</span>
-          <span class="price">25,000</span>
-        </a>
-      </li>
-    </ul>
-    <span aria-atomic="true" aria-live="assertive" class="swiper-notification"></span>
-  </div>
-</div>
+	<c:forEach var="time" items="${times }" varStatus="s">
+		<span class="btn btn-sm btn-warning times" time-data="${s.index+1 }">${time.time }&nbsp;</span>
+	</c:forEach>
 </body>
 </html>

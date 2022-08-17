@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sist.mapper.reserve-mapper"></mapper>
+<mapper namespace="com.sist.mapper.reserve-mapper">
+	<!-- 예약불가능한 날짜 정보 불러오기 -->
+	<select id="reserveGetDate" resultType="String" parameterType="int">
+		SELECT check_date 
+		FROM reserve_info_3 
+		WHERE place_no=#{place_no}
+		GROUP BY check_date HAVING COUNT(*)=16
+	</select>
+	<!-- 예약가능한 시간 정보 불러오기 -->
+	<select id="reserveGetTime" resultType="ReserveDateVO" parameterType="hashmap">
+		SELECT time FROM reserve_time_info_3
+		WHERE no NOT IN (SELECT check_time FROM reserve_info_3
+			WHERE place_no=#{place_no} AND check_date=#{check_date})
+		ORDER BY no ASC
+	</select>
+</mapper>

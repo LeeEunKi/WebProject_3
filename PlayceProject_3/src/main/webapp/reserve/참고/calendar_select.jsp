@@ -23,9 +23,13 @@ $(function(){
 	$('.date-pick').click(function(){
 		let dateno = $(this).attr("data-no");
 		//$(this).css("background-color":"red");
+		let place_no = $('#place_no').val();
+		place_no = parseInt(place_no.trim());
+		console.log(place_no);
 		$.ajax({
 			type:'post',
 			url:'../reserve/option_select.do',
+			data:{"place_no":place_no},
 			success:function(result){
 				$('#print_option').html(result);
 			}
@@ -49,7 +53,6 @@ $(function(){
       				<c:set var="color" value="black"/>
       			</c:otherwise>
       			</c:choose>
-      			
       			<th class="text-center"><h3 style="color:${color}">${sw }</h3></th>
       		</c:forEach>
       	</tr>
@@ -61,7 +64,7 @@ $(function(){
       			</c:forEach>
       			<%-- 요일만큼 공백을 만들어 줌 --%>
       		</c:if>
-      		<td class="text-center date-pick" data-no="${i }" style="background-color:${i<day?'gray':'' }">${i }</td> <%--1 일부터 출력 --%>
+      		<td class="text-center date-pick" data-no="${i }" style="background-color:${days[i]==1?'gray':'' }">${i }</td> <%--1 일부터 출력 --%>
       		<c:set var="week" value="${week+1 }"/>
       		<c:if test="${week>6 }"><%--일요일 다음에 출력 --%>
       			</tr>

@@ -15,6 +15,7 @@
      <typeAlias type="com.sist.vo.AskVO" alias="AskVO"/>
      <typeAlias type="com.sist.vo.NoticeBoardVO" alias="NoticeBoardVO"/>
      <typeAlias type="com.sist.vo.PlaceLikeVO" alias="PlaceLikeVO"/>
+     <typeAlias type="com.sist.vo.ReserveDateVO" alias="ReserveDateVO"/>
    </typeAliases>
 	<environments default="development"> <!-- 개발환경 만들기. -->
 		<environment id="development">
@@ -38,5 +39,6 @@
       <mapper resource="com/sist/mapper/ask-mapper.xml"/>
       <mapper resource="com/sist/mapper/noticeboard-mapper.xml"/>
       <mapper resource="com/sist/mapper/place-like-mapper.xml"/>
+      <mapper resource="com/sist/mapper/reserve-mapper.xml"/>
 	</mappers>
 </configuration>

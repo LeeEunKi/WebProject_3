@@ -19,52 +19,23 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$.ajax({
-		type:'post',
-		url:'../reserve/calendar_select.do',
-		success:function(result){
-			$('#print_cal').html(result);
-		}
-	})
-	$('#prevMonth').click(function(){
-		let year=$('#year').text();
-		year = parseInt(year.trim());
-		let month=$('#month').text();
-		month = parseInt(month.trim());
-		if(month-1===0){
-			$('#year').text(year-1);
-			$('#month').text(12);
-		}else{
-			$('#year').text(year);
-			$('#month').text(month-1);
-		}
+	$('.date-pick').css("cursor","pointer");
+	$('.date-pick').click(function(){
+		let dateno = $(this).attr("data-no");
+		//$(this).css("background-color":"red");
+		let place_no = $('#place_no').val();
+		place_no = parseInt(place_no.trim());
+		let year = $('#year').text();
+		let month = $('#month').text();
+		let selectDate = year+"-"+month+"-"+dateno;
+		console.log(selectDate);
+		console.log(place_no);
 		$.ajax({
 			type:'post',
-			url:'../reserve/calendar_select.do',
-			data:{"year":year,"month":month-1},
+			url:'../reserve/time_select.do',
+			data:{"place_no":place_no, "selectDate":selectDate},
 			success:function(result){
-				$('#print_cal').html(result);
-			}
-		})
-	})
-	$('#nextMonth').click(function(){
-		let year=$('#year').text();
-		year = parseInt(year.trim());
-		let month=$('#month').text();
-		month = parseInt(month.trim());
-		if(month+1===13){
-			$('#year').text(year+1);
-			$('#month').text(1);
-		}else{
-			$('#year').text(year);
-			$('#month').text(month+1);
-		}
-		$.ajax({
-			type:'post',
-			url:'../reserve/calendar_select.do',
-			data:{"year":year,"month":month+1},
-			success:function(result){
-				$('#print_cal').html(result);
+				$('#print_time').html(result);
 			}
 		})
 	})
@@ -80,11 +51,47 @@ $(function(){
         <tr>
           <td>
           	<a id="prevMonth">&lt;</a><span id="year">${year }</span>.<span id="month">${month }</span><a id="nextMonth">&gt;</a>
+          	<input type="hidden" id="place_no" value="${place_no }">
           </td>
         </tr>
       </table>
       <div style="height:15px"></div>
-      <div id="print_cal"></div>
+      <table class="table">
+      	<tr class="success">
+      		<c:forEach var="sw" items="${strWeek }" varStatus="s">
+      			<c:choose>
+      			<c:when test="${s.index==0 }">
+      				<c:set var="color" value="red"/>
+      			</c:when>
+      			<c:when test="${s.index==6 }">
+      				<c:set var="color" value="blue"/>
+      			</c:when>
+      			<c:otherwise>
+      				<c:set var="color" value="black"/>
+      			</c:otherwise>
+      			</c:choose>
+      			<th class="text-center"><h3 style="color:${color}">${sw }</h3></th>
+      		</c:forEach>
+      	</tr>
+      	<c:forEach var="i" begin="1" end="${lastday }">
+      		<c:if test="${i==1 }">
+      			<tr height="50px">
+      			<c:forEach var="j" begin="1" end="${week }">
+      				<td>&nbsp;</td>
+      			</c:forEach>
+      			<%-- 요일만큼 공백을 만들어 줌 --%>
+      		</c:if>
+      		<td class="text-center date-pick" data-no="${i }" style="background-color:${days[i]==1||i<day?'gray':'' }">${i }</td> <%--1 일부터 출력 --%>
+      		<c:set var="week" value="${week+1 }"/>
+      		<c:if test="${week>6 }"><%--일요일 다음에 출력 --%>
+      			</tr>
+      			<c:set var="week" value="0"/>
+      			<tr height="50px">
+      		</c:if>
+      	</c:forEach>
+      </table>
+      <div id="print_time"></div>
+      <div id="print_option"></div>
     </div>
   </div>
 </body>
