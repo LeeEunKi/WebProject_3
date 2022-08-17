@@ -239,6 +239,14 @@ a.button:hover {
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
+	
+	$(".board_info").hover(function(){
+		$(this).css("backgroundColor","#FC6").css("cursor","pointer")
+	//else면
+	},function(){
+		$(this).css("backgroundColor","#FFF").css("cursor","none")
+	})
+	
 	$('#fd').keyup(function(){
 		let fd=$('#fd').val();
 		$('#user-table > tbody > tr').hide();
@@ -303,7 +311,7 @@ $(function(){
        			</thead>
        			<tbody>
        			<c:forEach var="vo" items="${list }">
-       			<tr>
+       			<tr class="board_info">
        				<td width="5%" class="text-center">${vo.no }</td>
        				<td width="35%"><a href="../freeboard/detail.do?no=${vo.no }">${vo.subject }</a>
        					&nbsp;&nbsp;
