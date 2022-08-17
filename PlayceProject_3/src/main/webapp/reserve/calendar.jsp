@@ -23,7 +23,7 @@ $(function(){
 		console.log(place_no);
 		$.ajax({
 			type:'post',
-			url:'../reserve/time_select.do',
+			url:'../reserve/time_select.do', 
 			data:{"place_no":place_no, "selectDate":selectDate},
 			success:function(result){
 				$('#print_time').html(result);

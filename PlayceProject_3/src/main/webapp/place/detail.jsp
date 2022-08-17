@@ -69,7 +69,7 @@ if (status === kakao.maps.services.Status.OK) {
 	height:40px;
 	margin:0 auto;
 }
-.de-price{
+.de-price{ 
 	color:#132F66;
 }
 .descTable{

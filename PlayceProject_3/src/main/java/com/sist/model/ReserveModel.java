@@ -76,7 +76,7 @@ public class ReserveModel {
 		request.setAttribute("week", week-1);
 		request.setAttribute("lastday", lastday);
 		request.setAttribute("strWeek", strWeek);
-		return "../reserve/calendar.jsp";
+		return "../reserve/calendar.jsp"; 
 	}
 
 	@RequestMapping("reserve/time_select.do")
