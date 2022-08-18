@@ -224,9 +224,9 @@ public class MyPageModel {
 		AskVO vo = new AskVO();
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("id");
-		String place_no = request.getParameter("place_no");
+		String no = request.getParameter("no");
 		vo.setMember_id(member_id);
-		vo.setPlace_no(Integer.parseInt(place_no));
+		vo.setNo(Integer.parseInt(no));
 		AskDAO.user_askDelete(vo);
 		
 		return "redirect:../mypage/ask_list.do";

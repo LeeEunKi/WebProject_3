@@ -110,6 +110,7 @@ public class AskDAO {
 		try {
 			session = ssf.openSession();
 			int group_id = session.selectOne("user_getGroupId",vo);
+			System.out.println(group_id);
 			session.delete("user_askDelete",group_id);
 			session.commit();
 		}catch(Exception ex) {

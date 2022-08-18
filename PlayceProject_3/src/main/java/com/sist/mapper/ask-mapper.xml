@@ -79,8 +79,8 @@
 		WHERE group_id=#{group_id}
 	</delete>
 	<!-- 삭제할 group_id 가져오기 -->
-	<select id="user_getGroupId" parameterType="AskVO" resultType="int">
+	<select id="user_getGroupId" resultType="int" parameterType="AskVO">
 		SELECT group_id FROM askboard_3
-		WHERE member_id=#{member_id} AND place_no=#{place_no}
+		WHERE no=#{no}
 	</select>
 </mapper>

@@ -48,7 +48,7 @@ a{
 	      <td width="30%">${askVO.content }</td><!-- 문의 내용 -->
 	      <td width="15%" class="text-center">${askVO.dbday }</td><!-- 문의 날짜 -->
 	      <td width="10%" class="text-center">${askVO.isReply==1?"답변완료":"답변대기"}</td>
-	      <td width="10%" class="text-center"><a href="../mypage/ask_delete.do?place_no=${askVO.place_no }" style="color:#2964D9">삭제</a></td>
+	      <td width="10%" class="text-center"><a href="../mypage/ask_delete.do?no=${askVO.no }" style="color:#2964D9">삭제</a></td>
 	    </tr>
     </c:forEach>
   </table>
