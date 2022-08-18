@@ -55,7 +55,7 @@ $(function() {
 	</div>
 
 	<nav class="site-nav">
-		<div class="container">
+<!-- 		<div class="container"> -->
 			<div class="menu-bg-wrap">
 				<div class="site-navigation">
 					<span>
@@ -111,7 +111,7 @@ $(function() {
 				    </span>
 				</div>
 			</div>
-		</div> 
+<!-- 		</div>  -->
 	</nav>
 
 </body>
