@@ -78,6 +78,7 @@ public class MyPageModel {
 		String tel2=vo.getTel().substring(7);
 		vo.setTel1(tel1);
 		vo.setTel2(tel2);
+		request.setAttribute("page", "update");
 		request.setAttribute("vo", vo);
 		request.setAttribute("mypage_jsp", "../member/join_update.jsp");
 		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
@@ -206,7 +207,7 @@ public class MyPageModel {
 				   data = data.substring(0,20)+"...";
 				   vo.setContent(data);
 			   }
-		   }
+		}
 		request.setAttribute("page", "asklist");
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage",startPage);
@@ -216,6 +217,7 @@ public class MyPageModel {
 		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
 		return "../main/main.jsp";
 	}
+	
 	//[유저] 문의글 삭제 --마이페이지에서 삭제처리?
 	@RequestMapping("mypage/ask_delete.do")
 	public String mypage_ask_delete(HttpServletRequest request, HttpServletResponse response) {

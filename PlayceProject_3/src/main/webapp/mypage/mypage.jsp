@@ -9,10 +9,6 @@
 <title></title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-$(function () {
-	$('#')
-})
-
 </script>
 <style type="text/css">
 .hero{
@@ -97,7 +93,6 @@ $(function () {
 		     	<div class="col-lg-9">
 				   <jsp:include page="${mypage_jsp}"></jsp:include>
 			    </div>
-			    
 		 </div>
 		</div>
 	</div>
