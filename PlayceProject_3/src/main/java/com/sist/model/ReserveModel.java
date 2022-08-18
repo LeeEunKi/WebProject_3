@@ -17,13 +17,17 @@ import com.sist.controller.RequestMapping;
 import com.sist.dao.PlaceDAO;
 import com.sist.dao.ReserveDAO;
 import com.sist.vo.PlaceVO;
-import com.sist.vo.ReserveDateVO;
 
 @Controller
 public class ReserveModel {
+	@RequestMapping("reserve/reserve.do")
+	public String reserve(HttpServletRequest request, HttpServletResponse response) {
+		
+		return "../reserve/reserve.jsp";
+	}
 	//달력 만들기(기본달력 띄워줌)
-	@RequestMapping("reserve/calendar.do")
-	public String calendar(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("reserve/select_date.do")
+	public String select_date(HttpServletRequest request, HttpServletResponse response) {
 		String place_no = request.getParameter("place_no");
 		List<String> list = ReserveDAO.reserveGetDate(Integer.parseInt(place_no));
 		
@@ -76,11 +80,11 @@ public class ReserveModel {
 		request.setAttribute("week", week-1);
 		request.setAttribute("lastday", lastday);
 		request.setAttribute("strWeek", strWeek);
-		return "../reserve/calendar.jsp"; 
+		return "../reserve/reserve.jsp"; 
 	}
 
-	@RequestMapping("reserve/time_select.do")
-	public static String reserve_time(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("reserve/select_time.do")
+	public static String select_time(HttpServletRequest request, HttpServletResponse response) {
 		String day = request.getParameter("day");
 		String place_no = request.getParameter("place_no");
 		String selectDate = request.getParameter("selectDate");
@@ -89,21 +93,19 @@ public class ReserveModel {
 		Map map = new HashMap();
 		map.put("place_no", Integer.parseInt(place_no));
 		map.put("check_date", selectDate);
-		List<ReserveDateVO> times = ReserveDAO.reserveGetTime(map);
-		for(ReserveDateVO vo:times) {
-			System.out.println(vo.getTime());
-		}
+		List<String> times = ReserveDAO.reserveGetTime(map);
 
 		request.setAttribute("times",times);
-		return "../reserve/time_select.jsp";
+		return "../reserve/select_time.jsp";
 	}
 	
 	//인원 수, 주차 대수 옵션 선택 출력
-	@RequestMapping("reserve/option_select.do")
-	public String option_select(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("reserve/select_option.do")
+	public String select_option_capa(HttpServletRequest request, HttpServletResponse response) {
 		String place_no = request.getParameter("place_no");
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(place_no)); //예시용 임시 데이터
 		request.setAttribute("pvo", pvo);
-		return "../reserve/option_select.jsp";
+		return "../reserve/select_option.jsp";
 	}
+
 }

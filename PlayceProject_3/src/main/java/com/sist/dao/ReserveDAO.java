@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.PlaceVO;
-import com.sist.vo.ReserveDateVO;
 
 public class ReserveDAO {
 	private static SqlSessionFactory ssf;
@@ -41,8 +40,8 @@ public class ReserveDAO {
 		return list;
 	}
 	//예약가능한 날짜 중에서 예약불가능한 시간 정보 불러오기
-	public static List<ReserveDateVO> reserveGetTime(Map map){
-		List<ReserveDateVO> list = new ArrayList<ReserveDateVO>();
+	public static List<String> reserveGetTime(Map map){
+		List<String> list = new ArrayList<String>(); 
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();

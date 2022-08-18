@@ -9,7 +9,7 @@
 		GROUP BY check_date HAVING COUNT(*)=16
 	</select>
 	<!-- 예약가능한 시간 정보 불러오기 -->
-	<select id="reserveGetTime" resultType="ReserveDateVO" parameterType="hashmap">
+	<select id="reserveGetTime" resultType="String" parameterType="hashmap">
 		SELECT time FROM reserve_time_info_3
 		WHERE no NOT IN (SELECT check_time FROM reserve_info_3
 			WHERE place_no=#{place_no} AND check_date=#{check_date})

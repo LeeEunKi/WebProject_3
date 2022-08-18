@@ -53,10 +53,9 @@ $(function(){
 		$('#reserveBtn').hide();
 		$.ajax({
 			type:'get',
-			url:'../reserve/calendar.do',
+			url:'../reserve/select_date.do',
 			data:{"place_no":place_no},
 			success:function(result){
-				//alert(result);
 				$('#print_reserve').html(result);
 			},
 			error:function(request,status,error){
@@ -97,7 +96,7 @@ $(function(){
 .descTable td:first-child {
     border-left: none;
   }
-#reserveDate, #selectCapa, #selectParking{
+#reserveDate, #selectCapa, #selectParking, #selectTime, #selectDuration{
   background: rgba(255, 255, 255, 0.1);
   border: none;
   font-size: 16px;
@@ -111,6 +110,7 @@ $(function(){
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 30px;
 }
+
 </style>
 </head>
 <body>
@@ -118,7 +118,7 @@ $(function(){
 
 
 	<div class="section">
-		<div class="container">
+		 <div class="container"> 
 			<div class="row justify-content-between">
 				<div class="col-lg-8">
 					<div class="img-property-slide-wrap">
@@ -155,12 +155,9 @@ $(function(){
 								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.price}" />원</p>
 								     </c:otherwise>
 								   </c:choose>
-							<a id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;" 
-							href="../reserve/calendar.do" place_no="${place_no }">예약하기</a>
+							<a id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"place_no="${place_no }">예약하기</a>
 						</div>	
 						<div id="print_reserve"></div>
-						<div id="print_time"></div>
-     					<div id="print_option"></div>
 					</div>
 			</div>
 			
@@ -183,7 +180,6 @@ $(function(){
 			   </div>
 			   <div class="col-lg-8">
 				<h2 class="heading text-primary" style="padding-top: 30px;" id="desc">장소 소개</h2>
-				<%-- <p class="meta">${pvo.address }</p> --%>
 				<p class="de-text-black-50" style="font-size:16px;" >${pvo.content }</p>
 				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 				<h2 class="heading text-primary" style="padding-top: 30px; padding-bottom:30px;" id="desc">장소 정보</h2>
@@ -251,9 +247,8 @@ $(function(){
 				<jsp:include page="${ask_jsp }"/>
 			   </div>
 			</div>
-		 </div>
+		 </div> 
 	  </div>
-   </div>
     
 
 
