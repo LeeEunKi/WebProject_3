@@ -54,9 +54,9 @@
 
 <!--  상세보기 리뷰 리스트 -->
 <select id="reviewListData" resultType="ReviewVO" parameterType="int">
-  SELECT /*+ INDEX_DESC(REVIEW_3 review_3_no_pk)*/ no,member_id,content,score,TO_CHAR(regdate,'YYYY-MM-DD') AS dbday,num
-  FROM (SELECT no,member_id,content,score,regdate,rownum AS num
-  FROM (SELECT no,member_id,content,score,regdate
+  SELECT /*+ INDEX_DESC(REVIEW_3 review_3_no_pk)*/ no,member_id,content,score,TO_CHAR(regdate,'YYYY-MM-DD') AS dbday,rcount,num
+  FROM (SELECT no,member_id,content,score,regdate,rcount,rownum AS num
+  FROM (SELECT no,member_id,content,score,regdate,rcount
   FROM REVIEW_3 WHERE place_no=#{place_no}))
 </select>
 

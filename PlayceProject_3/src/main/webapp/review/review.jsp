@@ -8,9 +8,20 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-	$(function () {
-		
-	})
+$(function () {
+	document.addEventListener('scroll', function() {
+	let rno=$('#rno').attr("data-rno");
+		$.ajax({
+			type:'post',
+			url:'../review/reivew_lcount.do',
+			data:{"rno":rno},
+			success:function(result)
+			{
+				$('#print').html(result);
+			}
+		})
+	 })
+})
 </script>
 </head>
 <body>		
@@ -65,11 +76,9 @@
 						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 				  	 	 <p class="de-text-desc">${rvo.content }</p>
 				  	    <c:if test="${sessionScope.id!=null }">
-
-				  	         <a href="../review/review_like.do?rno=${rvo.no }&pno=${place_no }" class="btn btn-sm btn-success py-2 px-3" id="btnRecommend"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></a> 
-								<!--<input type="button" value="도움돼요 ♥" id="btnRecommend" data-rno="${rvo.no }" data-pno="${place_no }"/> <br>-->
-				  	          <!--  <a href="../review/review_like_delete.do?rno=${rvo.no }&pno=${place_no }">도움돼요 <img src="../review/like.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 5px; color: orange;"></a>-->
-
+				  	    <input type="hidden" id="rno" data-rno="${rvo.no }">
+						<div id="print"></div>
+				  	        <a href="../review/review_like.do?rno=${rvo.no }&pno=${place_no }" class="btn btn-sm btn-success py-2 px-3" id="btnRecommend"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></a>
 					  	</c:if>
 					</div>
 					

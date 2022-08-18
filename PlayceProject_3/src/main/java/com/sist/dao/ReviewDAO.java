@@ -148,6 +148,7 @@ public class ReviewDAO {
 		try {
 			session=ssf.openSession();
 			session.update("reviewUpdate",vo);
+			session.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("reviewUpdate(ReviewVO vo) 오류났다 고쳐라");

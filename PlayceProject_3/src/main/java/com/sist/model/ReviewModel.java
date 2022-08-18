@@ -120,8 +120,8 @@ public class ReviewModel {
 		
 		ReviewDAO.reviewLikeInsert(vo);
 		
-		
-		return "redirect:../place/detail.do?no="+place_no+"#review";
+		//return "redirect:../place/detail.do?no="+place_no+"#review";
+		return "../review/review_lcount.jsp";
 	}
 	
 
