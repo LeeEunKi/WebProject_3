@@ -56,8 +56,8 @@
 				<div class="col-lg-9 text-center">
 					<h1 class="heading" data-aos="fade-up">모임하기 좋은 곳을 찾았다!</h1>
 					<h3 class="heading2" data-aos="fade-up">상상 가능한 모든 공간을 한 눈에 PLAYCE</h1>
-					<form action="#" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-						<input type="text" class="form-control px-4" placeholder="삼성동,성동구,강남대로 등">
+					<form method="post"action="../place/place_find.do" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+						<input type="text" class="form-control px-4" placeholder="삼성동,성동구,강남대로 등" value="${addr }" name=addr>
 						<button type="submit" class="btn btn-primary">Search</button>
 					</form>
 				</div>

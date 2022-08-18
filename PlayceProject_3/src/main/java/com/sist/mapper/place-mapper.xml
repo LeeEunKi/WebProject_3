@@ -38,5 +38,20 @@
 		FROM place_image_3
 		WHERE place_no = #{no}
 	</select>
+	<select id="placeLocationFindData" resultType="PlaceVO" parameterType="hashmap">
+    SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, num
+	FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image, rownum as num
+	FROM (SELECT no, host_name, name, price, address, capa, parking, category_no, type_no, rep_image
+    FROM place_3 WHERE address LIKE '%'||#{address}||'%' ORDER BY no ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="placeLocationFindTotalPage" resultType="int" parameterType="string">
+    SELECT CEIL(COUNT(*)/9.0) FROM place_3
+    WHERE address LIKE '%'||#{address}||'%'
+  </select>
+  <select id="placeFindTotalCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM place_3
+		WHERE address LIKE '%'||#{address}||'%'
+	</select>
 </mapper>
 

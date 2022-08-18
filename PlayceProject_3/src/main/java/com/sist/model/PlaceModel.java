@@ -133,5 +133,40 @@ public class PlaceModel {
 		request.setAttribute("ask_jsp", "../ask/ask_list.jsp");
 		return "../main/main.jsp";
 	}
+	
+	 @RequestMapping("place/place_find.do")
+	   public String food_find(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String page=request.getParameter("page");
+		   if(page==null)
+			   page="1";
+		   String addr=request.getParameter("addr");
+		   if(addr==null)
+			   addr="";
+		   
+		   int curpage=Integer.parseInt(page);
+		   int rowSize=9;
+		   int start=(rowSize*curpage)-(rowSize-1);
+		   int end=rowSize*curpage;
+		   
+		   Map map=new HashMap();
+		   map.put("start", start);
+		   map.put("end", end);
+		   map.put("address", addr);
+		   
+		   List<PlaceVO> list=PlaceDAO.placeLocationFindData(map);
+		   int totalpage=PlaceDAO.placeLocationFindTotalPage(addr);
+		   
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("list", list);
+		   request.setAttribute("addr", addr);
+		   request.setAttribute("main_jsp", "../place/place_find.jsp");
+		   return "../main/main.jsp";
+	   }
 
 }

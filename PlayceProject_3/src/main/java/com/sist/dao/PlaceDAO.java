@@ -118,5 +118,60 @@ public class PlaceDAO {
 		}
 		return list;
 	}
+	 public static List<PlaceVO> placeLocationFindData(Map map)
+	   {
+		   List<PlaceVO> list=null;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("placeLocationFindData", map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+	   
+	   public static int placeLocationFindTotalPage(String address)
+	   {
+		   int total=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   total=session.selectOne("placeLocationFindTotalPage", address);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return total;
+	   }
+	   
+	   public static int placeFindTotalCount(int tno){
+			SqlSession session = null;
+			int total = 0;
+			try {
+				session = ssf.openSession();
+				total = session.selectOne("placeFindTotalCount",tno);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("PlaceDAO : placeFindTotalCount(int) ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+			return total;
+		}
 
 }
