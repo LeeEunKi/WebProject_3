@@ -35,7 +35,7 @@ $(function(){
 </head>
 <body>
     <%-- <h1 class="text-center">${year }년 ${month }월 ${day }일</h1> --%>
-    <label class="sche">스케줄</label>
+    <!-- <label class="sche">스케줄</label> -->
     <div class="row">
       <table class="table">
         <tr>
@@ -80,8 +80,6 @@ $(function(){
       		</c:if>
       	</c:forEach>
       </table>
-      <div id="print_time"></div>
-      <div id="print_option"></div>
     </div>
 </body>
 </html>

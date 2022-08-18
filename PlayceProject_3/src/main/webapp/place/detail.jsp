@@ -9,59 +9,64 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=063a056828484c8e1337656cc6cbc882&libraries=services"></script>
-<script>
+<script type="text/javascript">
 $(function(){
-	var addr = $('#addr').text();
-	console.log(addr);
-	var host = $('.host').text();
-	console.log(host);
 	
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-mapOption = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 3 // 지도의 확대 레벨
-};
-//지도 생성
-var map = new kakao.maps.Map(mapContainer, mapOption);
-//주소-좌표 변환 객체 생성
-var geocoder = new kakao.maps.services.Geocoder();
-//주소로 좌표를 검색
-geocoder.addressSearch(addr, function(result, status) {
-
-if (status === kakao.maps.services.Status.OK) {
-    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-    // 결과값으로 받은 위치를 마커로 표시
-    var marker = new kakao.maps.Marker({
-        map: map,
-        position: coords
-    });
-    // 인포윈도우로 장소에 대한 설명을 표시
-    var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;color:black;">'+host+'</div>'
-    });
-    infowindow.open(map, marker);
-    // 지도의 중심을 결과값으로 받은 위치로 이동
-    map.setCenter(coords);
-}
-})
-
- $(function(){
-	$('#reserveBtn').click(function(){
+	var addr = $('#addr').text();
+	//console.log(addr);
+	var host = $('.host').text();
+	//console.log(host);
+	
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+	    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	    level: 3 // 지도의 확대 레벨
+	};
+	//지도 생성
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	//주소-좌표 변환 객체 생성
+	var geocoder = new kakao.maps.services.Geocoder();
+	//주소로 좌표를 검색
+	geocoder.addressSearch(addr, function(result, status) {
+		if (status === kakao.maps.services.Status.OK) {
+		    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		    // 결과값으로 받은 위치를 마커로 표시
+		    var marker = new kakao.maps.Marker({
+		        map: map,
+		        position: coords
+		    });
+		    // 인포윈도우로 장소에 대한 설명을 표시
+		    var infowindow = new kakao.maps.InfoWindow({
+		        content: '<div style="width:150px;text-align:center;padding:6px 0;color:black;">'+host+'</div>'
+		    });
+		    infowindow.open(map, marker);
+		    // 지도의 중심을 결과값으로 받은 위치로 이동
+		    map.setCenter(coords);
+		}
+	})
+	$('#reserveBtn').click(function(e){
+		//preventDefault() : 템플릿에 포함된 자바스크립트 function을 캔슬하고 내가 지정한 것을 실행하도록
+		e.preventDefault();
 		let place_no = $(this).attr("place_no");
 		place_no = parseInt(place_no);
+		console.log(place_no);
 		$('#reserveBtn').hide();
 		$.ajax({
-			type:'post',
+			type:'get',
 			url:'../reserve/calendar.do',
 			data:{"place_no":place_no},
 			success:function(result){
+				//alert(result);
 				$('#print_reserve').html(result);
-			}
+			},
+			error:function(request,status,error){
+				console.log("error!!!");
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);       
+				}
 		})
 	})
-}) 
-
-});
+	
+})
 </script>
 <style type="text/css">
 .descTable img{
@@ -150,56 +155,19 @@ if (status === kakao.maps.services.Status.OK) {
 								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.price}" />원</p>
 								     </c:otherwise>
 								   </c:choose>
-							<%-- <label class="sche">스케줄</label>
-							<label class="meta">시작 날짜 ~ 종료 날짜</label>
-							<input type="date" id="reserveDate" name="reserveDate">
-							<!-- <input type="time" id="reserveTime" name="reserveTime">-->
-							<label class="sche">총 인원</label>
-          					<select id="selectCapa" name="user_job">
-            					<optgroup>
-            					  <c:forEach var="i" begin="1" end="${pvo.capa }" step="1">
-            					  	<c:if test="${i!=pvo.capa }">
-            					  	 <option value="i">${i }명</option>
-            					  	</c:if>
-             						<c:if test="${i==pvo.capa }">
-            					  	 <option value="i">${i }명(최대)</option>
-            					  	</c:if>
-             					  </c:forEach>
-            					</optgroup> 
-          					</select>
-          					<c:if test="${pvo.parking!=0 }">
-	          					<label class="sche">주차 대수</label>
-	          					<select id="selectParking" name="user_job">
-	            					<optgroup>
-	            					  <c:forEach var="i" begin="1" end="${pvo.parking }" step="1">
-	            					  	<c:if test="${i!=pvo.parking }">
-	            					  	 <option value="i">${i }대</option>
-	            					  	</c:if>
-	             						<c:if test="${i==pvo.parking }">
-	            					  	 <option value="i">${i }대(최대)</option>
-	            					  	</c:if>
-	             					  </c:forEach>
-	            					</optgroup> 
-	          					</select>
-          					</c:if>
-          					<c:if test="${pvo.parking==0 }">
-          						<select style="display:none">
-	            					<optgroup>
-	            					  	 <option value="0">0대</option>
-	            					</optgroup> 
-	          					</select>
-          					</c:if> --%>
 							<a id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;" 
 							href="../reserve/calendar.do" place_no="${place_no }">예약하기</a>
 						</div>	
 						<div id="print_reserve"></div>
+						<div id="print_time"></div>
+     					<div id="print_option"></div>
 					</div>
 			</div>
 			
 
         <div class="section">
 			<div class="container">
-				<div class="row justify-content-between">
+				<div class="row">
 				<div class="col-lg-8"><!-- 간격 유지 -->
 					<div class="content-area">
 						<nav class="detail-nav">
