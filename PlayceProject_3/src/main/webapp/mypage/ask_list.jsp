@@ -8,6 +8,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+.title{
+	position: relative;
+    margin-bottom: 24.5px;
+    padding-bottom: 18.5px;
+    border-bottom: 1px solid rgb(216, 222, 229);
+}
+.title h2{
+	margin-right: 18px;
+    color: rgb(35, 35, 35);
+    font-size: 24px;
+    font-family: Regular, sans-serif;
+    letter-spacing: -0.6px;
+}
 a{
  color: black;
  font-size: 15px;
@@ -15,7 +28,9 @@ a{
 </style>
 </head>
 <body>
- <h2 class="sectiontitle">내 문의 내역</h2>
+  <div class="title">
+    <h2>나의 문의 내역</h2>
+  </div> 
   <table class="table"> 
     <tr> 
       <th width="25%" class="text-center" colspan="2">문의장소</th>
