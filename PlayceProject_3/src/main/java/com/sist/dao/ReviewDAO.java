@@ -178,14 +178,31 @@ public class ReviewDAO {
 				session.close();
 		}
 	}
+	//<insert id="likeCheckInsert" parameterType="ReviewVO"> 도움돼요 클릭 시 중복 방지값 넣어주기 
+	public static void likeCheckInsert(ReviewVO vo)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.insert("likeCheckInsert", vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	//중복 방지 값을 체크
 	//<select id="reviewLikeCheck" resultType="int" parameterType="com.sist.vo.ReviewLikeVO">
-	/*public static int reviewLikeCheck(ReviewLikeVO vo)
+	public static int reviewLikeCheck(Map map)
 	{
 		SqlSession session=null;
 		int check=0;
 		try {
 			session=ssf.openSession();
-			check=session.selectOne("reviewLikeCheck", vo);
+			check=session.selectOne("reviewLikeCheck", map);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -196,27 +213,9 @@ public class ReviewDAO {
 				
 		}
 		return check;
-	}*/
-	
-	//<select id="reviewLikeCount" resultType="int" parameterType="int">
-	public static int reviewLikeCount(int review_no)
-	{
-		SqlSession session=null;
-		int count=0;
-		try {
-			session=ssf.openSession();
-			count=session.selectOne("reviewLikeCount", review_no);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		finally {
-			if(session!=null)
-				session.close();
-		}
-		return count;
 	}
 	
+	//리뷰 도움돼요 취소
 	public static void reviewLikeCancel(ReviewVO vo)
 	{
 		SqlSession session=null;
@@ -233,7 +232,23 @@ public class ReviewDAO {
 				session.close();
 		}
 	}
-	
+	//도움돼요 취소 시 중복 값 제거 해서 클릭 활성화
+	//<delete id="likeCheckDelete" parameterType="ReviewVO">
+	public static void likeCheckDelete(ReviewVO vo)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.delete("likeCheckDelete", vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
 	
 	
 }

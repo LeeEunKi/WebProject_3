@@ -1,5 +1,8 @@
 package com.sist.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -114,14 +117,33 @@ public class ReviewModel {
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
 		System.out.println(id);
+		//중복 체크 
 		ReviewVO vo=new ReviewVO();
-		vo.setNo(Integer.parseInt(review_no));
-		vo.setMember_id(id);
+		Map map=new HashMap();
+		map.put("no", review_no);
+		map.put("member_id", id);
 		
-		ReviewDAO.reviewLikeInsert(vo);
-		
-		//return "redirect:../place/detail.do?no="+place_no+"#review";
-		return "../review/review_lcount.jsp";
+		int count=ReviewDAO.reviewLikeCheck(map);
+		System.out.println(count);
+		if(count==0)
+		{
+			vo.setNo(Integer.parseInt(review_no));
+			vo.setMember_id(id);
+			
+			ReviewDAO.reviewLikeInsert(vo);
+			ReviewDAO.likeCheckInsert(vo);
+		}
+		else
+		{
+		   vo.setNo(Integer.parseInt(review_no));
+		   vo.setMember_id(id);
+		   
+		   ReviewDAO.reviewLikeCancel(vo);	
+		   ReviewDAO.likeCheckDelete(vo);
+		   return "redirect:../place/detail.do?no="+place_no+"#review";
+		}
+			
+		return "redirect:../place/detail.do?no="+place_no+"#review";
 	}
 	
 

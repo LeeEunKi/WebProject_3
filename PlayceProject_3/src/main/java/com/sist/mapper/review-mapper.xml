@@ -20,24 +20,30 @@
    rcount= rcount + 1
    WHERE no=#{no} AND member_id=#{member_id}
 </update>
-
-
-
- <!-- 도움대요 출력 숫자만  -->
-<select id="reviewLikeCount" resultType="int" parameterType="int">
-  SELECT rcount
-  FROM review_3
-  WHERE no=#{no}
-</select>
+<insert id="likeCheckInsert" parameterType="ReviewVO">
+INSERT INTO like_check_3 
+VALUES (1,#{no},#{member_id})
+</insert>
 
  <!-- 도움돼요 취소  -->
 <update id="reviewLikeCancel" parameterType="ReviewVO">
 	UPDATE review_3 SET
 	rcount = rcount - 1
+	
 	WHERE no=#{no} AND member_id=#{member_id}
 </update>
+<delete id="likeCheckDelete" parameterType="ReviewVO">
+ DELETE FROM like_check_3
+ WHERE review_no=#{no} AND member_id=#{member_id}
+</delete>
 
-
+<!--추천 중복 체크 -->
+<!-- LIKE_CHECK_3 -->
+<select id="reviewLikeCheck" resultType="int" parameterType="hashmap">
+ SELECT count(*)
+ FROM like_check_3
+ WHERE review_no=#{no} AND member_id=#{member_id}
+</select>
 <!-- 평점 평균 구하기 -->
 <select id="scoreAvg" resultType="double" parameterType="int">
   SELECT ROUND(AVG(score),1) 
