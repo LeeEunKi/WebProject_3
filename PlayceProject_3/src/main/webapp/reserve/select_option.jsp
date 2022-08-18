@@ -9,17 +9,13 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	//let $('#')
-	$('#type').change(function(){
-		let type = $('#type').val();
-		$.ajax({
-			type:'post',
-			url:'../reserve/reserve_ok.do',
-			data:{"type":type},
-			success:function(result){
-				$('#food').html(result);
-			}
-		})
+	$('#selectCapa').change(function(){
+		let capa = $(this).val().trim();
+		$('#r_capa').val(capa);//input 데이터삽입
+	})
+	$('#selectParking').change(function(){
+		let parking = $(this).val().trim();
+		$('#r_parking').val(parking);//input 데이터삽입
 	})
 })
 </script>
@@ -30,10 +26,10 @@ $(function(){
 	<optgroup>
 	  <c:forEach var="i" begin="1" end="${pvo.capa }" step="1">
 	  	<c:if test="${i!=pvo.capa }">
-	  	 <option value="i">${i }명</option>
+	  	 <option value="${i } ">${i }명</option>
 	  	</c:if>
 		<c:if test="${i==pvo.capa }">
-	  	 <option value="i">${i }명(최대)</option>
+	  	 <option value="${i }">${i }명(최대)</option>
 	  	</c:if>
 	 </c:forEach>
 	</optgroup> 
@@ -45,10 +41,10 @@ $(function(){
 		<optgroup>
 		  <c:forEach var="i" begin="1" end="${pvo.parking }" step="1">
 		  	<c:if test="${i!=pvo.parking }">
-		  	 <option value="i">${i }대</option>
+		  	 <option value="${i }">${i }대</option>
 		  	</c:if>
 			<c:if test="${i==pvo.parking }">
-		  	 <option value="i">${i }대(최대)</option>
+		  	 <option value="${i }">${i }대(최대)</option>
 		  	</c:if>
 		  </c:forEach>
 		</optgroup> 
@@ -61,14 +57,5 @@ $(function(){
 		</optgroup> 
 	</select>
 </c:if>
-<form method="post" action="../reserve/reserve_ok.do">
-<input type=hidden name="place_no" id="r_pno">
-<input type=hidden name="r_capa" id="r_capa">
-<input type=hidden name="r_parking" id="r_parking">
-<input type=hidden name="r_date" id="r_date">
-<input type=hidden name="r_time" id="r_time">
-<input type=hidden name="r_duration" id="r_duration">
-<button type="submit" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;">예약하기</button>
-</form>
 </body>
 </html>

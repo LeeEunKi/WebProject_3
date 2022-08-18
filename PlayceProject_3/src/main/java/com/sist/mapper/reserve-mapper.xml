@@ -4,15 +4,36 @@
 	<!-- 예약불가능한 날짜 정보 불러오기 -->
 	<select id="reserveGetDate" resultType="String" parameterType="int">
 		SELECT check_date 
-		FROM reserve_info_3 
+		FROM reserve_3 
 		WHERE place_no=#{place_no}
 		GROUP BY check_date HAVING COUNT(*)=16
 	</select>
 	<!-- 예약가능한 시간 정보 불러오기 -->
 	<select id="reserveGetTime" resultType="String" parameterType="hashmap">
 		SELECT time FROM reserve_time_info_3
-		WHERE no NOT IN (SELECT check_time FROM reserve_info_3
+		WHERE no NOT IN (SELECT check_time FROM reserve_3
 			WHERE place_no=#{place_no} AND check_date=#{check_date})
 		ORDER BY no ASC
 	</select>
+	<!-- 예약 INSERT -->
+	<insert id="reserveInsert" parameterType="ReserveVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no)+1,1) as no FROM reserve_3
+		</selectKey><!-- sequence -->
+		INSERT INTO reserve_3(no,check_time, capa, place_no, member_id, check_date, parking)
+		VALUES(#{no},#{check_time},#{capa},#{place_no},#{member_id},#{check_date},#{parking})
+	</insert>
+	<!-- 예약 조회용 timespan -->
+	<select id="getRealTime" parameterType="int" resultType="String">
+		SELECT time FROM reserve_time_info_3
+		WHERE no = #{no}
+	</select>
+	<!-- 예약 조회용 데이터 INSERT -->
+	<insert id="reserveInfoInsert">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no)+1,1) as no FROM reserve_info_3
+		</selectKey><!-- sequence -->
+		INSERT INTO reserve_info_3(no,member_id,rdate,rtime,capa,parking,place_no)
+		VALUES(#{no},#{member_id},#{rdate},#{rtime},#{capa},#{parking},#{place_no})
+	</insert>
 </mapper>

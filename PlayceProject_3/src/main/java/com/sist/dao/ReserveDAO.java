@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.PlaceVO;
+import com.sist.vo.ReserveVO;
 
 public class ReserveDAO {
 	private static SqlSessionFactory ssf;
@@ -54,4 +55,44 @@ public class ReserveDAO {
 		}
 		return list;
 	}
+	//예약값 입력
+	public static void reserveInsert(ReserveVO vo) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			session.insert("reserveInsert",vo);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	//실제시간 범위 가져오기
+	public static String getRealTime(int no) {
+		SqlSession session = null;
+		String timespan = "";
+		try {
+			session = ssf.openSession();
+			timespan = session.selectOne("getRealTime", no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return timespan;
+	}
+	//예약조회용 데이터 입력
+		public static void reserveInfoInsert(ReserveVO vo) {
+			SqlSession session = null;
+			try {
+				session = ssf.openSession(true);
+				session.insert("reserveInfoInsert",vo);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+		}
 }

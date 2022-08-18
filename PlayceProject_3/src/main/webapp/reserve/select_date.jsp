@@ -16,7 +16,6 @@ $(function(){
 	$('.date-pick').css("cursor","pointer");
 	$('.date-pick').click(function(){
 		let dateno = $(this).attr("data-no");
-		//$(this).css("background-color":"red");
 		let place_no = $('#place_no').val();
 		place_no = parseInt(place_no.trim());
 		let year = $('#year').text();

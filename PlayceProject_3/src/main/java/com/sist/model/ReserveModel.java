@@ -11,23 +11,20 @@ import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.PlaceDAO;
 import com.sist.dao.ReserveDAO;
 import com.sist.vo.PlaceVO;
+import com.sist.vo.ReserveVO;
 
 @Controller
 public class ReserveModel {
+	//달력 만들기(기본달력 띄워줌)
 	@RequestMapping("reserve/reserve.do")
 	public String reserve(HttpServletRequest request, HttpServletResponse response) {
-		
-		return "../reserve/reserve.jsp";
-	}
-	//달력 만들기(기본달력 띄워줌)
-	@RequestMapping("reserve/select_date.do")
-	public String select_date(HttpServletRequest request, HttpServletResponse response) {
 		String place_no = request.getParameter("place_no");
 		List<String> list = ReserveDAO.reserveGetDate(Integer.parseInt(place_no));
 		
@@ -107,5 +104,50 @@ public class ReserveModel {
 		request.setAttribute("pvo", pvo);
 		return "../reserve/select_option.jsp";
 	}
-
+	
+	@RequestMapping("reserve/reserve_ok.do")
+	public String reserve_ok(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+		String place_no = request.getParameter("place_no");
+		String capa = request.getParameter("r_capa");
+		if(capa==null)
+			capa = "1";
+		String parking = request.getParameter("r_parking");
+		if(parking==null)
+			parking = "0";
+		String reserve_date = request.getParameter("r_date");
+		String r_time = request.getParameter("r_time");
+		String duration = request.getParameter("r_duration");
+		ReserveVO vo = new ReserveVO();
+		//예약데이터 입력
+		vo.setCheck_date(reserve_date);
+		vo.setMember_id(member_id);
+		vo.setPlace_no(Integer.parseInt(place_no));
+		vo.setCapa(Integer.parseInt(capa));
+		vo.setParking(Integer.parseInt(parking));
+//		vo.set
+		int d = Integer.parseInt(duration);
+		int rtime = Integer.parseInt(r_time);
+		int start = rtime;
+		int end = 0;
+		for(int i=0; i<d; i++) {
+			vo.setCheck_time(rtime);
+			ReserveDAO.reserveInsert(vo);
+			System.out.println(place_no+","+capa+","+parking+","+reserve_date+","+rtime+","+duration);
+			rtime++;
+			end = rtime;
+		}
+		//조회용 데이터추가
+		//tno를 time으로 변경
+		String realStart = ReserveDAO.getRealTime(start);
+		String realEnd = ReserveDAO.getRealTime(end);
+		String timeSpan = realStart+"~"+realEnd;
+		System.out.println(timeSpan);
+		vo.setRdate(reserve_date);
+		vo.setRtime(timeSpan);
+		ReserveDAO.reserveInfoInsert(vo);
+		
+		return "redirect:../place/detail.do?no="+place_no;
+	}
 }

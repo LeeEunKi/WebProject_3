@@ -10,17 +10,14 @@
 <script type="text/javascript">
 $(function(){
 	$('#selectTime').change(function(){
-		let timeno = $(this).val();
-		console.log(timeno);
+		let timeno = $(this).val().trim();
 		$('#r_time').val(timeno);//input데이터삽입
-		
 	})
 	$('#selectDuration').change(function(){
-		let du = $(this).val();
+		let du = $(this).val().trim();
 		$('#r_duration').val(du);//input데이터삽입
 		console.log(du);
 		let place_no = $('#place_no').val();
-		console.log(place_no);
 		$('#r_pno').val(place_no);//input데이터삽입
 		$.ajax({
 			type:'post',

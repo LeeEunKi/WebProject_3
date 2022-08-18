@@ -44,7 +44,7 @@ $(function(){
 		    map.setCenter(coords);
 		}
 	})
-	$('#reserveBtn').click(function(e){
+	$('#rBtn').click(function(e){
 		//preventDefault() : 템플릿에 포함된 자바스크립트 function을 캔슬하고 내가 지정한 것을 실행하도록
 		e.preventDefault();
 		let place_no = $(this).attr("place_no");
@@ -53,7 +53,7 @@ $(function(){
 		$('#reserveBtn').hide();
 		$.ajax({
 			type:'get',
-			url:'../reserve/select_date.do',
+			url:'../reserve/reserve.do',
 			data:{"place_no":place_no},
 			success:function(result){
 				$('#print_reserve').html(result);
@@ -155,7 +155,7 @@ $(function(){
 								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.price}" />원</p>
 								     </c:otherwise>
 								   </c:choose>
-							<a id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"place_no="${place_no }">예약하기</a>
+							<a id="rBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"place_no="${place_no }">예약하기</a>
 						</div>	
 						<div id="print_reserve"></div>
 					</div>
