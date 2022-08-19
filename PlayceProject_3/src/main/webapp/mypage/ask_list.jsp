@@ -7,6 +7,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function () {
+	
+	$('.showReply').on("click",function () {
+		let no=$(this).attr("data-no");
+		
+		if( $('.printReply-'+no).attr("onoff") ==0){
+		
+		    $('.printReply-'+no).show();
+			$.ajax({
+				type:'post',
+				url:'../mypage/replyDetail.do',
+				data:{"no":no},
+				success:function(result){
+					$('.printReply-'+no).html(result);
+				}
+			})
+			$('.printReply-'+no).attr("onoff","1");
+		}
+		else{
+			$('.printReply-'+no).hide();
+			$('.printReply-'+no).attr("onoff","0");
+		}
+	})
+	
+})
+</script>
 <style type="text/css">
 .title{
 	position: relative;
@@ -37,7 +65,7 @@ a{
       <th width="30%" class="text-center">문의내용</th>
       <th width="15%" class="text-center">작성일</th>
       <th width="10%" class="text-center">답변상태</th>
-      <th width="10%" class="text-center">문의삭제</th>
+      <th width="10%" class="text-center"></th>
     </tr>
     <c:forEach var="askVO" items="${list }">
 	    <tr style="vertical-align:middle">
@@ -47,8 +75,16 @@ a{
 	      <td width="25%" class="text-center"><a href="../place/detail.do?no=${askVO.place_no }#ask">${askVO.place_name }</a></td><!-- 문의 장소 -->	   
 	      <td width="30%">${askVO.content }</td><!-- 문의 내용 -->
 	      <td width="15%" class="text-center">${askVO.dbday }</td><!-- 문의 날짜 -->
-	      <td width="10%" class="text-center">${askVO.isReply==1?"답변완료":"답변대기"}</td>
-	      <td width="10%" class="text-center"><a href="../mypage/ask_delete.do?no=${askVO.no }" style="color:#2964D9">삭제</a></td>
+	      <c:if test="${askVO.isReply!=1 }">
+	        <td width="10%" class="text-center" >답변대기</td>
+	      </c:if>
+    	  <c:if test="${askVO.isReply==1 }">
+	        <td width="10%" class="text-center"><a class="showReply" style="cursor: pointer; color: #2964D9; font-size: 14px;" 
+	          data-no="${askVO.no }">답변완료</a></td>
+	      </c:if>
+	      <td width="10%" class="text-center"><a href="../mypage/ask_delete.do?no=${askVO.no }" style="color:#2964D9; font-size: 14px;">삭제</a></td>
+	    </tr>
+	    <tr class="printReply-${askVO.no }" style="vertical-align:middle;" onoff="0">
 	    </tr>
     </c:forEach>
   </table>

@@ -37,7 +37,7 @@
 	</select>
 	<!-- [관리자] 문의 상세내용 가져오기 -->
 	<select id="admin_askDetailData" resultType="AskVO" parameterType="int">
-		SELECT member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, content, place_img, place_name, place_no
+		SELECT member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, content, place_img, place_name, place_no,group_id
 		FROM askboard_3
 		WHERE no=#{no}
 	</select>
@@ -65,7 +65,7 @@
 		SELECT no, content, member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, place_img, place_name, place_no, group_id, isReply, num
 		FROM (SELECT no, content, member_id, regdate,place_img, place_name, place_no, group_id, isReply,rownum as num
 		FROM (SELECT no, content, member_id, regdate,place_img, place_name, place_no, group_id,isReply
-		FROM askboard_3 WHERE member_id=#{member_id}))
+		FROM askboard_3 WHERE member_id=#{member_id} ORDER BY no DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<!-- [유저] 자기가 올린 문의글 개수 -->
@@ -82,5 +82,11 @@
 	<select id="user_getGroupId" resultType="int" parameterType="AskVO">
 		SELECT group_id FROM askboard_3
 		WHERE no=#{no}
+	</select>
+	<!-- 문의글 답변 불러오기 -->
+	<select id="user_GetReply" resultType="AskVO" parameterType="int">
+	  SELECT content,member_id, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, place_img, place_name
+	  FROM askboard_3
+	  WHERE group_id=#{group_id} AND group_step=1
 	</select>
 </mapper>

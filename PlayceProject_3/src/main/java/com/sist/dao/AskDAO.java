@@ -110,7 +110,6 @@ public class AskDAO {
 		try {
 			session = ssf.openSession();
 			int group_id = session.selectOne("user_getGroupId",vo);
-			System.out.println(group_id);
 			session.delete("user_askDelete",group_id);
 			session.commit();
 		}catch(Exception ex) {
@@ -120,6 +119,24 @@ public class AskDAO {
 			if(session!=null)
 				session.close();
 		}
+	}
+	//[유저] 마이페이지 : 문의글 답변 가져오기
+	//<select id="user_GetReply" resultType="AskVO" parameterType="int">
+	public static AskVO user_GetReply(AskVO vo) {
+		AskVO vo2=new AskVO();
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			int group_id = vo.getGroup_id();
+			vo2=session.selectOne("user_GetReply",group_id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("AskDAO : user_GetReply() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return vo2;
 	}
 
 	//[관리자] 답변해야할 문의글 목록 가져오기

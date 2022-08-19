@@ -231,5 +231,16 @@ public class MyPageModel {
 		
 		return "redirect:../mypage/ask_list.do";
 	}
+	// 문의글 답변보기
+	@RequestMapping("mypage/replyDetail.do")
+	public String mypage_replyDetail(HttpServletRequest request, HttpServletResponse response) {
+		String no=request.getParameter("no");
+		AskVO vo=AskDAO.admin_askDetailData(Integer.parseInt(no));
+		AskVO vo2=AskDAO.user_GetReply(vo);
+
+		
+		request.setAttribute("vo", vo2);
+		return "../mypage/getReply.jsp";
+	}
 
 }
