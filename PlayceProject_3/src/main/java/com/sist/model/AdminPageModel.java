@@ -95,4 +95,55 @@ public class AdminPageModel {
 //		request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
 		return "redirect:../adminpage/askReply.do";//어드민 질문목록으로 이동
 	}
+	
+	//[관리자] 예약 목록 조회
+	@RequestMapping("adminpage/reserve.do")
+   public String adminpage_reserveList(HttpServletRequest request,HttpServletResponse response) {
+	   String page = request.getParameter("page");
+	   if(page==null)
+		   page = "1";
+	   int curPage = Integer.parseInt(page);
+	   int rowSize = 10;
+	   int start = rowSize*curPage-(rowSize-1);
+	   int end = rowSize*curPage;
+	   
+	   Map map = new HashMap();
+	   map.put("start", start);
+	   map.put("end", end);
+	   List<ReserveVO> list = ReserveDAO.admin_reserveListData(map);
+	   
+	   int totalCount = AskDAO.admin_askTotalCount();
+	   int totalPage = (int)Math.ceil((double)totalCount/10.0);
+	   
+	   final int BLOCK = 5;
+		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
+		int endPage = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalPage) {
+			endPage = totalPage;
+		}
+	   request.setAttribute("curPage", curPage);
+	   request.setAttribute("startPage",startPage);
+	   request.setAttribute("endPage", endPage);
+	   request.setAttribute("totalPage", totalPage);
+	   request.setAttribute("totalCount", totalCount);
+	   request.setAttribute("list", list);
+	   request.setAttribute("admin_jsp", "../adminpage/reserve_list.jsp");
+	   request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
+	   return "../main/main.jsp";
+   }
+	//[관리자] 예약 승인 처리
+	@RequestMapping("adminpage/reserve_check.do")
+   public String admin_reserve_check(HttpServletRequest request,HttpServletResponse response) {
+		String no = request.getParameter("no");
+		Map map = new HashMap();
+		
+		//reserve_3에서 UPDATE
+		map.put(no, Integer.parseInt(no));
+		map.put("table_name", "reserve_3");
+		ReserveDAO.admin_reserveCheck(map);
+		//reserve_info_3에서 UPDATE
+		map.put("table_name", "reserve_info_3");
+		ReserveDAO.admin_reserveCheck(map);
+		return "redirect:../adminpage/reserve.do";
+   }
 }

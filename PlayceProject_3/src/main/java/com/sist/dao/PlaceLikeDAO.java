@@ -21,11 +21,26 @@ public class PlaceLikeDAO {
 			ssf = new SqlSessionFactoryBuilder().build(reader); //xml파일 파싱
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO:getConnection() ERROR");
+			System.out.println("PlaceLikeDAO:getConnection() ERROR");
 		}
 	}
-	
-	//좋아요 : 장소별 좋아요 개수 가져오기(상세페이지에서 이미 좋아요 한 장소인지 확인)
+	//좋아요 : 장소별 좋아요 개수
+	public static int placeLikeCount(int no) {
+		int count = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			count = session.selectOne("placeLikeCountList",no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("PlaceLikeDAO : placeLikeCount() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	//좋아요 : 장상세페이지에서 이미 좋아요 한 장소인지 확인
 	public static int isLikedPlace(PlaceLikeVO vo) {
 		int count = 0;
 		SqlSession session = null;
@@ -34,7 +49,7 @@ public class PlaceLikeDAO {
 			count = session.selectOne("isLikedPlace",vo);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO : isLikedPlace() ERROR");
+			System.out.println("PlaceLikeDAO : isLikedPlace() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -51,7 +66,7 @@ public class PlaceLikeDAO {
 			session.commit();
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO : placeLikeInsert() ERROR");
+			System.out.println("PlaceLikeDAO : placeLikeInsert() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -67,7 +82,7 @@ public class PlaceLikeDAO {
 			session.commit();
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO : placeLikeDelete() ERROR");
+			System.out.println("PlaceLikeDAO : placeLikeDelete() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -82,7 +97,7 @@ public class PlaceLikeDAO {
 			list = session.selectList("placeLikeGetNo",map);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO : placeLikeGetNo() ERROR");
+			System.out.println("PlaceLikeDAO : placeLikeGetNo() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -98,7 +113,7 @@ public class PlaceLikeDAO {
 			count = session.selectOne("placeLikeCount",member_id);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO : placeLikeCount() ERROR");
+			System.out.println("PlaceLikeDAO : placeLikeCount() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();
@@ -114,7 +129,7 @@ public class PlaceLikeDAO {
 			vo = session.selectOne("placeLikeListData",place_no);
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("PlaceDAO : placeLikeListData() ERROR");
+			System.out.println("PlaceLikeDAO : placeLikeListData() ERROR");
 		}finally {
 			if(session!=null)
 				session.close();

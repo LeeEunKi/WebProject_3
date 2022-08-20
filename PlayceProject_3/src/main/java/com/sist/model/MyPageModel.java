@@ -14,9 +14,11 @@ import com.sist.dao.AskDAO;
 import com.sist.dao.MemberDAO;
 import com.sist.dao.PlaceDAO;
 import com.sist.dao.PlaceLikeDAO;
+import com.sist.dao.ReserveDAO;
 import com.sist.vo.AskVO;
 import com.sist.vo.MemberVO;
 import com.sist.vo.PlaceVO;
+import com.sist.vo.ReserveVO;
 
 @Controller
 public class MyPageModel {
@@ -45,7 +47,6 @@ public class MyPageModel {
 		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
 		return "../main/main.jsp";
 	}
-	
 	
 	// 회원수정 - 비밀번호 확인
 	@RequestMapping("member/join_update_pwdConfirm.do")
@@ -234,13 +235,69 @@ public class MyPageModel {
 	// 문의글 답변보기
 	@RequestMapping("mypage/replyDetail.do")
 	public String mypage_replyDetail(HttpServletRequest request, HttpServletResponse response) {
+		String page = request.getParameter("page");
+	    if(page==null)
+	    	page = "1";
 		String no=request.getParameter("no");
 		AskVO vo=AskDAO.admin_askDetailData(Integer.parseInt(no));
 		AskVO vo2=AskDAO.user_GetReply(vo);
-
 		
 		request.setAttribute("vo", vo2);
 		return "../mypage/getReply.jsp";
 	}
-
+	
+	//[유저] 예약 목록 조회
+	@RequestMapping("mypage/reserve_list.do")
+	public String mypage_reserve_list(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+		String page = request.getParameter("page");
+		if(page==null)
+			page="1";
+		//페이지네이션
+		int curPage = Integer.parseInt(page);
+	    int rowSize = 5;
+	    int start = rowSize*curPage-(rowSize-1);
+	    int end = rowSize*curPage;
+	    int totalCount = ReserveDAO.user_reserveTotal(member_id);
+		int totalPage = (int)Math.ceil((double)totalCount/10.0);
+	    final int BLOCK = 5;
+		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
+		int endPage = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalPage) {
+			endPage = totalPage;
+		}
+	    Map map = new HashMap();
+	    map.put("start", start);
+	    map.put("end", end);
+	    map.put("member_id", member_id);
+	    List<ReserveVO> list = ReserveDAO.user_reserveListData(map);
+	    request.setAttribute("page", "reservelist");
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("startPage",startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("totalPage", totalPage);
+		
+		request.setAttribute("list",list);
+		request.setAttribute("mypage_jsp", "../mypage/reserve_list.jsp");
+		request.setAttribute("main_jsp", "../mypage/mypage.jsp");
+		return "../main/main.jsp";
+	}
+	
+	//[유저] 예약 취소
+	@RequestMapping("mypage/reserve_cancel.do")
+	public String mypage_reserve_cancel(HttpServletRequest request, HttpServletResponse response) {
+		String no = request.getParameter("no");
+		Map map = new HashMap();
+		
+		//reserve_3에서 삭제
+		map.put(no, Integer.parseInt(no));
+		map.put("table_name", "reserve_3");
+		ReserveDAO.user_reserveDelete(map);
+		//reserve_info_3에서 삭제
+		map.put("table_name", "reserve_info_3");
+		ReserveDAO.user_reserveDelete(map);
+		
+		return "redirect:../mypage/reserve_list.do";
+	}
 }

@@ -144,7 +144,7 @@ $(function(){
 							</c:if> 
 							<h2 class="heading text-primary" style="padding-top: 5px; font-weight: 600;">${pvo.name }</h2>
 							<p class="meta" id="addr" style="display: inline;">${pvo.address }</p>&nbsp;&nbsp;
-							<p class="meta" style="display: inline;color: crimson;">♥&nbsp;114</p>
+							<p class="meta" style="display: inline;color: crimson;">♥&nbsp;${totalL }</p>
 							<div></div>
 								<c:choose>
 								     <c:when test="${pvo.price==0 }">

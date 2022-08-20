@@ -3,9 +3,16 @@ package com.sist.vo;
 import java.util.Date;
 
 public class ReserveVO {
-	private int no, check_time, capa, parking, state, place_no;
+	private int seq, no, check_time, capa, parking, state, place_no;
 	private String member_id, check_date, dbday, rdate, rtime;
 	private Date regdate;
+	
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 	public int getNo() {
 		return no;
 	}

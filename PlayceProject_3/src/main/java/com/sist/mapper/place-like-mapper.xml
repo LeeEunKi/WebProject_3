@@ -13,6 +13,11 @@
 		SELECT COUNT(*) FROM place_like_3
 		WHERE place_no=#{place_no} AND member_id=#{member_id}
 	</select>
+	<!-- 장소별 좋아요 개수 -->
+	<select id="placeLikeCountList" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM place_like_3
+		WHERE place_no=#{place_no}
+	</select>
 	<!-- [마이페이지] 좋아요 목록 출력 -->
 	<select id="placeLikeListData" resultType="PlaceVO" parameterType="int">
 		SELECT * FROM place_3

@@ -111,22 +111,24 @@ public class ReserveModel {
 		String member_id = (String)session.getAttribute("id");
 		String place_no = request.getParameter("place_no");
 		String capa = request.getParameter("r_capa");
-		if(capa==null)
+		if(capa=="")
 			capa = "1";
 		String parking = request.getParameter("r_parking");
-		if(parking==null)
+		if(parking=="")
 			parking = "0";
+		System.out.println(parking);
 		String reserve_date = request.getParameter("r_date");
 		String r_time = request.getParameter("r_time");
 		String duration = request.getParameter("r_duration");
 		ReserveVO vo = new ReserveVO();
 		//예약데이터 입력
+		int maxNo = ReserveDAO.reserveMaxNo();
+		vo.setNo(maxNo+1);
 		vo.setCheck_date(reserve_date);
 		vo.setMember_id(member_id);
 		vo.setPlace_no(Integer.parseInt(place_no));
 		vo.setCapa(Integer.parseInt(capa));
 		vo.setParking(Integer.parseInt(parking));
-//		vo.set
 		int d = Integer.parseInt(duration);
 		int rtime = Integer.parseInt(r_time);
 		int start = rtime;
@@ -150,4 +152,7 @@ public class ReserveModel {
 		
 		return "redirect:../place/detail.do?no="+place_no;
 	}
+	
+	
+	
 }

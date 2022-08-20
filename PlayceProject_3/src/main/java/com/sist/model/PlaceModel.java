@@ -110,6 +110,7 @@ public class PlaceModel {
 			int lcount = PlaceLikeDAO.isLikedPlace(lvo);
 			request.setAttribute("lcount", lcount);
 		}
+		int totalL = PlaceLikeDAO.placeLikeCount(Integer.parseInt(no));
 		
 		//문의글영역 요소
 		request.setAttribute("place_no", Integer.parseInt(no)); //문의작성시 필요함
@@ -127,7 +128,7 @@ public class PlaceModel {
 		request.setAttribute("rtotal", rtotal);
 		request.setAttribute("avg", avg);
 
-		
+		request.setAttribute("totalL", totalL);//좋아요개수
 		request.setAttribute("main_jsp","../place/detail.jsp");
 		request.setAttribute("review_jsp", "../review/review.jsp");
 		request.setAttribute("ask_jsp", "../ask/ask_list.jsp");

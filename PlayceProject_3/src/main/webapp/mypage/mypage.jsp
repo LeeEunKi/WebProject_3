@@ -81,6 +81,8 @@
               				문의 내역 </a>
 			            <a href="../mypage/like_list.do" class="${page=='likelist'?'active':'item' }"><i class="angle right icon"></i>
 			                찜 목록 </a>
+			            <a href="../mypage/reserve_list.do" class="${page=='reservelist'?'active':'item' }"><i class="angle right icon"></i>
+			                예약 목록 </a>
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">회원 정보</h3>
