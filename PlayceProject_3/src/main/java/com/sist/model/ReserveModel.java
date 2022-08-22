@@ -121,6 +121,8 @@ public class ReserveModel {
 		String r_time = request.getParameter("r_time");
 		String duration = request.getParameter("r_duration");
 		ReserveVO vo = new ReserveVO();
+		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(place_no));
+		vo.setPrice(pvo.getPrice());
 		//예약데이터 입력
 		int maxNo = ReserveDAO.reserveMaxNo();
 		vo.setNo(maxNo+1);
@@ -133,13 +135,16 @@ public class ReserveModel {
 		int rtime = Integer.parseInt(r_time);
 		int start = rtime;
 		int end = 0;
+		int totalPrice = 0;
 		for(int i=0; i<d; i++) {
 			vo.setCheck_time(rtime);
 			ReserveDAO.reserveInsert(vo);
 			System.out.println(place_no+","+capa+","+parking+","+reserve_date+","+rtime+","+duration);
 			rtime++;
+			totalPrice += pvo.getPrice();
 			end = rtime;
 		}
+		System.out.println(totalPrice);
 		//조회용 데이터추가
 		//tno를 time으로 변경
 		String realStart = ReserveDAO.getRealTime(start);
@@ -148,11 +153,12 @@ public class ReserveModel {
 		System.out.println(timeSpan);
 		vo.setRdate(reserve_date);
 		vo.setRtime(timeSpan);
+		vo.setRep_image(pvo.getRep_image());
+		vo.setTotalPrice(totalPrice);
+		vo.setName(pvo.getName());
 		ReserveDAO.reserveInfoInsert(vo);
 		
 		return "redirect:../place/detail.do?no="+place_no;
 	}
-	
-	
-	
+
 }

@@ -3,8 +3,8 @@ package com.sist.vo;
 import java.util.Date;
 
 public class ReserveVO {
-	private int seq, no, check_time, capa, parking, state, place_no;
-	private String member_id, check_date, dbday, rdate, rtime;
+	private int seq, no, check_time, capa, parking, state, place_no, price, totalPrice;
+	private String member_id, check_date, dbday, rdate, rtime, rep_image, name;
 	private Date regdate;
 	
 	public int getSeq() {
@@ -84,6 +84,30 @@ public class ReserveVO {
 	}
 	public void setRtime(String rtime) {
 		this.rtime = rtime;
+	}
+	public String getRep_image() {
+		return rep_image;
+	}
+	public void setRep_image(String rep_image) {
+		this.rep_image = rep_image;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

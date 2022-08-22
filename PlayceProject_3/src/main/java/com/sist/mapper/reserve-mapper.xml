@@ -23,8 +23,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(no)+1,1) as seq FROM reserve_3
 		</selectKey><!-- sequence -->
-		INSERT INTO reserve_3(seq, check_time, capa, place_no, member_id, check_date, parking, no)
-		VALUES(#{seq},#{check_time},#{capa},#{place_no},#{member_id},#{check_date},#{parking}, #{no})
+		INSERT INTO reserve_3(seq, check_time, capa, place_no, member_id, check_date, parking, no, price)
+		VALUES(#{seq},#{check_time},#{capa},#{place_no},#{member_id},#{check_date},#{parking}, #{no}, #{price})
 	</insert>
 	<!-- 예약 조회용 timespan -->
 	<select id="getRealTime" parameterType="int" resultType="String">
@@ -36,14 +36,14 @@
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(no)+1,1) as no FROM reserve_info_3
 		</selectKey><!-- sequence -->
-		INSERT INTO reserve_info_3(no,member_id,rdate,rtime,capa,parking,place_no)
-		VALUES(#{no},#{member_id},#{rdate},#{rtime},#{capa},#{parking},#{place_no})
+		INSERT INTO reserve_info_3(no,member_id,rdate,rtime,capa,parking,place_no,rep_image,price,name)
+		VALUES(#{no},#{member_id},#{rdate},#{rtime},#{capa},#{parking},#{place_no},#{rep_image},#{totalPrice},#{name})
 	</insert>
 	<!-- [유저] 예약목록 조회 -->
 	<select id="user_reserveListData" parameterType="hashmap" resultType="ReserveVO">
-		SELECT no, rtime, capa, TO_CHAR(regdate,'yyyy-mm-dd') as dbday, state, place_no, member_id, rdate, parking, num
-		FROM (SELECT no, rtime, capa,regdate, state, place_no, member_id, rdate, parking, rownum as num
-		FROM (SELECT no, rtime, capa,regdate, state, place_no, member_id, rdate, parking
+		SELECT no, rtime, capa, TO_CHAR(regdate,'yyyy-mm-dd') as dbday, state, place_no, member_id, rdate, parking, price, rep_image,name, num
+		FROM (SELECT no, rtime, capa,regdate, state, place_no, member_id, rdate, parking, price, rep_image,name, rownum as num
+		FROM (SELECT no, rtime, capa,regdate, state, place_no, member_id, rdate, parking, price, rep_image,name
 		FROM reserve_info_3 WHERE member_id=#{member_id} ORDER BY no DESC))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
