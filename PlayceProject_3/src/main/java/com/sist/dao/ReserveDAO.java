@@ -196,49 +196,49 @@ public class ReserveDAO {
 
 	}
 	//[관리자] 예약 목록 조회
-	public static List<ReserveVO> admin_reserveListData(Map map) {
-		List<ReserveVO> list = null;
-		SqlSession session = null;
-		try {
-			session = ssf.openSession();
-			list = session.selectList("admin_reserveListData",map);
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			System.out.println("ReserveDAO : admin_reserveListData() ERROR");
-		}finally {
-			if(session!=null)
-				session.close();
+		public static List<ReserveVO> admin_reserveListData(Map map) {
+			List<ReserveVO> list = null;
+			SqlSession session = null;
+			try {
+				session = ssf.openSession();
+				list = session.selectList("admin_reserveListData",map);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("ReserveDAO : admin_reserveListData() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+			return list;
 		}
-		return list;
-	}
-	//[관리자] 예약대기 수
-	public static int admin_reserveWaitCount() {
-		int wcount=0;
-		SqlSession session = null;
-		try {
-			session = ssf.openSession();
-			wcount = session.selectOne("admin_reserveWaitCount");
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			System.out.println("ReserveDAO : admin_reserveWaitCount() ERROR");
-		}finally {
-			if(session!=null)
-				session.close();
+		//[관리자] 예약대기 수
+		public static int admin_reserveWaitCount() {
+			int wcount=0;
+			SqlSession session = null;
+			try {
+				session = ssf.openSession();
+				wcount = session.selectOne("admin_reserveWaitCount");
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("ReserveDAO : admin_reserveWaitCount() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+			return wcount;
 		}
-		return wcount;
-	}
-	//[관리자] 예약 승인 처리
-	public static void admin_reserveCheck(Map map) {
-		SqlSession session = null;
-		try {
-			session = ssf.openSession(true);
-			session.update("admin_reserveCheck",map);
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			System.out.println("ReserveDAO : admin_reserveCheck() ERROR");
-		}finally {
-			if(session!=null)
-				session.close();
+		//[관리자] 예약 승인 처리
+		public static void admin_reserveCheck(Map map) {
+			SqlSession session = null;
+			try {
+				session = ssf.openSession(true);
+				session.update("admin_reserveCheck",map);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("ReserveDAO : admin_reserveCheck() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
 		}
-	}
 }

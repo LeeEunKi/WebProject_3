@@ -27,7 +27,7 @@ public class AdminPageModel {
 		   if(page==null)
 			   page = "1";
 		   int curPage = Integer.parseInt(page);
-		   int rowSize = 10;
+		   int rowSize = 5;
 		   int start = rowSize*curPage-(rowSize-1);
 		   int end = rowSize*curPage;
 		   
@@ -44,7 +44,7 @@ public class AdminPageModel {
 			   }
 		   }
 		   int totalCount = AskDAO.admin_askTotalCount();
-		   int totalPage = (int)Math.ceil((double)totalCount/10.0);
+		   int totalPage = (int)Math.ceil((double)totalCount/5.0);
 		   
 		   final int BLOCK = 5;
 			int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
@@ -108,7 +108,7 @@ public class AdminPageModel {
 	   if(page==null)
 		   page = "1";
 	   int curPage = Integer.parseInt(page);
-	   int rowSize = 10;
+	   int rowSize = 5;
 	   int start = rowSize*curPage-(rowSize-1);
 	   int end = rowSize*curPage;
 	   
@@ -122,8 +122,8 @@ public class AdminPageModel {
 	   
 	   int waitCount=ReserveDAO.admin_reserveWaitCount();
 	   
-	   int totalCount = AskDAO.admin_askTotalCount();
-	   int totalPage = (int)Math.ceil((double)totalCount/10.0);
+	   int totalCount = ReserveDAO.admin_reserveWaitCount();
+	   int totalPage = (int)Math.ceil((double)totalCount/5.0);
 	   
 	   final int BLOCK = 5;
 		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
@@ -169,8 +169,35 @@ public class AdminPageModel {
 	//[관리자] 회원 목록
 	@RequestMapping("admin/member_list.do")
 	public String admin_member_list(HttpServletRequest request,HttpServletResponse response) {
+		String page=request.getParameter("page");
+		if(page==null)
+			page="1";
+		int curPage=Integer.parseInt(page);
+		int rowSize = 5;
+		int start = rowSize*curPage-(rowSize-1);
+		int end = rowSize*curPage;
+		   
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
 		
-		List<MemberVO> list=MemberDAO.memberListData();
+		List<MemberVO> list=MemberDAO.memberListData(map);
+		
+		int totalCount = MemberDAO.memberTotalCount();
+		int totalPage = (int)Math.ceil((double)totalCount/5.0);
+		   
+		final int BLOCK = 5;
+		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
+		int endPage = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalPage) {
+			endPage = totalPage;
+		}
+		
+		request.setAttribute("curPage", curPage);
+		request.setAttribute("startPage",startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("totalPage", totalPage);
+		request.setAttribute("totalCount", totalCount);
 		
 		request.setAttribute("page", "memberlist");
 		request.setAttribute("list", list);
@@ -180,14 +207,25 @@ public class AdminPageModel {
 	}
 	//[관리자] 회원 탈퇴
 	//회원 탈퇴
-		@RequestMapping("admin/join_delete.do")
-		public String memeber_join_delete(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("admin/join_delete.do")
+	public String memeber_join_delete(HttpServletRequest request, HttpServletResponse response) {
 
-			String id=request.getParameter("id");
+		String id=request.getParameter("id");
 
-			// DAO연동
-			MemberDAO.memberDelete(id);
+		// DAO연동
+		MemberDAO.memberDelete(id);
 
-			return "redirect:../admin/member_list.do";
-		}
+		return "redirect:../admin/member_list.do";
+	}
+	//[관리자] 회원 아이디 찾기
+	@RequestMapping("admin/member_find.do")
+	public String member_find(HttpServletRequest request, HttpServletResponse response) {
+		String fd=request.getParameter("fd");
+		
+		List<MemberVO> list=MemberDAO.memberFindID(fd);
+		
+		request.setAttribute("list", list);
+		return "../adminpage/member_find.jsp";
+	}
+	
 }

@@ -226,11 +226,22 @@ $(function(){
 		$(this).css("backgroundColor","#FFF").css("cursor","none")
 	})
 	
-	$('#fd').keyup(function(){
+	$('#findId_btn').click(function(){
 		let fd=$('#fd').val();
-		$('tbody > tr').hide();
-		let temp=$('tbody > tr > td:nth-child(6n+1):contains("'+fd+'")')
-		$(temp).parent().show()
+		if(fd==""){
+			$('#fd').focus();
+			return;
+		}
+		$.ajax({
+			type:'post',
+			url:'../admin/member_find.do',
+			data:{"fd":fd},
+			success:function(result){
+				$('tbody > tr').hide();
+				$('#print-member').html(result);
+				$('tbody > tr').show();
+			}
+		})
 	})
 	// $('.details').click(function(){})
 	
@@ -247,7 +258,7 @@ $(function(){
                     <div class="search-wrap">
                         <label for="search" class="blind">회원 검색</label>
                         <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="아이디를 입력해주세요.">
-                        <button type="submit" class="btn btn-dark">검색</button>
+                        <input type="button" class="btn btn-dark" id="findId_btn" value="검색">
                     </div>
                 </form>
             </div>
@@ -266,7 +277,7 @@ $(function(){
       <th width="10%" class="text-center"></th>
     </tr>
    </thead>
-   <tbody> 
+   <tbody id="print-member"> 
     <c:forEach var="vo" items="${list }">
 	    <tr style="vertical-align:middle">
 	      <td width="10%" class="text-center">${vo.id }</td>
@@ -277,15 +288,13 @@ $(function(){
 		  <td width="10%" class="text-center">${vo.tel }</td>
 	      <td width="10%" class="text-center"><a href="../admin/join_delete.do?id=${vo.id }" style="color:#2964D9; font-size: 14px;">탈퇴</a></td>
 	    </tr>
-	    <tr class="printReply-${askVO.no }" style="vertical-align:middle;" onoff="0">
-	    </tr>
     </c:forEach>
    </tbody> 
   </table>
   <!-- 페이지네이션 시작 -->
  <div class="custom-pagination" style="text-align:center">
 	<c:if test="${startPage>1 }">
- 		<a href="../adminpage/reserve.do?page=${startPage-1 }&type=1">&laquo;</a>
+ 		<a href="../admin/member_list.do?page=${startPage-1 }&type=1">&laquo;</a>
   	</c:if>
 	<c:forEach var="i" begin="${startPage }" end="${endPage }">
 		<c:choose>
@@ -296,10 +305,10 @@ $(function(){
 	       		<c:set var="style" value=""/>
 	    	</c:otherwise>
 	    </c:choose>
-  		<a ${style } href="../adminpage/reserve.do?page=${i}&type=1" value="${i }">${i }</a>
+  		<a ${style } href="../admin/member_list.do?page=${i}&type=1" value="${i }">${i }</a>
    	</c:forEach>
     	<c:if test="${endPage<totalPage }">
-    		<a href="../adminpage/reserve.do?page=${endPage+1 }&type=1">&raquo;</a>
+    		<a href="../aadmin/member_list.do?page=${endPage+1 }&type=1">&raquo;</a>
    		</c:if>
 	</div> 
 	<!-- 페이지네이션 끝 -->

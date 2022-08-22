@@ -17,6 +17,7 @@ a{
 <body>
  <h2 class="sectiontitle">문의 사항</h2>
   <table class="table"> 
+   <thead>
     <tr> 
       <th width="20%" class="text-center"></th> 
       <th width="5%" class="text-center">번호</th>
@@ -25,6 +26,8 @@ a{
       <th width="10%" class="text-center">작성자</th>
       <th width="10%" class="text-center">작성일</th>
     </tr>
+   </thead>
+   <tbody>
     <c:forEach var="askVO" items="${list }">
 	    <tr style="vertical-align:middle">
 	      <td width="20%" class="text-center">
@@ -37,6 +40,7 @@ a{
 	      <td width="10%" class="text-center">${askVO.dbday }</td><!-- 문의 날짜 -->
 	    </tr>
     </c:forEach>
+   </tbody> 
   </table>
   <!-- 페이지네이션 시작 -->
 <div class="custom-pagination" style="text-align:center">
