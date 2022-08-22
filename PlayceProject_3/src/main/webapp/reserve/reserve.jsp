@@ -7,8 +7,52 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
   $( function() {
+	 /*  $('#prevMonth').click(function(){
+			let year=$('#year').text();
+			year = parseInt(year.trim());
+			let month=$('#month').text();
+			month = parseInt(month.trim());
+			if(month-1===0){
+				$('#year').text(year-1);
+				$('#month').text(12);
+			}else{
+				$('#year').text(year);
+				$('#month').text(month-1);
+			}
+			$.ajax({
+				type:'post',
+				url:'../reserve/reserve.do',
+				data:{"year":year,"month":month-1},
+				success:function(result){
+					$('#print_cal').html(result);
+				}
+			})
+		})
+		$('#nextMonth').click(function(){
+			let year=$('#year').text();
+			year = parseInt(year.trim());
+			let month=$('#month').text();
+			month = parseInt(month.trim());
+			if(month+1===13){
+				$('#year').text(year+1);
+				$('#month').text(1);
+			}else{
+				$('#year').text(year);
+				$('#month').text(month+1);
+			}
+			$.ajax({
+				type:'post',
+				url:'../reserve/reserve.do',
+				data:{"year":year,"month":month+1},
+				success:function(result){
+					$('#print_cal').html(result);
+				}
+			})
+		})  */
 	  $('.date-pick').css("cursor","pointer");
 		$('.date-pick').click(function(){
+			$('.date-pick').css("background-color","white");
+			$(this).css("background-color","#2964D9");
 			let dateno = $(this).attr("data-no");
 			let place_no = $('#place_no').val();
 			place_no = parseInt(place_no.trim());
@@ -29,15 +73,20 @@
   </script>
 </head>
 <body>
-  <h3>날짜 선택</h3>
-  <div class="row">
-      <table class="table">
-        <tr>
-          <td>
-          	<a id="prevMonth">&lt;</a><span id="year">${year }</span>.<span id="month">${month }</span><a id="nextMonth">&gt;</a>
+<c:if test="${sessionScope.id==null }">
+	<p class="de-text-desc">로그인 후 이용해 주세요.</p>
+</c:if>
+<c:if test="${sessionScope.id!=null }">
+  <label class="sche">날짜 선택</label>
+  <div class="row" id="print_cal">
+  <div style="height:20px"></div>
+      <table>
+        <tr><td>
+          	<!-- <a id="prevMonth">&lt;</a> -->
+          	<div style="color:#2964D9;font-size: x-large;text-align: -webkit-center;"><span id="year">${year }</span>.<span id="month">${month }</span></div>
+          	<!-- <a id="nextMonth">&gt;</a> -->
           	<input type="hidden" id="place_no" value="${place_no }">
-          </td>
-        </tr>
+          </td></tr>
       </table>
       <div style="height:15px"></div>
       <table class="table">
@@ -65,7 +114,7 @@
       			</c:forEach>
       			<%-- 요일만큼 공백을 만들어 줌 --%>
       		</c:if>
-      		<td class="text-center date-pick" data-no="${i }" style="background-color:${days[i]==1||i<day?'gray':'' }">${i }</td> <%--1 일부터 출력 --%>
+      		<td class="text-center date-pick" data-no="${i }" style="color:${days[i]==1||i<day?'#d4d4d4':'' }; pointer-events:${days[i]==1||i<day?'none':''}">${i }</td> <%--1 일부터 출력 --%>
       		<c:set var="week" value="${week+1 }"/>
       		<c:if test="${week>6 }"><%--일요일 다음에 출력 --%>
       			</tr>
@@ -75,9 +124,8 @@
       	</c:forEach>
       </table>
     </div>
-  <h3>시작시간/대여시간 선택</h3>
   <div id="print_time"></div>
-  <h3>인원/주차 선택</h3>
+  <div id="print_duration"></div>
   <div id="print_option"></div>
  <form method="post" action="../reserve/reserve_ok.do">
 <input type=hidden name="place_no" id="r_pno">
@@ -86,7 +134,8 @@
 <input type=hidden name="r_date" id="r_date">
 <input type=hidden name="r_time" id="r_time">
 <input type=hidden name="r_duration" id="r_duration">
-<button type="submit" id="reserveBtn">예약하기</button>
+<button type="submit" id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;">예약하기</button>
 </form> 
+</c:if>
 </body>
 </html>

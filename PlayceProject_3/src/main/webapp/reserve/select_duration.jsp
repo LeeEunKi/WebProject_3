@@ -9,16 +9,18 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#selectTime').click(function(){
-		let timeno = $(this).val().trim();
-		console.log(timeno);
-		$('#r_time').val(timeno);//input데이터삽입
+	$('#selectDuration').click(function(){
+		let du = $(this).val().trim();
+		$('#r_duration').val(du);//input데이터삽입
+		console.log(du);
+		let place_no = $('#place_no').val();
+		$('#r_pno').val(place_no);//input데이터삽입
 		$.ajax({
 			type:'post',
-			url:'../reserve/select_duration.do',
-			data:{"timeno":timeno},
+			url:'../reserve/select_option.do',
+			data:{"place_no":place_no, "duration":du},
 			success:function(result){
-				$('#print_duration').html(result);
+				$('#print_option').html(result);
 			}
 		})
 	})
@@ -26,12 +28,11 @@ $(function(){
 </script>
 </head>
 <body>
-<label class="sche">시작시간/대여시간 선택</label>
-	<h3>시작시간</h3>
-	<select id="selectTime" name="user_job">
+	<h3>대여시간</h3>
+	<select id="selectDuration">
 		<optgroup>
-		  <c:forEach var="time" items="${times }" varStatus="s">
-		  	 <option class="times" value="${s.index+1 }">${time }~</option>
+		  <c:forEach var="i" begin="1" end="${durations }" step="1">
+		  	 <option class="durations" value="${i }">${i}시간</option>
 		  </c:forEach>
 		</optgroup> 
 	</select>

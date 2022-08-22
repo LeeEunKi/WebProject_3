@@ -49,13 +49,23 @@
 	</select>
 	<select id="user_reserveTotal" parameterType="String" resultType="int">
 		SELECT COUNT(*)
-		FROM reserve_info_3 WHERE member_id=#{member_id}
+		FROM reserve_info_3 WHERE member_id=#{member_id} AND state=0
+	</select>
+	<select id="user_reserveTotalChecked" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM reserve_info_3 WHERE member_id=#{member_id} AND state=1
 	</select>
 	<!-- [유저] 예약 취소 -->
 	<delete id="user_reserveDelete" parameterType="hashmap">
 		DELETE FROM ${table_name}
 		WHERE no=#{no}
 	</delete>
+	<!-- [유저] 예약 상세조회 -->
+	<select id="user_reserveDetailData" parameterType="int" resultType="ReserveVO">
+		SELECT ri3.no, rtime, regdate, state, place_no, member_id, rdate, ri3.parking, ri3.capa, ri3.rep_image, ri3.price, ri3.name, p3.address
+		FROM reserve_info_3 ri3, place_3 p3
+		WHERE p3.no = ri3.place_no AND ri3.no = #{no}
+	</select>
 	<select id="admin_reserveWaitCount" resultType="int">
 	  SELECT COUNT(*) FROM reserve_info_3 WHERE state=0
 	</select>

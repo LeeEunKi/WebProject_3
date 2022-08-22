@@ -64,7 +64,7 @@ public class ReserveModel {
 			String reserved_year = st1.nextToken();
 			String reserved_month = st1.nextToken();
 			String reserved_day = st1.nextToken();
-			System.out.println(reserved_day);
+//			System.out.println(reserved_day); //테스트출력
 			int d = Integer.parseInt(reserved_day);
 				if(d>=day)
 					days[d] = 1;
@@ -79,13 +79,14 @@ public class ReserveModel {
 		request.setAttribute("strWeek", strWeek);
 		return "../reserve/reserve.jsp"; 
 	}
-
+	
+	//시간 선택
 	@RequestMapping("reserve/select_time.do")
 	public static String select_time(HttpServletRequest request, HttpServletResponse response) {
 		String day = request.getParameter("day");
 		String place_no = request.getParameter("place_no");
 		String selectDate = request.getParameter("selectDate");
-		System.out.println(place_no);
+//		System.out.println(place_no); //테스트출력
 		//예약가능한 시간 가져오기
 		Map map = new HashMap();
 		map.put("place_no", Integer.parseInt(place_no));
@@ -96,11 +97,34 @@ public class ReserveModel {
 		return "../reserve/select_time.jsp";
 	}
 	
+	//대여 시간 선택
+	@RequestMapping("reserve/select_duration.do")
+	public static String select_duration(HttpServletRequest request, HttpServletResponse response) {
+		String timeno = request.getParameter("timeno");
+		int durations = 17 - Integer.parseInt(timeno);
+//		String place_no = request.getParameter("place_no");
+//		String selectDate = request.getParameter("selectDate");
+//		System.out.println(place_no);
+		//예약가능한 시간 가져오기
+//		Map map = new HashMap();
+//		map.put("place_no", Integer.parseInt(place_no));
+//		map.put("check_date", selectDate);
+//		List<String> times = ReserveDAO.reserveGetTime(map);
+		request.setAttribute("durations", durations);
+		return "../reserve/select_duration.jsp";
+	}
+	
 	//인원 수, 주차 대수 옵션 선택 출력
 	@RequestMapping("reserve/select_option.do")
 	public String select_option_capa(HttpServletRequest request, HttpServletResponse response) {
 		String place_no = request.getParameter("place_no");
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(place_no)); //예시용 임시 데이터
+		String duration = request.getParameter("duration");
+		int du = Integer.parseInt(duration); 
+//		System.out.println(du); //테스트출력
+		int price = pvo.getPrice()*du;
+//		System.out.println(price); //테스트출력
+		request.setAttribute("price", price);
 		request.setAttribute("pvo", pvo);
 		return "../reserve/select_option.jsp";
 	}
@@ -158,7 +182,8 @@ public class ReserveModel {
 		vo.setName(pvo.getName());
 		ReserveDAO.reserveInfoInsert(vo);
 		
-		return "redirect:../place/detail.do?no="+place_no;
+		request.setAttribute("main_jsp", "../reserve/reserve_ok.jsp");
+		return "../main/main.jsp";
 	}
 
 }
