@@ -66,24 +66,22 @@
 				<div class="col-lg-3 side" style="border-right-style: solid;border-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">게시판 관리</h3>
-            			<a href="../adminpage/askReply.do" class="item"><i class="angle right icon"></i>
+            			<a href="../adminpage/askReply.do" class="${page=='asklist'?'active':'item' }"><i class="angle right icon"></i>
               				문의사항 관리 </a>
 			            <a class="item"><i class="angle right icon"></i>
 			                자유게시판 관리 </a>
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">예약 관리</h3>
-            			<a class="item"><i class="angle right icon"></i>
-              				예약 대기 </a>
-			            <a class="item"><i class="angle right icon"></i>
-			                예약 승인 </a>
+            			<a href="../adminpage/reserve.do?type=0" class="${page=='reserveWait'?'active':'item' }"><i class="angle right icon"></i>
+              				예약 승인 대기 </a>
+			            <a href="../adminpage/reserve.do?type=1" class="${page=='reserveOk'?'active':'item' }"><i class="angle right icon"></i>
+			                예약 승인 완료 </a>
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">회원 정보</h3>
-            			<a class="item"><i class="angle right icon"></i>
-              				블랙리스트 관리 </a>
-			            <a class="item"><i class="angle right icon"></i>
-			                회원 활동정지 관리 </a>
+            			<a href="../admin/member_list.do" class="${page=='memberlist'?'active':'item' }"><i class="angle right icon"></i>
+              				회원 관리 </a>
           			</div>
 			    </div>
 		     	<div class="col-lg-9">

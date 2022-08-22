@@ -205,4 +205,22 @@ public class MemberDAO {
 				session.close();
 		}
 	}
+	//[관리자] 모든 회원 리스트 불러오기
+	//<select id="memberListData" resultType="MemberVO">
+	public static List<MemberVO> memberListData(){
+		List<MemberVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("memberListData");
+				
+		} catch (Exception e) {
+			System.out.println("memberListData() : 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
 }

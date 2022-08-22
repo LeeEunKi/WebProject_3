@@ -178,6 +178,22 @@ public class ReserveDAO {
 		}
 		return list;
 	}
+	//[관리자] 예약대기 수
+	public static int admin_reserveWaitCount() {
+		int wcount=0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			wcount = session.selectOne("admin_reserveWaitCount");
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("ReserveDAO : admin_reserveWaitCount() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return wcount;
+	}
 	//[관리자] 예약 승인 처리
 	public static void admin_reserveCheck(Map map) {
 		SqlSession session = null;

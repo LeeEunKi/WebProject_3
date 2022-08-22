@@ -40,7 +40,12 @@
   FROM member_3
   WHERE id=#{id}
 </select>
-
+<!-- [관리자] 모든 회원목록가져오기 -->
+<select id="memberListData" resultType="MemberVO">
+  SELECT *
+  FROM member_3
+  WHERE admin='n'
+</select>
 <!-- 아이디/비밀번호 찾기 -->
  <select id="memberNameCount" resultType="int" parameterType="string">
   SELECT COUNT(*) FROM member_3

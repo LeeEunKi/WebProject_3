@@ -2,6 +2,8 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.*;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -58,6 +60,7 @@ public class AdminPageModel {
 		   request.setAttribute("list", list);
 		   request.setAttribute("admin_jsp", "../adminpage/askReply.jsp");
 		   request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
+		   request.setAttribute("page", "asklist");
 		   return "../main/main.jsp";
 	   }
 	//[관리자] 문의글 답변 작성 페이지로 이동
@@ -96,10 +99,12 @@ public class AdminPageModel {
 		return "redirect:../adminpage/askReply.do";//어드민 질문목록으로 이동
 	}
 	
-	//[관리자] 예약 목록 조회
+	//[관리자] 예약 목록 조회 //type=0 (승인대기목록) type=1(승인완료목록)
 	@RequestMapping("adminpage/reserve.do")
    public String adminpage_reserveList(HttpServletRequest request,HttpServletResponse response) {
 	   String page = request.getParameter("page");
+	   int type= Integer.parseInt(request.getParameter("type"));
+
 	   if(page==null)
 		   page = "1";
 	   int curPage = Integer.parseInt(page);
@@ -110,7 +115,12 @@ public class AdminPageModel {
 	   Map map = new HashMap();
 	   map.put("start", start);
 	   map.put("end", end);
+	   
+	   map.put("type", type);
+	   
 	   List<ReserveVO> list = ReserveDAO.admin_reserveListData(map);
+	   
+	   int waitCount=ReserveDAO.admin_reserveWaitCount();
 	   
 	   int totalCount = AskDAO.admin_askTotalCount();
 	   int totalPage = (int)Math.ceil((double)totalCount/10.0);
@@ -121,29 +131,63 @@ public class AdminPageModel {
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
+	   request.setAttribute("waitCount", waitCount);
 	   request.setAttribute("curPage", curPage);
 	   request.setAttribute("startPage",startPage);
 	   request.setAttribute("endPage", endPage);
 	   request.setAttribute("totalPage", totalPage);
 	   request.setAttribute("totalCount", totalCount);
 	   request.setAttribute("list", list);
-	   request.setAttribute("admin_jsp", "../adminpage/reserve_list.jsp");
+	   if(type==0) {
+		   request.setAttribute("admin_jsp", "../adminpage/reserve_list.jsp");
+		   request.setAttribute("page", "reserveWait");
+	   }
+	   if(type==1) {
+		   request.setAttribute("admin_jsp", "../adminpage/reserve_ok_list.jsp");
+		   request.setAttribute("page", "reserveOk");
+	   }
 	   request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
 	   return "../main/main.jsp";
    }
+	
 	//[관리자] 예약 승인 처리
 	@RequestMapping("adminpage/reserve_check.do")
    public String admin_reserve_check(HttpServletRequest request,HttpServletResponse response) {
 		String no = request.getParameter("no");
+		
 		Map map = new HashMap();
 		
 		//reserve_3에서 UPDATE
-		map.put(no, Integer.parseInt(no));
+		map.put("no", Integer.parseInt(no));
 		map.put("table_name", "reserve_3");
 		ReserveDAO.admin_reserveCheck(map);
 		//reserve_info_3에서 UPDATE
 		map.put("table_name", "reserve_info_3");
 		ReserveDAO.admin_reserveCheck(map);
-		return "redirect:../adminpage/reserve.do";
+		return "redirect:../adminpage/reserve.do?type=0";
    }
+	//[관리자] 회원 목록
+	@RequestMapping("admin/member_list.do")
+	public String admin_member_list(HttpServletRequest request,HttpServletResponse response) {
+		
+		List<MemberVO> list=MemberDAO.memberListData();
+		
+		request.setAttribute("page", "memberlist");
+		request.setAttribute("list", list);
+		request.setAttribute("admin_jsp", "../adminpage/member_list.jsp");
+		request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
+		return "../main/main.jsp";
+	}
+	//[관리자] 회원 탈퇴
+	//회원 탈퇴
+		@RequestMapping("admin/join_delete.do")
+		public String memeber_join_delete(HttpServletRequest request, HttpServletResponse response) {
+
+			String id=request.getParameter("id");
+
+			// DAO연동
+			MemberDAO.memberDelete(id);
+
+			return "redirect:../admin/member_list.do";
+		}
 }
