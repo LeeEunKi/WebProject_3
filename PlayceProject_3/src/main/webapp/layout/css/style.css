@@ -2615,8 +2615,8 @@ textarea.form-control-lg {
     color: #888;
     background-color: #efefef;
     border-color: #efefef;
-    -webkit-box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
-    box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5); }
+    -webkit-box-shadow: 0 0 0 0.25rem rgba(60, 60, 60, 0.5);
+    box-shadow: 0 0 0 0.25rem rgba(60, 60, 60, 0.5); }
   .btn-check:checked + .btn-success,
   .btn-check:active + .btn-success, .btn-success:active, .btn-success.active,
   .show > .btn-success.dropdown-toggle {
@@ -2626,8 +2626,8 @@ textarea.form-control-lg {
     .btn-check:checked + .btn-success:focus,
     .btn-check:active + .btn-success:focus, .btn-success:active:focus, .btn-success.active:focus,
     .show > .btn-success.dropdown-toggle:focus {
-      -webkit-box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
-      box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5); }
+      -webkit-box-shadow: 0 0 0 0.25rem rgba(60, 60, 60, 0.5);
+      box-shadow: 0 0 0 0.25rem rgba(60, 60, 60, 0.5); }
   .btn-success:disabled, .btn-success.disabled {
     color: #888;
     background-color: #efefef;

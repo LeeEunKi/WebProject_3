@@ -89,7 +89,7 @@ public class ReviewDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			session.update("countIncrement",place_no); //댓글 갯수 +1
+			session.update("counts",place_no); //댓글 갯수 +1
 			session.insert("reviewInsert",vo);
 			session.commit();
 		} catch (Exception e) {
