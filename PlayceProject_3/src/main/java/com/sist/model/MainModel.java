@@ -9,8 +9,10 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.CategoryDAO;
 import com.sist.dao.PlaceDAO;
+import com.sist.dao.ReviewDAO;
 import com.sist.vo.CategoryVO;
 import com.sist.vo.PlaceVO;
+import com.sist.vo.ReviewVO;
 
 @Controller
 public class MainModel {
@@ -20,9 +22,11 @@ public class MainModel {
 		List<CategoryVO> list=CategoryDAO.categoryData(); 
 		List<Integer> categoryCnt = CategoryDAO.categoryCount();
 		List<PlaceVO> rlist=PlaceDAO.recommendPlaceList();
+		List<ReviewVO> brList=ReviewDAO.bestReview();
 		request.setAttribute("categoryCnt", categoryCnt);
 		request.setAttribute("list", list);
 		request.setAttribute("rlist", rlist);
+		request.setAttribute("brList", brList);
 		request.setAttribute("main_jsp", "../main/home.jsp");
 		return "../main/main.jsp";
 	}

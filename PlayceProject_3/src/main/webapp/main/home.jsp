@@ -182,76 +182,37 @@
 			<div class="testimonial-slider-wrap">
 				<div class="testimonial-slider">
 					<div class="item">
+					<c:forEach var="brvo" items="${brList }">
 						<div class="testimonial">
-							<img src="../images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<a href="../place/detail.do?no=${brvo.place_no }"><img src="${brvo.rep_image }" alt="Image" class="img-fluid rounded-circle w-25 mb-4"></a>
 							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
+							<c:choose>
+								<c:when test="${brvo.score==1 }">
+									<span class="icon-star text-warning"></span>
+								</c:when>
+								<c:when test="${brvo.score==2 }">
+									<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
+								</c:when>
+								<c:when test="${brvo.score==3 }">
+									<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
+								</c:when>
+								<c:when test="${brvo.score==4 }">
+									<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
+								</c:when>
+								<c:otherwise >
+									<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
+								</c:otherwise>
+							</c:choose>
 							</div>
-							<h3 class="h5 text-primary mb-4">James Smith</h3>
+							<h3 class="h5 text-primary mb-4">${brvo.member_id }</h3>
 							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+								<p>&ldquo;${brvo.content }&rdquo;</p>
 							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
+							<!--  <p class="text-black-50">Designer, Co-founder</p> 대체 요소 없는 거 같으니 보류-->
 						</div>
+					</c:forEach>
 					</div>
 
-					<div class="item">
-						<div class="testimonial">
-							<img src="../images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Mike Houston</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="../images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Cameron Webster</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="../images/person_4-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Dave Smith</h3>
-							<blockquote>
-								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-							<p class="text-black-50">Designer, Co-founder</p>
-						</div>
-					</div>
 
 				</div>
 			</div>

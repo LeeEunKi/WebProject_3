@@ -68,10 +68,7 @@ public class PlaceModel {
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(no));
 		List<ImageVO> list = PlaceDAO.placeImageData(Integer.parseInt(no));
 		
-		//리뷰 영역 데이터
-		List<ReviewVO> rList =ReviewDAO.reviewListData(Integer.parseInt(no));
-		int rtotal=ReviewDAO.counts(Integer.parseInt(no));
-		Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
+		
 
 		
 		//문의게시판 영역 - 데이터
@@ -97,6 +94,11 @@ public class PlaceModel {
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
+		
+		//리뷰 영역 데이터
+				List<ReviewVO> rList =ReviewDAO.reviewListData(map);
+				int rtotal=ReviewDAO.counts(Integer.parseInt(no));
+				Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
 		
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트 
