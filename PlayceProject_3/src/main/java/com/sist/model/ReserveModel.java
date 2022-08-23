@@ -88,7 +88,6 @@ public class ReserveModel {
 		String day = request.getParameter("day");
 		String place_no = request.getParameter("place_no");
 		String selectDate = request.getParameter("selectDate");
-//		System.out.println(place_no); //테스트출력
 		//예약가능한 시간 가져오기
 		Map map = new HashMap();
 		map.put("place_no", Integer.parseInt(place_no));
@@ -100,64 +99,31 @@ public class ReserveModel {
 	}
 	
 	
-	/*
-	 *  
-import java.util.Arrays;
-
-public class IndexOfTest {
-    public static void main(String[] args) {
-		String[] arr = {"a","b","c"};
-		System.out.println(Arrays.asList(arr).indexOf("b")); //1이 출력된다.
-}
-	 */
 	//대여 시간 선택
 	@RequestMapping("reserve/select_duration.do")
 	public static String select_duration(HttpServletRequest request, HttpServletResponse response) {
 		String[] options = request.getParameterValues("arr");
 		String timeno = request.getParameter("timeno");
 		String times = options[0].substring(4);
-		String[] timeArr = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"};
-		String[] strArray = null;  
-		strArray = times.split(",");
-		int tIndex = Arrays.asList(timeArr).indexOf(timeno);
-		int sIndex = Arrays.asList(strArray).indexOf(timeno);
-		System.out.println("유효성검사 시작");
-		System.out.println("timeArrIndex:"+tIndex+",strArrayIndex:"+sIndex);
-		for(String s:strArray) {
-//			System.out.println(s);
-		}
-//		System.out.println(strArray.length);
+		String[] selectTime = null;  
+		selectTime = times.split(",");
+		int startIndex = Arrays.asList(selectTime).indexOf(timeno);
 		
+		System.out.println("===============================");
+		System.out.println("유효성검사 시작, 선택한 시간:"+timeno);
 		int durations = 17 - Integer.parseInt(timeno);
 		int durations_ = 0;
-		if(durations!=strArray.length) {
-			boolean bCheck = true;
-			for(int i=0;i<16;i++) {
-				System.out.println("timeArr "+tIndex+"번째"+timeArr[tIndex]);
-				System.out.println("strArray "+sIndex+"번째"+strArray[sIndex]);
-				System.out.println("durations:"+durations_);
-				if(timeArr[tIndex].equals(strArray[sIndex])) {
-//					System.out.println(timeArr[tIndex]+","+strArray[sIndex]);
-//					durations_++;
-//					tIndex++;
-//					sIndex++;
-					bCheck = false;
-					break;
-				}
-//				else {
-//					System.out.println("else문:"+durations_);
-//					durations = durations_;
-//					break;
-//				}
-			}
-			if(bCheck==true) {
-				System.out.println("else문:"+durations_);
+		for(int i=startIndex;i<selectTime.length-1;i++) {
+			System.out.println(i+","+selectTime[i]);
+			durations_++;
+			if(Integer.parseInt(selectTime[i])+1!=Integer.parseInt(selectTime[i+1])) {
+				System.out.print("Integer.parseInt(selectTime[i])+1:");
+				System.out.print(Integer.parseInt(selectTime[i])+1);
+				System.out.println();
+				System.out.println("Integer.parseInt(selectTime[i+1]):"+Integer.parseInt(selectTime[i+1]));
+				System.out.println((Integer.parseInt(timeno)+7)+"시부터 "+(Integer.parseInt(timeno)+7+durations_)+"시까지 최대"+durations_+"시간 예약가능");
 				durations = durations_;
-			}else {
-				System.out.println(timeArr[tIndex]+","+strArray[sIndex]);
-				durations_++;
-				tIndex++;
-				sIndex++;
+				break;
 			}
 		}
 		request.setAttribute("durations", durations);
@@ -171,9 +137,7 @@ public class IndexOfTest {
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(place_no)); //예시용 임시 데이터
 		String duration = request.getParameter("duration");
 		int du = Integer.parseInt(duration); 
-//		System.out.println(du); //테스트출력
 		int price = pvo.getPrice()*du;
-//		System.out.println(price); //테스트출력
 		request.setAttribute("price", price);
 		request.setAttribute("pvo", pvo);
 		return "../reserve/select_option.jsp";
