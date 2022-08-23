@@ -19,6 +19,12 @@ $(function() {
   			parent.Shadowbox.close();
 		})
 		
+		$('.input').keydown(function(key) {
+			if(key.keyCode==13){
+				$('#logBtn').trigger("click");
+			}
+		})
+		
 		$('#logBtn').click(function () {
 			let id=$('#id').val();
 			if(id.trim()==""){
@@ -30,7 +36,6 @@ $(function() {
 				$('#pwd').focus();
 				return;
 			}
-
 			$.ajax({
 				type:'post',
 				url:'../member/login_ok.do',
