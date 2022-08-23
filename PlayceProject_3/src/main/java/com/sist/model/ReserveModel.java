@@ -2,6 +2,7 @@ package com.sist.model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import com.sist.dao.PlaceDAO;
 import com.sist.dao.ReserveDAO;
 import com.sist.vo.PlaceVO;
 import com.sist.vo.ReserveVO;
+import com.sist.vo.TimeVO;
 
 @Controller
 public class ReserveModel {
@@ -91,25 +93,61 @@ public class ReserveModel {
 		Map map = new HashMap();
 		map.put("place_no", Integer.parseInt(place_no));
 		map.put("check_date", selectDate);
-		List<String> times = ReserveDAO.reserveGetTime(map);
-
+		List<TimeVO> times = ReserveDAO.reserveGetTime(map);
+		
 		request.setAttribute("times",times);
 		return "../reserve/select_time.jsp";
 	}
 	
+	
+	/*
+	 *  
+import java.util.Arrays;
+
+public class IndexOfTest {
+    public static void main(String[] args) {
+		String[] arr = {"a","b","c"};
+		System.out.println(Arrays.asList(arr).indexOf("b")); //1이 출력된다.
+}
+	 */
 	//대여 시간 선택
 	@RequestMapping("reserve/select_duration.do")
 	public static String select_duration(HttpServletRequest request, HttpServletResponse response) {
+		String[] options = request.getParameterValues("arr");
 		String timeno = request.getParameter("timeno");
+		String times = options[0].substring(4);
+		String[] timeArr = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"};
+		String[] strArray = null;  
+		strArray = times.split(",");
+		int tIndex = Arrays.asList(timeArr).indexOf(timeno);
+		int sIndex = Arrays.asList(strArray).indexOf(timeno);
+		System.out.println("유효성검사 시작");
+		System.out.println("timeArrIndex:"+tIndex+",strArrayIndex:"+sIndex);
+		for(String s:strArray) {
+//			System.out.println(s);
+		}
+//		System.out.println(strArray.length);
+		
 		int durations = 17 - Integer.parseInt(timeno);
-//		String place_no = request.getParameter("place_no");
-//		String selectDate = request.getParameter("selectDate");
-//		System.out.println(place_no);
-		//예약가능한 시간 가져오기
-//		Map map = new HashMap();
-//		map.put("place_no", Integer.parseInt(place_no));
-//		map.put("check_date", selectDate);
-//		List<String> times = ReserveDAO.reserveGetTime(map);
+		int durations_ = 0;
+		if(durations!=strArray.length) {
+			for(int i=0;i<16;i++) {
+				System.out.println("timeArr "+tIndex+"번째"+timeArr[tIndex]);
+				System.out.println("strArray "+sIndex+"번째"+strArray[sIndex]);
+				if(timeArr[tIndex].equals(strArray[sIndex])) {
+					durations_ ++;
+					tIndex++;
+					sIndex++;
+					System.out.println(timeArr[tIndex]+","+strArray[sIndex]);
+				}
+				else {
+					break;
+				}
+			}
+			System.out.println(durations_);
+			durations = durations_;
+		}
+		
 		request.setAttribute("durations", durations);
 		return "../reserve/select_duration.jsp";
 	}
