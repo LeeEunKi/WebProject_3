@@ -372,7 +372,6 @@ $(function(){
 						 </button>
 						  <div class="answer" id="ans-${vo.no }">
 						  		<p style="white-space: pre-line;">${vo.content}</p>
-						  	
 							  <c:if test="${sessionScope.admin == 'y' }">
 							  	<br><br>
 
