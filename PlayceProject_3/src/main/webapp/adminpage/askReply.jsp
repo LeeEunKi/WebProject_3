@@ -15,7 +15,7 @@ a{
 </style>
 </head>
 <body>
- <h2 class="sectiontitle">문의 사항</h2>
+ <h2 class="sectiontitle">문의 사항<span style="color:red; font-size: 20px;">&nbsp;(총 ${totalCount }건)</span></h2>
   <table class="table"> 
    <thead>
     <tr> 

@@ -211,13 +211,13 @@ public class ReserveDAO {
 			}
 			return list;
 		}
-		//[관리자] 예약대기 수
-		public static int admin_reserveWaitCount() {
+		//[관리자] 예약리스트 총수
+		public static int admin_reserveWaitCount(int type) {
 			int wcount=0;
 			SqlSession session = null;
 			try {
 				session = ssf.openSession();
-				wcount = session.selectOne("admin_reserveWaitCount");
+				wcount = session.selectOne("admin_reserveWaitCount",type);
 			}catch(Exception ex) {
 				ex.printStackTrace();
 				System.out.println("ReserveDAO : admin_reserveWaitCount() ERROR");

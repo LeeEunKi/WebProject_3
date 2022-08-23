@@ -119,10 +119,8 @@ public class AdminPageModel {
 	   map.put("type", type);
 	   
 	   List<ReserveVO> list = ReserveDAO.admin_reserveListData(map);
-	   
-	   int waitCount=ReserveDAO.admin_reserveWaitCount();
-	   
-	   int totalCount = ReserveDAO.admin_reserveWaitCount();
+	   	   
+	   int totalCount = ReserveDAO.admin_reserveWaitCount(type);
 	   int totalPage = (int)Math.ceil((double)totalCount/5.0);
 	   
 	   final int BLOCK = 5;
@@ -131,7 +129,6 @@ public class AdminPageModel {
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
-	   request.setAttribute("waitCount", waitCount);
 	   request.setAttribute("curPage", curPage);
 	   request.setAttribute("startPage",startPage);
 	   request.setAttribute("endPage", endPage);
