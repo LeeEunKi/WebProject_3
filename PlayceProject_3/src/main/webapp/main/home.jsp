@@ -163,7 +163,8 @@
 			<div class="row mb-5 align-items-center">
 				<div class="col-lg-6">
 					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">베스트 리뷰</h2>
-					<p class="sub-title">The latest and best lifstyle articles selected by our editorial office.</p>
+					<p class="sub-title" style="width: 190px">플레이스 고객 여러분이 남겨주신&nbsp;&nbsp;
+					정성 가득한 베스트 이용 후기</p>
 				</div>
 				<div class="col-md-6 text-md-end">
 					<div id="testimonial-nav">
@@ -181,10 +182,10 @@
 			</div>
 			<div class="testimonial-slider-wrap">
 				<div class="testimonial-slider">
-					<div class="item">
 					<c:forEach var="brvo" items="${brList }">
+					 <div class="item">
 						<div class="testimonial">
-							<a href="../place/detail.do?no=${brvo.place_no }"><img src="${brvo.rep_image }" alt="Image" class="img-fluid rounded-circle w-25 mb-4"></a>
+							<a href="../place/detail.do?no=${brvo.place_no }"><div class="img-fluid w-auto mb-4" style="background: #BDBDBD; overflow: hidden; width: 250px; height: 200px"><img src="${brvo.rep_image }" alt="Image" style="object-fit: cover; width: 100%;height: 100%"></div></a>
 							<div class="rate">
 							<c:choose>
 								<c:when test="${brvo.score==1 }">
@@ -208,11 +209,10 @@
 							<blockquote>
 								<p>&ldquo;${brvo.content }&rdquo;</p>
 							</blockquote>
-							<!--  <p class="text-black-50">Designer, Co-founder</p> 대체 요소 없는 거 같으니 보류-->
 						</div>
+					 </div>
 					</c:forEach>
-					</div>
-
+					
 
 				</div>
 			</div>
