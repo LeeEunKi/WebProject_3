@@ -37,7 +37,7 @@ $(function(){
 			data:{"no":no},
 			success:function(result){
 				$('#print').html(result);
-			}
+			} 
 		})
 	})
 })
@@ -45,7 +45,7 @@ $(function(){
 </head>
 <body>
   <div class="title">
-    <h2>나의 진행중 예약 내역</h2>
+    <h2>나의 예약 완료 내역</h2>
   </div> 
   <c:if test="${totalCount==0 }">
   	  <div class="text-center">
@@ -62,10 +62,9 @@ $(function(){
       <th width="15%" class="text-center">예약시간</th>
       <th width="15%" class="text-center">신청일</th>
       <th width="10%" class="text-center">예약상태</th>
-      <th width="10%" class="text-center"></th>
     </tr>
     <c:forEach var="vo" items="${list }">
-    <c:if test="${vo.state==0 }">
+    <c:if test="${vo.state==1 }">
 	    <tr style="vertical-align:middle">
 	      <td width="15%" class="text-center">
 	       <a href="../place/detail.do?no=${vo.place_no }"><img src="${vo.rep_image }" style="width:100px; height:100px"></a>  
@@ -74,8 +73,7 @@ $(function(){
 	      <td width="15%" class="text-center">${vo.rdate }</td>
 	      <td width="15%" class="text-center">${vo.rtime }</td>
 	      <td width="15%" class="text-center">${vo.dbday }</td><!-- 예약신청한 날짜 -->
-	      <td width="10%" class="text-center">예약대기</td>
-	      <td width="10%" class="text-center"><a href="../mypage/reserve_cancel.do?no=${vo.no }" style="color:#2964D9; font-size: 14px;">취소</a></td>
+	      <td width="10%" class="text-center">예약완료</td>
 	    </tr>
 	</c:if>
     </c:forEach>

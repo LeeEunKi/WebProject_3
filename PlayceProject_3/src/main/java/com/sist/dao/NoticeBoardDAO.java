@@ -46,7 +46,7 @@ public class NoticeBoardDAO {
 		   return list;
 	   }
 	 
-	 public static int boardTotalPage()
+	 public static int noticeboardTotalPage()
 	   {
 		   int total=0;
 		   SqlSession session=null;

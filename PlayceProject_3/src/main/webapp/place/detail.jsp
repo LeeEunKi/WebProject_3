@@ -50,7 +50,7 @@ $(function(){
 		let place_no = $(this).attr("place_no");
 		place_no = parseInt(place_no);
 		console.log(place_no);
-		$('#reserveBtn').hide();
+		$('#rBtn').hide();
 		$.ajax({
 			type:'get',
 			url:'../reserve/reserve.do',

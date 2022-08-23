@@ -148,6 +148,22 @@ public class ReserveDAO {
 		}
 		return total;
 	}
+	//[마이페이지] 예약 총 건수(예약완료)
+	public static int user_reserveTotalChecked(String member_id) {
+		int total = 0;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			total = session.selectOne("user_reserveTotalChecked",member_id);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("ReserveDAO : user_reserveTotalChecked() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
 	//[마이페이지] 예약 취소
 	public static void user_reserveDelete(Map map) {
 		SqlSession session = null;
@@ -162,50 +178,67 @@ public class ReserveDAO {
 				session.close();
 		}
 	}
+	//[마이페이지] 예약 상세정보조회
+	public static ReserveVO user_reserveDetailData(int no) {
+		SqlSession session = null;
+		ReserveVO vo = new ReserveVO();
+		try {
+			session = ssf.openSession();
+			vo = session.selectOne("user_reserveDetailData",no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("ReserveDAO : user_reserveDetailData() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+
+	}
 	//[관리자] 예약 목록 조회
-	public static List<ReserveVO> admin_reserveListData(Map map) {
-		List<ReserveVO> list = null;
-		SqlSession session = null;
-		try {
-			session = ssf.openSession();
-			list = session.selectList("admin_reserveListData",map);
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			System.out.println("ReserveDAO : admin_reserveListData() ERROR");
-		}finally {
-			if(session!=null)
-				session.close();
+		public static List<ReserveVO> admin_reserveListData(Map map) {
+			List<ReserveVO> list = null;
+			SqlSession session = null;
+			try {
+				session = ssf.openSession();
+				list = session.selectList("admin_reserveListData",map);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("ReserveDAO : admin_reserveListData() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+			return list;
 		}
-		return list;
-	}
-	//[관리자] 예약대기 수
-	public static int admin_reserveWaitCount() {
-		int wcount=0;
-		SqlSession session = null;
-		try {
-			session = ssf.openSession();
-			wcount = session.selectOne("admin_reserveWaitCount");
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			System.out.println("ReserveDAO : admin_reserveWaitCount() ERROR");
-		}finally {
-			if(session!=null)
-				session.close();
+		//[관리자] 예약대기 수
+		public static int admin_reserveWaitCount() {
+			int wcount=0;
+			SqlSession session = null;
+			try {
+				session = ssf.openSession();
+				wcount = session.selectOne("admin_reserveWaitCount");
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("ReserveDAO : admin_reserveWaitCount() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+			return wcount;
 		}
-		return wcount;
-	}
-	//[관리자] 예약 승인 처리
-	public static void admin_reserveCheck(Map map) {
-		SqlSession session = null;
-		try {
-			session = ssf.openSession(true);
-			session.update("admin_reserveCheck",map);
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			System.out.println("ReserveDAO : admin_reserveCheck() ERROR");
-		}finally {
-			if(session!=null)
-				session.close();
+		//[관리자] 예약 승인 처리
+		public static void admin_reserveCheck(Map map) {
+			SqlSession session = null;
+			try {
+				session = ssf.openSession(true);
+				session.update("admin_reserveCheck",map);
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("ReserveDAO : admin_reserveCheck() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
 		}
-	}
 }

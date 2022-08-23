@@ -4,9 +4,14 @@ import java.util.Date;
 
 public class ReserveVO {
 	private int seq, no, check_time, capa, parking, state, place_no, price, totalPrice;
-	private String member_id, check_date, dbday, rdate, rtime, rep_image, name;
+	private String member_id, check_date, dbday, rdate, rtime, rep_image, name, address,member_tel;
+	public String getMember_tel() {
+		return member_tel;
+	}
+	public void setMember_tel(String member_tel) {
+		this.member_tel = member_tel;
+	}
 	private Date regdate;
-	
 	public int getSeq() {
 		return seq;
 	}
@@ -108,6 +113,12 @@ public class ReserveVO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 }

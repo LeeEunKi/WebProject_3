@@ -5,7 +5,7 @@
 	<select id="noticeboardListData" resultType="NoticeBoardVO" parameterType="hashmap">
 		 SELECT no,subject,name,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
 	    FROM (SELECT no,subject,name,content,regdate,hit,rcount,rownum as num 
-	    FROM (SELECT /*+ INDEX_DESC(NoticeBoard_3 pf_no_pk)*/ no,subject,name,content,regdate,hit,rcount 
+	    FROM (SELECT /*+ INDEX_DESC(NoticeBoard_3 noticeboard_no_pk)*/ no,subject,name,content,regdate,hit,rcount 
 	    FROM NoticeBoard_3))
 	    WHERE num BETWEEN #{start} AND #{end}
 	</select>

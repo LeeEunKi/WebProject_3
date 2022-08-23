@@ -206,16 +206,49 @@ public class MemberDAO {
 		}
 	}
 	//[관리자] 모든 회원 리스트 불러오기
-	//<select id="memberListData" resultType="MemberVO">
-	public static List<MemberVO> memberListData(){
+	//<select id="memberListData" resultType="MemberVO" parameterType="hashmap">
+	public static List<MemberVO> memberListData(Map map){
 		List<MemberVO> list=null;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("memberListData");
+			list=session.selectList("memberListData",map);
 				
 		} catch (Exception e) {
 			System.out.println("memberListData() : 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	//[관리자] 총 회원 수 가져오기
+	public static int memberTotalCount() {
+		int total=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			total=session.selectOne("memberTotalCount");
+				
+		} catch (Exception e) {
+			System.out.println("memberTotalCount() : 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	//[관리자] 회원 id 검색
+	public static List<MemberVO> memberFindID(String fd) {
+		List<MemberVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("memberFindID",fd);
+		} catch (Exception e) {
+			System.out.println("memberFindID() : 에러");
 			e.printStackTrace();
 		} finally {
 			if(session!=null)
