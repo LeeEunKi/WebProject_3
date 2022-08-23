@@ -68,9 +68,11 @@ VALUES (1,#{no},#{member_id})
 </select>
 <!-- 베스트 리뷰 -->
 <select id="bestReview" resultType="ReviewVO">
-SELECT place_no,member_id,content,score,(SELECT REP_IMAGE FROM place_3 p WHERE place_no=p.no ) AS rep_image,rcount
-   FROM review_3 
-   ORDER BY rcount DESC;
+  SELECT place_no,member_id,content,score,(SELECT REP_IMAGE FROM place_3 p WHERE place_no=p.no ) AS rep_image,rcount,num
+   FROM (SELECT place_no,member_id,content,score,rep_image,rcount,rownum AS num
+   FROM (SELECT place_no,member_id,content,score,rep_image,rcount
+   FROM review_3 ORDER BY rcount DESC))
+   WHERE num &lt;=6
 </select>
 <!-- 리뷰 등록 -->
 <insert id="reviewInsert" parameterType="ReviewVO">

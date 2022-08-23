@@ -250,6 +250,7 @@ public class ReviewDAO {
 		}
 	}
 	
+	
 	//베스트 리뷰 출력 
 	//<select id="bestReview" resultType="ReviewVO">
 	public static List<ReviewVO> bestReview()
@@ -258,7 +259,7 @@ public class ReviewDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("bestReivew");
+			list=session.selectList("bestReview");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
