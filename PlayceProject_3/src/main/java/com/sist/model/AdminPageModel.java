@@ -173,7 +173,7 @@ public class AdminPageModel {
 		if(page==null)
 			page="1";
 		int curPage=Integer.parseInt(page);
-		int rowSize = 5;
+		int rowSize = 10;
 		int start = rowSize*curPage-(rowSize-1);
 		int end = rowSize*curPage;
 		   
@@ -184,7 +184,7 @@ public class AdminPageModel {
 		List<MemberVO> list=MemberDAO.memberListData(map);
 		
 		int totalCount = MemberDAO.memberTotalCount();
-		int totalPage = (int)Math.ceil((double)totalCount/5.0);
+		int totalPage = (int)Math.ceil((double)totalCount/10.0);
 		   
 		final int BLOCK = 5;
 		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨

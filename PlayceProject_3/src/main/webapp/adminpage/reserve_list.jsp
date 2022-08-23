@@ -37,7 +37,7 @@ a{
     <tr> 
       <th width="5%" class="text-center" >no</th>
       <th width="20%" class="text-center" colspan="2">문의장소</th>
-      <th width="10%" class="text-center">회원 ID</th>
+      <th width="10%" class="text-center">회원 ID<br>(연락처)</th>
       <th width="10%" class="text-center">예약일</th>
       <th width="10%" class="text-center">예약시간</th>
       <th width="5%" class="text-center">인원</th>
@@ -55,7 +55,7 @@ a{
 	       <a href="../place/detail.do?no=${vo.place_no }"><img src="${vo.rep_image}" style="width: 100px;height: 100px;"></a>  
 	      </td>	      
 	      <td width="10%" class="text-center"><a href="../place/detail.do?no=${vo.place_no }">${vo.name }</a></td><!-- 문의 장소 -->	   
-	      <td width="10%" class="text-center">${vo.member_id }</td>
+	      <td width="10%" class="text-center">${vo.member_id }<br>(${vo.member_tel })</td>
 	      <td width="10%" class="text-center">${vo.rdate }</td>
 	      <td width="10%" class="text-center">${vo.rtime }</td>
 	      <td width="5%" class="text-center">${vo.capa }명</td>
