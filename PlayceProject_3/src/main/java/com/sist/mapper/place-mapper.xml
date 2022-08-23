@@ -49,7 +49,7 @@
     SELECT CEIL(COUNT(*)/9.0) FROM place_3
     WHERE address LIKE '%'||#{address}||'%'
   </select>
-  <select id="placeFindTotalCount" resultType="int" parameterType="int">
+  <select id="placeFindTotalCount" resultType="int" parameterType="string">
 		SELECT COUNT(*) FROM place_3
 		WHERE address LIKE '%'||#{address}||'%'
 	</select>
