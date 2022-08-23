@@ -262,8 +262,60 @@ a.button:hover {
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
+let i=0;
+let u=0;
 $(function(){
 
+	$('#del').click(function(){
+		if(i==0)
+		{
+			$('#delTr').show("slow");
+			$('#del').text("취소")
+			i=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			$('#del').text("삭제")
+			i=0;
+		}
+	})
+	
+	$('#delBtn').on("click",function(){
+		let pwd=$('#delPwd').val();
+		let no=$(this).attr("data-no");
+		if(pwd.trim()=="")
+		{
+			$("#delPwd").focus();
+			return;
+		}
+
+		$.ajax({
+			type:'post',
+			url:'../noticeboard/delete.do',
+			data:{"no":no,"pwd":pwd},
+			success:function(result)
+			{
+				let res=result.trim();
+				if(res=="yes")// 정상 수행 (비밀번호가 같다)
+				{
+					location.href="../noticeboard/list.do"; // sendRedirect()
+				}
+				else
+				{
+					alert("비밀번호가 틀립니다!")
+					$('#delPwd').val("");
+					$('#delPwd').focus();
+				}
+			},
+			error:function(request, status, error)
+			{
+				alert(error);
+			}
+			
+		})
+	})
+	
 	// $('.details').click(function(){})
 	 const items = document.querySelectorAll('.question');
 
@@ -280,6 +332,8 @@ $(function(){
 	  }
 
 	  items.forEach(item => item.addEventListener('click', openCloseAnswer));
+	  
+	  
 	
 })
 
@@ -308,30 +362,39 @@ $(function(){
 		   <hr/><br><br>
 				
 			    <c:forEach var="vo" items="${list }">
-			<div class="faq-content" style="width:1100px;">
-			  <button class="question" id="que-1"><span id="que-1-toggle">+</span>
-			 
-	       			<tr>
-	       				<td width="10%" class="text-center">${vo.no }</td>
-	       				<td width="45%">${vo.subject }</td>
-	       			</tr>
-			 </button>
-			  <div class="answer" id="ans-1">${vo.content}</div>
-			  
-			</div>
-			</c:forEach>
-			
+					<div class="faq-content" style="width:1100px;">
+						  <button class="question" id="que-${vo.no }"><span id="que-${vo.no }-toggle">+</span>
+				       			<tr>
+				       				<td width="45%">${vo.subject }</td>
+				       				<!-- <td width="50%" style="text-align: right;">${vo.dbday }</td>  -->
+				       				
+				       			</tr>
+						 </button>
+						  <div class="answer" id="ans-${vo.no }">
+						  		<p style="white-space: pre-line;">${vo.content}</p>
+						  	
+							  <c:if test="${sessionScope.admin == 'y' }">
+							  	<br><br>
 
-			<div class="faq-content">
-			  <button class="question" id="que-2"><span id="que-2-toggle">+</span><span>'CSS'란 무엇인가요?</span></button>
-			  <div class="answer" id="ans-2">캐스케이딩 스타일 시트(Cascading Style Sheets)입니다.</div>
-			</div>
-			<div class="faq-content">
-			  <button class="question" id="que-3"><span id="que-3-toggle">+</span><span>'JavaScript'란 무엇인가요?</span></button>
-			  <div class="answer" id="ans-3">자바스크립트는 객체(Object)를 기초로 하는 스크립트 프로그래밍 언어입니다.</div>
-			</div>
-					   
-		   
+									  <tr id="delTr" style="display:none">
+					        			<td colspan="4" class="text-right">
+					        				<span style="color: red;">  비밀번호를 입력하세요! :  </span><input type=password name=pwd size=10 class="input-sm" id="delPwd">
+					        				<input type=button value="삭제" class="w-btn w-btn-red" id="delBtn"  data-no=${vo.no }>
+					        			</td>
+					        		</tr>
+					     			<tr>
+					        			<td colspan="4" class="text-center">
+					        		    	<button class="w-btn w-btn-green" type="button" style=" display: inline-block;" >
+					        				<a href="../noticeboard/update.do?no=${vo.no }">수정</a>
+					        				</button>
+					        			</td>
+					        		</tr>
+							  </c:if>
+						  </div>
+						  
+					</div>
+				</c:forEach>
+
   <!-- board list area -->
     <div id="board-list">
         <div class="container">

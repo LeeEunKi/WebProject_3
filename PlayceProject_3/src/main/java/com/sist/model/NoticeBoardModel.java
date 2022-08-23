@@ -29,7 +29,7 @@ public class NoticeBoardModel {
 		map.put("end", end);
 		List<NoticeBoardVO> list=NoticeBoardDAO.noticeboardListData(map);
 	     
-		int totalpage=NoticeBoardDAO.boardTotalPage();
+		int totalpage=NoticeBoardDAO.noticeboardTotalPage();
 		
 		request.setAttribute("curpage", curpage);
 		request.setAttribute("totalpage", totalpage);
@@ -127,7 +127,7 @@ public class NoticeBoardModel {
 		vo.setPwd(pwd);
 		vo.setNo(Integer.parseInt(no));
 		NoticeBoardDAO.noticeboardUpdate(vo);
-		return "redirect:../noticeboard/detail.do?no="+no;
+		return "redirect:../noticeboard/list.do";
 	}
 	
 	@RequestMapping("noticeboard/delete.do")
