@@ -134,18 +134,19 @@ public class IndexOfTest {
 			for(int i=0;i<16;i++) {
 				System.out.println("timeArr "+tIndex+"번째"+timeArr[tIndex]);
 				System.out.println("strArray "+sIndex+"번째"+strArray[sIndex]);
+				System.out.println("durations:"+durations_);
 				if(timeArr[tIndex].equals(strArray[sIndex])) {
-					durations_ ++;
+					System.out.println(timeArr[tIndex]+","+strArray[sIndex]);
+					durations_++;
 					tIndex++;
 					sIndex++;
-					System.out.println(timeArr[tIndex]+","+strArray[sIndex]);
 				}
 				else {
+					System.out.println("else문:"+durations_);
+					durations = durations_;
 					break;
 				}
 			}
-			System.out.println(durations_);
-			durations = durations_;
 		}
 		
 		request.setAttribute("durations", durations);
