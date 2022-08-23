@@ -15,7 +15,7 @@
 <title></title>
 </head>
 <body>
-	<div class="hero page-inner overlay background-img" style="background-image: url('${cvo.poster}');">
+	<div class="hero page-inner overlay background-img" style="background-image: url('${cvo.poster}'); height: 40vh;">
 	</div>
 	
 <div class="section section-properties">

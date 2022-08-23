@@ -34,6 +34,7 @@
 	<!-- [관리자] 문의글 총 개수 가져오기 -->
 	<select id="admin_askTotalCount" resultType="int">
 		SELECT COUNT(*) FROM askboard_3
+		WHERE isReply!=1 AND group_step!=1
 	</select>
 	<!-- [관리자] 문의 상세내용 가져오기 -->
 	<select id="admin_askDetailData" resultType="AskVO" parameterType="int">

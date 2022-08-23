@@ -68,10 +68,7 @@ public class PlaceModel {
 		PlaceVO pvo = PlaceDAO.placeDetailData(Integer.parseInt(no));
 		List<ImageVO> list = PlaceDAO.placeImageData(Integer.parseInt(no));
 		
-		//리뷰 영역 데이터
-		List<ReviewVO> rList =ReviewDAO.reviewListData(Integer.parseInt(no));
-		int rtotal=ReviewDAO.counts(Integer.parseInt(no));
-		Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
+		
 
 		
 		//문의게시판 영역 - 데이터
@@ -97,6 +94,11 @@ public class PlaceModel {
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
+		
+		//리뷰 영역 데이터
+				List<ReviewVO> rList =ReviewDAO.reviewListData(map);
+				int rtotal=ReviewDAO.counts(Integer.parseInt(no));
+				Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
 		
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트 
@@ -161,11 +163,22 @@ public class PlaceModel {
 		   
 		   List<PlaceVO> list=PlaceDAO.placeLocationFindData(map);
 		   int totalpage=PlaceDAO.placeLocationFindTotalPage(addr);
+		   int totalCount=PlaceDAO.placeFindTotalCount(addr);
+		   
+		   final int BLOCK=5;
+		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		   
+		   if(endPage>totalpage)
+			   endPage=totalpage;
 		   
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("list", list);
 		   request.setAttribute("addr", addr);
+		   request.setAttribute("totalCount", totalCount);
 		   request.setAttribute("main_jsp", "../place/place_find.jsp");
 		   return "../main/main.jsp";
 	   }

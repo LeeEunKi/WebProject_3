@@ -59,13 +59,19 @@ VALUES (1,#{no},#{member_id})
 </select>
 
 <!--  상세보기 리뷰 리스트 -->
-<select id="reviewListData" resultType="ReviewVO" parameterType="int">
+<select id="reviewListData" resultType="ReviewVO" parameterType="hashmap">
   SELECT /*+ INDEX_DESC(REVIEW_3 review_3_no_pk)*/ no,member_id,content,score,TO_CHAR(regdate,'YYYY-MM-DD') AS dbday,rcount,num
   FROM (SELECT no,member_id,content,score,regdate,rcount,rownum AS num
   FROM (SELECT no,member_id,content,score,regdate,rcount
   FROM REVIEW_3 WHERE place_no=#{place_no}))
+  WHERE num BETWEEN #{start} AND #{end}
 </select>
-
+<!-- 베스트 리뷰 -->
+<select id="bestReview" resultType="ReviewVO">
+SELECT place_no,member_id,content,score,(SELECT REP_IMAGE FROM place_3 p WHERE place_no=p.no ) AS rep_image,rcount
+   FROM review_3 
+   ORDER BY rcount DESC;
+</select>
 <!-- 리뷰 등록 -->
 <insert id="reviewInsert" parameterType="ReviewVO">
    <!--  시퀀스 처리 -->

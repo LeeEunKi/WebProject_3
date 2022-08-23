@@ -11,9 +11,6 @@
 <script type="text/javascript">
 </script>
 <style type="text/css">
-.hero{
-	height: 600px !important;
-}
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);
@@ -36,29 +33,19 @@
 </style>
 </head>
 <body>
-<div class="hero" style="background-image: url('../images/hero_bg_3.jpg');">
+<div class="hero" style="background-image: url('../images/topSkin.png'); height: 40vh; min-height: 0px;">
 		<div class="container">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-lg-9 text-center mt-5">
-					<h1 class="heading aos-init aos-animate" data-aos="fade-up">My page</h1>
-					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-						<ol class="breadcrumb text-center justify-content-center">
-							<li class="breadcrumb-item "><a href="index.html">Home</a></li>
-							<li class="breadcrumb-item active text-white-50" aria-current="page">Properties</li>
-						</ol>
-					</nav>
-				</div>
-			</div>
-	 </div>
+	    </div>
 </div>
-<div class="section">
+<div class="section" style="padding-bottom:0px">
 		<div class="container">
 			<div class="row text-left mb-5">
 				<div class="col-12">
-					<h2 class="font-weight-bold heading text-primary mb-4">My Page</h2>
+					<h2 class="font-weight-bold heading text-primary mb-4">마이 페이지</h2>
 					<hr>
 				</div>
 			</div>
+
 		</div>
 </div>
 

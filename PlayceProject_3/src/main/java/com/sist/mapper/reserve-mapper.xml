@@ -66,8 +66,8 @@
 		FROM reserve_info_3 ri3, place_3 p3
 		WHERE p3.no = ri3.place_no AND ri3.no = #{no}
 	</select>
-	<select id="admin_reserveWaitCount" resultType="int">
-	  SELECT COUNT(*) FROM reserve_info_3 WHERE state=0
+	<select id="admin_reserveWaitCount" resultType="int" parameterType="int">
+	  SELECT COUNT(*) FROM reserve_info_3 WHERE state=#{type}
 	</select>
 	
 	<!-- [관리자] 예약 승인대기 목록 조회 -->

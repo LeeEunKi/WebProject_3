@@ -87,7 +87,7 @@
 				<div class="col-lg-6 text-center">
 					<div class="custom-pagination">
 					 <c:if test="${startPage>1 }">
-          				<a href="../place/place_list.do?tno=${tno }&page=${startPage-1 }">&laquo;</a>
+          				<a href="../place/place_find.do?addr=${addr }&page=${startPage-1 }">&laquo;</a>
          			 </c:if>
 						<c:forEach var="i" begin="${startPage }" end="${endPage }">
 							<c:choose>
@@ -98,10 +98,10 @@
 						       <c:set var="style" value=""/>
 						     </c:otherwise>
 						   </c:choose>
-          					<a ${style } href="../place/place_list.do?tno=${tno}&page=${i }" >${i }</a>
+          					<a ${style } href="../place/place_find.do?addr=${addr }&page=${i}">${i }</a>
           				</c:forEach>
-          				   <c:if test="${endPage<totalPage }">
-          					<a href="../place/place_list.do?tno=${tno }&page=${endPage+1 }">&raquo;</a>
+          				   <c:if test="${endPage<totalpage }">
+          					<a href="../place/place_find.do?addr=${addr }&page=${endPage+1 }">&raquo;</a>
          				  </c:if>
 					</div>
 				</div>

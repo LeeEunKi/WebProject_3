@@ -30,7 +30,7 @@ a{
 </head>
 <body>
   <div class="title">
-    <h2>예약 대기 목록 <span style="color:red;">(${waitCount }건)</span></h2>
+    <h2>예약 대기 목록 <span style="color:red; font-size: 20px;">(총 ${totalCount }건)</span></h2>
   </div> 
   <table class="table"> 
    <thead>

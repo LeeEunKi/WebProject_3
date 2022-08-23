@@ -62,13 +62,13 @@ public class ReviewDAO {
 	
 	
 	//<select id="reviewListData" resultType="ReviewVO" parameterType="no">
-	public static List<ReviewVO> reviewListData(int place_no)
+	public static List<ReviewVO> reviewListData(Map map)
 	{
 		SqlSession session=null;
 		List<ReviewVO> list=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("reviewListData", place_no);
+			list=session.selectList("reviewListData", map);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("reviewListData(ReviewVO vo) 오류났다 고쳐라");
@@ -250,5 +250,23 @@ public class ReviewDAO {
 		}
 	}
 	
+	//베스트 리뷰 출력 
+	//<select id="bestReview" resultType="ReviewVO">
+	public static List<ReviewVO> bestReview()
+	{
+		List<ReviewVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("bestReivew");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
 	
 }

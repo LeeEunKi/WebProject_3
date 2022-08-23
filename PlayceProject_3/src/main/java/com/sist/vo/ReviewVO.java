@@ -15,10 +15,16 @@ import java.util.*;
  */
 public class ReviewVO {
 	private int no,place_no,score,rcount;
-	private String content,imgname,imgsize,member_id,dbday;
+	private String content,imgname,imgsize,member_id,dbday,rep_image;
 	private Date regdate;
 	
 	
+	public String getRep_image() {
+		return rep_image;
+	}
+	public void setRep_image(String rep_image) {
+		this.rep_image = rep_image;
+	}
 	public int getRcount() {
 		return rcount;
 	}

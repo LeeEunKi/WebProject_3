@@ -76,6 +76,27 @@ $(function () {
 					</div>
 					
 				    </c:forEach>
+						    <!-- 페이지네이션 시작 --> 
+						<div class="custom-pagination text-center">
+						 <c:if test="${startPage>1 }">
+		         				<a href="../place/detail.do?no=${place_no }&page=${startPage-1 }">&laquo;</a>
+		       			 </c:if>
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+							<c:choose>
+						     <c:when test="${i==curPage }">
+						       <c:set var="style" value="class=active"/>
+						     </c:when>
+						     <c:otherwise>
+						       <c:set var="style" value=""/>
+						     </c:otherwise>
+						    </c:choose>
+		     				<a ${style } class="page-no" value="${i }">${i }</a>
+		      			</c:forEach>
+		       				<c:if test="${endPage<totalPage }">
+		       					<a href="../place/detail.do?no=${place_no }&page=${endPage+1 }">&raquo;</a>
+		      				</c:if>
+						</div>
+					<!-- 페이지네이션 끝 -->
 	
 					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			    </div>

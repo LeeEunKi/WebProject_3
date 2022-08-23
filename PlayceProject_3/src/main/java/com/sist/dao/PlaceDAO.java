@@ -158,12 +158,12 @@ public class PlaceDAO {
 		   return total;
 	   }
 	   
-	   public static int placeFindTotalCount(int tno){
+	   public static int placeFindTotalCount(String address){
 			SqlSession session = null;
 			int total = 0;
 			try {
 				session = ssf.openSession();
-				total = session.selectOne("placeFindTotalCount",tno);
+				total = session.selectOne("placeFindTotalCount",address);
 			}catch(Exception ex) {
 				ex.printStackTrace();
 				System.out.println("PlaceDAO : placeFindTotalCount(int) ERROR");
