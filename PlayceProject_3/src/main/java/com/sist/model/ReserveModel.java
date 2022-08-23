@@ -98,7 +98,6 @@ public class ReserveModel {
 		return "../reserve/select_time.jsp";
 	}
 	
-	
 	//대여 시간 선택
 	@RequestMapping("reserve/select_duration.do")
 	public static String select_duration(HttpServletRequest request, HttpServletResponse response) {
