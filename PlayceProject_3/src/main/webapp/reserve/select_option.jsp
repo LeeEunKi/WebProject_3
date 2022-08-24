@@ -17,6 +17,8 @@ $(function(){
 	$('#selectParking').click(function(){
 		let parking = $(this).val().trim();
 		$('#r_parking').val(parking);//input 데이터삽입
+		$('#reserveBtn').css("background-color","#2964D9");
+		$('#reserveBtn').css("pointer-events","");
 	})
 })
 </script>

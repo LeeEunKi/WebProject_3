@@ -1,18 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
   $( function() {
-	  $('#reserveBtn').css("background-color","#d4d4d4");
-	  $('#reserveBtn').css("pointer-events","none");
 	   $('#prevMonth').click(function(e){
-		   e.preventDefault();
-			alert("이전 달은 볼 수 없습니다.")
-			return;
+		    e.preventDefault();
+			let year=$('#year').text();
+			year = parseInt(year.trim());
+			let month=$('#month').text();
+			month = parseInt(month.trim());
+			if(month-1<8){
+				alert("이전 달은 볼 수 없습니다.")
+				return;
+			}
+			let place_no = $(this).attr("place_no");
+			$.ajax({
+				type:'post',
+				url:'../reserve/select_date.do',
+				data:{"place_no":place_no, "year":year,"month":month-1},
+				success:function(result){
+					$('#print_cal').html(result);
+				},
+				error:function(request,status,error){
+					console.log("error!!!");
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);       
+					}
+			})
 		})
 		$('#nextMonth').click(function(e){
 			e.preventDefault();
@@ -21,13 +40,6 @@
 			let month=$('#month').text();
 			month = parseInt(month.trim());
 			let place_no = $(this).attr("place_no");
-			if(month+1===13){
-				$('#year').text(year+1);
-				$('#month').text(1);
-			}else{
-				$('#year').text(year);
-				$('#month').text(month+1);
-			}
 			$.ajax({
 				type:'post',
 				url:'../reserve/select_date.do',
@@ -65,16 +77,10 @@
   </script>
 </head>
 <body>
-<c:if test="${sessionScope.id==null }">
-	<p class="de-text-desc">로그인 후 이용해 주세요.</p>
-</c:if>
-<c:if test="${sessionScope.id!=null }">
-  <label class="sche">날짜 선택</label>
-  <div class="row" id="print_cal">
-  <div style="height:20px"></div>
+ <div style="height:20px"></div>
       <table>
         <tr><td>
-         <div style="color:#2964D9;font-size: x-large;text-align: -webkit-center;">
+        <div style="color:#2964D9;font-size: x-large;text-align: -webkit-center;">
           	<img src="../images/left-arrow.png" id="prevMonth" place_no="${place_no }" style="width:15px;height:15px">
           	<span id="year">${year }</span>.<span id="month">${month }</span>
           	<img src="../images/right-arrow.png" id="nextMonth" place_no="${place_no }" style="width:15px;height:15px">
@@ -108,7 +114,9 @@
       			</c:forEach>
       			<%-- 요일만큼 공백을 만들어 줌 --%>
       		</c:if>
-      		<td class="text-center date-pick" data-no="${i }" style="color:${days[i]==1||i<day?'#d4d4d4':'' }; pointer-events:${days[i]==1||i<day?'none':''}">${i }</td> <%--1 일부터 출력 --%>
+      		<%--1 일부터 출력 --%>
+      		<td class="text-center date-pick" data-month="${month }" data-no="${i }"
+      		 style="color:${days[i]==1||(sm>month&&sy==year)||(i<day&&sm==month&&sy==year)?'#d4d4d4':'' }; pointer-events:${days[i]==1||(sm>month&&sy==year)||(i<day&&sm==month&&sy==year)?'none':''}">${i }</td> 
       		<c:set var="week" value="${week+1 }"/>
       		<c:if test="${week>6 }"><%--일요일 다음에 출력 --%>
       			</tr>
@@ -117,19 +125,5 @@
       		</c:if>
       	</c:forEach>
       </table>
-    </div>
-  <div id="print_time"></div>
-  <div id="print_duration"></div>
-  <div id="print_option"></div>
- <form method="post" action="../reserve/reserve_ok.do">
-<input type=hidden name="place_no" id="r_pno">
-<input type=hidden name="r_capa" id="r_capa">
-<input type=hidden name="r_parking" id="r_parking">
-<input type=hidden name="r_date" id="r_date">
-<input type=hidden name="r_time" id="r_time">
-<input type=hidden name="r_duration" id="r_duration">
-<button type="submit" id="reserveBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;">예약하기</button>
-</form> 
-</c:if>
 </body>
 </html>

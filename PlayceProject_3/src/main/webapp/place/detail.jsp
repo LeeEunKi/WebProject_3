@@ -110,7 +110,6 @@ $(function(){
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   margin-bottom: 30px;
 }
-
 </style>
 </head>
 <body>
@@ -194,15 +193,15 @@ $(function(){
 							</ul>
 						</nav>	
 					</div>
-					
+				
+				<!-- 지도 영역 -->
 				<h2 class="heading text-primary" style="padding-top: 30px;" id="location">위치</h2>
 				<p class="meta">${pvo.address }</p>
 				<div id="map" style="width:100%;height:450px;"></div>
-				
-					
-				</div>
+			</div>
+			
+				<!-- 예약 박스 영역 -->
 				<div class="col-lg-4 d-block agent-box p-5" style="height: fit-content;">
-						
 						<div class="text">
 							<h3 class="host" style="display: inline;">${pvo.host_name }</h3>
  							<c:if test="${sessionScope.id!=null }">

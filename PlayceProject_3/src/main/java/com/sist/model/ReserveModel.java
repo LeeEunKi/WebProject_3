@@ -66,7 +66,6 @@ public class ReserveModel {
 			String reserved_year = st1.nextToken();
 			String reserved_month = st1.nextToken();
 			String reserved_day = st1.nextToken();
-//			System.out.println(reserved_day); //테스트출력
 			int d = Integer.parseInt(reserved_day);
 				if(d>=day)
 					days[d] = 1;
@@ -79,7 +78,72 @@ public class ReserveModel {
 		request.setAttribute("week", week-1);
 		request.setAttribute("lastday", lastday);
 		request.setAttribute("strWeek", strWeek);
+		
 		return "../reserve/reserve.jsp"; 
+	}
+	//달력 만들기(<>클릭했을때)
+	@RequestMapping("reserve/select_date.do")
+	public String calendarSet(HttpServletRequest request, HttpServletResponse response) {
+		String place_no = request.getParameter("place_no");
+		List<String> list = ReserveDAO.reserveGetDate(Integer.parseInt(place_no));
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
+		String today = sdf.format(date);
+		
+		StringTokenizer st = new StringTokenizer(today,"-");
+		String sy = st.nextToken();
+		String sm = st.nextToken();
+		String sd = st.nextToken();
+		String strYear = request.getParameter("year");
+		String strMonth = request.getParameter("month");
+		
+		int year = Integer.parseInt(strYear);
+		int month = Integer.parseInt(strMonth);
+		int day = Integer.parseInt(sd);
+		
+		if(month==0) {
+			month=12;
+			year=year-1;
+		}else if(month==13) {
+			month=1;
+			year=year+1;
+		}
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month-1);
+		cal.set(Calendar.DATE, 1);
+		int week = cal.get(Calendar.DAY_OF_WEEK);//각 월 1일자의 요일을 가져온다.
+		int lastday = cal.getActualMaximum(Calendar.DATE); //각 달의 마지막 날
+		
+		String[] strWeek = {"일","월","화","수","목","금","토"};
+		
+		//예약된 날짜 거르기
+		int[] days = new int[32];
+		for(String s:list) {
+			StringTokenizer st1 = new StringTokenizer(s,"-");
+			String reserved_year = st1.nextToken();
+			String reserved_month = st1.nextToken();
+			String reserved_day = st1.nextToken();
+			int d = Integer.parseInt(reserved_day);
+			if(d>=day)
+				days[d] = 1;
+		}
+		request.setAttribute("sy", Integer.parseInt(sy));//시스템 날짜(년)
+		request.setAttribute("sm", Integer.parseInt(sm));//시스템 날짜(월)
+		request.setAttribute("sd", Integer.parseInt(sd));//시스템 날짜(일)
+		request.setAttribute("days", days);
+		request.setAttribute("place_no", place_no);
+		request.setAttribute("year", year);
+		request.setAttribute("month", month);
+		request.setAttribute("day", day);
+		request.setAttribute("week", week-1);
+		request.setAttribute("lastday", lastday);
+		request.setAttribute("strWeek", strWeek);
+		request.setAttribute("place_no", place_no);
+		
+		return "../reserve/select_date.jsp"; 
 	}
 	
 	//시간 선택
