@@ -10,7 +10,7 @@
 		</div>
 	</c:when>
 	<c:when test="${qvo.place_img==null}"> <!-- 답글 -->
-		<div style="margin-top:20px;background-color: rgb(231, 234, 238);">
+		<div style="margin-top:20px;background-color: rgb(231, 234, 238);border-radius: 5px;padding: 10px;">
    			<img src="../images/reply.png" style="width:10px;height:10px;">
    			<p class="de-qna-name" style="font-weight:bold;">${qvo.member_id }님</p><p class="de-text-date"> ${qvo.dbday }</p>
    			<p class="de-text-desc" style="margin-left:10px;">${qvo.content }</p>

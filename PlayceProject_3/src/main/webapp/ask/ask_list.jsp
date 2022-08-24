@@ -112,6 +112,7 @@ $(function(){
 					<input type="hidden" name=member_id value="${sessionScope.id }"/>
 					<input type="hidden" name=place_no value="${place_no }"/>
 					<textarea rows=5 cols=50 name="askContent"></textarea>
+					<br>
 					<button type="submit" class="btn btn-primary text-white" style="width: 15%; font-size:10px;">문의하기</button>
 				</form>
 			</c:if>	

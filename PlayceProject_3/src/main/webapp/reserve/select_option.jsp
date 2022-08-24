@@ -13,12 +13,12 @@ $(function(){
 	$('#selectCapa').click(function(){
 		let capa = $(this).val().trim();
 		$('#r_capa').val(capa);//input 데이터삽입
+		$('#reserveBtn').css("background-color","#2964D9");
+		$('#reserveBtn').css("pointer-events","");
 	})
 	$('#selectParking').click(function(){
 		let parking = $(this).val().trim();
 		$('#r_parking').val(parking);//input 데이터삽입
-		$('#reserveBtn').css("background-color","#2964D9");
-		$('#reserveBtn').css("pointer-events","");
 	})
 })
 </script>

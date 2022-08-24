@@ -10,6 +10,7 @@
 </head>
 <body>
 <div style="height:30px"></div>
+<h3>예약 상세 정보</h3>
 <table class="table">
 	<tr>
 		<td class="text-center" rowspan="7">
@@ -22,7 +23,9 @@
 	</tr>
 		<tr>
 		<td width="20%">장소 이름</td>
-		<td width="80%">${vo.name }</td>
+		<td width="80%">${vo.name }
+		<a href="../place/detail.do?no=${vo.place_no }" style="color:#2964D9; font-size:smaller">&nbsp;&nbsp;&nbsp;장소 상세 보기</a>
+		</td>
 	</tr>
 	<tr>
 		<td width="20%">주소</td>

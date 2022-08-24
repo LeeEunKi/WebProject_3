@@ -128,6 +128,18 @@ $(function(){
 						</div>
 					</div>
 					
+					<div class="content-area">
+						<nav class="detail-nav">
+							<ul class="nav-tabs-detail">
+								<li ><a href="#desc" class="n-tab active">장소 소개</a></li>
+								<li ><a href="#location" class="n-tab">위치</a></li>
+								<li ><a href="#review" class="n-tab">리뷰</a></li>
+								<li class="detail-li"><a href="#ask" class="n-tab">문의</a></li>
+								
+							</ul>
+						</nav>	
+					</div>
+										
 					<h2 class="heading text-primary" style="padding-top: 30px;" id="desc">장소 소개</h2>
 				<p class="de-text-black-50" style="font-size:16px;" >${pvo.content }</p>
 				<div style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
@@ -182,18 +194,6 @@ $(function(){
 							<tr><td colspan="5" style="text-align: left;">${pvo.etc }</td></tr>
 						</table>
 					
-					<div class="content-area">
-						<nav class="detail-nav">
-							<ul class="nav-tabs-detail">
-								<li ><a href="#desc" class="n-tab active">장소 소개</a></li>
-								<li ><a href="#location" class="n-tab">위치</a></li>
-								<li ><a href="#review" class="n-tab">리뷰</a></li>
-								<li class="detail-li"><a href="#ask" class="n-tab">문의</a></li>
-								
-							</ul>
-						</nav>	
-					</div>
-				
 				<!-- 지도 영역 -->
 				<h2 class="heading text-primary" style="padding-top: 30px;" id="location">위치</h2>
 				<p class="meta">${pvo.address }</p>
