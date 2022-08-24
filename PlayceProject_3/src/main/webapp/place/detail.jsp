@@ -128,60 +128,10 @@ $(function(){
 							</c:forEach>
 						</div>
 					</div>
-				</div>
-
-					<div class="col-lg-4 d-block agent-box p-5">
-						
-						<div class="text">
-							<h3 class="host" style="display: inline;">${pvo.host_name }</h3>
- 							<c:if test="${sessionScope.id!=null }">
-								<c:if test="${lcount==0 }">
-									<a href="../place/like.do?place_no=${place_no }"><img src="../place/images/like_inactive.png" style="float:right"></a>
-								</c:if>
-								<c:if test="${lcount!=0 }">
-									<a href="../place/like_cancel.do?place_no=${place_no }"><img src="../place/images/like_active.png" style="float:right"></a>
-								</c:if>
-							</c:if> 
-							<h2 class="heading text-primary" style="padding-top: 5px; font-weight: 600;">${pvo.name }</h2>
-							<p class="meta" id="addr" style="display: inline;">${pvo.address }</p>&nbsp;&nbsp;
-							<p class="meta" style="display: inline;color: crimson;">♥&nbsp;${totalL }</p>
-							<div></div>
-								<c:choose>
-								     <c:when test="${pvo.price==0 }">
-								       <p class="de-price">별도 문의</p>
-								     </c:when>
-								     <c:otherwise>
-								     	<p class="de-price">
-								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.price}" />원</p>
-								     </c:otherwise>
-								   </c:choose>
-							<a id="rBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"place_no="${place_no }">예약하기</a>
-						</div>	
-						<div id="print_reserve"></div>
-					</div>
-			</div>
-			
-
-        <div class="section">
-			<div class="container">
-				<div class="row">
-				<div class="col-lg-8"><!-- 간격 유지 -->
-					<div class="content-area">
-						<nav class="detail-nav">
-							<ul class="nav-tabs-detail">
-								<li ><a href="#desc" class="n-tab active">장소 소개</a></li>
-								<li ><a href="#location" class="n-tab">위치</a></li>
-								<li ><a href="#review" class="n-tab">리뷰</a></li>
-								<li class="detail-li"><a href="#ask" class="n-tab">문의</a></li>
-								
-							</ul>
-						</nav>	
-					</div>
-			   </div>
-			   <div class="col-lg-8">
-				<h2 class="heading text-primary" style="padding-top: 30px;" id="desc">장소 소개</h2>
+					
+					<h2 class="heading text-primary" style="padding-top: 30px;" id="desc">장소 소개</h2>
 				<p class="de-text-black-50" style="font-size:16px;" >${pvo.content }</p>
-				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+				<div style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 				<h2 class="heading text-primary" style="padding-top: 30px; padding-bottom:30px;" id="desc">장소 정보</h2>
 				<div style="height:10px"></div> <!-- 여백띄우기용 -->
 						<table class="descTable">
@@ -232,23 +182,66 @@ $(function(){
 							<tr style="height:30px"></tr>
 							<tr><td colspan="5" style="text-align: left;">${pvo.etc }</td></tr>
 						</table>
-				      <div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-			       </div>
-			   </div>
-			   <div class="col-lg-8">
+					
+					<div class="content-area">
+						<nav class="detail-nav">
+							<ul class="nav-tabs-detail">
+								<li ><a href="#desc" class="n-tab active">장소 소개</a></li>
+								<li ><a href="#location" class="n-tab">위치</a></li>
+								<li ><a href="#review" class="n-tab">리뷰</a></li>
+								<li class="detail-li"><a href="#ask" class="n-tab">문의</a></li>
+								
+							</ul>
+						</nav>	
+					</div>
+					
 				<h2 class="heading text-primary" style="padding-top: 30px;" id="location">위치</h2>
 				<p class="meta">${pvo.address }</p>
 				<div id="map" style="width:100%;height:450px;"></div>
-				<!-- <p class="text-black-50">자세한 주소는 호스트 승인 후, 메세지로 문의 가능합니다.</p> -->
-				<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-			   </div>
-
+				
+					
+				</div>
+				<div class="col-lg-4 d-block agent-box p-5" style="height: fit-content;">
+						
+						<div class="text">
+							<h3 class="host" style="display: inline;">${pvo.host_name }</h3>
+ 							<c:if test="${sessionScope.id!=null }">
+								<c:if test="${lcount==0 }">
+									<a href="../place/like.do?place_no=${place_no }"><img src="../place/images/like_inactive.png" style="float:right"></a>
+								</c:if>
+								<c:if test="${lcount!=0 }">
+									<a href="../place/like_cancel.do?place_no=${place_no }"><img src="../place/images/like_active.png" style="float:right"></a>
+								</c:if>
+							</c:if> 
+							<h2 class="heading text-primary" style="padding-top: 5px; font-weight: 600;">${pvo.name }</h2>
+							<p class="meta" id="addr" style="display: inline;">${pvo.address }</p>&nbsp;&nbsp;
+							<p class="meta" style="display: inline;color: crimson;">♥&nbsp;${totalL }</p>
+							<div></div>
+								<c:choose>
+								     <c:when test="${pvo.price==0 }">
+								       <p class="de-price">별도 문의</p>
+								     </c:when>
+								     <c:otherwise>
+								     	<p class="de-price">
+								       <fmt:formatNumber type="number" maxFractionDigits="3" value="${pvo.price}" />원</p>
+								     </c:otherwise>
+								   </c:choose>
+							<a id="rBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 50px;"place_no="${place_no }">예약하기</a>
+						</div>	
+						<div id="print_reserve"></div>
+					</div>
+				
 				<jsp:include page="${review_jsp }"/>
 				<jsp:include page="${ask_jsp }"/>
+				
+				
 			   </div>
 			</div>
 		 </div> 
-	  </div>
+
+					
+			
+				
     
 
 
