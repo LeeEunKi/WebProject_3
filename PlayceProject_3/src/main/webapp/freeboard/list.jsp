@@ -341,9 +341,9 @@ $(function(){
   
        				<td class="text-right inline">
        				    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-	       					<a href="#" class="btn btn-sm btn-success">이전</a>
+	       					<a href="../freeboard/list.do?&page=${curpage>1?curpage-1:curpage}" class="btn btn-sm btn-success">이전</a>
 	       					${curpage } page / ${totalpage } pages
-	       					<a href="#" class="btn btn-sm btn-success">다음</a>
+	       					<a href="../freeboard/list.do?&page=${curpage<totalpage?curpage+1:curpage}" class="btn btn-sm btn-success">다음</a>
        					</td>
        			</tr>
        		</table>
