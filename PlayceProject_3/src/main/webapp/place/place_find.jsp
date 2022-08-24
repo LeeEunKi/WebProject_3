@@ -91,7 +91,7 @@
          			 </c:if>
 						<c:forEach var="i" begin="${startPage }" end="${endPage }">
 							<c:choose>
-						     <c:when test="${i==curPage }">
+						     <c:when test="${i==curpage }">
 						       <c:set var="style" value="class=active"/>
 						     </c:when>
 						     <c:otherwise>
