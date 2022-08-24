@@ -70,9 +70,14 @@
   WHERE name=#{name}
  </select>
  <select id="emailIdFind" resultType="string" parameterType="hashmap">
-  SELECT RPAD(SUBSTR(id,1,1),LENGTH(id),'*') FROM member_3
+  SELECT RPAD(SUBSTR(id,1,LENGTH(id)-2),LENGTH(id),'*') FROM member_3
   WHERE name=#{name} AND email = #{email}
  </select>
+ <select id="emailPwdFind" resultType="string" parameterType="hashmap">
+  SELECT RPAD(SUBSTR(pwd,1,LENGTH(pwd)-2),LENGTH(pwd),'*') FROM member_3
+  WHERE name=#{name} AND email = #{email}
+ </select>
+ 
  
  <!-- 회원수정 -->
  <update id="memberUpdate" parameterType="MemberVO">

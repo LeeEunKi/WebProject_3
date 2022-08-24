@@ -81,7 +81,7 @@ $(function() {
 				$('#id_find_result').css("color", "red");
 				return;
 			}
-			//3. ajax=>이름 => 전화번호 전송 ====> 결과값을 출력 ==>axios
+			//3. ajax
 			$.ajax({
 				type:'post',
 				url:'../member/id_find.do',
@@ -90,6 +90,36 @@ $(function() {
 				success:function(result){
 					$('#id_find_result').text(result);
 					$('#id_find_result').css("color", "red");
+				}
+			})					
+		})
+		
+		$('#pwdFindBtn').on('click',function(){
+			//1. 이름여부
+			let name=$('#pwd_find_name').val();
+			if(name.trim()===""){ 
+				$('#pwd_find_name').focus();
+				$('#pwd_find_result').text("이름을 입력하세요!");
+				$('#pwd_find_result').css("color", "red");
+				return;
+			}
+			//2. 이메일
+			let email=$('#pwd_find_email').val();
+			if(email.trim()===""){ 
+				$('#pwd_find_email').focus();
+				$('#pwd_find_result').text("이메일을 입력하세요!");
+				$('#pwd_find_result').css("color", "red");
+				return;
+			}
+			//3. ajax
+			$.ajax({
+				type:'post',
+				url:'../member/pwd_find.do',
+				data:{"name":name,"email":email},
+				//4. 출력된 결과값을 읽어온다.
+				success:function(result){
+					$('#pwd_find_result').text(result);
+					$('#pwd_find_result').css("color", "red");
 				}
 			})					
 		})

@@ -9,6 +9,13 @@
 </head>
 <body>
 <h2 class="sectiontitle">찜 목록</h2>
+  <c:if test="${totalL==0 }">
+  	  <div class="text-center">
+	 	<img src="https://shareit.kr/static/media/img-no-qna.0463e10d.png" style="width:30%;">
+	 	<p class="de-text-desc">찜한 공간이 없습니다. <br> 마음에 드는 공간을 찜해보세요!</p>
+	 </div>
+  </c:if>
+  <c:if test="${totalL!=0 }">
   <table class="table"> 
     <tr> 
       <th width="25%" class="text-center"></th> 
@@ -48,5 +55,6 @@
    		</c:if>
 	</div>
 	<!-- 페이지네이션 끝 -->
+ </c:if>	
 </body>
 </html>

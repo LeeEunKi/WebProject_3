@@ -153,6 +153,39 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public static String emailPwdFind(String name,String email) {
+		String result="";
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			int nameCount=session.selectOne("memberNameCount",name);
+			if(nameCount==0) {
+				result="회원이 아닌 이름입니다.";
+			}
+			else {
+				String db_email=session.selectOne("memberGetEmail", name);
+				if(db_email.equals(email)) {
+					Map map= new HashMap();
+					map.put("name",name);
+					map.put("email", email);
+					result="비밀번호: "+session.selectOne("emailPwdFind", map); 
+				}
+				else {
+					result="이메일이 틀립니다!";
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("emailPwdFind(): 에러");
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return result;
+	}
+	
+	
+	
 	// 회원수정 - 회원정보 가져오기
 	//<select id="memberInfoData" resultType="MemberVO" parameterType="string">
 	public static MemberVO memberInfoData(String id) {

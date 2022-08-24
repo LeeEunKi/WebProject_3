@@ -59,6 +59,13 @@ a{
   <div class="title">
     <h2>나의 문의 내역</h2>
   </div> 
+  <c:if test="${totalCount==0 }">
+  	  <div class="text-center">
+	 	<img src="https://shareit.kr/static/media/img-no-qna.0463e10d.png" style="width:30%;">
+	 	<p class="de-text-desc">문의한 내용이 없습니다.</p>
+	 </div>
+  </c:if>
+  <c:if test="${totalCount!=0 }">
   <table class="table"> 
     <tr> 
       <th width="25%" class="text-center" colspan="2">문의장소</th>
@@ -110,5 +117,6 @@ a{
    		</c:if>
 	</div> 
 	<!-- 페이지네이션 끝 -->
+  </c:if>	
 </body>
 </html>

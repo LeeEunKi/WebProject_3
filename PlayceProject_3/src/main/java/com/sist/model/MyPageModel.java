@@ -166,6 +166,7 @@ public class MyPageModel {
 			pList.add(vo);
 		}
 		
+		request.setAttribute("totalL", totalL);
 		request.setAttribute("page", "likelist");
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage", startPage);
@@ -209,6 +210,7 @@ public class MyPageModel {
 				   vo.setContent(data);
 			   }
 		}
+		request.setAttribute("totalCount", totalCount);
 		request.setAttribute("page", "asklist");
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("startPage",startPage);

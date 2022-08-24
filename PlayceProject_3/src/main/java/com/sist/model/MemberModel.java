@@ -123,6 +123,15 @@ public class MemberModel {
 		request.setAttribute("result", result);
 		return "../member/id_find.jsp";
 	}
+	@RequestMapping("member/pwd_find.do")
+	public String member_pwd_find(HttpServletRequest request,HttpServletResponse response) {
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		String result=MemberDAO.emailPwdFind(name, email);
+		
+		request.setAttribute("result", result);
+		return "../member/pwd_find.jsp";
+	}
 
 	
 
