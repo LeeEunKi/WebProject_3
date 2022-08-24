@@ -71,8 +71,10 @@ public class PlaceModel {
 		
 
 		
-		//문의게시판 영역 - 데이터
+		//문의게시판 영역 - 데이터 
 		int totalQ = AskDAO.askTotalCount(Integer.parseInt(no));
+		//리뷰
+		int totalR = ReviewDAO.reviewTotalCount(Integer.parseInt(no));
 		String page = request.getParameter("page");
 		if(page==null)
 			page = "1";
@@ -88,12 +90,21 @@ public class PlaceModel {
 		
 		//문의게시판 영역 - 페이지네이션
 		int totalPage = (int)Math.ceil((double)totalQ/5.0);
+		
 		final int BLOCK = 5;
 		int startPage = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
 		int endPage = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
+		//리뷰
+		int totalPageR = (int)Math.ceil((double)totalR/5.0);
+		int startPageR = ((curPage-1)/BLOCK*BLOCK)+1; //1~5까지 0*BLOCK+1로 처리됨
+		int endPageR = ((curPage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPageR>totalPageR) {
+			endPageR = totalPageR;
+		}
+		
 		
 		//리뷰 영역 데이터
 				List<ReviewVO> rList =ReviewDAO.reviewListData(map);
@@ -123,12 +134,17 @@ public class PlaceModel {
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
+		
 		request.setAttribute("totalQ", totalQ); //문의 총 개수
 		
 		//리뷰 영역 요소
 		request.setAttribute("rList", rList);
 		request.setAttribute("rtotal", rtotal);
 		request.setAttribute("avg", avg);
+		request.setAttribute("totalPageR", totalPageR);
+		request.setAttribute("totalR", totalR);
+		request.setAttribute("startPageR", startPageR);
+		request.setAttribute("endPageR", endPageR);
 
 		request.setAttribute("totalL", totalL);//좋아요개수
 		request.setAttribute("main_jsp","../place/detail.jsp");

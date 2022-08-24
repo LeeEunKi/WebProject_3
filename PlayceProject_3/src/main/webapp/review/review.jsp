@@ -12,6 +12,17 @@ $(function () {
 	$('.likeBtn').click(function () {
 		alert("로그인 후 추천이 가능합니다");
 	})
+	
+	let page_no = 1;
+	let place_no = ${place_no};
+	$.ajax({
+		type:'post',
+		url:'../review/review_page.do',
+		data:{"page_no":page_no,"place_no":place_no},
+		success:function(result){
+			$('#review_data').html(result);
+		}
+	})
 })
 </script>
 </head>
@@ -27,6 +38,12 @@ $(function () {
 				    <c:if test="${avg==null }">
 				      <h3 class="avg" style="padding-top: 30px;padding-left: 5px; display: inline-block; position: relative; top: -3px;">0</h3>
 				    </c:if>
+				    <c:if test="${totalR==0 }">
+				    	<div class="text-center">
+				    		<img src="https://shareit.kr/static/media/img-no-qna.0463e10d.png" style="width:30%;">
+				    		<p class="de-text-desc">등록된 리뷰가 없습니다.</p>
+				    	</div>
+				    </c:if>
 					 <!-- <c:if test="${sessionScope.id!=null}">
 					      <form method="post" action="../review/review_insert.do" style="margin-top: 30px; float: right;">
 						      <input type="hidden" name=member_id value="${sessionScope.id }"/>
@@ -37,53 +54,24 @@ $(function () {
 				
 
 				    <!-- <p class="meta">California, United States</p> -->
-				    <div class="row-cols-md-auto"> 
+				   <!--  <div class="row-cols-md-auto"> 
 					   <a href="#"><img src="../images/img_1.jpg" class="img-de-thumbnail"></a>
 					   <a href="#"><img src="../images/img_2.jpg" class="img-de-thumbnail"></a>
 					   <a href="#"><img src="../images/img_3.jpg" class="img-de-thumbnail"></a>
-					</div>  
-					
-					<c:forEach var="rvo" items="${rList }">
-					<div>
-					<div class="col-lg-8" style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-				  	  	<p class="de-text-reviewer">${rvo.member_id }</p>
-				   	  	<span class="score">
-							<c:choose>
-								<c:when test="${rvo.score==1 }">
-									★
-								</c:when>
-								<c:when test="${rvo.score==2 }">
-									★★
-								</c:when>
-								<c:when test="${rvo.score==3 }">
-									★★★
-								</c:when>
-								<c:when test="${rvo.score==4 }">
-									★★★★
-								</c:when>
-								<c:otherwise >
-									★★★★★
-								</c:otherwise>
-							</c:choose>
-						</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
-				  	 	 <p class="de-text-desc">${rvo.content }</p>
-				  	    <c:if test="${sessionScope.id!=null }">
-				  	        <a href="../review/review_like.do?rno=${rvo.no }&pno=${place_no }" class="btn btn-sm btn-success py-2 px-3"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></a>
-					  	</c:if>
-				  	    <c:if test="${sessionScope.id==null }">
-				  	        <span class="btn btn-sm btn-success py-2 px-3 likeBtn"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></span>
-					  	</c:if>
+					</div>   -->
+					 <c:if test="${totalR!=0 }">
+					<div id="review_data">
+		    
 					</div>
 					
-				    </c:forEach>
 						    <!-- 페이지네이션 시작 --> 
 						<div class="custom-pagination text-center">
-						 <c:if test="${startPage>1 }">
-		         				<a href="../place/detail.do?no=${place_no }&page=${startPage-1 }">&laquo;</a>
+						 <c:if test="${startPageR>1 }">
+		         				<a href="../place/detail.do?no=${place_no }&page=${startPageR-1 }">&laquo;</a>
 		       			 </c:if>
-						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<c:forEach var="i" begin="${startPageR }" end="${endPageR }">
 							<c:choose>
-						     <c:when test="${i==curPage }">
+						     <c:when test="${i==curPageR }">
 						       <c:set var="style" value="class=active"/>
 						     </c:when>
 						     <c:otherwise>
@@ -92,12 +80,12 @@ $(function () {
 						    </c:choose>
 		     				<a ${style } class="page-no" value="${i }">${i }</a>
 		      			</c:forEach>
-		       				<c:if test="${endPage<totalPage }">
-		       					<a href="../place/detail.do?no=${place_no }&page=${endPage+1 }">&raquo;</a>
+		       				<c:if test="${endPageR<totalPageR }">
+		       					<a href="../place/detail.do?no=${place_no }&page=${endPageR+1 }">&raquo;</a>
 		      				</c:if>
 						</div>
 					<!-- 페이지네이션 끝 -->
-	
+					</c:if>
 					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 			    </div>
 			    

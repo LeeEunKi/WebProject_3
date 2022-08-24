@@ -82,6 +82,26 @@ public class ReviewDAO {
 		return  list;
 	}
 	
+	/*
+	<!-- 리뷰 리스트 총페이지 -->
+	<select id="reviewTotalCount" resultType="int" parameterType="int">
+	 */
+	public static int reviewTotalCount(int place_no)
+	{
+		SqlSession session = null;
+		int total = 0;
+		try {
+			session = ssf.openSession();
+			total = session.selectOne("reviewTotalCount",place_no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("reviewTotalCount(int place_no) 오류났다 고쳐라");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
 	
 	//<insert id="reviewInsert" parameterType="ReviewVO">
 	public static void reviewInsert(ReviewVO vo)
@@ -170,7 +190,7 @@ WHERE no=#{no}
 		}
 		
 	}
-	/*
+	/* 예약내역에서 리뷰 넘버, 리뷰체크 값 초기화 
 	 * <update id="reviewCheckReset" parameterType="int">
 	 */
 	public static void reviewCheckReset(int no)
@@ -190,7 +210,7 @@ WHERE no=#{no}
 		}
 		
 	}
-	
+	//예약 내역에서 리뷰를 작성한 적이 있는지 체크 
 	//<select id="reviewReserveCheck" resultType="int" parameterType="ReviewVO">
 	public static int reviewReserveCheck(ReviewVO vo)
 	{
@@ -208,8 +228,8 @@ WHERE no=#{no}
 		}
 		return check;
 	}
-	
-	//<update id="reviewUpdate" parameterType="ReviewVO">
+	//리뷰 업데이트 리뷰 내용 불러오기 
+	//<update id="reviewUpdatedata" parameterType="ReviewVO">
 	public static ReviewVO reviewUpdateData(int no)
 	{
 		ReviewVO vo=new ReviewVO();
@@ -228,7 +248,7 @@ WHERE no=#{no}
 		}
 		return vo;
 	}
-	
+	//리뷰 업데이트 
 	public static void reviewUpdate(ReviewVO vo)
 	{
 		SqlSession session=null;

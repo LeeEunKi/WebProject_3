@@ -1,6 +1,7 @@
 package com.sist.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.AskDAO;
 import com.sist.dao.ReviewDAO;
+import com.sist.vo.AskVO;
 import com.sist.vo.ReviewVO;
 
 @Controller
@@ -195,5 +198,31 @@ public class ReviewModel {
 		ReviewDAO.reviewCheckReset(Integer.parseInt(review_no));
 		return "redirect:../place/detail.do?no="+place_no;
 	}
+	
+	//[유저] 문의글 페이지네이션
+		@RequestMapping("review/review_page.do")
+		public String user_askPage(HttpServletRequest request, HttpServletResponse response) {
+			try {
+				request.setCharacterEncoding("UTF-8");
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			String place_no = request.getParameter("place_no");
+			String page_no = request.getParameter("page_no");
+			if(page_no==null)
+				page_no="1";
+			int curPageR = Integer.parseInt(page_no);
+			int rowSize = 5;
+			int start = (rowSize*curPageR)-(rowSize-1);
+			int end = rowSize*curPageR;
+			Map map = new HashMap();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("place_no", Integer.parseInt(place_no));
+			List<ReviewVO> rList = ReviewDAO.reviewListData(map);
+
+			request.setAttribute("rList", rList);
+			return "../review/review_list_data.jsp";
+		}
 	
 }

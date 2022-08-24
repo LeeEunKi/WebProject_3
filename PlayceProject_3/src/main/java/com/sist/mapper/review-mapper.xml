@@ -66,6 +66,13 @@ VALUES (1,#{no},#{member_id})
   FROM REVIEW_3 WHERE place_no=#{place_no}))
   WHERE num BETWEEN #{start} AND #{end}
 </select>
+
+<!-- 리뷰 리스트 총페이지 -->
+<select id="reviewTotalCount" resultType="int" parameterType="int">
+  SELECT COUNT(*)
+  FROM review_3
+  WHERE place_no=#{place_no}
+</select>
 <!-- 베스트 리뷰 -->
 <select id="bestReview" resultType="ReviewVO">
   SELECT place_no,member_id,content,score,(SELECT REP_IMAGE FROM place_3 p WHERE place_no=p.no ) AS rep_image,rcount,num
