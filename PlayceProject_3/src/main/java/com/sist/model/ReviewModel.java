@@ -142,7 +142,7 @@ public class ReviewModel {
 	@RequestMapping("review/review_like.do")
 	public String review_like(HttpServletRequest request, HttpServletResponse response)
 	{
-		String place_no=request.getParameter("pno");
+		String place_no=request.getParameter("place_no");
 		String review_no=request.getParameter("rno");
 		System.out.println(place_no);
 		System.out.println(review_no);
@@ -184,7 +184,7 @@ public class ReviewModel {
 	@RequestMapping("review/review_like_delete.do")
 	public String review_like_delete(HttpServletRequest request, HttpServletResponse response)
 	{
-		String place_no=request.getParameter("");
+		String place_no=request.getParameter("place_no");
 		String review_no=request.getParameter("review_no");
 
 		HttpSession session=request.getSession();
@@ -220,7 +220,7 @@ public class ReviewModel {
 			map.put("end", end);
 			map.put("place_no", Integer.parseInt(place_no));
 			List<ReviewVO> rList = ReviewDAO.reviewListData(map);
-
+			
 			request.setAttribute("rList", rList);
 			return "../review/review_list_data.jsp";
 		}

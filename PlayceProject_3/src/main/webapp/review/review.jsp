@@ -9,6 +9,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function () {
+	
+	
 	$('.likeBtn').click(function () {
 		alert("로그인 후 추천이 가능합니다");
 	})

@@ -107,9 +107,9 @@ public class PlaceModel {
 		
 		
 		//리뷰 영역 데이터
-				List<ReviewVO> rList =ReviewDAO.reviewListData(map);
-				int rtotal=ReviewDAO.counts(Integer.parseInt(no));
-				Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
+		List<ReviewVO> rList =ReviewDAO.reviewListData(map);
+		int rtotal=ReviewDAO.counts(Integer.parseInt(no));
+		Double avg=ReviewDAO.scoreAvg(Integer.parseInt(no));
 		
 		request.setAttribute("pvo", pvo); //장소설명
 		request.setAttribute("list", list); //이미지리스트 
