@@ -102,6 +102,6 @@ $(function(){
 	</div> 
 	<!-- 페이지네이션 끝 -->
 	<div id="print"></div>
-	</c:if>
+ </c:if>
 </body>
 </html>
