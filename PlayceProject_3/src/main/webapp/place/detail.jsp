@@ -193,15 +193,12 @@ $(function(){
 							<tr style="height:30px"></tr>
 							<tr><td colspan="5" style="text-align: left;">${pvo.etc }</td></tr>
 						</table>
-					
-				<!-- 지도 영역 -->
-				<h2 class="heading text-primary" style="padding-top: 30px;" id="location">위치</h2>
-				<p class="meta">${pvo.address }</p>
-				<div id="map" style="width:100%;height:450px;"></div>
-			</div>
-			
-				<!-- 예약 박스 영역 -->
-				<div class="col-lg-4 d-block agent-box p-5" style="height: fit-content;">
+						<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+				</div>
+				
+				
+					<!-- 예약 박스 영역 -->
+					<div class="col-lg-4 d-block agent-box p-5" style="height: fit-content;">
 						<div class="text">
 							<h3 class="host" style="display: inline;">${pvo.host_name }</h3>
  							<c:if test="${sessionScope.id!=null }">
@@ -229,6 +226,18 @@ $(function(){
 						</div>	
 						<div id="print_reserve"></div>
 					</div>
+					
+				<!-- 지도 영역 -->
+				<div class="col-lg-8">
+					<h2 class="heading text-primary" style="padding-top: 30px;" id="location">위치</h2>
+					<p class="meta">${pvo.address }</p>
+					<div id="map" style="width:100%;height:450px;"></div>
+					<div class="col-lg-8" style="margin-top: 40px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
+				</div>
+				
+			
+			
+				
 				
 				<jsp:include page="${review_jsp }"/>
 				<jsp:include page="${ask_jsp }"/>
