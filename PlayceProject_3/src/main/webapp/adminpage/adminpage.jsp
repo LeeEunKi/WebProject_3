@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title></title>
 <style type="text/css">
-
 .subject{
 	position: relative;
     color: rgb(103, 114, 148);

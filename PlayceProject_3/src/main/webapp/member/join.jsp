@@ -30,50 +30,51 @@ $(function(){
 	let emailCheck=0;
 	let pwdCheck=0;
 	
+	$('#btn-agree').click(function() {
+		if(!($("#checked_agree").prop("checked"))){
+			alert("약관의 동의해주세요!");		  
+		}
+		else{
+			location.href="../member/join_form.do";
+		}
+		return;
+	})
+
 	$('#joinBtn').click(function(){	
-		if(!$("#id").val()){
-		    $("#id").focus();
+		if(!$("#member_id").val()){
+		    $("#member_id").focus();
 		    return;
 		}
-		if(!$("#pwd").val()){
-			$("#pwd").focus();
+		if(!$("#member_pwd").val()){
+			$("#member_pwd").focus();
 		    return;
 		}
-		if(!$("#pwd2").val()){
-			$("#pwd2").focus();
+		if(!$("#member_pwd2").val()){
+			$("#member_pwd2").focus();
 		    return;
 		}
-		if(!$("#name").val()){
-			$("#name").focus();
+		if(!$("#member_name").val()){
+			$("#member_name").focus();
 		    return;
 		}
-		if(!$("#email").val()){
-			$("#email").focus();
+		if(!$("#member_email").val()){
+			$("#member_email").focus();
 		    return;
 		}
-		if(!$("#tel1").val()){
-			$("#tel1").focus();
+		if(!$("#member_tel").val()){
+			$("#member_tel").focus();
 		    return;
 		}
-		if(!$("#tel2").val()){
-			$("#tel2").focus();
+		if(!$("#member_post").val()){
+			$("#member_addr2").focus();
 		    return;
 		}
-		if(!$("#post").val()){
-			$("#addr2").focus();
-		    return;
-		}
-		if(!$("#addr1").val()){
-			$("#addr2").focus();
-		    return;
-		}
-		if(!($("#development").prop("checked"))){
-			alert("약관의 동의해주세요!");
+		if(!$("#member_addr1").val()){
+			$("#member_addr2").focus();
 		    return;
 		}
  		if(idCheck==1 && emailCheck==1 && pwdCheck==1){
- 			$('#member').submit();
- 			alert("회원가입을 축하합니다! 로그인해주세요.");
+ 			$('#member_join').submit();
 		}
 		else if(idCheck==0){
 			alert("ID 중복체크하세요!");
@@ -87,13 +88,13 @@ $(function(){
 
 	})
 
-	$("#pwd2").on('focusout', function(){
-		if($("#pwd").val() == $("#pwd2").val()){
+	$("#member_pwd2").on('focusout', function(){
+		if($("#member_pwd").val() == $("#member_pwd2").val()){
 			$("#confirmPrint").text("비밀번호가 일치합니다.");
 			$("#confirmPrint").css("color", "blue");
 			pwdCheck=1;
 		}
-		else if($("#pwd").val() != $("#pwd2").val()){
+		else if($("#member_pwd").val() != $("#member_pwd2").val()){
 			$("#confirmPrint").text("비밀번호가 일치하지 않습니다.");
 			$("#confirmPrint").css("color", "red");	
 			pwdCheck=0;
@@ -103,11 +104,11 @@ $(function(){
 	
 	
 	$('#idBtn').click(function() {
-		let id=$('#id').val();
+		let id=$('#member_id').val();
 		
 		if(id.trim()=="")
 		{
-			$("#id").focus();
+			$("#member_id").focus();
 			$('#idPrint').text("필수 입력사항 입니다!");
 			$("#idPrint").css("color", "red");
 			return;
@@ -125,8 +126,8 @@ $(function(){
 					{
 						$('#idPrint').text("이미 사용중인 ID입니다.");
 						$("#idPrint").css("color", "red");
-						$('#id').val("");
-						$('#id').focus();
+						$('#member_id').val("");
+						$('#member_id').focus();
 
 					}	
 					else{
@@ -140,18 +141,18 @@ $(function(){
 	})
 	
 	// 아이디를 다시 입력하면 iCheck값 초기화
-	$('#id').keydown(function() {
+	$('#member_id').keydown(function() {
 		idCheck=0;
 		$('#idPrint').text("");
 	})
 
 	
 	$('#emailBtn').click(function() {	
-		let email=$('#email').val();
+		let email=$('#member_email').val();
 		let exptext= /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 			
 		if(email.trim()==""){
-			$("#email").focus();
+			$("#member_email").focus();
 			$('#emailPrint').text("필수 입력사항 입니다!");
 			$("#emailPrint").css("color", "red");
 			return;
@@ -161,7 +162,7 @@ $(function(){
 			if(exptext.test(email)==false){
 				$('#emailPrint').text("이메일 형식이 올바르지 않습니다.");
 				$("#emailPrint").css("color", "red");
-				$('#email').focus();
+				$('#member_email').focus();
 			}
 			else{
 				$.ajax({
@@ -175,8 +176,8 @@ $(function(){
 						{
 							$('#emailPrint').text("이미 사용중인 이메일입니다.");
 							$("#emailPrint").css("color", "red");
-							$('#email').val("");
-							$('#email').focus();
+							$('#member_email').val("");
+							$('#member_email').focus();
 						}
 						else{
 							$('#emailPrint').text("사용 가능한 이메일입니다.");
@@ -190,7 +191,7 @@ $(function(){
 	})
 	
 	// 이메일을 다시 입력하면 emailCheck값 초기화
-	$('#email').keydown(function() {
+	$('#member_email').keydown(function() {
 		emailCheck=0;
 		$('#emailPrint').text("");
 	})
@@ -200,91 +201,110 @@ $(function(){
 		new daum.Postcode({
 			oncomplete:function(data)
 			{
-				$('#post').val(data.zonecode)
-				$('#addr1').val(data.address)
+				$('#member_post').val(data.zonecode)
+				$('#member_addr1').val(data.address)
 			}
 		}).open()
 	})
 	
-	// 이메일 유효성 검사
+	$('#btn-main').click(function () {
+		location.href="../main/main.do";
+	})
 	
+	$('#btn-login').click(function () {
+		Shadowbox.open({
+			content:'../member/login.do',
+			player:'iframe',
+			title:'',
+			width:350,
+			height:552
+		})
+	})
 })
 </script>  
 <style>
-/* body {
-  min-height: 100vh;
-
-  background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
-  background: -webkit-linear-gradient(bottom left, white 0%, #062138 100%);
-  background: -moz-linear-gradient(bottom left, #d5e2ed 0%, #062138 100%);
-  background: -o-linear-gradient(bottom left, #d5e2ed 0%, #062138 100%);
-  background: linear-gradient(to top right, #d5e2ed 0%, #062138 100%);
-} */
+.tab_list {
+    border-bottom: 2px dashed #e0e0e0;
+    padding: 80px 0;
+    margin-left: -1px;
+    padding-top: 15px;
+}
+.tab_list li {
+    float: left;
+    margin-left: 10px;
+    z-index: 1;
+}
+ul, li {
+    list-style: none;
+}
+.bt_blue{
+    background: #4d7be5;
+    width: 256px;
+    height: 44px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #3e6dda;
+    
+    color: #fff;
+    font-family: Dotum, "돋움";
+    font-size: 14px;
+}
+.bt_s_gray{
+    width: 256px;
+    height: 44px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #bdbdbd;
+    border: 1px solid #b1b1b1;
+    margin-left: 10px;
+    
+    color: #fff;
+    font-family: Dotum, "돋움";
+    font-size: 14px;
+}
 </style>
 </head>
 <body>
 	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 50vh;">
 		<div class="container">
-			<div class="row justify-content-center align-items-center" style="height: 57vh;">
+			<div class="row justify-content-center align-items-center" style="height: 39vh;">
 				<div class="col-lg-9 text-center mt-5">
-					<h2 class="heading_signup" data-aos="fade-up">플레이스에 오신 것을 환영합니다</h2>
+					<h2 class="heading_signup" style="padding-bottom: 150px;" data-aos="fade-up">플레이스에 오신 것을 환영합니다</h2>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="section sec-testimonials">
-		<div class="container">
-			
-			<div class="row">
-				<div class="col-lg-6" style="width: 100%;">
-					<form action="../member/join_ok.do" method="post" id="member" name="member">
-						<h1 style="text-align: center; margin-top: 20px;">회원가입</h1>
-						<hr>			  
-						<fieldset>
-						  <label for="name">아이디:</label>
-						  <input type="text" id="id" name="id" required="required">	
-						  <input type="button" class="btn btn-primary" id="idBtn" value="중복체크">			  
-						  <span id="idPrint" style="display:block;"></span>
-						  
-						  <label for="password">비밀번호:</label>
-						  <input type="password" id="pwd" name="pwd" required>
-						  <span id="pwdPrint" style="display:block;"></span>
-
-						  <label for="password">비밀번호 확인:</label>
-						  <input type="password" id="pwd2" required="required">
-						  <span id="confirmPrint" style="display:block;"></span>
-
-						  <label for="email">이메일:</label>
-						  <input type="email" id="email" name="email" required="required">
-						  <input type="button" class="btn btn-primary" id="emailBtn" value="중복체크">
-						  <span id="emailPrint" style="display:block;"></span>
-						  
-						  <label for="name">이름:</label>
-						  <input type="text" id="name" name="name" required="required">
-						  <span id="namePrint" style="display:block; color: red;"></span>
-					 
-						  <label class="sex">성별:</label>
-						  <input type="radio"  value="남자" name="sex" checked="checked">남성
-						  <input type="radio"  value="여자" name="sex">여성
-
-						  <label for="name">전화번호:</label>
-						  <input type="text" id="tel0" value="010"  readonly="readonly">
-						  <input type="text" id="tel1" name="tel1"  maxlength="4"> 
-						  <input type="text" id="tel2" name="tel2"  maxlength="4"> 
-
-						  <label for="name">주소:</label >
-						  <input type="text" id="post" name="post" value="post"  readonly="readonly">
-						  <input type="text" id="addr1" name="addr1" readonly="readonly" required="required">
-						  <input type="button" id="postBtn" value="검색" class="btn btn-primary">
-						  <span id="addrPrint" style="display:block; color: red;"></span>
-						  <label for="name">상세 주소:</label>
-						  <input type="text" id="addr2" name="addr2">
-						</fieldset>			
-					  
-						<label>약관동의</label>
-						<label class="light" for="development">약관 동의합니까?</label><input type="checkbox" id="development" value="interest_development" name="user_interest"><br>
-						<button type="button" id="joinBtn" class="btn btn-primary text-white" style="width: 100%; margin-top: 20px;">회원가입</button>				  
-					  </form>
+		<div class="container">		
+			<div class="row" style="place-content: center;">
+				<div class="col-lg-6" style="width: 45%;">
+				  <div>
+				   <h1 style="text-align: center; margin-top: 20px;">회원가입</h1>
+					<hr>			 
+					<ul class="tab_list">
+					 <c:choose>
+	    				<c:when test="${page == 'agree'}">
+	       					<c:set var="over1" value="_over"/>
+	       					<c:set var="over2" value=""/>
+	       					<c:set var="over3" value=""/>
+	     				</c:when>
+	     				<c:when test="${page == 'form'}">
+	       					<c:set var="over1" value=""/>
+	       					<c:set var="over2" value="_over"/>
+	       					<c:set var="over3" value=""/>
+	     				</c:when>
+	     				<c:when test="${page == 'greeting'}">
+	       					<c:set var="over1" value=""/>
+	       					<c:set var="over2" value=""/>
+	       					<c:set var="over3" value="_over"/>
+	     				</c:when>
+	    			 </c:choose>
+					  <li><img class="agree" src="../images/join/join_bt1${over1 }.png" alt="회원약관"></li>
+					  <li><img class="form" src="../images/join/join_bt2${over2 }.png" alt="정보입력"></li>
+					  <li><img class="greeting" src="../images/join/join_bt3${over3 }.png" alt="가입완료"></li>
+					</ul>
+					<jsp:include page="${join_jsp }"></jsp:include>
+				  </div>	  
 				</div>
 			</div>
 		</div>

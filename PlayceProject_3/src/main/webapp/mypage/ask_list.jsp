@@ -80,8 +80,7 @@ a{
 	       <a href="../place/detail.do?no=${askVO.place_no }#ask"><img src="${askVO.place_img }" style="width: 100px;height: 100px;"></a>  
 	      </td>	      
 	      <td width="25%" class="text-center"><a href="../place/detail.do?no=${askVO.place_no }#ask">${askVO.place_name }</a></td><!-- 문의 장소 -->	   
-	      <td width="30%"><a class="showReply" style="color:black; cursor: pointer; font-size: 14px;" 
-	          data-no="${askVO.no }">${askVO.content }</a></td><!-- 문의 내용 -->
+	      <td width="30%">${askVO.content }</td><!-- 문의 내용 -->
 	      <td width="15%" class="text-center">${askVO.dbday }</td><!-- 문의 날짜 -->
 	      <c:if test="${askVO.isReply!=1 }">
 	        <td width="10%" class="text-center" >답변대기</td>

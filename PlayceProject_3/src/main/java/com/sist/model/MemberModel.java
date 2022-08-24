@@ -20,11 +20,19 @@ public class MemberModel {
 	@RequestMapping("member/join.do")
 	public String member_join(HttpServletRequest request, HttpServletResponse response) {
 		
-		
+		request.setAttribute("page", "agree");
+		request.setAttribute("join_jsp", "../member/join_agree.jsp");
 		request.setAttribute("main_jsp", "../member/join.jsp");
 		return "../main/main.jsp";
 	}
-	
+	@RequestMapping("member/join_form.do")
+	public String member_join_form(HttpServletRequest request, HttpServletResponse response) {
+		
+		request.setAttribute("page", "form");
+		request.setAttribute("join_jsp", "../member/join_form.jsp");
+		request.setAttribute("main_jsp", "../member/join.jsp");
+		return "../main/main.jsp";
+	}
 	@RequestMapping("member/id_check.do")
 	public String member_id_check(HttpServletRequest request, HttpServletResponse response) {
 		String id=request.getParameter("id");
@@ -59,10 +67,8 @@ public class MemberModel {
 		String post=request.getParameter("post");
 		String addr1=request.getParameter("addr1");
 		String addr2=request.getParameter("addr2");
-		String tel1=request.getParameter("tel1");
-		String tel2=request.getParameter("tel2");
-		String tel="010"+tel1+tel2;		
-		
+		String tel=request.getParameter("tel");
+
 		MemberVO vo=new MemberVO();
 		// 데이터베이스 연결
 		vo.setId(id);
@@ -78,7 +84,10 @@ public class MemberModel {
 		MemberDAO.memberInsert(vo);
 
 		// 화면 이동
-		return "redirect:../main/main.do";
+		request.setAttribute("page", "greeting");
+		request.setAttribute("join_jsp", "../member/join_greeting.jsp");
+		request.setAttribute("main_jsp", "../member/join.jsp");
+		return "../main/main.jsp";
 	}
 	
 	// login 처리
