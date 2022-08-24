@@ -154,6 +154,7 @@ $(function () {
 						  <input type="file" id="input-img" style="display: none;"/>	
 						  <input type="hidden" name=member_id value="${sessionScope.id }"/>
 					  	  <input type="hidden" name=place_no value="${place_no }"/>
+					  	  <input type="hidden" name=reserve_no value="${reserve_no }"/>
 						
 						<input type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 47%; margin-top: 30px;" value="확인">				  
 						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 47%; margin-top: 30px; float: right;" onclick="#">취소</button>				  

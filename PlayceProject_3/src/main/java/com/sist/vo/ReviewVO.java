@@ -17,8 +17,15 @@ public class ReviewVO {
 	private int no,place_no,score,rcount;
 	private String content,imgname,imgsize,member_id,dbday,rep_image;
 	private Date regdate;
+	private int reserve_no;
 	
 	
+	public int getReserve_no() {
+		return reserve_no;
+	}
+	public void setReserve_no(int reserve_no) {
+		this.reserve_no = reserve_no;
+	}
 	public String getRep_image() {
 		return rep_image;
 	}

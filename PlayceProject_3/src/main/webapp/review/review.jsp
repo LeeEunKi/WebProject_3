@@ -27,13 +27,13 @@ $(function () {
 				    <c:if test="${avg==null }">
 				      <h3 class="avg" style="padding-top: 30px;padding-left: 5px; display: inline-block; position: relative; top: -3px;">0</h3>
 				    </c:if>
-					  <c:if test="${sessionScope.id!=null}">
+					 <!-- <c:if test="${sessionScope.id!=null}">
 					      <form method="post" action="../review/review_insert.do" style="margin-top: 30px; float: right;">
 						      <input type="hidden" name=member_id value="${sessionScope.id }"/>
 							  <input type="hidden" name=place_no value="${place_no }"/>
 							  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 남기기"/></p>
 						  </form>
-					   </c:if>
+					   </c:if> -->
 				
 
 				    <!-- <p class="meta">California, United States</p> -->

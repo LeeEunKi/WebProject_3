@@ -84,12 +84,11 @@ public class ReviewDAO {
 	
 	
 	//<insert id="reviewInsert" parameterType="ReviewVO">
-	public static void reviewInsert(int place_no, ReviewVO vo)
+	public static void reviewInsert(ReviewVO vo)
 	{
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			session.update("counts",place_no); //댓글 갯수 +1
 			session.insert("reviewInsert",vo);
 			session.commit();
 		} catch (Exception e) {
@@ -102,7 +101,57 @@ public class ReviewDAO {
 				session.close();
 		}
 	}
-	
+
+	/*
+	 * <update id="reviewCheckInsert" parameterType="ReviewVO">
+   UPDATE reserve_info_3 SET
+   reviewcheck= reviewcheck + 1
+   WHERE no=#{no} AND member_id=#{member_id}
+</update>
+	 */
+	public static void reviewCheckInsert(int reserve_no)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.update("reviewCheckInsert", reserve_no);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	/*
+	<!-- 리뷰 넘버 리턴 -->
+<insert id="reviewNoInsert" parameterType="int">
+<!--  시퀀스 처리 -->
+<selectKey keyProperty="review_no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(no)+1,1) AS no FROM reserve_info_3
+   </selectKey>
+UPDATE reserve_info_3 SET
+review_no=#{review_no}
+WHERE no=#{no}
+</insert>
+	 */
+	public static void reviewNoInsert(Map map)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.update("reviewNoInsert", map);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+
 	//<delete id="reivewDelete" parameterType="int">
 	public static void reviewDelete(int no)
 	{
@@ -121,6 +170,44 @@ public class ReviewDAO {
 		}
 		
 	}
+	/*
+	 * <update id="reviewCheckReset" parameterType="int">
+	 */
+	public static void reviewCheckReset(int no)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			session.update("reviewCheckReset", no);
+			session.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		
+	}
+	
+	//<select id="reviewReserveCheck" resultType="int" parameterType="ReviewVO">
+	public static int reviewReserveCheck(ReviewVO vo)
+	{
+		int check=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			check=session.selectOne("reviewReserveCheck",vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		return check;
+	}
 	
 	//<update id="reviewUpdate" parameterType="ReviewVO">
 	public static ReviewVO reviewUpdateData(int no)
@@ -129,7 +216,7 @@ public class ReviewDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			vo=session.selectOne("reviewUpdate",no);
+			vo=session.selectOne("reviewUpdateData",no);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("reviewUpdateData(ReviewVO vo) 오류났다 고쳐라");

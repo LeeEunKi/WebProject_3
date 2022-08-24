@@ -91,20 +91,51 @@ VALUES (1,#{no},#{member_id})
 	SYSDATE
    )
 </insert>
+<!-- 리뷰 넘버 리턴 -->
+<update id="reviewNoInsert" parameterType="hashmap">
+UPDATE reserve_info_3 SET
+review_no=#{review_no}
+WHERE no=#{reserve_no}
+</update>
 
+<!--  리뷰 작성 체크  -->
+<update id="reviewCheckInsert" parameterType="int">
+   UPDATE reserve_info_3 SET
+   reviewcheck= reviewcheck + 1
+   WHERE no=#{no}
+</update>
 <!--마이페이지 -> 리뷰 수정 -->
+<!--  <select id="reviewReserveData" resultType="int" parameterType="hashmap">
+  SELECT no
+  FROM review_3
+  WHERE member_id=#{member_id} AND place_no=#{place_no}
+ </select> -->
+
+<select id="reviewUpdateData" resultType="ReviewVO" parameterType="int">
+SELECT no,content,place_no
+FROM review_3
+WHERE no=#{no}
+</select>
+
+
 <update id="reviewUpdate" parameterType="ReviewVO">
  UPDATE REVIEW_3 SET
- content=#{content}
+ content=#{content},
  score=#{score} <!--평점도 수정해야 -->
  <!-- 여기도 사진 수정할 수 있도록,,, -->
  WHERE no=#{no}
  </update>
 
 <!-- 삭제 -->
-<delete id="reivewDelete" parameterType="int">
+<delete id="reviewDelete" parameterType="int">
   DELETE FROM REVIEW_3
   WHERE no=#{no}
 </delete>
+<update id="reviewCheckReset" parameterType="int">
+UPDATE reserve_info_3 SET
+review_no=0,
+reviewcheck=0
+WHERE review_no=#{no}
+</update>
 
 </mapper>

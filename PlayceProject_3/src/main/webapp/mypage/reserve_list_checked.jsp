@@ -40,6 +40,12 @@ $(function(){
 			} 
 		})
 	})
+	$('#rvDel').click(function(){
+		alert("리뷰를 삭제합니다");
+		
+		
+		})
+	})
 })
 </script>
 </head>
@@ -62,6 +68,7 @@ $(function(){
       <th width="15%" class="text-center">예약시간</th>
       <th width="15%" class="text-center">신청일</th>
       <th width="10%" class="text-center">예약상태</th>
+      <th width="10%" class="text-center"></th>
     </tr>
     <c:forEach var="vo" items="${list }">
     <c:if test="${vo.state==1 }">
@@ -74,6 +81,25 @@ $(function(){
 	      <td width="15%" class="text-center">${vo.rtime }</td>
 	      <td width="15%" class="text-center">${vo.dbday }</td><!-- 예약신청한 날짜 -->
 	      <td width="10%" class="text-center">예약완료</td>
+	      <td width="10%" class="text-center">
+	      <c:if test="${vo.reviewcheck==0 }">
+	          <form method="post" action="../review/review_insert.do?place_no=${vo.place_no }&no=${vo.no}" style="margin-top: auto; float: right;">
+			      <input type="hidden" name=member_id value="${sessionScope.id }"/>
+				  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 남기기"/></p>
+			  </form>
+		  </c:if>
+	      <c:if test="${vo.reviewcheck!=0 }">
+	          <form method="post" action="../review/review_update.do?place_no=${vo.place_no }&review_no=${vo.review_no}" style="margin-top: auto; float: right;">
+			      <input type="hidden" name=member_id value="${sessionScope.id }"/>
+				  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 수정"/></p>
+			  </form>
+			  
+	          <form method="post" action="../review/review_delete.do?place_no=${vo.place_no }&review_no=${vo.review_no}" style="margin-top: 7px; float: right;">
+			      <input type="hidden" name=member_id value="${sessionScope.id }"/>
+				  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 삭제" id="rvDel"/></p>
+			  </form>
+		  </c:if>
+	      </td>
 	    </tr>
 	</c:if>
     </c:forEach>

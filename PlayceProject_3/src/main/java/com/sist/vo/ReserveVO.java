@@ -5,6 +5,22 @@ import java.util.Date;
 public class ReserveVO {
 	private int seq, no, check_time, capa, parking, state, place_no, price, totalPrice;
 	private String member_id, check_date, dbday, rdate, rtime, rep_image, name, address,member_tel;
+	private int review_no;
+	private int reviewcheck;
+	
+	
+	public int getReview_no() {
+		return review_no;
+	}
+	public void setReview_no(int review_no) {
+		this.review_no = review_no;
+	}
+	public int getReviewcheck() {
+		return reviewcheck;
+	}
+	public void setReviewcheck(int reviewcheck) {
+		this.reviewcheck = reviewcheck;
+	}
 	public String getMember_tel() {
 		return member_tel;
 	}

@@ -7,49 +7,51 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-$(function() {
+$(function () {
 	$('#pBtn').click(function() {
-		let score=$('input[type="radio"]').val();
-		if(score===null)
-		{
-			$('#s_result').text("평점을 꼭 매겨주셔야해요!");
-			return;
-		}
-	})	
+		
+			if($('input[name="rating"] ').is(':checked')===false)
+		    {
+				$('#s_result').text("평점을 꼭 매겨주셔야해요!");
+				return false;
+		    }
+			else if($('#content').val()==="")
+		    {
+				$('#content').focus();
+				return false;
+		    }
+		
+	})
+	
+	
 })
 </script>
-	
-	<title></title>
+<title></title>
 </head>
-<body onload="window.resizeTo(424,687)">
+<body>
+    <div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 35vh;"></div>
 	<div class="section sec-testimonials">
 		<div class="container">
 			
 			<div class="row">
 				<div class="col-lg-6" style="width: 100%;">
-					<form action="../review/review_update_ok.do" method="post" id="review_update" name="review_update">
+					<form action="../review/review_update_ok.do" method="post" id="review_insert" name="review_insert">
 
 						<h1 style="text-align: center; margin-top: 20px;">리뷰 수정</h1>
 						<legend><span class="number">1</span> 장소는 어떠셨나요?</legend>
 
-
-									  
-						
-						
-						
-						
 							<div class="container">
 								<div class="feedback">
 								  <div class="rating">
-									<input type="radio" name="rating" id="rating-5">
+									<input type="radio" name="rating" id="rating-5" value="5">
 									<label for="rating-5"></label>
-									<input type="radio" name="rating" id="rating-4">
+									<input type="radio" name="rating" id="rating-4" value="4">
 									<label for="rating-4"></label>
-									<input type="radio" name="rating" id="rating-3">
+									<input type="radio" name="rating" id="rating-3" value="3">
 									<label for="rating-3"></label>
-									<input type="radio" name="rating" id="rating-2">
+									<input type="radio" name="rating" id="rating-2" value="2">
 									<label for="rating-2"></label>
-									<input type="radio" name="rating" id="rating-1">
+									<input type="radio" name="rating" id="rating-1" value="1">
 									<label for="rating-1"></label>
 									<div class="emoji-wrapper">
 									  <div class="emoji">
@@ -142,17 +144,20 @@ $(function() {
 								</div>
 							  </div>
 							  <div class=row>
-							   <h3 id="s_result" class="text-center" style="color: red"></h3>
+							    <h4 id="s_result" class="text-center" style="color: red"></h4>
 							  </div>
 						  <legend><span class="number">2</span> 내용 입력</legend>
 						
 						  <label for="content">고객님의 소중한 이용 후기를 남겨주세요</label>
-						  <textarea id="content" required></textarea>
-						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 20px;"  for="input-img">사진 업로드</label>
-						  <input type="file" id="input-img" style="display: none;"/>		
+						  <textarea id="content" name="content" style="height: 300px;">${vo.content }</textarea>
+						  <label class="btn btn-primary text-white" style="width: 100%; margin-top: 7px;"  for="input-img">사진 업로드</label>
+						  <input type="file" id="input-img" style="display: none;"/>	
+						  <input type="hidden" name=member_id value="${sessionScope.id }"/>
+					  	  <input type="hidden" name=place_no value="${vo.place_no }"/>
+					  	  <input type="hidden" name=review_no value="${vo.no }"/>
 						
-						<button type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 49%; margin-top: 20px;">확인</button>				  
-						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 49%; margin-top: 20px;" onclick="self.close();">취소</button>				  
+						<input type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 47%; margin-top: 30px;" value="확인">				  
+						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 47%; margin-top: 30px; float: right;" onclick="#">취소</button>				  
 					  </form>
 				</div>
 			</div>

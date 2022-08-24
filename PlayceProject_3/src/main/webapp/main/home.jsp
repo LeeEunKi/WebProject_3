@@ -209,6 +209,7 @@
 							<blockquote>
 								<p>&ldquo;${brvo.content }&rdquo;</p>
 							</blockquote>
+							<!-- <p class="text-black-50">Designer, Co-founder</p>  -->
 						</div>
 					 </div>
 					</c:forEach>
