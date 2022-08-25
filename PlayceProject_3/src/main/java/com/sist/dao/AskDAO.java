@@ -204,4 +204,19 @@ public class AskDAO {
 				 session.close();
 		 }
 	 }
+	//[관리자] 문의글 삭제
+		public static void admin_askDelete(int no) {
+			SqlSession session = null;
+			try {
+				session = ssf.openSession();
+				session.update("admin_askDelete",no);
+				session.commit();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+				System.out.println("AskDAO : admin_askDelete() ERROR");
+			}finally {
+				if(session!=null)
+					session.close();
+			}
+		}
 }

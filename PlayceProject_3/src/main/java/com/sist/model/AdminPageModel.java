@@ -69,10 +69,11 @@ public class AdminPageModel {
 		String ask_no = request.getParameter("ask_no");
 		AskVO vo = AskDAO.admin_askDetailData(Integer.parseInt(ask_no));
 		request.setAttribute("askVO", vo);
-		request.setAttribute("ask_no", Integer.parseInt(ask_no));
-		request.setAttribute("admin_jsp", "../adminpage/askReply_insert.jsp");
-		request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
-		return "../main/main.jsp";
+		/*
+		 * request.setAttribute("admin_jsp", "../adminpage/askReply_insert.jsp");
+		 * request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
+		 */
+		return "../adminpage/askReply_insert.jsp";
 	}
 	//[관리자] 문의글 답변 작성 처리
 	@RequestMapping("adminpage/askReply_insert_ok.do")
@@ -94,9 +95,16 @@ public class AdminPageModel {
 		
 		AskDAO.admin_askInsert(Integer.parseInt(ask_no),vo);
 		
-//		request.setAttribute("admin_jsp", "../adminpage/askReply.jsp");
-//		request.setAttribute("main_jsp", "../adminpage/adminpage.jsp");
 		return "redirect:../adminpage/askReply.do";//어드민 질문목록으로 이동
+	}
+	//[관리자] 부적절한 문의글 삭제
+	@RequestMapping("adminpage/askReply_delete.do")
+	public String adminpage_askReply_delete(HttpServletRequest request,HttpServletResponse response) {
+		String ask_no = request.getParameter("ask_no");
+		System.out.println(ask_no);
+		AskDAO.admin_askDelete(Integer.parseInt(ask_no));
+		
+		return "redirect:../adminpage/askReply.do";
 	}
 	
 	//[관리자] 예약 목록 조회 //type=0 (승인대기목록) type=1(승인완료목록)
