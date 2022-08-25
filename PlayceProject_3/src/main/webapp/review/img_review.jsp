@@ -12,9 +12,9 @@
 
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
-				<div class="col-lg-9 text-center mt-5">
-					<h2 class="heading_img-rv" data-aos="fade-up">사진 리뷰</h2>	
-					<h3 class="heading2_img-rv" data-aos="fade-up">게스트의 모든 사진을 한 곳에</h3>
+				<div class="col-lg-9-1 text-center"style="position: relative; top: -80px;">
+					<h2 class="heading_img-rv" data-aos="fade-up" style="position: relative;">사진 리뷰</h2>	
+					<h3 class="heading2_img-rv" data-aos="fade-up" style="position: relative;">게스트의 모든 사진을 한 곳에</h3>
 				</div>
 			</div>
 		</div>
