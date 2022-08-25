@@ -10,11 +10,6 @@
 <script type="text/javascript">
 $(function () {
 	
-	
-	$('.likeBtn').click(function () {
-		alert("로그인 후 추천이 가능합니다");
-	})
-	
 	let page_no = 1;
 	let place_no = ${place_no};
 	$.ajax({

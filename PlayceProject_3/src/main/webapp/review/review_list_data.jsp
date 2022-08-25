@@ -1,11 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function () {
+	
+	
+	$('.likeBtn').click(function () {
+		alert("로그인 후 추천이 가능합니다");
+	})
+})
+</script>
 <c:forEach var="rvo" items="${rList }">
 		<div>
-		<c:if test="${rList!=rList.get(rList.size()-1) }">
-		<div class="col-lg-8" style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
-	  	 </c:if>
+		<!-- <div class="col-lg-8" style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div> -->
 	  	  	<p class="de-text-reviewer">${rvo.member_id }</p>
 	   	  	<span class="score">
 				<c:choose>
