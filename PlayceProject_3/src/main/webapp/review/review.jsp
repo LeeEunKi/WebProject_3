@@ -25,6 +25,18 @@ $(function () {
 			$('#review_data').html(result);
 		}
 	})
+	$('.page-no').click(function(e){
+		page_no = parseInt(e.target.innerText.trim());
+		place_no = ${place_no};
+		$.ajax({
+			type:'post',
+			url:'../review/review_page.do',
+			data:{"page_no":page_no,"place_no":place_no},
+			success:function(result){
+				$('#review_data').html(result);
+			}
+		})
+	})
 })
 </script>
 </head>
@@ -69,7 +81,7 @@ $(function () {
 						    <!-- 페이지네이션 시작 --> 
 						<div class="custom-pagination text-center">
 						 <c:if test="${startPageR>1 }">
-		         				<a href="../place/detail.do?no=${place_no }&page=${startPageR-1 }">&laquo;</a>
+		         				<a href="../place/detail.do?place_no=${place_no }&page_no=${startPageR-1 }">&laquo;</a>
 		       			 </c:if>
 						<c:forEach var="i" begin="${startPageR }" end="${endPageR }">
 							<c:choose>
@@ -83,7 +95,7 @@ $(function () {
 		     				<a ${style } class="page-no" value="${i }">${i }</a>
 		      			</c:forEach>
 		       				<c:if test="${endPageR<totalPageR }">
-		       					<a href="../place/detail.do?no=${place_no }&page=${endPageR+1 }">&raquo;</a>
+		       					<a href="../place/detail.do?place_no=${place_no }&page_no=${endPageR+1 }">&raquo;</a>
 		      				</c:if>
 						</div>
 					<!-- 페이지네이션 끝 -->

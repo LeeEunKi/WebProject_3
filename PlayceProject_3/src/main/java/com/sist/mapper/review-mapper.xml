@@ -14,6 +14,8 @@
 	rcount NUMBER DEFAULT 0
  -->
  
+ 
+ 
  <!-- 도움돼요  -->  
 <update id="reviewLikeInsert" parameterType="ReviewVO">
    UPDATE review_3 SET
@@ -45,6 +47,11 @@ VALUES (1,#{no},#{member_id})
  WHERE review_no=#{no} AND member_id=#{member_id}
 </select>
 
+
+
+
+
+
 <!-- 평점 평균 구하기 -->
 <select id="scoreAvg" resultType="double" parameterType="int">
   SELECT ROUND(AVG(score),1) 
@@ -64,7 +71,7 @@ VALUES (1,#{no},#{member_id})
   SELECT /*+ INDEX_DESC(REVIEW_3 review_3_no_pk)*/ no,member_id,content,place_no,score,TO_CHAR(regdate,'YYYY-MM-DD') AS dbday,rcount,num
   FROM (SELECT no,member_id,content,place_no,score,regdate,rcount,rownum AS num
   FROM (SELECT no,member_id,content,place_no,score,regdate,rcount
-  FROM REVIEW_3 WHERE place_no=#{place_no}))
+  FROM REVIEW_3 WHERE place_no=#{place_no} ORDER BY no DESC))
   WHERE num BETWEEN #{start} AND #{end}
 </select>
 
@@ -74,6 +81,8 @@ VALUES (1,#{no},#{member_id})
   FROM review_3
   WHERE place_no=#{place_no}
 </select>
+
+
 <!-- 베스트 리뷰 -->
 <select id="bestReview" resultType="ReviewVO">
   SELECT place_no,member_id,content,score,(SELECT REP_IMAGE FROM place_3 p WHERE place_no=p.no ) AS rep_image,rcount,num
@@ -82,6 +91,10 @@ VALUES (1,#{no},#{member_id})
    FROM review_3 ORDER BY rcount DESC))
    WHERE num &lt;=6
 </select>
+
+
+
+
 <!-- 리뷰 등록 -->
 <insert id="reviewInsert" parameterType="ReviewVO">
    <!--  시퀀스 처리 -->
@@ -113,13 +126,17 @@ WHERE no=#{reserve_no}
    WHERE no=#{no}
 </update>
 
+
+
+
+<!-- 리뷰 수정 시 이전 작성 글 불러오기  -->
 <select id="reviewUpdateData" resultType="ReviewVO" parameterType="int">
 SELECT no,content,place_no
 FROM review_3
 WHERE no=#{no}
 </select>
 
-
+<!--  리뷰 수정 -->
 <update id="reviewUpdate" parameterType="ReviewVO">
  UPDATE REVIEW_3 SET
  content=#{content},
@@ -128,11 +145,15 @@ WHERE no=#{no}
  WHERE no=#{no}
  </update>
 
+
+
+
 <!-- 삭제 -->
 <delete id="reviewDelete" parameterType="int">
   DELETE FROM REVIEW_3
   WHERE no=#{no}
 </delete>
+<!--  리뷰 작성 체크 값 초기화 -->
 <update id="reviewCheckReset" parameterType="int">
 UPDATE reserve_info_3 SET
 review_no=0,

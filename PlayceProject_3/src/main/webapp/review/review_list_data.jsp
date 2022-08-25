@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:forEach var="rvo" items="${rList }">
 		<div>
-		<c:if test="${rList==rList.get(rList.size()-1) }">
+		<c:if test="${rList!=rList.get(rList.size()-1) }">
 		<div class="col-lg-8" style="margin-top: 20px; width: 100%; height: 1px; background-color: rgb(231, 234, 238);"></div>
 	  	 </c:if>
 	  	  	<p class="de-text-reviewer">${rvo.member_id }</p>

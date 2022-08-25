@@ -48,9 +48,7 @@ public class ReviewModel {
 		String place_no=request.getParameter("place_no"); //게시물 번호 참조키 
 		String content=request.getParameter("content");
 		String score=request.getParameter("rating");
-		//String imgname=request.getParameter("imgname"); 이미지 어카냐 진
-		/*HttpSession session=request.getSession(); 아이디 얻어와야지
-		String member_id=(String)session.getAttribute("member_id");*/
+
 		String member_id = request.getParameter("member_id");
 		System.out.println(reserve_no);
 		System.out.println(member_id);
@@ -116,9 +114,6 @@ public class ReviewModel {
 		String place_no=request.getParameter("place_no"); //게시물 번호 참조키 
 		String content=request.getParameter("content");
 		String score=request.getParameter("rating");
-		//String imgname=request.getParameter("imgname"); 이미지 어카냐 진
-		/*HttpSession session=request.getSession(); 아이디 얻어와야지
-		String member_id=(String)session.getAttribute("member_id");*/
 	
 		System.out.println(no);
 		System.out.println(place_no);
@@ -149,56 +144,34 @@ public class ReviewModel {
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
 		System.out.println(id);
-		//중복 체크 
+		
 		ReviewVO vo=new ReviewVO();
+		vo.setNo(Integer.parseInt(review_no));
+		vo.setMember_id(id);
+		
+		//중복 체크 
 		Map map=new HashMap();
 		map.put("no", review_no);
 		map.put("member_id", id);
 		
 		int count=ReviewDAO.reviewLikeCheck(map);
 		System.out.println(count);
+		
 		if(count==0)
 		{
-			vo.setNo(Integer.parseInt(review_no));
-			vo.setMember_id(id);
-			
 			ReviewDAO.reviewLikeInsert(vo);
 			ReviewDAO.likeCheckInsert(vo);
 		}
 		else
 		{
-		   vo.setNo(Integer.parseInt(review_no));
-		   vo.setMember_id(id);
-		   
 		   ReviewDAO.reviewLikeCancel(vo);	
 		   ReviewDAO.likeCheckDelete(vo);
-
-		   return "redirect:../place/detail.do?no="+place_no+"#review";
 		}
 			
 		return "redirect:../place/detail.do?no="+place_no+"#review";
 	}
 	
-
 	
-	
-	@RequestMapping("review/review_like_delete.do")
-	public String review_like_delete(HttpServletRequest request, HttpServletResponse response)
-	{
-		String place_no=request.getParameter("place_no");
-		String review_no=request.getParameter("review_no");
-
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-
-		ReviewVO vo=new ReviewVO();
-		vo.setNo(Integer.parseInt(review_no));
-		vo.setMember_id(id);
-		
-		ReviewDAO.reviewLikeCancel(vo);
-		ReviewDAO.reviewCheckReset(Integer.parseInt(review_no));
-		return "redirect:../place/detail.do?no="+place_no;
-	}
 	
 	//[유저] 문의글 페이지네이션
 		@RequestMapping("review/review_page.do")
