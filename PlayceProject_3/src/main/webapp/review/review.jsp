@@ -9,6 +9,9 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function () {
+/* 	let element2 = document.querySelector('#review');
+	let elementTop2 = window.pageYOffset + element2.getBoundingClientRect().top;
+	console.log(elementTop2) // 1000 */
 	
 	let page_no = 1;
 	let place_no = ${place_no};
@@ -21,22 +24,28 @@ $(function () {
 		}
 	})
 	$('.page-no').click(function(e){
+		
+	    $("html, body").animate({scrollTop: 2250.984375}, 400);   /* 자동 스크롤 */
+	    
 		page_no = parseInt(e.target.innerText.trim());
 		place_no = ${place_no};
+		
 		$.ajax({
 			type:'post',
 			url:'../review/review_page.do',
 			data:{"page_no":page_no,"place_no":place_no},
 			success:function(result){
 				$('#review_data').html(result);
+
 			}
 		})
 	})
+
 })
 </script>
 </head>
 <body>		
-		  <div class="col-lg-8">
+		  <div class="col-lg-8" id="review_top">
 			   
 				    <h2 class="heading text-primary" style="padding-top: 30px; display: inline-block;" id="review">장소 리뷰&nbsp;&nbsp;</h2>
 				    <h2 class="count" style="padding-top: 30px;">${rtotal }</h2>
