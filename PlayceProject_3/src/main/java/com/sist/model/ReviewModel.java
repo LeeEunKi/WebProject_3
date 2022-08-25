@@ -172,6 +172,7 @@ public class ReviewModel {
 		   
 		   ReviewDAO.reviewLikeCancel(vo);	
 		   ReviewDAO.likeCheckDelete(vo);
+
 		   return "redirect:../place/detail.do?no="+place_no+"#review";
 		}
 			

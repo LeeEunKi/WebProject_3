@@ -26,7 +26,7 @@
     border-right-width: thin;
     border-right-color: graytext;
 }
-.active{
+.active_a{
    font-weight: bold;
    color: #2964D9;
 }
@@ -55,25 +55,25 @@
 				<div class="col-lg-3 side" style="border-right-style: solid; border-right-color: rgb(231, 234, 238);">
          			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">예약 내역</h3>
-            			<a href="../mypage/reserve_list.do" class="${page=='reservelist1'?'active':'item' }"><i class="angle right icon"></i>
+            			<a href="../mypage/reserve_list.do" class="${page=='reservelist1'?'active_a':'item' }"><i class="angle right icon"></i>
               				진행중 </a>
-			            <a href="../mypage/reserve_list_checked.do" class="${page=='reservelist2'?'active':'item' }"><i class="angle right icon"></i>
+			            <a href="../mypage/reserve_list_checked.do" class="${page=='reservelist2'?'active_a':'item' }"><i class="angle right icon"></i>
 			                완료 </a>
 			            <!-- <a class="item"><i class="angle right icon"></i>
 			                취소/환불 </a>-->
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">My 활동</h3>
-            			<a href="../mypage/ask_list.do" class="${page=='asklist'?'active':'item' }"><i class="angle right icon"></i>
+            			<a href="../mypage/ask_list.do" class="${page=='asklist'?'active_a':'item' }"><i class="angle right icon"></i>
               				문의 내역 </a>
-			            <a href="../mypage/like_list.do" class="${page=='likelist'?'active':'item' }"><i class="angle right icon"></i>
+			            <a href="../mypage/like_list.do" class="${page=='likelist'?'active_a':'item' }"><i class="angle right icon"></i>
 			                찜 목록 </a>
           			</div>
           			<div class="ui vertical text menu sidemenu" style="margin-bottom: 35px">
          			   <h3 class="subject">회원 정보</h3>
-            			<a href="../member/join_update_ok.do" class="${page=='update'?'active':'item' }"><i class="angle right icon"></i>
+            			<a href="../member/join_update_ok.do" class="${page=='update'?'active_a':'item' }"><i class="angle right icon"></i>
               				개인정보 수정 </a>
-			            <a href="../member/join_delete_ok.do" class="${page=='delete'?'active':'item' }"><i class="angle right icon"></i>
+			            <a href="../member/join_delete_ok.do" class="${page=='delete'?'active_a':'item' }"><i class="angle right icon"></i>
 			                회원탈퇴 </a>
           			</div>
 			    </div>

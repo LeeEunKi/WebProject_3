@@ -40,11 +40,8 @@ $(function(){
 			} 
 		})
 	})
-	$('#rvDel').click(function(){
-		alert("리뷰를 삭제합니다");
-		
-		
-		})
+	$('#rvDel').click(function () {
+		alert("작성하신 리뷰가 삭제되었습니다");
 	})
 })
 </script>
@@ -96,7 +93,7 @@ $(function(){
 			  
 	          <form method="post" action="../review/review_delete.do?place_no=${vo.place_no }&review_no=${vo.review_no}" style="margin-top: 7px; float: right;">
 			      <input type="hidden" name=member_id value="${sessionScope.id }"/>
-				  <p><input type="submit" class="btn btn-primary text-white py-2 px-3" value="리뷰 삭제" id="rvDel"/></p>
+				  <p><input type="submit" class="btn btn-success text-white py-2 px-3" style="color: #888 !important" value="리뷰 삭제" id="rvDel"/></p>
 			  </form>
 		  </c:if>
 	      </td>
