@@ -157,7 +157,7 @@ $(function () {
 					  	  <input type="hidden" name=review_no value="${vo.no }"/>
 						
 						<input type="submit" id="pBtn" class="btn btn-primary text-white" style="width: 47%; margin-top: 30px;" value="확인">				  
-						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 47%; margin-top: 30px; float: right;" onclick="#">취소</button>				  
+						<button type="button" id="cBtn" class="btn btn-danger text-white" style="width: 47%; margin-top: 30px; float: right;" onclick="history.back();">취소</button>				  
 					  </form>
 				</div>
 			</div>
