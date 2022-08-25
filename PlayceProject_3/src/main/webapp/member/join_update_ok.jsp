@@ -5,6 +5,19 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#btn-check').click(function () {
+		let pwd=$('#pwd').val();
+		if(pwd.trim()==""){
+			$('#pwd').focus();
+			return;
+		}
+		$('#pwd-check').submit();
+	})
+})
+</script>
 <style type="text/css">
 .title{
 	position: relative;
@@ -126,14 +139,14 @@ button{
      <br>
      비밀번호를 입력 후, 이용이 가능합니다.
     </div>
-    <form method="post" action="../member/join_update_pwdConfirm.do">
+    <form method="post" action="../member/join_update_pwdConfirm.do" id="pwd-check">
     <div class="pwd-box">
      <label for="pwd">
       <span>비밀번호</span>
       <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요.">
       <input type="hidden" name="type" value="1">
      </label>
-     <button type="submit">회원 확인</button>
+     <button type="button" id="btn-check">회원 확인</button>
     </div>
     </form>
   </div>

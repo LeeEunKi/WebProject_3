@@ -65,8 +65,7 @@
 	<update id="admin_askDelete" parameterType="int">
 		UPDATE askboard_3 SET
 		isReply = 1,
-		content ='관리자에 의해 삭제 되었습니다.',
-		member_id='admin'
+		content ='관리자에 의해 삭제 되었습니다.'
 		WHERE no=#{no}
 	</update>
 	<!-- [유저] 자기가 올린 문의글 목록 가져오기 -->
