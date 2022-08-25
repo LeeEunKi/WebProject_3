@@ -59,6 +59,17 @@ $(function(){
     text-align: left;
     color: #2964D9;
 }
+#askContent{
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
 </style>
 </head>
 <body>
@@ -111,7 +122,7 @@ $(function(){
 				<form method="post" action="../ask/ask_insert.do">
 					<input type="hidden" name=member_id value="${sessionScope.id }"/>
 					<input type="hidden" name=place_no value="${place_no }"/>
-					<textarea rows=5 cols=50 name="askContent"></textarea>
+					<textarea id="askContent" rows=5 cols=50 name="askContent"></textarea>
 					<br>
 					<button type="submit" class="btn btn-primary text-white" style="width: 15%; font-size:10px;">문의하기</button>
 				</form>
