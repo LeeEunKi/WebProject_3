@@ -23,7 +23,7 @@ $(function () {
 			$('#review_data').html(result);
 		}
 	})
-	$('.page-no').click(function(e){
+	$('.page-no-1').click(function(e){
 		
 	    $("html, body").animate({scrollTop: 2250.984375}, 400);   /* 자동 스크롤 */
 	    
@@ -96,7 +96,7 @@ $(function () {
 						       <c:set var="style" value=""/>
 						     </c:otherwise>
 						    </c:choose>
-		     				<a ${style } class="page-no" value="${i }">${i }</a>
+		     				<a ${style } class="page-no-1" value="${i }">${i }</a>
 		      			</c:forEach>
 		       				<c:if test="${endPageR<totalPageR }">
 		       					<a href="../place/detail.do?place_no=${place_no }&page_no=${endPageR+1 }">&raquo;</a>
