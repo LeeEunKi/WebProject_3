@@ -59,7 +59,6 @@ public class AskModel {
 		map.put("end", end);
 		map.put("place_no", Integer.parseInt(place_no));
 		List<AskVO> qList = AskDAO.askListData(map);
-
 		request.setAttribute("qList", qList);
 		return "../ask/ask_list_data.jsp";
 	}

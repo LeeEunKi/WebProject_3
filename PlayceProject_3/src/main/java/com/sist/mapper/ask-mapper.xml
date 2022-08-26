@@ -5,15 +5,15 @@
 	<select id="askListData" resultType="AskVO" parameterType="hashmap">
 		SELECT place_no, no, member_id, content, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, isreply,place_img, group_id, group_tab, num
 		FROM (SELECT place_no, no, member_id, content, regdate, isreply,place_img, group_id, group_tab, rownum as num
-			FROM (SELECT place_no, no, member_id, content, regdate, isreply,place_img, group_id, group_tab
-				FROM askboard_3 WHERE place_no = #{place_no} ORDER BY group_id DESC, group_step ASC ))
+		    FROM (SELECT place_no, no, member_id, content, regdate, isreply,place_img, group_id, group_tab
+		    FROM askboard_3 WHERE place_no = #{place_no} ORDER BY group_id DESC, group_step ASC ))
 		WHERE num BETWEEN #{start} AND #{end}
 	</select>
 	<!-- 장소별 문의 수 가져오기 -->
 	<select id="askCount" resultType="int" parameterType="int">
 		SELECT COUNT(*)
 		FROM askboard_3
-		WHERE place_no=#{place_no} AND place_img is not null
+		WHERE place_no=#{place_no}<!--  AND place_img is not null -->
 	</select>
 	<!-- 문의 등록하기 -->
 	<insert id="askInsert" parameterType="AskVO">
