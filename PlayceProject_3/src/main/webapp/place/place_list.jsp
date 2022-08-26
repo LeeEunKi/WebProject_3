@@ -70,7 +70,7 @@
 								   </c:choose>
 						        <span class="caption">&nbsp;${vo.parking }대</span>
 						      </span>
-						      <p class="meta" style="display: inline;color: crimson;">♥&nbsp;${totalL }</p>
+						     <%--  <p class="meta" style="display: inline;color: crimson;">♥&nbsp;${totalL }</p> --%>
 						    </div>
 						    <!-- <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>-->
 						  </div>
