@@ -23,12 +23,9 @@ $(function () {
 		    }
 			
 	})
-	$("#pBtn").off().on('click', function() {}
-	
-	
+
 })
 </script>
-<script type="text/javascript">window.history.forward(1); </script>
 <title></title>
 </head>
 <body>
