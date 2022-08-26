@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2 class="sectiontitle">찜 목록</h2>
+<h2 class="sectiontitle">나의 찜 목록</h2>
   <c:if test="${totalL==0 }">
   	  <div class="text-center">
 	 	<img src="https://shareit.kr/static/media/img-no-qna.0463e10d.png" style="width:30%;">
@@ -19,17 +19,17 @@
   <table class="table"> 
     <tr> 
       <th width="25%" class="text-center"></th> 
-      <th width="25%" class="text-center">장소 번호</th>
-      <th width="25%" class="text-center">장소 이름</th>
+      <!-- <th width="25%" class="text-center">장소 번호</th> -->
+      <th width="50%" class="text-center">장소 이름</th>
       <th width="25%" class="text-center"></th>
     </tr>
     <c:forEach var="pvo" items="${pList }">
 	    <tr style="vertical-align:middle">
-	      <td width="20%" class="text-center">
+	      <td width="25%" class="text-center">
 	       <a href="../place/detail.do?no=${pvo.no }"><img src="${pvo.rep_image }" style="width: 100px;height: 100px;"></a>  
 	      </td>
-	      <td width="5%" class="text-center">${pvo.no }</td> <!-- 번호 -->
-	      <td width="25%" class="text-center"><a href="../place/detail.do?no=${pvo.no }">${pvo.name }</a></td><!-- 문의 장소 -->
+	      <%-- <td width="5%" class="text-center">${pvo.no }</td> <!-- 번호 --> --%>
+	      <td width="50%" class="text-center"><a href="../place/detail.do?no=${pvo.no }">${pvo.name }</a></td><!-- 문의 장소 -->
 	      <td width="25%" class="text-center"><a href="../mypage/like_cancel.do?no=${pvo.no }&page=${curPage}" class="btn btn-primary text-white">찜하기 취소</a></td> 
 	    </tr>
     </c:forEach>
