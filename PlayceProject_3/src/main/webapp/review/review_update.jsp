@@ -8,8 +8,9 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function () {
+		  
 	$('#pBtn').click(function() {
-		
+			
 			if($('input[name="rating"] ').is(':checked')===false)
 		    {
 				$('#s_result').text("평점을 꼭 매겨주셔야해요!");
@@ -20,12 +21,14 @@ $(function () {
 				$('#content').focus();
 				return false;
 		    }
-		
+			
 	})
+	$("#pBtn").off().on('click', function() {}
 	
 	
 })
 </script>
+<script type="text/javascript">window.history.forward(1); </script>
 <title></title>
 </head>
 <body>

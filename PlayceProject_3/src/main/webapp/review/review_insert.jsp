@@ -8,7 +8,8 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function () {
-	$('#pBtn').click(function() {
+	
+	$('#pBtn').one('click',function() {
 		
 			if($('input[name="rating"] ').is(':checked')===false)
 		    {
@@ -19,13 +20,15 @@ $(function () {
 		    {
 				$('#content').focus();
 				return false;
-		    }
-		
+		    }	
 	})
 	
+	$("#pBtn").off().on('click', function() {}
 	
 })
 </script>
+<script type="text/javascript">window.history.forward(1); </script>
+
 <title></title>
 </head>
 <body>

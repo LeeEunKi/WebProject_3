@@ -27,7 +27,7 @@ a{
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
-$(function(){
+$(function(){	
 	$('.reserves').click(function(){
 		let no = $(this).attr("data-no");
 		no = parseInt(no);
@@ -40,9 +40,10 @@ $(function(){
 			} 
 		})
 	})
-	$('#rvDel').click(function () {
-		alert("작성하신 리뷰가 삭제되었습니다");
-	})
+	
+/* 	$('#rvDel').click(function () {
+		 alert('작성하신 리뷰가 삭제되었습니다');
+	}); */
 })
 </script>
 </head>
