@@ -323,12 +323,12 @@ WHERE no=#{no}
 	}
 	
 	//리뷰 도움돼요 취소
-	public static void reviewLikeCancel(ReviewVO vo)
+	public static void reviewLikeCancel(int no)
 	{
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			session.update("reviewLikeCancel", vo);
+			session.update("reviewLikeCancel", no);
 			session.commit();
 		} catch (Exception e) {
 			// TODO: handle exception

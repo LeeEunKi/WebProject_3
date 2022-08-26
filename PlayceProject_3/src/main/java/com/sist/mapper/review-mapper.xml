@@ -28,11 +28,11 @@ VALUES (1,#{no},#{member_id})
 </insert>
 
  <!-- 도움돼요 취소  -->
-<update id="reviewLikeCancel" parameterType="ReviewVO">
+<update id="reviewLikeCancel" parameterType="int">
 	UPDATE review_3 SET
 	rcount = rcount - 1
 	
-	WHERE no=#{no} AND member_id=#{member_id}
+	WHERE no=#{no} 
 </update>
 <delete id="likeCheckDelete" parameterType="ReviewVO">
  DELETE FROM like_check_3

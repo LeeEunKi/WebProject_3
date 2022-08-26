@@ -164,7 +164,7 @@ public class ReviewModel {
 		}
 		else
 		{
-		   ReviewDAO.reviewLikeCancel(vo);	
+		   ReviewDAO.reviewLikeCancel(Integer.parseInt(review_no));	
 		   ReviewDAO.likeCheckDelete(vo);
 		}
 			
