@@ -163,7 +163,7 @@
 			<div class="row mb-5 align-items-center">
 				<div class="col-lg-6">
 					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">베스트 리뷰</h2>
-					<p class="sub-title" style="width: 210px">플레이스 고객 여러분이 남겨주신&nbsp;&nbsp;
+					<p class="sub-title" style="width: 210px">플레이스 고객 여러분이 남겨주신
 					정성 가득한 베스트 이용 후기</p>
 				</div>
 				<div class="col-md-6 text-md-end">
