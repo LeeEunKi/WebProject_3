@@ -70,7 +70,7 @@ strong{
   · 위반행위: 지속적인 광고 및 스팸 발송, 정품 소프트웨어 유출, 음란물 배포 등
     </textarea>
     <p>
-     <label for="checked_agree" style="cursor: pointer;">
+     <label for="checked_agree" style="cursor:  pointer;">
        <input type="checkbox" id="checked_agree" name="mem_agree" title="동의" style="float:left ; margin-right: 5px;">
        회원약관에 동의합니다.
      </label>
