@@ -51,7 +51,7 @@ public class AskModel {
 		if(page_no==null)
 			page_no="1";
 		int curPage = Integer.parseInt(page_no);
-		int rowSize = 5;
+		int rowSize = 3;
 		int start = (rowSize*curPage)-(rowSize-1);
 		int end = rowSize*curPage; 
 		Map map = new HashMap();
