@@ -49,7 +49,7 @@ $(function () {
 			   
 				    <h2 class="heading text-primary" style="padding-top: 30px; display: inline-block;" id="review">장소 리뷰&nbsp;&nbsp;</h2>
 				    <h2 class="count" style="padding-top: 30px;">${rtotal }</h2>
-				    <h2 class="star" style="color: orange; display: inline-block; padding-left: 25px; position: relative; top: -2px;">★</h2>
+				    <h2 class="star" style="color: orange; display: inline-block; padding-left: 25px; position: relative; top: -4px;">★</h2>
 				    <c:if test="${avg!=null }">
 				      <h3 class="avg" style="padding-left: 5px; display: inline-block; position: relative; top: -3px;">${avg }</h3>
 				    </c:if>
