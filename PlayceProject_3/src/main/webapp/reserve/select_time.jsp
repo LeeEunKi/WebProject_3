@@ -38,7 +38,9 @@ $(function(){
 	<select id="selectTime" name="user_job">
 		<optgroup>
 		  <c:forEach var="time" items="${times }">
+		  	<c:if test="${time.no!=17 }">
 		  	 <option class="times" value="${time.no}">${time.time }~</option>
+		  	</c:if>
 		  </c:forEach>
 		</optgroup> 
 	</select>

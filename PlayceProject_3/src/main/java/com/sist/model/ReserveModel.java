@@ -157,7 +157,10 @@ public class ReserveModel {
 		map.put("place_no", Integer.parseInt(place_no));
 		map.put("check_date", selectDate);
 		List<TimeVO> times = ReserveDAO.reserveGetTime(map);
-		
+		int timeSize = times.size();
+		if(timeSize==17)
+			timeSize = 16;
+		request.setAttribute("timeSize",timeSize);
 		request.setAttribute("times",times);
 		return "../reserve/select_time.jsp";
 	}
@@ -244,6 +247,8 @@ public class ReserveModel {
 			rtime++;
 			totalPrice += pvo.getPrice();
 			end = rtime;
+			System.out.println(rtime);
+			System.out.println(end);
 		}
 		System.out.println(totalPrice);
 		//조회용 데이터추가
