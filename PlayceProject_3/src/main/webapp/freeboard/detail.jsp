@@ -432,7 +432,7 @@ $(function(){
        				<td width=30% class="text-center">${vo.hit }</td>
        			</tr>
        			<tr>
-       				<td colspan="4" height="200" valign="top" class="text-center">
+       				<td colspan="4" height="200" valign="top">
        					<pre style="white-space: pre-wrap; background-color: white; border:none">${vo.content }</pre>
        				</td>
         		</tr>

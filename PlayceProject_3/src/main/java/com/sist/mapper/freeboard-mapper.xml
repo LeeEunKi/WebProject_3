@@ -5,9 +5,10 @@
 	<select id="boardListData" resultType="FreeBoardVO" parameterType="hashmap">
 		 SELECT no,id,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
 	    FROM (SELECT no,id,subject,name,regdate,hit,rcount,rownum as num 
-	    FROM (SELECT /*+ INDEX_DESC(freeboard_3 pf_no_pk)*/ no,id,subject,name,regdate,hit,rcount 
+	    FROM (SELECT /*+INDEX_DESC(FreeBoard_3 freeboard_no_pk)*/ no,id,subject,name,regdate,hit,rcount 
 	    FROM freeboard_3))
 	    WHERE num BETWEEN #{start} AND #{end}
+	    ORDER BY no DESC
 	</select>
 	<select id="boardTotalPage" resultType="int">
 		SELECT CEIL(COUNT(*)/10.0) FROM freeboard_3
@@ -50,6 +51,6 @@
 	<select id="boardSearchData" resultType="FreeBoardVO">
      SELECT no,id,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
      FROM freeboard_3
-	 ORDER BY no ASC
+	 ORDER BY no DESC
    </select>
 </mapper>
