@@ -109,7 +109,7 @@ $(function(){
         <tr>
           <th width=20% class="text-right">이름</th>
           <td width=80%>
-            <input type=text name=name size=15 class="input-sm" id="name" value="${vo.name }">
+            <input type=text name=name size=15 class="input-sm" id="name" value="${vo.id }">
             <input type=hidden name=no value="${vo.no }" id="no">
           </td>
         </tr>

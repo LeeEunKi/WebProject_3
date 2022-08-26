@@ -117,12 +117,13 @@ public class FreeBoardModel {
 			request.setCharacterEncoding("UTF-8");
 		}catch(Exception ex) {}
 		
-		String name=request.getParameter("name");
-		String id=request.getParameter("id");
 		String subjet=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String pwd=request.getParameter("pwd");
 		String no=request.getParameter("no");
+		HttpSession session=request.getSession();
+		String name=(String)session.getAttribute("name");
+		String id=(String)session.getAttribute("id");
 		FreeBoardVO vo=new FreeBoardVO();
 		vo.setId(id);
 		vo.setName(name);
