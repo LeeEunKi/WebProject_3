@@ -17,10 +17,10 @@
  
  
  <!-- 도움돼요  -->  
-<update id="reviewLikeInsert" parameterType="ReviewVO">
+<update id="reviewLikeInsert" parameterType="int">
    UPDATE review_3 SET
    rcount= rcount + 1
-   WHERE no=#{no} AND member_id=#{member_id}
+   WHERE no=#{no} 
 </update>
 <insert id="likeCheckInsert" parameterType="ReviewVO">
 INSERT INTO like_check_3 

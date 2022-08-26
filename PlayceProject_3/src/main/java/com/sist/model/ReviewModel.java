@@ -159,7 +159,7 @@ public class ReviewModel {
 		
 		if(count==0)
 		{
-			ReviewDAO.reviewLikeInsert(vo);
+			ReviewDAO.reviewLikeInsert(Integer.parseInt(review_no));
 			ReviewDAO.likeCheckInsert(vo);
 		}
 		else

@@ -269,12 +269,12 @@ WHERE no=#{no}
 	
 	//리뷰 도움돼요
 	//<insert id="reviewLikeInsert" parameterType="com.sist.vo.ReviewLikeVO">
-	public static void reviewLikeInsert(ReviewVO vo)
+	public static void reviewLikeInsert(int no)
 	{
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			session.update("reviewLikeInsert", vo);
+			session.update("reviewLikeInsert", no);
 			session.commit();
 		} catch (Exception e) {
 			// TODO: handle exception
