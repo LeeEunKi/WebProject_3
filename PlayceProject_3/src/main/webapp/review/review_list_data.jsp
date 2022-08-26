@@ -9,6 +9,8 @@ $(function () {
 	$('.likeBtn').click(function () {
 		alert("로그인 후 추천이 가능합니다");
 	})
+	
+	$(".likeBtn").off().on('click', function() {}
 })
 </script>
 <c:forEach var="rvo" items="${rList }">
@@ -36,7 +38,7 @@ $(function () {
 			</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
 	  	 	 <p class="de-text-desc">${rvo.content }</p>
 	  	    <c:if test="${sessionScope.id!=null }">
-	  	        <a href="../review/review_like.do?rno=${rvo.no }&place_no=${rvo.place_no }" class="btn btn-sm btn-success py-2 px-3"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></a>
+	  	        <a href="../review/review_like.do?rno=${rvo.no }&place_no=${rvo.place_no }" class="btn btn-sm btn-success py-2 px-3 likeBtn"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></a>
 		  	</c:if>
 	  	    <c:if test="${sessionScope.id==null }">
 	  	        <span class="btn btn-sm btn-success py-2 px-3 likeBtn"><img src="../review/unlike.png" style="width: 16px;height: 16px; display: inline; margin-bottom: 4px; color: #888"><span style="margin-left: 10px">${rvo.rcount }</span></span>

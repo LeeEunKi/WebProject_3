@@ -41,9 +41,9 @@ $(function(){
 		})
 	})
 	
-/* 	$('#rvDel').click(function () {
+	$('#rvDel').click(function () {
 		 alert('작성하신 리뷰가 삭제되었습니다');
-	}); */
+	})
 })
 </script>
 </head>
