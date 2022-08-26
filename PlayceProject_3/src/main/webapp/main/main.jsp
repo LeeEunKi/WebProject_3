@@ -25,7 +25,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css'>
 
     
-<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+<title>P L A Y C E</title>
 </head>
 <body>
     <jsp:include page="header.jsp"></jsp:include>
