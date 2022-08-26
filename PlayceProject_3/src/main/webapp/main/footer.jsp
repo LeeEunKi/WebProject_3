@@ -55,9 +55,9 @@
 						<h3>Links</h3>
 						<ul class="list-unstyled links">
 							<li><a href="../main/about.do">서비스 소개</a></li>
-							<li><a href="#">사진 리뷰</a></li>
+							<li><a href="../review/img_review.do">사진 리뷰</a></li>
 							<li><a href="../freeboard/list.do">커뮤니티</a></li>
-							<li><a href="#">공지사항</a></li>
+							<li><a href="../noticeboard/list.do">공지사항</a></li>
 						</ul>
 
 						<ul class="list-unstyled social">
