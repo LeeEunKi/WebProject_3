@@ -42,4 +42,17 @@ public class PlaceLikeModel {
 		PlaceLikeDAO.placeLikeDelete(vo);
 		return "redirect:../place/detail.do?no="+place_no;
 	}
+	//좋아요 취소!(마이페이지
+	@RequestMapping("mypage/like_cancel.do")
+	public String mypage_place_like_cancel(HttpServletRequest request, HttpServletResponse response) {
+		String place_no = request.getParameter("no");
+		HttpSession session = request.getSession();
+		String member_id = (String)session.getAttribute("id");
+		PlaceLikeVO vo = new PlaceLikeVO();
+		vo.setPlace_no(Integer.parseInt(place_no));
+		vo.setMember_id(member_id);
+		//DB연동!
+		PlaceLikeDAO.placeLikeDelete(vo);
+		return "redirect:../mypage/like_list.do";
+	}
 }
