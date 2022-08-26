@@ -73,6 +73,7 @@ public class PlaceModel {
 		
 		//문의게시판 영역 - 데이터 
 		int totalQ = AskDAO.askTotalCount(Integer.parseInt(no));
+		int total_userQ = AskDAO.askCount(Integer.parseInt(no));
 		//리뷰
 		int totalR = ReviewDAO.reviewTotalCount(Integer.parseInt(no));
 		String page = request.getParameter("page");
@@ -135,7 +136,8 @@ public class PlaceModel {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("totalPage", totalPage);
 		
-		request.setAttribute("totalQ", totalQ); //문의 총 개수
+		request.setAttribute("totalQ", totalQ); //문의 총 개수(관리자 답변포함)
+		request.setAttribute("total_userQ", total_userQ); //유저문의 총 개수
 		
 		//리뷰 영역 요소
 		request.setAttribute("rList", rList);

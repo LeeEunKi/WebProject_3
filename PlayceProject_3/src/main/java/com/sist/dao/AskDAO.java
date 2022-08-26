@@ -44,6 +44,22 @@ public class AskDAO {
 		int total = 0;
 		try {
 			session = ssf.openSession();
+			total = session.selectOne("askTotalCount",place_no);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			System.out.println("AskDAO : askTotalCount() ERROR");
+		}finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	//유저 문의 수만 가져오기
+	public static int askCount(int place_no) {
+		SqlSession session = null;
+		int total = 0;
+		try {
+			session = ssf.openSession();
 			total = session.selectOne("askCount",place_no);
 		}catch(Exception ex) {
 			ex.printStackTrace();

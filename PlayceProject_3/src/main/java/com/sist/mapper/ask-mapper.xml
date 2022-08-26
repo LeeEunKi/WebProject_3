@@ -17,6 +17,11 @@
 		FROM askboard_3
 		WHERE place_no=#{place_no}  AND group_step=0
 	</select>
+	<select id="askTotalCount" resultType="int" parameterType="int">
+		SELECT COUNT(*)
+		FROM askboard_3
+		WHERE place_no=#{place_no}
+	</select>
 	<!-- 문의 등록하기 -->
 	<insert id="askInsert" parameterType="AskVO">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">

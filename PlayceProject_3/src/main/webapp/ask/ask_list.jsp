@@ -11,7 +11,6 @@
 let i=0;
 $(function(){
 	
-	
 	let page_no = 1;
 	let place_no = ${place_no};
 	$.ajax({
@@ -41,8 +40,7 @@ $(function(){
 			</c:forEach>
 			        ];
 	$('.page-no').click(function(e){
-		
-		$("html, body").animate({scrollTop: 2773.140625}, 400); 
+		/* $("html, body").animate({scrollTop: 2633.140625}, 400);  */
 		
 		page_no = parseInt(e.target.innerText.trim());
 		place_no = ${place_no};
@@ -79,15 +77,15 @@ $(function(){
 </head>
 <body>
 	<div class="col-lg-8">
-		<h2 class="heading text-primary"style="padding-top: 30px; padding-bottom: 10px;" id="ask">Q&A&nbsp;&nbsp;<span><h3 class="count">${totalQ }</h3></span></h2>
+		<h2 class="heading text-primary"style="padding-top: 30px; padding-bottom: 10px;" id="ask">Q&A&nbsp;&nbsp;<span><h3 class="count">${total_userQ }</h3></span></h2>
 	    <!-- <p class="meta">California, United States</p> -->
-	    <c:if test="${totalQ==0 }">
+	    <c:if test="${total_userQ==0 }">
 	    	<div class="text-center">
 	    		<img src="https://shareit.kr/static/media/img-no-qna.0463e10d.png" style="width:30%;">
 	    		<p class="de-text-desc">등록된 문의가 없습니다.</p>
 	    	</div>
 	    </c:if>
-	    <c:if test="${totalQ!=0 }">
+	    <c:if test="${total_userQ!=0 }">
 	    <div id="ask_data_div">
 		    
 		</div>

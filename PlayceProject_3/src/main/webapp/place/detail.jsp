@@ -11,7 +11,9 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=063a056828484c8e1337656cc6cbc882&libraries=services"></script>
 <script type="text/javascript">
 $(function(){
-	
+	let element2 = document.querySelector('#ask');
+	let elementTop2 = window.pageYOffset + element2.getBoundingClientRect().top;
+	console.log(elementTop2);
 	var addr = $('#addr').text();
 	//console.log(addr);
 	var host = $('.host').text();
