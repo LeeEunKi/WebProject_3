@@ -15,7 +15,7 @@
 			year = parseInt(year.trim());
 			let month=$('#month').text();
 			month = parseInt(month.trim());
-			if(month-1<8){
+			if(year==2022&&month-1<8){
 				alert("이전 달은 볼 수 없습니다.")
 				return;
 			}

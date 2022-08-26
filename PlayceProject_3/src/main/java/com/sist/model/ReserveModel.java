@@ -172,19 +172,19 @@ public class ReserveModel {
 		selectTime = times.split(",");
 		int startIndex = Arrays.asList(selectTime).indexOf(timeno);
 		
-		System.out.println("===============================");
-		System.out.println("유효성검사 시작, 선택한 시간:"+timeno);
+//		System.out.println("===============================");
+//		System.out.println("유효성검사 시작, 선택한 시간:"+timeno);
 		int durations = 17 - Integer.parseInt(timeno);
 		int durations_ = 0;
 		for(int i=startIndex;i<selectTime.length-1;i++) {
-			System.out.println(i+","+selectTime[i]);
+//			System.out.println(i+","+selectTime[i]);
 			durations_++;
 			if(Integer.parseInt(selectTime[i])+1!=Integer.parseInt(selectTime[i+1])) {
-				System.out.print("Integer.parseInt(selectTime[i])+1:");
-				System.out.print(Integer.parseInt(selectTime[i])+1);
-				System.out.println();
-				System.out.println("Integer.parseInt(selectTime[i+1]):"+Integer.parseInt(selectTime[i+1]));
-				System.out.println((Integer.parseInt(timeno)+7)+"시부터 "+(Integer.parseInt(timeno)+7+durations_)+"시까지 최대"+durations_+"시간 예약가능");
+//				System.out.print("Integer.parseInt(selectTime[i])+1:");
+//				System.out.print(Integer.parseInt(selectTime[i])+1);
+//				System.out.println();
+//				System.out.println("Integer.parseInt(selectTime[i+1]):"+Integer.parseInt(selectTime[i+1]));
+//				System.out.println((Integer.parseInt(timeno)+7)+"시부터 "+(Integer.parseInt(timeno)+7+durations_)+"시까지 최대"+durations_+"시간 예약가능");
 				durations = durations_;
 				break;
 			}
