@@ -10,6 +10,8 @@
 <script type="text/javascript">
 let i=0;
 $(function(){
+	
+	
 	let page_no = 1;
 	let place_no = ${place_no};
 	$.ajax({
@@ -39,6 +41,9 @@ $(function(){
 			</c:forEach>
 			        ];
 	$('.page-no').click(function(e){
+		
+		$("html, body").animate({scrollTop: 2773.140625}, 400); 
+		
 		page_no = parseInt(e.target.innerText.trim());
 		place_no = ${place_no};
 		$.ajax({

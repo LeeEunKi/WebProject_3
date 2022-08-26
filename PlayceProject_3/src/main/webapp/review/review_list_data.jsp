@@ -18,19 +18,19 @@ $(function () {
 	   	  	<span class="score">
 				<c:choose>
 					<c:when test="${rvo.score==1 }">
-						★
+						<span class="icon-star text-warning"></span>
 					</c:when>
 					<c:when test="${rvo.score==2 }">
-						★★
+						<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
 					</c:when>
 					<c:when test="${rvo.score==3 }">
-						★★★
+						<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
 					</c:when>
 					<c:when test="${rvo.score==4 }">
-						★★★★
+						<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
 					</c:when>
 					<c:otherwise >
-						★★★★★
+						<span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span><span class="icon-star text-warning"></span>
 					</c:otherwise>
 				</c:choose>
 			</span>&nbsp;<p class="de-text-date">${rvo.dbday }</p>
