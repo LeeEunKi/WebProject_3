@@ -67,6 +67,7 @@
 		FROM reserve_info_3 ri3, place_3 p3
 		WHERE p3.no = ri3.place_no AND ri3.no = #{no}
 	</select>
+	
 	<select id="admin_reserveWaitCount" resultType="int" parameterType="int">
 	  SELECT COUNT(*) FROM reserve_info_3 WHERE state=#{type}
 	</select>

@@ -137,12 +137,14 @@ public class AdminPageModel {
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
+		
 	   request.setAttribute("curPage", curPage);
 	   request.setAttribute("startPage",startPage);
 	   request.setAttribute("endPage", endPage);
 	   request.setAttribute("totalPage", totalPage);
 	   request.setAttribute("totalCount", totalCount);
 	   request.setAttribute("list", list);
+	   
 	   if(type==0) {
 		   request.setAttribute("admin_jsp", "../adminpage/reserve_list.jsp");
 		   request.setAttribute("page", "reserveWait");

@@ -265,7 +265,8 @@ ul, li {
 </style>
 </head>
 <body>
-	<div class="hero page-inner overlay" style="background-image: url('../images/hero_bg_1.jpg'); height: 50vh;">
+	<div class="hero page-inner overlay" style="background-image: url('https://place.onoffmix.com/images/main/topSkin.png?20191216'); height: 50vh;
+		background-repeat: round;">
 		<div class="container">
 			<div class="row justify-content-center align-items-center" style="height: 39vh;">
 				<div class="col-lg-9 text-center mt-5">
