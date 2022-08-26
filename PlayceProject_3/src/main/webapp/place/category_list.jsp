@@ -7,15 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-.background-img{
-	background-repeat : round;
-}
-</style>
 <title></title>
 </head>
 <body>
-	<div class="hero page-inner overlay background-img" style="background-image: url('${cvo.poster}'); height: 40vh;">
+	<div class="hero page-inner overlay round" style="background-image: url('${cvo.poster}'); height: 40vh;">
 	</div>
 	
 <div class="section section-properties">

@@ -9688,6 +9688,10 @@ textarea {
   background-position: cnter center;
   background-repeat: no-repeat;
   background-color: #2964D9; }
+
+.round{
+  background-repeat: round !important;
+}  
   .hero.overlay {
     position: relative; }
     .hero.overlay:before {

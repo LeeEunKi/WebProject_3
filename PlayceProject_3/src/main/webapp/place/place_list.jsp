@@ -10,7 +10,7 @@
 <title></title>
 </head>
 <body>
-	<div class="hero page-inner overlay" style="background-image:url('${type_image}'); height:40vh; <!-- background-repeat: round; -->">
+	<div class="hero page-inner overlay round" style="background-image:url('${type_image}'); height:50vh; <!-- background-repeat: round; -->">
 <!--
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
